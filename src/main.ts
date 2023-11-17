@@ -42,8 +42,8 @@ async function bootstrap() {
 
   const config = new DocumentBuilder()
     .addBearerAuth()
-    .setTitle('Next CMS Management API')
-    .setDescription('Next CMS Management API')
+    .setTitle('Next Ecom Management API')
+    .setDescription('Next Ecom Management API')
     .setVersion('1.0')
     .addServer(process.env.SWAGGER_SERVER)
     .addServer(process.env.SWAGGER_DEV_SERVER)
