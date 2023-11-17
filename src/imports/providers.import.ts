@@ -4,12 +4,14 @@ import { QueryFailedErrorFilter } from 'src/middleware/all-exception.filter';
 import { HttpExceptionFilter } from 'src/middleware/http-exception.filter';
 import { JwtWebSocketMiddleware } from 'src/middleware/jwt-socket.middlwware';
 import { AdminPageRepository } from 'src/repositories/admin-page.repository';
+import { CurrencyRepository } from 'src/repositories/currency.repository';
 import { LogRepository } from 'src/repositories/log.repository';
 import { PermissionRepository } from 'src/repositories/permission.repository';
 import { RoleRepository } from 'src/repositories/role.repository';
 import { SessionRepository } from 'src/repositories/session.repository';
 import { UserRepository } from 'src/repositories/user.repository';
 import { AuthService } from 'src/services/auth.service';
+import { CurrencyService } from 'src/services/currency.service';
 import { JwtAuthService } from 'src/services/jwt-auth.service';
 import { LangService } from 'src/services/lang.service';
 import { LogService } from 'src/services/log.service';
@@ -53,4 +55,6 @@ export const ImportProviders = [
   LogService,
   LogRepository,
   RedisService,
+  CurrencyRepository,
+  CurrencyService,
 ];

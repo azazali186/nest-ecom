@@ -1,8 +1,8 @@
 import { NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { CreateCurrencyDto } from 'src/dto/create-currency.dto';
-import { SearchCurrencyDto } from 'src/dto/search-currency.dto';
-import { UpdateCurrencyDto } from 'src/dto/update-currency.dto';
+import { CreateCurrencyDto } from 'src/dto/currency/create-currency.dto';
+import { SearchCurrencyDto } from 'src/dto/currency/search-currency.dto';
+import { UpdateCurrencyDto } from 'src/dto/currency/update-currency.dto';
 import { Currency } from 'src/entities/currency.entity';
 import { LangService } from 'src/services/lang.service';
 import { ApiResponse } from 'src/utils/response.util';
@@ -18,10 +18,11 @@ export class CurrencyRepository extends Repository<Currency> {
   }
 
   async createCurrency(req: CreateCurrencyDto) {
-    const { code, symbol } = req;
+    const { code, symbol, name } = req;
     const currency = new Currency();
     currency.code = code;
     currency.symbol = symbol;
+    currency.name = name;
     return ApiResponse.create(
       this.curRepo.save(currency),
       201,

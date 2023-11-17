@@ -1,4 +1,5 @@
 import { TypeOrmModuleOptions } from '@nestjs/typeorm';
+import { ImportEntities } from 'src/imports/entity.import';
 const username = process.env.DB_USERNAME || '';
 const password = process.env.DB_PASSWORD || 'Aj189628@';
 const dbName = process.env.DB_NAME || 'nest-ecom';
@@ -9,7 +10,7 @@ export const typeOrmConfig: TypeOrmModuleOptions = {
   username: username,
   password: password,
   database: dbName,
-  entities: [],
+  entities: ImportEntities,
   synchronize: true,
   autoLoadEntities: true,
   logging: true,

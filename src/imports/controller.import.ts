@@ -1,5 +1,6 @@
 import { AuthController } from 'src/controllers/auth.controller';
 import { BroadcastingController } from 'src/controllers/broadcasting.controller';
+import { CurrencyController } from 'src/controllers/currency.controller';
 import { LogController } from 'src/controllers/log.controller';
 import { PermissionsController } from 'src/controllers/permission.controller';
 import { RoleController } from 'src/controllers/role.controller';
@@ -12,4 +13,5 @@ export const ImportControllers = [
   PermissionsController,
   LogController,
   BroadcastingController,
+  CurrencyController,
 ];

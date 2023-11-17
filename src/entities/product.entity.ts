@@ -1,6 +1,7 @@
 import { ProductStatus } from 'src/enum/product-status.enum';
 import {
   Column,
+  Entity,
   JoinColumn,
   JoinTable,
   ManyToMany,
@@ -12,6 +13,7 @@ import { User } from './user.entity';
 import { Category } from './category.entity';
 import { Translations } from './translation.entity';
 
+@Entity('products')
 export class Product {
   @PrimaryGeneratedColumn()
   id: number;

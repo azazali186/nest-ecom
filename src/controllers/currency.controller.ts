@@ -6,12 +6,13 @@ import {
   Param,
   Post,
   ValidationPipe,
-  Request,
   Query,
+  Patch,
 } from '@nestjs/common';
 import { ApiBearerAuth, ApiTags } from '@nestjs/swagger';
-import { CreateCurrencyDto } from 'src/dto/create-currency.dto';
-import { SearchCurrencyDto } from 'src/dto/search-currency.dto';
+import { CreateCurrencyDto } from 'src/dto/currency/create-currency.dto';
+import { SearchCurrencyDto } from 'src/dto/currency/search-currency.dto';
+import { UpdateCurrencyDto } from 'src/dto/currency/update-currency.dto';
 import { CurrencyService } from 'src/services/currency.service';
 
 @ApiTags('Currency Management')
@@ -30,6 +31,13 @@ export class CurrencyController {
   @Get(':id')
   findOne(@Param('id') id: number) {
     return this.currService.findOne(id);
+  }
+  @Patch()
+  update(
+    @Param('id') id: number,
+    @Body(ValidationPipe) req: UpdateCurrencyDto,
+  ) {
+    return this.currService.update(id, req);
   }
   @Delete(':id')
   remove(@Param('id') id: number) {

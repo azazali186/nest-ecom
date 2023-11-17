@@ -1,8 +1,8 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { CreateCurrencyDto } from 'src/dto/create-currency.dto';
-import { SearchCurrencyDto } from 'src/dto/search-currency.dto';
-import { UpdateCurrencyDto } from 'src/dto/update-currency.dto';
+import { CreateCurrencyDto } from 'src/dto/currency/create-currency.dto';
+import { SearchCurrencyDto } from 'src/dto/currency/search-currency.dto';
+import { UpdateCurrencyDto } from 'src/dto/currency/update-currency.dto';
 import { CurrencyRepository } from 'src/repositories/currency.repository';
 import { ApiResponse } from 'src/utils/response.util';
 
@@ -28,8 +28,8 @@ export class CurrencyService {
   async remove(id: number) {
     const res = await this.curRepo.delete(id);
     if (res.affected === 0) {
-      throw new NotFoundException(`Role with ID ${id} not found`);
+      throw new NotFoundException(`Currency with ID ${id} not found`);
     }
-    return ApiResponse.success(null, 200, 'Role Deleted');
+    return ApiResponse.success(null, 200, 'Currency Deleted');
   }
 }

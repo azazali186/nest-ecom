@@ -7,7 +7,7 @@ import {
   PrimaryGeneratedColumn,
 } from 'typeorm';
 import { User } from './user.entity';
-import { Image } from './image.entity';
+import { Images } from './images.entity';
 import { Translations } from './translation.entity';
 import { Price } from './price.entity';
 
@@ -25,8 +25,8 @@ export class Stock {
   })
   status: ProductStatus;
 
-  @OneToMany(() => Image, (image) => image.target)
-  images: Image[];
+  @OneToMany(() => Images, (image) => image.target)
+  images: Images[];
 
   @OneToMany(() => Translations, (tr) => tr.stock)
   translation: Translations[];

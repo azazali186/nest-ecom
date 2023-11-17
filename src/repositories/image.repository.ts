@@ -1,11 +1,11 @@
 import { InjectRepository } from '@nestjs/typeorm';
-import { Image } from 'src/entities/image.entity';
+import { Images } from 'src/entities/images.entity';
 import { Repository } from 'typeorm';
 
-export class ImageRepository extends Repository<Image> {
+export class ImageRepository extends Repository<Images> {
   constructor(
-    @InjectRepository(Image)
-    private imgRepo: Repository<Image>,
+    @InjectRepository(Images)
+    private imgRepo: Repository<Images>,
   ) {
     super(imgRepo.target, imgRepo.manager, imgRepo.queryRunner);
   }

@@ -8,8 +8,8 @@ import {
 import { Category } from './category.entity';
 import { Stock } from './stock.entity';
 
-@Entity()
-export class Image {
+@Entity('images')
+export class Images {
   @PrimaryGeneratedColumn()
   id: number;
 
