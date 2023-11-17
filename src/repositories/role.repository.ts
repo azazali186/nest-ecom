@@ -6,10 +6,10 @@ import { Role } from 'src/entities/role.entity';
 import { Repository, In } from 'typeorm';
 import { AdminPageRepository } from './admin-page.repository';
 import { PermissionRepository } from './permission.repository';
-import { ApiResponse } from 'src/utils2/response.util';
+import { ApiResponse } from 'src/utils/response.util';
 import { SearchRoleDto } from 'src/dto/search-role.dto';
 import { LangService } from 'src/services/lang.service';
-import { splitDateRange } from '../utils2/helper.utils';
+import { splitDateRange } from '../utils/helper.utils';
 
 export class RoleRepository extends Repository<Role> {
   constructor(
@@ -28,7 +28,7 @@ export class RoleRepository extends Repository<Role> {
     );
   }
 
-  async createRole(req: CreateRoleDto, user) {
+  async createRole(req: CreateRoleDto, user: any) {
     const { name, description, permissions } = req;
 
     const oldRole = await this.roleRepository.findOne({
@@ -68,7 +68,7 @@ export class RoleRepository extends Repository<Role> {
 
     await this.roleRepository.save(role);
 
-    return ApiResponse(
+    return ApiResponse.success(
       null,
       200,
       this.langService.getTranslation('CREATED_SUCCESSFULLY', 'Role'),
@@ -125,7 +125,7 @@ export class RoleRepository extends Repository<Role> {
     await this.roleRepository.save(role);
     // });
 
-    return ApiResponse(
+    return ApiResponse.success(
       null,
       200,
       this.langService.getTranslation('UPDATED_SUCCESSFULLY', 'Role'),
@@ -183,7 +183,7 @@ export class RoleRepository extends Repository<Role> {
 
     role.adminPages = adminPages;
     role.permissions = [];
-    return ApiResponse(
+    return ApiResponse.success(
       role,
       200,
       this.langService.getTranslation('GET_DATA_SUCCESS', `Role`),
@@ -230,7 +230,7 @@ export class RoleRepository extends Repository<Role> {
     const roles = await query.limit(limit).offset(offset).getRawMany();
     const count = await query.getCount();
 
-    return ApiResponse(
+    return ApiResponse.paginate(
       { list: roles, count },
       200,
       this.langService.getTranslation('GET_DATA_SUCCESS', 'Roles'),

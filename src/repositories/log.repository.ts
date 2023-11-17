@@ -2,9 +2,9 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { SearchOperationLogDto } from 'src/dto/search-operation-log.dto';
 import { Log } from 'src/entities/log.entity';
 import { LangService } from 'src/services/lang.service';
-import { ApiResponse } from 'src/utils2/response.util';
+import { ApiResponse } from 'src/utils/response.util';
 import { Repository } from 'typeorm';
-import { splitDateRange } from '../utils2/helper.utils';
+import { splitDateRange } from '../utils/helper.utils';
 
 export class LogRepository extends Repository<Log> {
   constructor(
@@ -77,7 +77,7 @@ export class LogRepository extends Repository<Log> {
       .getRawMany();
     const count = await query.getCount();
 
-    return ApiResponse(
+    return ApiResponse.paginate(
       {
         list,
         count,

@@ -25,6 +25,6 @@ export class BroadcastingController {
   @Post('')
   broadcastEvent(@Body() message: BroadcastEventDto) {
     this.wsService.broadcastByEvent(message.event, message.data);
-    return ApiResponse({}, 200, 'Message sent to client!');
+    return ApiResponse.success(null, 200, 'Message sent to client!');
   }
 }

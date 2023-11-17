@@ -9,7 +9,7 @@ import { getClientIpUtil } from 'src/utils/get-client-ip.util';
 import {
   EXCLUDED_ROUTES,
   getPermissionNameFromRoute,
-} from 'src/utils2/helper.utils';
+} from 'src/utils/helper.utils';
 import * as morgan from 'morgan';
 
 @Injectable()

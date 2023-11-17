@@ -25,7 +25,7 @@ export class AuthService {
     return this.userRepository.getUsers(filterDto);
   }
 
-  async findOne(id: string): Promise<User> {
+  async findOne(id: number): Promise<User> {
     return this.userRepository.findOne({
       relations: ['role'],
       where: {

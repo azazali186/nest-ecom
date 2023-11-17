@@ -1,26 +1,21 @@
 import { MiddlewareConsumer, Module, NestModule } from '@nestjs/common';
-import { AuthModule } from './modules/common.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { typeOrmConfig } from './config/typeorm.config';
 import { ConfigModule } from '@nestjs/config';
 import { ThrottlerModule } from '@nestjs/throttler';
 import { CheckPermissionMiddleware } from './middleware/check-permission.middleware';
-import { JwtService } from '@nestjs/jwt';
-import { UserService } from './services/user.service';
-import { UserRepository } from './repositories/user.repository';
-import { Permission } from './entities/permission.entity';
-import { Role } from './entities/role.entity';
-import { User } from './entities/user.entity';
-import { RoleRepository } from './repositories/role.repository';
-import { SessionRepository } from './repositories/session.repository';
-import { Session } from './entities/session.entity';
-import { PermissionRepository } from './repositories/permission.repository';
-import { WsGateway } from './ws/ws.gateway';
-import { JwtWebSocketMiddleware } from './middleware/jwt-socket.middlwware';
-import { JwtAuthService } from './services/jwt-auth.service';
+import { JwtModule } from '@nestjs/jwt';
+import { ImportControllers } from './imports/controller.import';
+import { ImportProviders } from './imports/providers.import';
+import { ImportEntities } from './imports/entity.import';
+import { LoggerMiddleware } from './middleware/logger.middleware';
+import * as expressUserAgent from 'express-useragent';
+import { i18nConfig } from './config/i18n.config';
+import { I18nModule } from 'nestjs-i18n';
 
 @Module({
   imports: [
+    I18nModule.forRoot(i18nConfig),
     ThrottlerModule.forRoot([
       {
         name: 'short',
@@ -42,24 +37,23 @@ import { JwtAuthService } from './services/jwt-auth.service';
       isGlobal: true,
     }),
     TypeOrmModule.forRoot(typeOrmConfig),
-    TypeOrmModule.forFeature([User, Role, Permission, Session]),
-    AuthModule,
+    TypeOrmModule.forFeature(ImportEntities),
+    JwtModule.register({
+      secret: process.env.JWT_SECRET || 'SECRET',
+      signOptions: { expiresIn: '10d' },
+    }),
   ],
-  controllers: [],
-  providers: [
-    JwtService,
-    UserService,
-    UserRepository,
-    RoleRepository,
-    SessionRepository,
-    PermissionRepository,
-    JwtWebSocketMiddleware,
-    JwtAuthService,
-    WsGateway,
-  ],
+  controllers: ImportControllers,
+  providers: ImportProviders,
 })
 export class AppModule implements NestModule {
   configure(consumer: MiddlewareConsumer) {
-    consumer.apply(CheckPermissionMiddleware).forRoutes('*'); // This applies the middleware to all routes.
+    consumer
+      .apply(
+        expressUserAgent.express(),
+        CheckPermissionMiddleware,
+        LoggerMiddleware,
+      )
+      .forRoutes('*'); // This applies the middleware to all routes.
   }
 }

@@ -13,7 +13,7 @@ import { AES, enc } from 'crypto-js';
 import {
   EXCLUDED_ROUTES,
   getPermissionNameFromRoute,
-} from 'src/utils2/helper.utils';
+} from 'src/utils/helper.utils';
 import { UserStatus } from 'src/enum/user-status.enum';
 
 // Assuming you have a service for users

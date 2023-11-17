@@ -7,13 +7,13 @@ import {
 } from '@nestjs/common';
 import { Response } from 'express';
 import logger from 'src/utils/logger';
-import { ApiResponse } from 'src/utils2/response.util';
-import { I18nService } from 'nestjs-i18n';
+import { ApiResponse } from 'src/utils/response.util';
+import { LangService } from 'src/services/lang.service';
 
 @Catch(HttpException)
 @Injectable()
 export class HttpExceptionFilter implements ExceptionFilter {
-  constructor(private readonly i18n: I18nService) {}
+  constructor(private readonly i18n: LangService) {}
   catch(exception: HttpException, host: ArgumentsHost) {
     const ctx = host.switchToHttp();
     const response = ctx.getResponse<Response>();
@@ -36,7 +36,7 @@ export class HttpExceptionFilter implements ExceptionFilter {
     const data = new Set(errorResponse.message.toString().split(','));
     const translatedMessage = [];
     data.forEach((d) => {
-      const msg = this.i18n.t(`error.${d}`, {
+      const msg = this.i18n.getErrorTranslation(`${d}`, {
         lang,
         args: { data: errorResponse.param },
       });
@@ -47,7 +47,7 @@ export class HttpExceptionFilter implements ExceptionFilter {
       }
     });
 
-    const res = ApiResponse(null, status, null, translatedMessage);
+    const res = ApiResponse.success(null, status, null, translatedMessage);
 
     response.status(status).json(res);
   }

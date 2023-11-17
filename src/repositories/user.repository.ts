@@ -18,11 +18,11 @@ import { SessionRepository } from './session.repository';
 import { RegisterDto } from 'src/dto/register.dto.ts';
 import { PermissionRepository } from './permission.repository';
 import { AdminPageRepository } from './admin-page.repository';
-import { ApiResponse } from 'src/utils2/response.util';
+import { ApiResponse } from 'src/utils/response.util';
 import { CreateUserDto } from 'src/dto/create-user.dto';
 import { LangService } from 'src/services/lang.service';
 import { UserStatus } from 'src/enum/user-status.enum';
-import { splitDateRange } from '../utils2/helper.utils';
+import { splitDateRange } from '../utils/helper.utils';
 import { ChangePasswordDto } from 'src/dto/change-password.dto';
 
 export class UserRepository extends Repository<User> {
@@ -50,7 +50,7 @@ export class UserRepository extends Repository<User> {
   async findSessionToken(toke: string) {
     const token = await this.sessionRepository.findOne({
       where: {
-        stringToken: toke,
+        string_token: toke,
       },
     });
     return token;
@@ -109,7 +109,7 @@ export class UserRepository extends Repository<User> {
       .take(filterDto.limit)
       .getManyAndCount();
 
-    return ApiResponse(
+    return ApiResponse.paginate(
       { list: users, count: count },
       200,
       this.langService.getTranslation('GET_DATA_SUCCESS', 'Users'),
@@ -152,7 +152,7 @@ export class UserRepository extends Repository<User> {
     await this.userRepository.save(user);
 
     const { password, ...others } = user;
-    return ApiResponse(
+    return ApiResponse.success(
       others,
       201,
       this.langService.getTranslation('REGISTER_SUCCESS'),
@@ -236,7 +236,7 @@ export class UserRepository extends Repository<User> {
     const session = this.sessionRepository.create({
       token: tokenDetails.token,
       user: user,
-      stringToken: tokenDetails.tokenString,
+      string_token: tokenDetails.tokenString,
       expires_at: expiryDate,
       is_expired: false,
     });
@@ -247,7 +247,7 @@ export class UserRepository extends Repository<User> {
   async prepareLoginResponse(user: User, tokenDetails: any) {
     const { name, username, status } = user;
 
-    return ApiResponse(
+    return ApiResponse.success(
       {
         user: { name, username, status },
         // permissions: allPermissions.map((p) => p.name),
@@ -320,7 +320,7 @@ export class UserRepository extends Repository<User> {
 
     await this.userRepository.save(userToUpdate);
 
-    return ApiResponse(
+    return ApiResponse.success(
       null,
       200,
       this.langService.getTranslation('UPDATED_SUCCESSFULLY', 'User'),
@@ -371,7 +371,7 @@ export class UserRepository extends Repository<User> {
 
     await this.userRepository.save(user);
 
-    return ApiResponse(
+    return ApiResponse.success(
       null,
       201,
       this.langService.getTranslation('CREATED_SUCCESSFULLY', 'User'),
@@ -382,12 +382,16 @@ export class UserRepository extends Repository<User> {
     const userToUpdate = await this.findOne({ where: { id: req.user.id } });
     userToUpdate.last_login = new Date();
     const session = await this.sessionRepository.findOne({
-      where: { stringToken: req.user.token },
+      where: { string_token: req.user.token },
     });
     session.is_expired = true;
     await this.sessionRepository.save(session);
     await this.save(userToUpdate);
-    return ApiResponse(null, 200, this.langService.getTranslation('LOGOUT'));
+    return ApiResponse.success(
+      null,
+      200,
+      this.langService.getTranslation('LOGOUT'),
+    );
   }
 
   async changePassword(dtoReq: ChangePasswordDto, req: any) {
@@ -424,7 +428,7 @@ export class UserRepository extends Repository<User> {
 
     await this.logout(req);
 
-    return ApiResponse(
+    return ApiResponse.success(
       null,
       200,
       this.langService.getTranslation('UPDATED_SUCCESSFULLY', 'User Password'),

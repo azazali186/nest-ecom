@@ -4,7 +4,7 @@ import { CreateRoleDto } from 'src/dto/create-role.dto';
 import { SearchRoleDto } from 'src/dto/search-role.dto';
 import { UpdateRoleDto } from 'src/dto/update-role.dto';
 import { RoleRepository } from 'src/repositories/role.repository';
-import { ApiResponse } from 'src/utils2/response.util';
+import { ApiResponse } from 'src/utils/response.util';
 
 @Injectable()
 export class RoleService {
@@ -13,8 +13,8 @@ export class RoleService {
     public roleRepo: RoleRepository,
   ) {}
 
-  createRole(createRoleDto: CreateRoleDto, userId) {
-    return this.roleRepo.createRole(createRoleDto, userId);
+  createRole(createRoleDto: CreateRoleDto, user) {
+    return this.roleRepo.createRole(createRoleDto, user);
   }
   async findAll(name: SearchRoleDto) {
     return this.roleRepo.findAllRoleWithCount(name);
@@ -30,6 +30,6 @@ export class RoleService {
     if (res.affected === 0) {
       throw new NotFoundException(`Role with ID ${id} not found`);
     }
-    return ApiResponse(null, 200, 'Role Deleted');
+    return ApiResponse.success(null, 200, 'Role Deleted');
   }
 }

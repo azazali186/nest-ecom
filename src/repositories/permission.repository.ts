@@ -2,7 +2,7 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { Permission } from 'src/entities/permission.entity';
 import { Repository } from 'typeorm';
 import { AdminPageRepository } from './admin-page.repository';
-import { ApiResponse } from 'src/utils2/response.util';
+import { ApiResponse } from 'src/utils/response.util';
 
 export class PermissionRepository extends Repository<Permission> {
   constructor(
@@ -51,6 +51,6 @@ export class PermissionRepository extends Repository<Permission> {
         page.isAccess = false;
       }
     });
-    return ApiResponse(adminPages, 200);
+    return ApiResponse.success(adminPages, 200);
   }
 }
