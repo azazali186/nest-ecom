@@ -17,12 +17,14 @@ export class Category {
   @Column()
   name: string;
 
-  @ManyToMany(() => Product, (product) => product.categories)
-  products: Product[];
+  @ManyToMany(() => Product, (product) => product.categories, {
+    nullable: true,
+  })
+  products: Product[] | null;
 
   @OneToMany(() => Translations, (tr) => tr.category)
   translation: Translations[];
 
-  @OneToMany(() => Images, (image) => image.category)
-  images: Images[];
+  @OneToMany(() => Images, (image) => image.category, { nullable: true })
+  images: Images[] | null;
 }

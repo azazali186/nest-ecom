@@ -18,31 +18,31 @@ export class Translations {
   @Column()
   name: string;
 
-  @Column()
-  discriptions: string;
+  @Column({ nullable: true })
+  description: string;
 
-  @Column()
+  @Column({ nullable: true })
   meta_title: string;
 
-  @Column()
+  @Column({ nullable: true })
   meta_keywords: string;
 
-  @Column()
-  meta_discriptions: string;
+  @Column({ nullable: true })
+  meta_descriptions: string;
 
   @ManyToOne(() => Language, (lang) => lang.id)
   @JoinColumn({ name: 'language_id' })
   language: Language;
 
-  @ManyToOne(() => Stock, (st) => st.translation)
+  @ManyToOne(() => Stock, (st) => st.translation, { nullable: true })
   @JoinColumn({ name: 'stock_id' })
-  stock: Stock;
+  stock: Stock | null;
 
-  @ManyToOne(() => Product, (p) => p.translation)
+  @ManyToOne(() => Product, (p) => p.translation, { nullable: true })
   @JoinColumn({ name: 'product_id' })
-  product: Product;
+  product: Product | null;
 
-  @ManyToOne(() => Category, (c) => c.translation)
+  @ManyToOne(() => Category, (c) => c.translation, { nullable: true })
   @JoinColumn({ name: 'category_id' })
-  category: Category;
+  category: Category | null;
 }
