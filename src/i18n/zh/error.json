@@ -39,5 +39,6 @@
   "INTERNAL_SERVER_ERROR": "内部服务器错误",
   "USER_NOT_FOUND": "未找到用户ID {data}",
   "IP_ADDRESS_NOT_FOUND": "IP地址 {data} 未找到",
-  "ALREADY_EXIST": "{data} 已存在！"
+  "ALREADY_EXIST": "{data} 已存在！",
+  "INVALID_ID": "{data} invalid id!"
 }

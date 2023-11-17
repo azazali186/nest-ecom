@@ -31,12 +31,6 @@ export class User {
   @Column({ type: 'timestamp', default: () => 'CURRENT_TIMESTAMP' })
   created_at: Date;
 
-  @Column({
-    type: 'timestamp',
-    nullable: true,
-  })
-  last_login: Date;
-
   @ManyToOne(() => User, { nullable: true })
   @JoinColumn()
   created_by: User | null;
@@ -65,6 +59,12 @@ export class User {
 
   @OneToMany(() => Session, (session) => session.user)
   sessions: Session[];
+
+  @Column({
+    type: 'timestamp',
+    nullable: true,
+  })
+  last_login: Date;
 
   @OneToOne(() => Session)
   @JoinColumn()
