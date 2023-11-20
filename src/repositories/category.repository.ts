@@ -9,8 +9,8 @@ import { Like, Repository } from 'typeorm';
 import { LanguageRepository } from './language.repository';
 import { TranslationsRepository } from './translation.repository';
 import { LangService } from 'src/services/lang.service';
-import { Images } from 'src/entities/images.entity';
-import { ImageRepository } from './image.repository';
+import { Img } from 'src/entities/img.entity';
+import { ImgRepository } from './image.repository';
 import { NotFoundException } from '@nestjs/common';
 
 export class CategoryRepository extends Repository<Category> {
@@ -20,7 +20,7 @@ export class CategoryRepository extends Repository<Category> {
     private langRepo: LanguageRepository,
     private trRepo: TranslationsRepository,
     private langService: LangService,
-    private imgRepo: ImageRepository,
+    private imgRepo: ImgRepository,
   ) {
     super(catRepo.target, catRepo.manager, catRepo.queryRunner);
   }
@@ -71,7 +71,7 @@ export class CategoryRepository extends Repository<Category> {
         if (updateData.images) {
           category.images = [];
           for (const im of updateData.images) {
-            const img = new Images();
+            const img = new Img();
             img.url = im.url;
             img.category = category;
             await this.imgRepo.save(img);
@@ -133,7 +133,7 @@ export class CategoryRepository extends Repository<Category> {
       if (images) {
         const imageData = [];
         for (const im of images) {
-          const img = new Images();
+          const img = new Img();
           img.url = im.url;
           img.category = cat;
           await this.imgRepo.save(img);
