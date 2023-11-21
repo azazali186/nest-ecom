@@ -8,6 +8,7 @@ import {
 import { Language } from './language.entity';
 import { Category } from './category.entity';
 import { Product } from './product.entity';
+import { Stock } from './stock.entity';
 
 @Entity()
 export class Translations {
@@ -44,4 +45,8 @@ export class Translations {
   })
   @JoinColumn({ name: 'product_id' })
   products: Product;
+
+  @ManyToOne(() => Stock, (st) => st.translations, { nullable: true })
+  @JoinColumn({ name: 'stock_id' })
+  stock: Stock;
 }

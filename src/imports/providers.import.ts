@@ -13,6 +13,7 @@ import { PermissionRepository } from 'src/repositories/permission.repository';
 import { ProductRepository } from 'src/repositories/product.repository';
 import { RoleRepository } from 'src/repositories/role.repository';
 import { SessionRepository } from 'src/repositories/session.repository';
+import { StockRepository } from 'src/repositories/stock.repository';
 import { TranslationsRepository } from 'src/repositories/translation.repository';
 import { UserRepository } from 'src/repositories/user.repository';
 import { AuthService } from 'src/services/auth.service';
@@ -73,4 +74,5 @@ export const ImportProviders = [
   ImagesRepository,
   ProductRepository,
   ProductService,
+  StockRepository,
 ];

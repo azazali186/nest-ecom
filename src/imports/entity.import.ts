@@ -9,6 +9,7 @@ import { Price } from 'src/entities/price.entity';
 import { Product } from 'src/entities/product.entity';
 import { Role } from 'src/entities/role.entity';
 import { Session } from 'src/entities/session.entity';
+import { Stock } from 'src/entities/stock.entity';
 import { Translations } from 'src/entities/translation.entity';
 import { User } from 'src/entities/user.entity';
 
@@ -25,6 +26,7 @@ export const ImportEntities = [
   Product,
   Category,
   Translations,
+  Stock,
   Price,
   Images,
 ];

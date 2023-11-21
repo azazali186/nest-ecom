@@ -20,7 +20,7 @@ export class Price {
   @JoinColumn({ name: 'currency_id' })
   currency: Currency;
 
-/*   @ManyToOne(() => Stock, (st) => st.price)
+  @ManyToOne(() => Stock, (st) => st.price)
   @JoinColumn({ name: 'stock_id' })
-  stock: Stock; */
+  stock: Stock;
 }

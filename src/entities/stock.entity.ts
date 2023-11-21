@@ -1,6 +1,7 @@
 import { ProductStatus } from 'src/enum/product-status.enum';
 import {
   Column,
+  Entity,
   JoinColumn,
   ManyToOne,
   OneToMany,
@@ -11,6 +12,7 @@ import { Images } from './images.entity';
 import { Translations } from './translation.entity';
 import { Price } from './price.entity';
 
+@Entity()
 export class Stock {
   @PrimaryGeneratedColumn()
   id: number;
@@ -25,14 +27,16 @@ export class Stock {
   })
   status: ProductStatus;
 
-/*   @OneToMany(() => Images, (image) => image.target)
-  images: Images[]; */
+  @OneToMany(() => Images, (image) => image.stocks)
+  images: Images[];
 
- /*  @OneToMany(() => Translations, (tr) => tr.stock)
-  translation: Translations[]; */
+  @OneToMany(() => Translations, (tr) => tr.stock, {
+    nullable: true,
+  })
+  translations: Translations[] | null;
 
-/*   @OneToMany(() => Price, (pr) => pr.stock)
-  price: Price[]; */
+  @OneToMany(() => Price, (pr) => pr.stock, { nullable: true })
+  price: Price[];
 
   @Column({ type: 'timestamp', default: () => 'CURRENT_TIMESTAMP' })
   created_at: Date;
