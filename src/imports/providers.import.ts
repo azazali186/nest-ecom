@@ -10,6 +10,7 @@ import { ImagesRepository } from 'src/repositories/image.repository';
 import { LanguageRepository } from 'src/repositories/language.repository';
 import { LogRepository } from 'src/repositories/log.repository';
 import { PermissionRepository } from 'src/repositories/permission.repository';
+import { ProductRepository } from 'src/repositories/product.repository';
 import { RoleRepository } from 'src/repositories/role.repository';
 import { SessionRepository } from 'src/repositories/session.repository';
 import { TranslationsRepository } from 'src/repositories/translation.repository';
@@ -22,6 +23,7 @@ import { LangService } from 'src/services/lang.service';
 import { LanguageService } from 'src/services/language.service';
 import { LogService } from 'src/services/log.service';
 import { PermissionService } from 'src/services/permission.service';
+import { ProductService } from 'src/services/product.service';
 import { RedisService } from 'src/services/redis.service';
 import { RoleService } from 'src/services/role.service';
 import { UserService } from 'src/services/user.service';
@@ -69,4 +71,6 @@ export const ImportProviders = [
   LanguageService,
   TranslationsRepository,
   ImagesRepository,
+  ProductRepository,
+  ProductService,
 ];

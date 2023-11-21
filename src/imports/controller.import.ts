@@ -5,6 +5,7 @@ import { CurrencyController } from 'src/controllers/currency.controller';
 import { LanguageController } from 'src/controllers/language.controller';
 import { LogController } from 'src/controllers/log.controller';
 import { PermissionsController } from 'src/controllers/permission.controller';
+import { ProductController } from 'src/controllers/product.controller';
 import { RoleController } from 'src/controllers/role.controller';
 import { UserController } from 'src/controllers/user.controller';
 
@@ -18,4 +19,5 @@ export const ImportControllers = [
   CurrencyController,
   CategoryController,
   LanguageController,
+  ProductController,
 ];

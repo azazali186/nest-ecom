@@ -22,9 +22,11 @@ export class Category {
   })
   products: Product[] | null;
 
-  /* @OneToMany(() => Translations, (tr) => tr.category)
-  translation: Translations[]; */
+  @OneToMany(() => Translations, (tr) => tr.categories, {
+    nullable: true,
+  })
+  translations: Translations[] | null;
 
-/*   @OneToMany(() => Images, (image) => image.category, { nullable: true })
-  images: Images[] | null; */
+  @OneToMany(() => Images, (img) => img.categories)
+  images: Images[] | null;
 }

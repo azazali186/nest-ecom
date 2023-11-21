@@ -47,7 +47,7 @@ export class CategoryRepository extends Repository<Category> {
 
         // Update translations if provided
         if (updateData.translations) {
-          // category.translation = [];
+          category.translations = [];
           for (const tr of updateData.translations) {
             const language = await this.langRepo.findOne({
               where: { id: tr.language_id },
@@ -68,7 +68,7 @@ export class CategoryRepository extends Repository<Category> {
             translation.language = language;
 
             await this.trRepo.save(translation);
-            // category.translation.push(translation);
+            category.translations.push(translation);
           }
         }
 
@@ -133,7 +133,7 @@ export class CategoryRepository extends Repository<Category> {
           await this.trRepo.save(translation);
           translationData.push(translation);
         }
-        // cat.translation = translationData;
+        cat.translations = translationData;
       }
       if (images) {
         const imageData = [];
@@ -168,9 +168,9 @@ export class CategoryRepository extends Repository<Category> {
     if (category) {
       // Remove images and translations associated with the category
       // await Promise.all(category.images.map((img) => this.imgRepo.remove(img)));
-      /* await Promise.all(
-        category.translation.map((tr) => this.trRepo.remove(tr)),
-      ); */
+      await Promise.all(
+        category.translations.map((tr) => this.trRepo.remove(tr)),
+      );
 
       // Remove the category itself
       await this.catRepo.remove(category);

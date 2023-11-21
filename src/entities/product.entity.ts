@@ -6,12 +6,10 @@ import {
   JoinTable,
   ManyToMany,
   ManyToOne,
-  OneToMany,
   PrimaryGeneratedColumn,
 } from 'typeorm';
 import { User } from './user.entity';
 import { Category } from './category.entity';
-import { Translations } from './translation.entity';
 
 @Entity('products')
 export class Product {
@@ -27,9 +25,6 @@ export class Product {
     default: ProductStatus.STOCK,
   })
   status: ProductStatus;
-
-  /* @OneToMany(() => Translations, (tr) => tr.product)
-  translation: Translations[]; */
 
   @ManyToMany(() => Category, (category) => category.products)
   @JoinTable({ name: 'product_category' })

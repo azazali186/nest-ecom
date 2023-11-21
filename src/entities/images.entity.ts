@@ -6,8 +6,6 @@ import {
   JoinColumn,
 } from 'typeorm';
 import { Category } from './category.entity';
-import { Stock } from './stock.entity';
-
 @Entity()
 export class Images {
   @PrimaryGeneratedColumn()
@@ -16,11 +14,7 @@ export class Images {
   @Column()
   url: string;
 
-/*   @ManyToOne(() => Stock, { nullable: true })
-  @JoinColumn({ name: 'product_stock_id' })
-  target: Stock;
-
-  @ManyToOne(() => Category, { nullable: true })
+  @ManyToOne(() => Category, (cat) => cat.images, { nullable: true })
   @JoinColumn({ name: 'category_id' })
-  category: Category; */
+  categories: Category;
 }
