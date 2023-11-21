@@ -1,18 +1,36 @@
-import { IsArray, IsNotEmpty, IsString } from 'class-validator';
+import {
+  IsArray,
+  IsEnum,
+  IsNotEmpty,
+  IsNumber,
+  IsOptional,
+  IsString,
+} from 'class-validator';
 import { ApiProperty, ApiPropertyOptional } from '@nestjs/swagger';
 import { CreateTranslationDto } from '../translation/create-translation.dto';
-import { CreateImageDto } from '../images/create-images.dto';
+import { CreateStockDto } from '../stock/create-stock.dto';
+import { ImagesDto } from '../images/image.dto';
+import { ProductStatus } from 'src/enum/product-status.enum';
 export class CreateProductDto {
   @ApiProperty()
-  @IsString({
-    message: 'NAME_IS_STRING',
-  })
-  @IsNotEmpty({
-    message: 'NAME_IS_REQUIRED',
-  })
-  name: string;
+  @IsString()
+  sku: string;
 
-  @ApiProperty()
+  @ApiProperty({ enum: ProductStatus })
+  @IsEnum(ProductStatus)
+  status: ProductStatus;
+
+  @ApiProperty({ type: [Number] })
+  @IsArray()
+  @IsNumber({}, { each: true })
+  categoryIds: number[];
+
+  @ApiProperty({ type: [CreateStockDto] })
+  @IsArray()
+  @IsOptional()
+  stocks?: CreateStockDto[];
+
+  @ApiProperty({ type: [CreateTranslationDto] })
   @IsNotEmpty({
     message: 'TRANSLATIONS_IS_REQUIRED',
   })
@@ -21,9 +39,9 @@ export class CreateProductDto {
   })
   translations: CreateTranslationDto[];
 
-  @ApiPropertyOptional()
+  @ApiPropertyOptional({ type: [ImagesDto] })
   @IsArray({
     message: 'IMAGES_IS_ARRAY',
   })
-  images: CreateImageDto[];
+  images: ImagesDto[];
 }

@@ -1,0 +1,26 @@
+import { ApiProperty } from '@nestjs/swagger';
+import { IsString, IsArray, IsOptional, IsNotEmpty } from 'class-validator';
+import { PriceDto } from './price.dto';
+import { CreateTranslationDto } from '../translation/create-translation.dto';
+
+export class CreateStockDto {
+  @ApiProperty()
+  @IsString()
+  sku: string;
+
+  @ApiProperty({ type: [String], required: false })
+  @IsArray()
+  @IsOptional()
+  @IsString({ each: true })
+  images?: string[];
+
+  @ApiProperty({ type: [CreateTranslationDto], required: false })
+  @IsArray()
+  @IsNotEmpty()
+  translations?: CreateTranslationDto[];
+
+  @ApiProperty({ type: [PriceDto], required: false })
+  @IsArray()
+  @IsNotEmpty()
+  prices?: PriceDto[];
+}

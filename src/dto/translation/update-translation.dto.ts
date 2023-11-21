@@ -1,6 +1,10 @@
 import { IsNumber, IsString } from 'class-validator';
-import { ApiPropertyOptional } from '@nestjs/swagger';
+import { ApiProperty, ApiPropertyOptional } from '@nestjs/swagger';
 export class UpdateTranslationDto {
+  @ApiProperty({ type: 'number' })
+  @IsNumber()
+  id: number;
+
   @ApiPropertyOptional()
   @IsString({
     message: 'NAME_IS_STRING',

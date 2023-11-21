@@ -1,7 +1,7 @@
 import { IsArray, IsNotEmpty, IsString } from 'class-validator';
 import { ApiProperty, ApiPropertyOptional } from '@nestjs/swagger';
 import { CreateTranslationDto } from '../translation/create-translation.dto';
-import { CreateImageDto } from '../images/create-images.dto';
+import { ImagesDto } from '../images/image.dto';
 export class CreateCategoryDto {
   @ApiProperty()
   @IsString({
@@ -25,5 +25,5 @@ export class CreateCategoryDto {
   @IsArray({
     message: 'IMAGES_IS_ARRAY',
   })
-  images: CreateImageDto[];
+  images: ImagesDto[];
 }

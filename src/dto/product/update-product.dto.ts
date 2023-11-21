@@ -1,23 +1,44 @@
-import { IsArray, IsString } from 'class-validator';
+import {
+  IsArray,
+  IsEnum,
+  IsNumber,
+  IsOptional,
+  IsString,
+} from 'class-validator';
 import { ApiPropertyOptional } from '@nestjs/swagger';
 import { UpdateTranslationDto } from '../translation/update-translation.dto';
-import { UpdateImageDto } from '../images/update-images.dto';
+import { ProductStatus } from 'src/enum/product-status.enum';
+import { UpdateStockDto } from '../stock/update-stock.dto';
+import { UpdateImagesDto } from '../images/update-image.dto';
 export class UpdateProductDto {
   @ApiPropertyOptional()
-  @IsString({
-    message: 'NAME_IS_STRING',
-  })
-  name: string;
+  @IsString()
+  sku: string;
 
-  @ApiPropertyOptional()
+  @ApiPropertyOptional({ enum: ProductStatus })
+  @IsEnum(ProductStatus)
+  status: ProductStatus;
+
+  @ApiPropertyOptional({ type: [Number] })
+  @IsArray()
+  @IsNumber({}, { each: true })
+  categoryIds: number[];
+
+  @ApiPropertyOptional({ type: [UpdateStockDto] })
+  @IsArray()
+  @IsOptional()
+  stocks?: UpdateStockDto[];
+
+  @ApiPropertyOptional({ type: [UpdateTranslationDto] })
   @IsArray({
     message: 'TRANSLATIONS_IS_ARRAY',
   })
+  @IsOptional()
   translations: UpdateTranslationDto[];
 
-  @ApiPropertyOptional()
+  @ApiPropertyOptional({ type: [UpdateImagesDto] })
   @IsArray({
     message: 'IMAGES_IS_ARRAY',
   })
-  images: UpdateImageDto[];
+  images: UpdateImagesDto[];
 }
