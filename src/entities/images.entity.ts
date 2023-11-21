@@ -9,7 +9,7 @@ import { Category } from './category.entity';
 import { Stock } from './stock.entity';
 
 @Entity()
-export class Img {
+export class Images {
   @PrimaryGeneratedColumn()
   id: number;
 

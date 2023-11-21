@@ -7,7 +7,7 @@ import {
 } from 'typeorm';
 import { Product } from './product.entity';
 import { Translations } from './translation.entity';
-import { Img } from './img.entity';
+import { Images } from './images.entity';
 
 @Entity('categories')
 export class Category {
@@ -25,6 +25,6 @@ export class Category {
   @OneToMany(() => Translations, (tr) => tr.category)
   translation: Translations[];
 
-  @OneToMany(() => Img, (image) => image.category, { nullable: true })
-  images: Img[] | null;
+  @OneToMany(() => Images, (image) => image.category, { nullable: true })
+  images: Images[] | null;
 }

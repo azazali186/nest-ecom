@@ -6,7 +6,7 @@ import { JwtWebSocketMiddleware } from 'src/middleware/jwt-socket.middlwware';
 import { AdminPageRepository } from 'src/repositories/admin-page.repository';
 import { CategoryRepository } from 'src/repositories/category.repository';
 import { CurrencyRepository } from 'src/repositories/currency.repository';
-import { ImgRepository } from 'src/repositories/image.repository';
+import { ImagesRepository } from 'src/repositories/image.repository';
 import { LanguageRepository } from 'src/repositories/language.repository';
 import { LogRepository } from 'src/repositories/log.repository';
 import { PermissionRepository } from 'src/repositories/permission.repository';
@@ -68,5 +68,5 @@ export const ImportProviders = [
   LanguageRepository,
   LanguageService,
   TranslationsRepository,
-  ImgRepository,
+  ImagesRepository,
 ];

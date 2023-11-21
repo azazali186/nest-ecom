@@ -1,7 +1,7 @@
 import { AdminPage } from 'src/entities/admin-page.entity';
 import { Category } from 'src/entities/category.entity';
 import { Currency } from 'src/entities/currency.entity';
-import { Img } from 'src/entities/img.entity';
+import { Images } from 'src/entities/images.entity';
 import { Language } from 'src/entities/language.entity';
 import { Log } from 'src/entities/log.entity';
 import { Permission } from 'src/entities/permission.entity';
@@ -19,11 +19,10 @@ export const ImportEntities = [
   AdminPage,
   Log,
   Session,
-  // Images,
+  Images,
   // Product,
   Category,
   Translations,
   // Price,
   // Images,
-  Img,
 ];

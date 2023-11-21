@@ -9,18 +9,25 @@ import { Like, Repository } from 'typeorm';
 import { LanguageRepository } from './language.repository';
 import { TranslationsRepository } from './translation.repository';
 import { LangService } from 'src/services/lang.service';
-import { Img } from 'src/entities/img.entity';
-import { ImgRepository } from './image.repository';
+import { Images } from 'src/entities/images.entity';
+import { ImagesRepository } from './image.repository';
 import { NotFoundException } from '@nestjs/common';
 
 export class CategoryRepository extends Repository<Category> {
   constructor(
     @InjectRepository(Category)
     private catRepo: Repository<Category>,
+
+    @InjectRepository(LanguageRepository)
     private langRepo: LanguageRepository,
+
+    @InjectRepository(TranslationsRepository)
     private trRepo: TranslationsRepository,
+
     private langService: LangService,
-    private imgRepo: ImgRepository,
+
+    @InjectRepository(ImagesRepository)
+    private imgRepo: ImagesRepository,
   ) {
     super(catRepo.target, catRepo.manager, catRepo.queryRunner);
   }
@@ -71,7 +78,7 @@ export class CategoryRepository extends Repository<Category> {
         if (updateData.images) {
           category.images = [];
           for (const im of updateData.images) {
-            const img = new Img();
+            const img = new Images();
             img.url = im.url;
             img.category = category;
             await this.imgRepo.save(img);
@@ -133,7 +140,7 @@ export class CategoryRepository extends Repository<Category> {
       if (images) {
         const imageData = [];
         for (const im of images) {
-          const img = new Img();
+          const img = new Images();
           img.url = im.url;
           img.category = cat;
           await this.imgRepo.save(img);
