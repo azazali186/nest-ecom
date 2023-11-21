@@ -116,7 +116,15 @@ export class ProductRepository extends Repository<Product> {
   async getProductId(id: number): Promise<ApiResponse<Product>> {
     const product = await this.prodRepo.findOne({
       where: { id },
-      relations: ['categories', 'stocks', 'translations', 'images'],
+      relations: [
+        'categories',
+        'stocks',
+        'stocks.translations',
+        'stocks.images',
+        'stocks.price',
+        'translations',
+        'images',
+      ],
     });
 
     if (!product) {

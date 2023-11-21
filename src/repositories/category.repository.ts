@@ -141,11 +141,11 @@ export class CategoryRepository extends Repository<Category> {
         for (const im of images) {
           const img = new Images();
           img.url = im.url;
-          // img.category = cat;
+          img.categories = cat;
           await this.imgRepo.save(img);
           imageData.push(img);
         }
-        // cat.images = imageData;
+        cat.images = imageData;
       }
       return ApiResponse.create(
         this.catRepo.save(cat), // Use the saved category in the response

@@ -42,6 +42,11 @@ export class ProductController {
     return this.prodService.findAll(req);
   }
 
+  @Get('public/:id')
+  findPublic(@Param('id') id: number) {
+    return this.prodService.findOne(id);
+  }
+
   @Get(':id')
   findOne(@Param('id') id: number) {
     return this.prodService.findOne(id);
