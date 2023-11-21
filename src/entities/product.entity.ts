@@ -13,6 +13,7 @@ import { User } from './user.entity';
 import { Category } from './category.entity';
 import { Images } from './images.entity';
 import { Translations } from './translation.entity';
+import { Stock } from './stock.entity';
 
 @Entity('products')
 export class Product {
@@ -42,6 +43,9 @@ export class Product {
     nullable: true,
   })
   images: Images[] | null;
+
+  @OneToMany(() => Stock, (st) => st.products)
+  stocks: Stock[];
 
   @Column({ type: 'timestamp', default: () => 'CURRENT_TIMESTAMP' })
   created_at: Date;

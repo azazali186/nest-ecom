@@ -11,6 +11,7 @@ import { User } from './user.entity';
 import { Images } from './images.entity';
 import { Translations } from './translation.entity';
 import { Price } from './price.entity';
+import { Product } from './product.entity';
 
 @Entity()
 export class Stock {
@@ -37,6 +38,10 @@ export class Stock {
 
   @OneToMany(() => Price, (pr) => pr.stock, { nullable: true })
   price: Price[];
+
+  @ManyToOne(() => Product)
+  @JoinColumn({ name: 'product_id' })
+  products: Product;
 
   @Column({ type: 'timestamp', default: () => 'CURRENT_TIMESTAMP' })
   created_at: Date;
