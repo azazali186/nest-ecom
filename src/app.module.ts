@@ -42,7 +42,6 @@ import { CommonModule } from './modules/common.module';
       signOptions: { expiresIn: '10d' },
     }),
     ElasticsearchConfigModule,
-    // ImagesModule,
   ],
 })
 export class AppModule implements NestModule {

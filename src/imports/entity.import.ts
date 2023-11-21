@@ -5,6 +5,8 @@ import { Images } from 'src/entities/images.entity';
 import { Language } from 'src/entities/language.entity';
 import { Log } from 'src/entities/log.entity';
 import { Permission } from 'src/entities/permission.entity';
+import { Price } from 'src/entities/price.entity';
+import { Product } from 'src/entities/product.entity';
 import { Role } from 'src/entities/role.entity';
 import { Session } from 'src/entities/session.entity';
 import { Translations } from 'src/entities/translation.entity';
@@ -20,9 +22,9 @@ export const ImportEntities = [
   Log,
   Session,
   Images,
-  // Product,
+  Product,
   Category,
   Translations,
-  // Price,
-  // Images,
+  Price,
+  Images,
 ];
