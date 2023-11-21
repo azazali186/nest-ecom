@@ -7,35 +7,40 @@ import { CategoryRepository } from './category.repository';
 import { ProductRepository } from './product.repository';
 import { StockRepository } from './stock.repository';
 import { UpdateTranslationDto } from 'src/dto/translation/update-translation.dto';
+import { Inject, forwardRef } from '@nestjs/common';
 
 export class TranslationsRepository extends Repository<Translations> {
   constructor(
     @InjectRepository(Translations)
     private transRepo: Repository<Translations>,
 
-    @InjectRepository(CategoryRepository)
+    @Inject(forwardRef(() => CategoryRepository))
     private catRepo: CategoryRepository,
 
-    @InjectRepository(StockRepository)
+    @Inject(forwardRef(() => StockRepository))
     private stRepo: StockRepository,
 
-    @InjectRepository(ProductRepository)
+    @Inject(forwardRef(() => ProductRepository))
     private prodRepo: ProductRepository,
 
-    @InjectRepository(LanguageRepository)
+    @Inject(forwardRef(() => LanguageRepository))
     private langRepo: LanguageRepository,
   ) {
     super(transRepo.target, transRepo.manager, transRepo.queryRunner);
   }
 
-  async createTranslation(translationDto: CreateTranslationDto, type, id) {
+  async createTranslation(
+    translationDto: CreateTranslationDto | UpdateTranslationDto,
+    type: string,
+    id: number,
+  ) {
     const {
       name,
       language_id,
       description,
       meta_title,
       meta_keywords,
-      meta_description,
+      meta_descriptions,
     } = translationDto;
 
     const translation = new Translations();
@@ -56,8 +61,8 @@ export class TranslationsRepository extends Repository<Translations> {
       translation.meta_keywords = meta_keywords;
     }
 
-    if (meta_description) {
-      translation.meta_descriptions = meta_description;
+    if (meta_descriptions) {
+      translation.meta_descriptions = meta_descriptions;
     }
 
     if (language_id) {

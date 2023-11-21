@@ -1,7 +1,7 @@
 import { IsNumber, IsString } from 'class-validator';
-import { ApiProperty, ApiPropertyOptional } from '@nestjs/swagger';
+import { ApiPropertyOptional } from '@nestjs/swagger';
 export class UpdateTranslationDto {
-  @ApiProperty({ type: 'number' })
+  @ApiPropertyOptional({ type: 'number' })
   @IsNumber()
   id: number;
 

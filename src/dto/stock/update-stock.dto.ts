@@ -1,11 +1,11 @@
-import { ApiProperty, ApiPropertyOptional } from '@nestjs/swagger';
+import { ApiPropertyOptional } from '@nestjs/swagger';
 import { IsString, IsArray, IsOptional, IsNotEmpty } from 'class-validator';
 import { UpdateTranslationDto } from '../translation/update-translation.dto';
 import { UpdatePriceDto } from './update-price.dto';
 import { UpdateImagesDto } from '../images/update-image.dto';
 
 export class UpdateStockDto {
-  @ApiProperty({ type: Number })
+  @ApiPropertyOptional({ type: Number })
   @IsString()
   id: number;
 

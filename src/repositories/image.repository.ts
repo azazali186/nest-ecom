@@ -1,30 +1,70 @@
 import { InjectRepository } from '@nestjs/typeorm';
-import { ImagesDto } from 'src/dto/images/image.dto';
 import { Images } from 'src/entities/images.entity';
 import { Repository } from 'typeorm';
 import { ProductRepository } from './product.repository';
 import { CategoryRepository } from './category.repository';
 import { StockRepository } from './stock.repository';
+import { Inject, NotFoundException, forwardRef } from '@nestjs/common';
+import { UpdateImagesDto } from 'src/dto/images/update-image.dto';
 
 export class ImagesRepository extends Repository<Images> {
   constructor(
     @InjectRepository(Images)
     private imgRepo: Repository<Images>,
-    @InjectRepository(CategoryRepository)
+    @Inject(forwardRef(() => CategoryRepository))
     private catRepo: CategoryRepository,
 
-    @InjectRepository(StockRepository)
+    @Inject(forwardRef(() => StockRepository))
     private stRepo: StockRepository,
 
-    @InjectRepository(ProductRepository)
+    @Inject(forwardRef(() => ProductRepository))
     private prodRepo: ProductRepository,
   ) {
     super(imgRepo.target, imgRepo.manager, imgRepo.queryRunner);
   }
 
-  async createImage(imageDto: ImagesDto) {
-    const { url, category_id, product_id, stock_id } = imageDto;
+  async createImage(url: string, type: string, id: number) {
+    // const { url } = imageDto;
     const image = new Images();
+    image.url = url;
+
+    switch (type) {
+      case 'category':
+        const category = await this.catRepo.findOne({
+          where: { id: id },
+        });
+        image.categories = category;
+        break;
+
+      case 'product':
+        const product = await this.prodRepo.findOne({
+          where: { id: id },
+        });
+        image.products = product;
+        break;
+
+      case 'stock':
+        const stock = await this.stRepo.findOne({ where: { id: id } });
+        image.stocks = stock;
+        break;
+    }
+
+    await this.imgRepo.save(image);
+
+    return image;
+  }
+
+  async updateImage(imageDto: UpdateImagesDto) {
+    const { url, category_id, product_id, stock_id } = imageDto;
+    const image = await this.imgRepo.findOne({ where: { id: imageDto.id } });
+    if (!image) {
+      throw new NotFoundException({
+        statusCode: 404,
+        message: `NOT_FOUND`,
+        param: `Image`,
+      });
+    }
+
     image.url = url;
 
     if (category_id) {
@@ -41,7 +81,6 @@ export class ImagesRepository extends Repository<Images> {
       const st = await this.stRepo.findOne({ where: { id: stock_id } });
       image.stocks = st;
     }
-    await this.imgRepo.save(image);
 
     return image;
   }

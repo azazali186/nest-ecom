@@ -40,5 +40,6 @@
   "USER_NOT_FOUND": "User id {data} Not found",
   "IP_ADDRESS_NOT_FOUND": "ip: {data} not found",
   "ALREADY_EXIST": "{data} already exist!",
-  "INVALID_ID": "{data} invalid id!"
+  "INVALID_ID": "{data} invalid id!",
+  "NOT_FOUND": "{data} Not found"
 }

@@ -37,6 +37,9 @@ export function getPermissionNameFromRoute(
   if (path.includes('swagger')) {
     path = 'swagger';
   }
+  if (path.includes('public')) {
+    path = 'public';
+  }
   if (
     path.includes('approval') ||
     path.includes('reject') ||
@@ -65,6 +68,7 @@ export const EXCLUDED_ROUTES = [
   'VERIFY_EMAIL',
   'RESET_PASSWORD',
   'BROADCAST',
+  'PUBLIC',
 ];
 
 export function getMethodName(path: string, method: string): string {

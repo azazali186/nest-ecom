@@ -8,7 +8,6 @@ import {
 import { ApiProperty, ApiPropertyOptional } from '@nestjs/swagger';
 import { CreateTranslationDto } from '../translation/create-translation.dto';
 import { CreateStockDto } from '../stock/create-stock.dto';
-import { ImagesDto } from '../images/image.dto';
 export class CreateProductDto {
   @ApiProperty()
   @IsString()
@@ -33,9 +32,9 @@ export class CreateProductDto {
   })
   translations: CreateTranslationDto[];
 
-  @ApiPropertyOptional({ type: [ImagesDto] })
+  @ApiPropertyOptional({ type: 'text' })
   @IsArray({
     message: 'IMAGES_IS_ARRAY',
   })
-  images: ImagesDto[];
+  images: string[];
 }

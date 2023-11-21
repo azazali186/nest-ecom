@@ -1,5 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
+import { BulkProductUploadDto } from 'src/dto/product/bulk-product-upload.dto';
 import { CreateProductDto } from 'src/dto/product/create-product.dto';
 import { SearchProductDto } from 'src/dto/product/search-product.dto';
 import { UpdateProductDto } from 'src/dto/product/update-product.dto';
@@ -21,10 +22,14 @@ export class ProductService {
   findOne(id: number) {
     return this.prodRepo.getProductId(id);
   }
-  update(id: any, req: UpdateProductDto) {
-    return this.prodRepo.updateProduct(id, req);
+  update(id: any, req: UpdateProductDto, user: any) {
+    return this.prodRepo.updateProduct(id, req, user);
   }
   async remove(id: number) {
     return await this.prodRepo.deleteProduct(id);
+  }
+
+  async bulk(req: BulkProductUploadDto, user: any) {
+    return await this.prodRepo.bulkCreate(req, user);
   }
 }

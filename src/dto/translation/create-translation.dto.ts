@@ -39,5 +39,5 @@ export class CreateTranslationDto {
   @IsString({
     message: 'META_DESCRIPTION_IS_STRING',
   })
-  meta_description: string;
+  meta_descriptions: string;
 }

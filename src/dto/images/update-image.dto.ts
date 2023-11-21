@@ -1,8 +1,8 @@
-import { ApiProperty, ApiPropertyOptional } from '@nestjs/swagger';
+import { ApiPropertyOptional } from '@nestjs/swagger';
 import { IsString, IsOptional, IsNumber } from 'class-validator';
 
 export class UpdateImagesDto {
-  @ApiProperty({ type: 'number' })
+  @ApiPropertyOptional({ type: 'number' })
   @IsNumber()
   id: number;
 
