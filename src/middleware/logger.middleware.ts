@@ -67,7 +67,7 @@ export class LoggerMiddleware implements NestMiddleware {
           .where('permissions.name = :action', { action })
           .getOne();
 
-        req.adminPages = adminPages?.name || 'TEST';
+        req.adminPages = adminPages?.name || action;
 
         req.action = action;
       } else {
