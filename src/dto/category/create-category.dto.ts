@@ -12,7 +12,7 @@ export class CreateCategoryDto {
   })
   name: string;
 
-  @ApiProperty()
+  @ApiProperty({ type: [CreateTranslationDto] })
   @IsNotEmpty({
     message: 'TRANSLATIONS_IS_REQUIRED',
   })
@@ -21,7 +21,7 @@ export class CreateCategoryDto {
   })
   translations: CreateTranslationDto[];
 
-  @ApiPropertyOptional()
+  @ApiPropertyOptional({ type: [ImagesDto] })
   @IsArray({
     message: 'IMAGES_IS_ARRAY',
   })

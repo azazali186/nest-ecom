@@ -10,6 +10,7 @@ import { LanguageRepository } from './language.repository';
 import { LangService } from 'src/services/lang.service';
 import { Images } from 'src/entities/images.entity';
 import { NotFoundException } from '@nestjs/common';
+import { BulkCreateCategoryDto } from 'src/dto/category/bulk-product-upload.dto';
 
 export class CategoryRepository extends Repository<Category> {
   constructor(
@@ -195,12 +196,26 @@ export class CategoryRepository extends Repository<Category> {
     const [list, count] = await this.catRepo.findAndCount({
       where: where,
       relations: {
-        // translation: true,
-        // images: true,
+        translations: true,
+        images: true,
       },
       skip: offset,
       take: limit,
     });
     return ApiResponse.paginate({ list, count });
+  }
+
+  bulkCreate(req: BulkCreateCategoryDto) {
+    const data = [];
+    const error = [];
+    req.data.map(async (createProductDto) => {
+      try {
+        const prod = await this.createCategory(createProductDto);
+        data.push(prod.data);
+      } catch (e) {
+        error.push({ name: createProductDto.name, error: e });
+      }
+    });
+    return ApiResponse.success(data, 200, 'Success', error);
   }
 }

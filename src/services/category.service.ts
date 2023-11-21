@@ -1,5 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
+import { BulkCreateCategoryDto } from 'src/dto/category/bulk-product-upload.dto';
 import { CreateCategoryDto } from 'src/dto/category/create-category.dto';
 import { SearchCategoryDto } from 'src/dto/category/search-category.dto';
 import { UpdateCategoryDto } from 'src/dto/category/update-category.dto';
@@ -26,5 +27,9 @@ export class CategoryService {
   }
   async remove(id: number) {
     return await this.curRepo.deleteCategory(id);
+  }
+
+  bulk(req: BulkCreateCategoryDto) {
+    return this.curRepo.bulkCreate(req);
   }
 }

@@ -8,9 +8,9 @@ export class Currency {
   @Column()
   name: string;
 
-  @Column()
+  @Column({ unique: true })
   code: string;
 
-  @Column()
+  @Column({ unique: true })
   symbol: string;
 }

@@ -20,10 +20,12 @@ import {
   errorLogMiddleware,
 } from './middleware/logging.middleware';
 import { IoAdapter } from '@nestjs/platform-socket.io';
+import { User } from './entities/user.entity';
+import { AES } from 'crypto-js';
 
 let permissionRepo: Repository<Permission>;
 let roleRepo: Repository<Role>;
-
+let userRepo: Repository<User>;
 async function bootstrap() {
   const server = express();
   const app = await NestFactory.create(AppModule, new ExpressAdapter(server), {
@@ -68,6 +70,7 @@ async function bootstrap() {
   const entityManager: EntityManager = app.get(EntityManager);
   permissionRepo = entityManager.getRepository(Permission);
   roleRepo = entityManager.getRepository(Role);
+  userRepo = entityManager.getRepository(User);
 
   extractAndSaveRoutes(server);
 }
@@ -138,5 +141,20 @@ async function associatePermissionWithAdminRole() {
       }
     }
     await roleRepo.save(role);
+  }
+
+  const username = process.env.ADMIN_USERNAME || 'admin';
+  const pwd = process.env.ADMIN_PASSWORD || 'Admin@123';
+  let user = await userRepo.findOne({
+    where: { roles: { id: role.id }, username },
+  });
+  if (!user) {
+    user = new User();
+    user.name = 'Administrator';
+    user.username = username;
+    user.roles = role;
+    const hashPassord = AES.encrypt(pwd, process.env.ENCRYPTION_KEY).toString();
+    user.password = hashPassord;
+    await userRepo.save(user);
   }
 }
