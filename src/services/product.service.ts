@@ -12,8 +12,8 @@ export class ProductService {
     public prodRepo: ProductRepository,
   ) {}
 
-  create(req: CreateProductDto) {
-    return this.prodRepo.createProduct(req);
+  create(req: CreateProductDto, user) {
+    return this.prodRepo.createProduct(req, user);
   }
   async findAll(req: SearchProductDto) {
     return this.prodRepo.findProducts(req);

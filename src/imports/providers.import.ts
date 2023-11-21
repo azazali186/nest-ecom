@@ -10,6 +10,7 @@ import { ImagesRepository } from 'src/repositories/image.repository';
 import { LanguageRepository } from 'src/repositories/language.repository';
 import { LogRepository } from 'src/repositories/log.repository';
 import { PermissionRepository } from 'src/repositories/permission.repository';
+import { PriceRepository } from 'src/repositories/price.repository';
 import { ProductRepository } from 'src/repositories/product.repository';
 import { RoleRepository } from 'src/repositories/role.repository';
 import { SessionRepository } from 'src/repositories/session.repository';
@@ -75,4 +76,5 @@ export const ImportProviders = [
   ProductRepository,
   ProductService,
   StockRepository,
+  PriceRepository,
 ];

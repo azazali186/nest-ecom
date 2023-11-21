@@ -21,8 +21,8 @@ import { ProductService } from 'src/services/product.service';
 export class ProductController {
   constructor(private readonly catService: ProductService) {}
   @Post()
-  create(@Body(ValidationPipe) req: CreateProductDto) {
-    return this.catService.create(req);
+  create(@Body(ValidationPipe) req: CreateProductDto, @Request() r) {
+    return this.catService.create(req, r.user);
   }
   @Get()
   findAll(@Query() req: SearchProductDto) {

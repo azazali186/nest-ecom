@@ -14,6 +14,7 @@ export class CreateTranslationDto {
   @IsNotEmpty({
     message: 'LANGUAGE_ID_IS_REQUIRED',
   })
+  @IsNumber()
   language_id: number;
 
   @ApiPropertyOptional()
@@ -39,16 +40,4 @@ export class CreateTranslationDto {
     message: 'META_DESCRIPTION_IS_STRING',
   })
   meta_description: string;
-
-  @ApiPropertyOptional()
-  @IsNumber()
-  stock_id: number;
-
-  @ApiPropertyOptional()
-  @IsNumber()
-  product_id: number;
-
-  @ApiPropertyOptional()
-  @IsNumber()
-  category_id: number;
 }
