@@ -14,7 +14,7 @@ RUN npm install
 COPY . .
 
 # The application's default port
-EXPOSE 3001
+EXPOSE 4500
 
 # Command to run the application
 CMD ["npm", "start"]
