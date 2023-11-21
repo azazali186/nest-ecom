@@ -6,10 +6,13 @@ import {
   JoinTable,
   ManyToMany,
   ManyToOne,
+  OneToMany,
   PrimaryGeneratedColumn,
 } from 'typeorm';
 import { User } from './user.entity';
 import { Category } from './category.entity';
+import { Images } from './images.entity';
+import { Translations } from './translation.entity';
 
 @Entity('products')
 export class Product {
@@ -29,6 +32,16 @@ export class Product {
   @ManyToMany(() => Category, (category) => category.products)
   @JoinTable({ name: 'product_category' })
   categories: Category[];
+
+  @OneToMany(() => Translations, (tr) => tr.products, {
+    nullable: true,
+  })
+  translations: Translations[] | null;
+
+  @OneToMany(() => Images, (img) => img.products, {
+    nullable: true,
+  })
+  images: Images[] | null;
 
   @Column({ type: 'timestamp', default: () => 'CURRENT_TIMESTAMP' })
   created_at: Date;

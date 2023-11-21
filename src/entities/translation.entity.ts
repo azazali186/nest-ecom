@@ -7,6 +7,7 @@ import {
 } from 'typeorm';
 import { Language } from './language.entity';
 import { Category } from './category.entity';
+import { Product } from './product.entity';
 
 @Entity()
 export class Translations {
@@ -36,5 +37,11 @@ export class Translations {
     nullable: true,
   })
   @JoinColumn({ name: 'category_id' })
-  categories: Category[];
+  categories: Category;
+
+  @ManyToOne(() => Product, (product) => product.translations, {
+    nullable: true,
+  })
+  @JoinColumn({ name: 'product_id' })
+  products: Product;
 }
