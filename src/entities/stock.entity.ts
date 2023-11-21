@@ -25,14 +25,14 @@ export class Stock {
   })
   status: ProductStatus;
 
-  @OneToMany(() => Images, (image) => image.target)
-  images: Images[];
+/*   @OneToMany(() => Images, (image) => image.target)
+  images: Images[]; */
 
-  @OneToMany(() => Translations, (tr) => tr.stock)
-  translation: Translations[];
+ /*  @OneToMany(() => Translations, (tr) => tr.stock)
+  translation: Translations[]; */
 
-  @OneToMany(() => Price, (pr) => pr.stock)
-  price: Price[];
+/*   @OneToMany(() => Price, (pr) => pr.stock)
+  price: Price[]; */
 
   @Column({ type: 'timestamp', default: () => 'CURRENT_TIMESTAMP' })
   created_at: Date;

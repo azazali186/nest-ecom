@@ -28,8 +28,8 @@ export class Product {
   })
   status: ProductStatus;
 
-  @OneToMany(() => Translations, (tr) => tr.product)
-  translation: Translations[];
+  /* @OneToMany(() => Translations, (tr) => tr.product)
+  translation: Translations[]; */
 
   @ManyToMany(() => Category, (category) => category.products)
   @JoinTable({ name: 'product_category' })

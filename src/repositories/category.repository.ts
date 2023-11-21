@@ -7,10 +7,8 @@ import { Translations } from 'src/entities/translation.entity';
 import { ApiResponse } from 'src/utils/response.util';
 import { Like, Repository } from 'typeorm';
 import { LanguageRepository } from './language.repository';
-import { TranslationsRepository } from './translation.repository';
 import { LangService } from 'src/services/lang.service';
 import { Images } from 'src/entities/images.entity';
-import { ImagesRepository } from './image.repository';
 import { NotFoundException } from '@nestjs/common';
 
 export class CategoryRepository extends Repository<Category> {
@@ -21,13 +19,13 @@ export class CategoryRepository extends Repository<Category> {
     @InjectRepository(LanguageRepository)
     private langRepo: LanguageRepository,
 
-    @InjectRepository(TranslationsRepository)
-    private trRepo: TranslationsRepository,
+    @InjectRepository(Translations)
+    private trRepo: Repository<Translations>,
 
     private langService: LangService,
 
-    @InjectRepository(ImagesRepository)
-    private imgRepo: ImagesRepository,
+    @InjectRepository(Images)
+    private imgRepo: Repository<Images>,
   ) {
     super(catRepo.target, catRepo.manager, catRepo.queryRunner);
   }
@@ -49,7 +47,7 @@ export class CategoryRepository extends Repository<Category> {
 
         // Update translations if provided
         if (updateData.translations) {
-          category.translation = [];
+          // category.translation = [];
           for (const tr of updateData.translations) {
             const language = await this.langRepo.findOne({
               where: { id: tr.language_id },
@@ -70,19 +68,19 @@ export class CategoryRepository extends Repository<Category> {
             translation.language = language;
 
             await this.trRepo.save(translation);
-            category.translation.push(translation);
+            // category.translation.push(translation);
           }
         }
 
         // Update images if provided
         if (updateData.images) {
-          category.images = [];
+          // category.images = [];
           for (const im of updateData.images) {
             const img = new Images();
             img.url = im.url;
-            img.category = category;
+            // img.category = category;
             await this.imgRepo.save(img);
-            category.images.push(img);
+            // category.images.push(img);
           }
         }
 
@@ -135,18 +133,18 @@ export class CategoryRepository extends Repository<Category> {
           await this.trRepo.save(translation);
           translationData.push(translation);
         }
-        cat.translation = translationData;
+        // cat.translation = translationData;
       }
       if (images) {
         const imageData = [];
         for (const im of images) {
           const img = new Images();
           img.url = im.url;
-          img.category = cat;
+          // img.category = cat;
           await this.imgRepo.save(img);
           imageData.push(img);
         }
-        cat.images = imageData;
+        // cat.images = imageData;
       }
       return ApiResponse.create(
         this.catRepo.save(cat), // Use the saved category in the response
@@ -169,10 +167,10 @@ export class CategoryRepository extends Repository<Category> {
 
     if (category) {
       // Remove images and translations associated with the category
-      await Promise.all(category.images.map((img) => this.imgRepo.remove(img)));
-      await Promise.all(
+      // await Promise.all(category.images.map((img) => this.imgRepo.remove(img)));
+      /* await Promise.all(
         category.translation.map((tr) => this.trRepo.remove(tr)),
-      );
+      ); */
 
       // Remove the category itself
       await this.catRepo.remove(category);
@@ -197,8 +195,8 @@ export class CategoryRepository extends Repository<Category> {
     const [list, count] = await this.catRepo.findAndCount({
       where: where,
       relations: {
-        translation: true,
-        images: true,
+        // translation: true,
+        // images: true,
       },
       skip: offset,
       take: limit,

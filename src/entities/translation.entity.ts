@@ -34,15 +34,15 @@ export class Translations {
   @JoinColumn({ name: 'language_id' })
   language: Language;
 
-  @ManyToOne(() => Stock, (st) => st.translation, { nullable: true })
+  /* @ManyToOne(() => Stock, (st) => st.translation, { nullable: true })
   @JoinColumn({ name: 'stock_id' })
   stock: Stock | null;
 
   @ManyToOne(() => Product, (p) => p.translation, { nullable: true })
   @JoinColumn({ name: 'product_id' })
-  product: Product | null;
+  product: Product | null; */
 
-  @ManyToOne(() => Category, (c) => c.translation, { nullable: true })
+/*   @ManyToOne(() => Category, (c) => c.translation, { nullable: true })
   @JoinColumn({ name: 'category_id' })
-  category: Category | null;
+  category: Category | null; */
 }

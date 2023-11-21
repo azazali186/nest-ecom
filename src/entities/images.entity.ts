@@ -16,11 +16,11 @@ export class Images {
   @Column()
   url: string;
 
-  @ManyToOne(() => Stock, { nullable: true })
+/*   @ManyToOne(() => Stock, { nullable: true })
   @JoinColumn({ name: 'product_stock_id' })
   target: Stock;
 
   @ManyToOne(() => Category, { nullable: true })
   @JoinColumn({ name: 'category_id' })
-  category: Category;
+  category: Category; */
 }
