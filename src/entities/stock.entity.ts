@@ -39,6 +39,9 @@ export class Stock {
   @OneToMany(() => Price, (pr) => pr.stock, { nullable: true })
   price: Price[];
 
+  @Column({ default: 1 })
+  quantity: number;
+
   @ManyToOne(() => Product)
   @JoinColumn({ name: 'product_id' })
   products: Product;

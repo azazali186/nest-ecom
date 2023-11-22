@@ -1,5 +1,5 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { IsString, IsArray, IsOptional, IsNotEmpty } from 'class-validator';
+import { IsString, IsArray, IsOptional, IsNotEmpty, IsNumber } from 'class-validator';
 import { PriceDto } from './price.dto';
 import { CreateTranslationDto } from '../translation/create-translation.dto';
 
@@ -13,6 +13,12 @@ export class CreateStockDto {
   @IsOptional()
   @IsString({ each: true })
   images?: string[];
+
+  @ApiProperty({ type: Number })
+  @IsNumber()
+  @IsOptional()
+  quantity: number;
+
 
   @ApiProperty({ type: [CreateTranslationDto], required: false })
   @IsArray()

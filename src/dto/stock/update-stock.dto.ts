@@ -21,6 +21,11 @@ export class UpdateStockDto {
   @IsString()
   sku: string;
 
+  @ApiPropertyOptional({ type: Number })
+  @IsNumber()
+  @IsOptional()
+  quantity: number;
+
   @ApiPropertyOptional({ type: [UpdateImagesDto], required: false })
   @IsArray()
   @IsOptional()

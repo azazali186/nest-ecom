@@ -28,6 +28,7 @@ import { LanguageService } from 'src/services/language.service';
 import { LogService } from 'src/services/log.service';
 import { PermissionService } from 'src/services/permission.service';
 import { ProductService } from 'src/services/product.service';
+import { RecomService } from 'src/services/recom.service';
 import { RedisService } from 'src/services/redis.service';
 import { RoleService } from 'src/services/role.service';
 import { UserService } from 'src/services/user.service';
@@ -80,5 +81,6 @@ export const ImportProviders = [
   StockRepository,
   PriceRepository,
   ElasticService,
-  ProductInterationRepository
+  ProductInterationRepository,
+  RecomService,
 ];

@@ -16,12 +16,13 @@ import { CreateProductDto } from 'src/dto/product/create-product.dto';
 import { SearchProductDto } from 'src/dto/product/search-product.dto';
 import { UpdateProductDto } from 'src/dto/product/update-product.dto';
 import { ProductService } from 'src/services/product.service';
+import { RecomService } from 'src/services/recom.service';
 
 @ApiTags('Product Management')
 @ApiBearerAuth()
 @Controller('products')
 export class ProductController {
-  constructor(private readonly prodService: ProductService) {}
+  constructor(private readonly prodService: ProductService, private readonly recomService: RecomService) {}
   @Post()
   create(@Body(ValidationPipe) req: CreateProductDto, @Request() r) {
     return this.prodService.create(req, r.user);
@@ -35,6 +36,11 @@ export class ProductController {
   @Get()
   findAll(@Query() req: SearchProductDto) {
     return this.prodService.findAll(req);
+  }
+
+  @Get('public/recom')
+  publicRecom(@Request() r) {
+    return this.recomService.getRecommendationsForUser(r.user.id);
   }
 
   @Get('public')

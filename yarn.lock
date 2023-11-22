@@ -2282,6 +2282,11 @@ cors@2.8.5, cors@~2.8.5:
     object-assign "^4"
     vary "^1"
 
+cosine-similarity@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/cosine-similarity/-/cosine-similarity-1.0.1.tgz#e95f6036528da46fbcb4afc2156af9a5e2b25732"
+  integrity sha512-qLkCCpVR/v026TtNsnbkLGzlDAoklAKlhJCQwlyDdqbFanSWflzbNzH/Uwe3T/ezAzRk4V2+Ngfqcog1aZ2q/A==
+
 cosmiconfig@^8.2.0:
   version "8.3.6"
   resolved "https://registry.yarnpkg.com/cosmiconfig/-/cosmiconfig-8.3.6.tgz#060a2b871d66dba6c8538ea1118ba1ac16f5fae3"

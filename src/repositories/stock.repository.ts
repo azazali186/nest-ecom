@@ -28,9 +28,10 @@ export class StockRepository extends Repository<Stock> {
   }
 
   async createStock(stockDto: CreateStockDto | UpdateStockDto, user) {
-    const { sku, images, translations, prices } = stockDto;
+    const { sku, images, translations, prices, quantity } = stockDto;
     const stock = new Stock();
     stock.sku = sku;
+    stock.quantity = quantity;
     stock.created_by = user;
 
     await this.stRepo.save(stock);
@@ -74,7 +75,7 @@ export class StockRepository extends Repository<Stock> {
 
   async updateStock(stockId: number, stockDto: UpdateStockDto, user) {
     try {
-      const { sku, images, translations, prices } = stockDto;
+      const { sku, images, translations, prices, quantity } = stockDto;
 
       // Fetch the existing stock entry from the database
       const stock = await this.stRepo.findOne({ where: { id: stockId } });
@@ -88,7 +89,13 @@ export class StockRepository extends Repository<Stock> {
       }
 
       // Update the properties of the stock entry
-      stock.sku = sku;
+      if (sku) {
+        stock.sku = sku;
+      }
+
+      if (quantity) {
+        stock.quantity = quantity;
+      }
       stock.updated_by = user;
 
       // Save the updated stock entry
