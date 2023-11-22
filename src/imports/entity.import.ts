@@ -6,6 +6,7 @@ import { Language } from 'src/entities/language.entity';
 import { Log } from 'src/entities/log.entity';
 import { Permission } from 'src/entities/permission.entity';
 import { Price } from 'src/entities/price.entity';
+import { ProductInteraction } from 'src/entities/product-interaction.entity';
 import { Product } from 'src/entities/product.entity';
 import { Role } from 'src/entities/role.entity';
 import { Session } from 'src/entities/session.entity';
@@ -29,4 +30,5 @@ export const ImportEntities = [
   Stock,
   Price,
   Images,
+  ProductInteraction
 ];

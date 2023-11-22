@@ -143,18 +143,45 @@ async function associatePermissionWithAdminRole() {
     await roleRepo.save(role);
   }
 
-  const username = process.env.ADMIN_USERNAME || 'admin';
-  const pwd = process.env.ADMIN_PASSWORD || 'Admin@123';
-  let user = await userRepo.findOne({
+  let username = process.env.ADMIN_USERNAME || 'admin';
+  let pwd = process.env.ADMIN_PASSWORD || 'Admin@123';
+  let adminUser = await userRepo.findOne({
     where: { roles: { id: role.id }, username },
   });
-  if (!user) {
-    user = new User();
-    user.name = 'Administrator';
-    user.username = username;
-    user.roles = role;
+  if (!adminUser) {
+    adminUser = new User();
+    adminUser.name = 'Administrator';
+    adminUser.username = username;
+    adminUser.roles = role;
     const hashPassord = AES.encrypt(pwd, process.env.ENCRYPTION_KEY).toString();
-    user.password = hashPassord;
-    await userRepo.save(user);
+    adminUser.password = hashPassord;
+    await userRepo.save(adminUser);
+  }
+
+  role = await roleRepo.findOne({
+    where: { name: 'guest' },
+  });
+
+  if (!role) {
+    role = new Role();
+    role.name = 'guest';
+    role.description = 'Guest';
+    role.permissions = [];
+    await roleRepo.save(role);
+  }
+
+  username = process.env.GUEST_USERNAME || 'guest';
+  pwd = process.env.GUEST_PASSWORD || 'Guest@123';
+  let guestUser = await userRepo.findOne({
+    where: { roles: { id: role.id }, username },
+  });
+  if (!guestUser) {
+    guestUser = new User();
+    guestUser.name = 'Guest';
+    guestUser.username = username;
+    guestUser.roles = role;
+    const hashPassord = AES.encrypt(pwd, process.env.ENCRYPTION_KEY).toString();
+    guestUser.password = hashPassord;
+    await userRepo.save(guestUser);
   }
 }

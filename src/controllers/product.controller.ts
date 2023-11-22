@@ -43,13 +43,13 @@ export class ProductController {
   }
 
   @Get('public/:id')
-  findPublic(@Param('id') id: number) {
-    return this.prodService.findOne(id);
+  findPublic(@Param('id') id: number, @Request() r) {
+    return this.prodService.findOne(id, r.user);
   }
 
   @Get(':id')
-  findOne(@Param('id') id: number) {
-    return this.prodService.findOne(id);
+  findOne(@Param('id') id: number, @Request() r) {
+    return this.prodService.findOne(id, r.user);
   }
 
   @Patch()

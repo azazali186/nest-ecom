@@ -12,7 +12,10 @@ import { ApiResponse } from 'src/utils/response.util';
 import { LangService } from 'src/services/lang.service';
 import { Inject, NotFoundException, forwardRef } from '@nestjs/common';
 import { BulkProductUploadDto } from 'src/dto/product/bulk-product-upload.dto';
-
+import { ElasticService } from 'src/services/elastic.service';
+import { ProductInterationRepository } from './product-interaction.repository';
+import { ProductInteractionTypeEnum } from 'src/enum/product-interation-type.enum';
+import { UserRepository } from './user.repository';
 export class ProductRepository extends Repository<Product> {
   constructor(
     @InjectRepository(Product)
@@ -30,10 +33,18 @@ export class ProductRepository extends Repository<Product> {
     @Inject(forwardRef(() => TranslationsRepository))
     private trRepo: TranslationsRepository,
 
+    @Inject(forwardRef(() => ProductInterationRepository))
+    private intRepo: ProductInterationRepository,
+
+    @Inject(forwardRef(() => UserRepository))
+    private userRepo: UserRepository,
+
     private langService: LangService,
+    private elService: ElasticService,
   ) {
     super(prodRepo.target, prodRepo.manager, prodRepo.queryRunner);
   }
+  private readonly indexName = 'nest-ecom-elk-product';
   async createProduct(
     createProductDto: CreateProductDto,
     user: any,
@@ -91,7 +102,6 @@ export class ProductRepository extends Repository<Product> {
 
     // Save the product with all associations
     await this.prodRepo.save(product);
-
     return ApiResponse.create(
       this.prodRepo.save(product),
       201,
@@ -113,16 +123,19 @@ export class ProductRepository extends Repository<Product> {
     return ApiResponse.success(data, 200, 'Success', error);
   }
 
-  async getProductId(id: number): Promise<ApiResponse<Product>> {
+  async getProductId(id: number, user: any): Promise<ApiResponse<Product>> {
     const product = await this.prodRepo.findOne({
       where: { id },
       relations: [
         'categories',
         'stocks',
         'stocks.translations',
+        'stocks.translations.language',
         'stocks.images',
         'stocks.price',
+        'stocks.price.currency',
         'translations',
+        'translations.language',
         'images',
       ],
     });
@@ -134,7 +147,28 @@ export class ProductRepository extends Repository<Product> {
         param: `Product`,
       });
     }
+
+    if (!user) {
+      user = await this.userRepo.findOne({
+        where: { username: process.env.GUEST_USERNAME || 'guest' },
+      });
+    }
+
+    await this.intRepo.createInteraction({
+      product,
+      user,
+      type: this.getRandomProductInteractionType(),
+    });
+
+    const elk = await this.elService.createIndex(this.indexName, product);
+
     return ApiResponse.success(product, 200);
+  }
+
+  getRandomProductInteractionType(): ProductInteractionTypeEnum {
+    const values = Object.values(ProductInteractionTypeEnum);
+    const randomIndex = Math.floor(Math.random() * values.length);
+    return values[randomIndex] as ProductInteractionTypeEnum;
   }
 
   async updateProduct(id: any, updateProductDto: UpdateProductDto, user: any) {

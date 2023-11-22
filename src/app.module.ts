@@ -12,7 +12,6 @@ import { LoggerMiddleware } from './middleware/logger.middleware';
 import * as expressUserAgent from 'express-useragent';
 import { i18nConfig } from './config/i18n.config';
 import { I18nModule } from 'nestjs-i18n';
-import { ElasticsearchConfigModule } from './modules/elasticsearch.module';
 // import { ImagesModule } from './modules/image.module';
 
 @Module({
@@ -44,7 +43,6 @@ import { ElasticsearchConfigModule } from './modules/elasticsearch.module';
       secret: process.env.JWT_SECRET || 'SECRET',
       signOptions: { expiresIn: '10d' },
     }),
-    ElasticsearchConfigModule,
   ],
   controllers: ImportControllers,
   providers: ImportProviders,

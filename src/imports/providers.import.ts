@@ -11,6 +11,7 @@ import { LanguageRepository } from 'src/repositories/language.repository';
 import { LogRepository } from 'src/repositories/log.repository';
 import { PermissionRepository } from 'src/repositories/permission.repository';
 import { PriceRepository } from 'src/repositories/price.repository';
+import { ProductInterationRepository } from 'src/repositories/product-interaction.repository';
 import { ProductRepository } from 'src/repositories/product.repository';
 import { RoleRepository } from 'src/repositories/role.repository';
 import { SessionRepository } from 'src/repositories/session.repository';
@@ -20,6 +21,7 @@ import { UserRepository } from 'src/repositories/user.repository';
 import { AuthService } from 'src/services/auth.service';
 import { CategoryService } from 'src/services/category.service';
 import { CurrencyService } from 'src/services/currency.service';
+import { ElasticService } from 'src/services/elastic.service';
 import { JwtAuthService } from 'src/services/jwt-auth.service';
 import { LangService } from 'src/services/lang.service';
 import { LanguageService } from 'src/services/language.service';
@@ -77,4 +79,6 @@ export const ImportProviders = [
   ProductService,
   StockRepository,
   PriceRepository,
+  ElasticService,
+  ProductInterationRepository
 ];

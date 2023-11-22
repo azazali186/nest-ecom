@@ -36,7 +36,9 @@ export class CheckPermissionMiddleware implements NestMiddleware {
 
     if (
       EXCLUDED_ROUTES.includes(currentPermission.toUpperCase()) &&
-      currentPermission != 'LOGOUT'
+      currentPermission != 'LOGOUT' &&
+      currentPermission != 'PUBLIC' &&
+      currentPermission != 'BROADCAST'
     ) {
       next();
     } else {
@@ -69,7 +71,11 @@ export class CheckPermissionMiddleware implements NestMiddleware {
             message: 'UNAUTHORIZED_ACCESS',
           });
         }
-        if (currentPermission == 'LOGOUT') {
+        if (
+          currentPermission === 'LOGOUT' ||
+          currentPermission === 'PUBLIC' ||
+          currentPermission === 'BROADCAST'
+        ) {
           next();
         } else {
           if (
@@ -90,10 +96,14 @@ export class CheckPermissionMiddleware implements NestMiddleware {
         //   throw new ForbiddenException('Invalid token or permission denied');
         // }
       } else {
-        throw new UnauthorizedException({
-          statusCode: 401,
-          message: 'TOKEN_REQUIRED',
-        });
+        if (currentPermission == 'PUBLIC') {
+          next();
+        } else {
+          throw new UnauthorizedException({
+            statusCode: 401,
+            message: 'TOKEN_REQUIRED',
+          });
+        }
       }
     }
   }

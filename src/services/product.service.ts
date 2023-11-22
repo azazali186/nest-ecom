@@ -19,8 +19,8 @@ export class ProductService {
   async findAll(req: SearchProductDto) {
     return this.prodRepo.findProducts(req);
   }
-  findOne(id: number) {
-    return this.prodRepo.getProductId(id);
+  findOne(id: number, user:any) {
+    return this.prodRepo.getProductId(id, user);
   }
   update(id: any, req: UpdateProductDto, user: any) {
     return this.prodRepo.updateProduct(id, req, user);
