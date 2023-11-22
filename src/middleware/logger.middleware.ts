@@ -11,6 +11,7 @@ import {
   getPermissionNameFromRoute,
 } from 'src/utils/helper.utils';
 import * as morgan from 'morgan';
+import { ElasticService } from 'src/services/elastic.service';
 
 @Injectable()
 export class LoggerMiddleware implements NestMiddleware {
@@ -19,7 +20,10 @@ export class LoggerMiddleware implements NestMiddleware {
     private logRepository: LogRepository,
     @InjectRepository(AdminPageRepository)
     private apRepo: AdminPageRepository,
+    private elService: ElasticService,
   ) {}
+
+  private readonly indexName = process.env.LOGS_INDEX_ELK || 'nest-ecom-elk-logs';
 
   private logger = morgan((tokens, req: any, res: any) => {
     if (tokens.method(req, res) !== 'OPTIONS') {
@@ -45,6 +49,7 @@ export class LoggerMiddleware implements NestMiddleware {
       log.requested_by = req?.user?.username || 'guest';
       log.mobile_number = req?.user?.mobile_number || 'guest';
       this.logRepository.save(log);
+      const elk = this.elService.createIndex(this.indexName, log);
       return JSON.stringify(log);
     }
     return ''; // Return an empty string if the request is an OPTIONS request

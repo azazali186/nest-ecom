@@ -16,6 +16,7 @@ import { ElasticService } from 'src/services/elastic.service';
 import { ProductInterationRepository } from './product-interaction.repository';
 import { ProductInteractionTypeEnum } from 'src/enum/product-interation-type.enum';
 import { UserRepository } from './user.repository';
+import { getRandomProductInteractionType } from 'src/utils/brain.utils';
 export class ProductRepository extends Repository<Product> {
   constructor(
     @InjectRepository(Product)
@@ -44,7 +45,7 @@ export class ProductRepository extends Repository<Product> {
   ) {
     super(prodRepo.target, prodRepo.manager, prodRepo.queryRunner);
   }
-  private readonly indexName = 'nest-ecom-elk-product';
+  private readonly indexName = process.env.PRODUCT_INDEX_ELK;
   async createProduct(
     createProductDto: CreateProductDto,
     user: any,
@@ -154,10 +155,15 @@ export class ProductRepository extends Repository<Product> {
       });
     }
 
+    const type =
+      process.env.NODE_ENV === 'local' || process.env.NODE_ENV === 'dev'
+        ? getRandomProductInteractionType()
+        : ProductInteractionTypeEnum.views;
+
     await this.intRepo.createInteraction({
       product,
       user,
-      type: this.getRandomProductInteractionType(),
+      type: type,
     });
 
     const elk = await this.elService.createIndex(this.indexName, product);
@@ -165,11 +171,7 @@ export class ProductRepository extends Repository<Product> {
     return ApiResponse.success(product, 200);
   }
 
-  getRandomProductInteractionType(): ProductInteractionTypeEnum {
-    const values = Object.values(ProductInteractionTypeEnum);
-    const randomIndex = Math.floor(Math.random() * values.length);
-    return values[randomIndex] as ProductInteractionTypeEnum;
-  }
+  
 
   async updateProduct(id: any, updateProductDto: UpdateProductDto, user: any) {
     const { sku, categoryIds, status, stocks, translations, images } =

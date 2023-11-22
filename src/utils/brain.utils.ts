@@ -13,3 +13,9 @@ export const WEIGHTS = {
 export const getIntractionValue = async (intraction:ProductInteractionTypeEnum) => {
   return WEIGHTS[intraction] || 0;
 };
+
+export const getRandomProductInteractionType = (): ProductInteractionTypeEnum => {
+  const values = Object.values(ProductInteractionTypeEnum);
+  const randomIndex = Math.floor(Math.random() * values.length);
+  return values[randomIndex] as ProductInteractionTypeEnum;
+}

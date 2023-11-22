@@ -50,8 +50,9 @@ export class CheckPermissionMiddleware implements NestMiddleware {
           token,
           process.env.ENCRYPTION_KEY_TOKEN,
         ).toString(enc.Utf8);
+        console.log(currentPermission)
         const dt = await this.usersService.findSessionToken(token);
-        if (!dt || dt.is_expired === true) {
+        if (((currentPermission !== 'PUBLIC'  && !dt) || dt?.is_expired === true)) {
           throw new UnauthorizedException({
             statusCode: 401,
             message: 'INVALID_TOKEN',

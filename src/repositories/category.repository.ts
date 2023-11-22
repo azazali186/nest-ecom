@@ -97,7 +97,7 @@ export class CategoryRepository extends Repository<Category> {
   }
   async getCategoryId(id: number) {
     const data = await this.catRepo.findOne({
-      relations: ['translation', 'images', 'products'],
+      relations: ['translations', 'images', 'products'],
       where: {
         id,
       },

@@ -1,0 +1,597 @@
+{
+  "data": [
+    {
+      "sku": "electronics-product-3",
+      "categoryIds": [1],
+      "stocks": [
+        {
+          "sku": "electronics-product-3",
+          "images": ["https://example.com/electronics-product3-image1.jpg"],
+          "translations": [
+            {
+              "name": "Smartwatch Pro",
+              "language_id": 1,
+              "description": "Stay connected and track your fitness with the Smartwatch Pro",
+              "meta_title": "Smartwatch Pro",
+              "meta_keywords": "smartwatch, technology, fitness",
+              "meta_descriptions": "Enhance your lifestyle with the Smartwatch Pro - your personal fitness companion."
+            }
+          ],
+          "prices": [
+            {
+              "price": "179.99",
+              "currency_id": 1
+            }
+          ]
+        }
+      ],
+      "translations": [
+        {
+          "name": "Smartwatch Pro",
+          "language_id": 1,
+          "description": "Stay connected and track your fitness with the Smartwatch Pro",
+          "meta_title": "Smartwatch Pro",
+          "meta_keywords": "smartwatch, technology, fitness",
+          "meta_descriptions": "Enhance your lifestyle with the Smartwatch Pro - your personal fitness companion."
+        }
+      ],
+      "images": ["https://example.com/electronics-product3-image1.jpg"]
+    },
+    {
+      "sku": "clothing-product-3",
+      "categoryIds": [2],
+      "stocks": [
+        {
+          "sku": "clothing-product-3",
+          "images": ["https://example.com/clothing-product3-image1.jpg"],
+          "translations": [
+            {
+              "name": "Casual Jeans",
+              "language_id": 1,
+              "description": "Comfortable and stylish casual jeans for everyday wear",
+              "meta_title": "Casual Jeans",
+              "meta_keywords": "clothing, fashion, jeans",
+              "meta_descriptions": "Upgrade your wardrobe with these comfortable and trendy casual jeans."
+            }
+          ],
+          "prices": [
+            {
+              "price": "69.99",
+              "currency_id": 1
+            }
+          ]
+        }
+      ],
+      "translations": [
+        {
+          "name": "Casual Jeans",
+          "language_id": 1,
+          "description": "Comfortable and stylish casual jeans for everyday wear",
+          "meta_title": "Casual Jeans",
+          "meta_keywords": "clothing, fashion, jeans",
+          "meta_descriptions": "Upgrade your wardrobe with these comfortable and trendy casual jeans."
+        }
+      ],
+      "images": ["https://example.com/clothing-product3-image1.jpg"]
+    },
+    {
+      "sku": "electronics-product-4",
+      "categoryIds": [1],
+      "stocks": [
+        {
+          "sku": "electronics-product-4",
+          "images": ["https://example.com/electronics-product4-image1.jpg"],
+          "translations": [
+            {
+              "name": "Wireless Earbuds",
+              "language_id": 1,
+              "description": "Enjoy seamless audio with these compact and stylish wireless earbuds",
+              "meta_title": "Wireless Earbuds",
+              "meta_keywords": "earbuds, audio, wireless",
+              "meta_descriptions": "Immerse yourself in music with these high-quality wireless earbuds."
+            }
+          ],
+          "prices": [
+            {
+              "price": "89.99",
+              "currency_id": 1
+            }
+          ]
+        }
+      ],
+      "translations": [
+        {
+          "name": "Wireless Earbuds",
+          "language_id": 1,
+          "description": "Enjoy seamless audio with these compact and stylish wireless earbuds",
+          "meta_title": "Wireless Earbuds",
+          "meta_keywords": "earbuds, audio, wireless",
+          "meta_descriptions": "Immerse yourself in music with these high-quality wireless earbuds."
+        }
+      ],
+      "images": ["https://example.com/electronics-product4-image1.jpg"]
+    },
+    {
+      "sku": "clothing-product-4",
+      "categoryIds": [2],
+      "stocks": [
+        {
+          "sku": "clothing-product-4",
+          "images": ["https://example.com/clothing-product4-image1.jpg"],
+          "translations": [
+            {
+              "name": "Formal Shirt",
+              "language_id": 1,
+              "description": "Look sharp and professional with this formal shirt",
+              "meta_title": "Formal Shirt",
+              "meta_keywords": "clothing, fashion, shirt",
+              "meta_descriptions": "Upgrade your formal attire with this stylish and comfortable formal shirt."
+            }
+          ],
+          "prices": [
+            {
+              "price": "49.99",
+              "currency_id": 1
+            }
+          ]
+        }
+      ],
+      "translations": [
+        {
+          "name": "Formal Shirt",
+          "language_id": 1,
+          "description": "Look sharp and professional with this formal shirt",
+          "meta_title": "Formal Shirt",
+          "meta_keywords": "clothing, fashion, shirt",
+          "meta_descriptions": "Upgrade your formal attire with this stylish and comfortable formal shirt."
+        }
+      ],
+      "images": ["https://example.com/clothing-product4-image1.jpg"]
+    },
+    {
+      "sku": "electronics-product-5",
+      "categoryIds": [1],
+      "stocks": [
+        {
+          "sku": "electronics-product-5",
+          "images": ["https://example.com/electronics-product5-image1.jpg"],
+          "translations": [
+            {
+              "name": "4K Ultra HD Smart TV",
+              "language_id": 1,
+              "description": "Immerse yourself in stunning visuals with this 4K Ultra HD Smart TV",
+              "meta_title": "4K Ultra HD Smart TV",
+              "meta_keywords": "smart TV, electronics, 4K",
+              "meta_descriptions": "Experience entertainment like never before with the 4K Ultra HD Smart TV."
+            }
+          ],
+          "prices": [
+            {
+              "price": "799.99",
+              "currency_id": 1
+            }
+          ]
+        }
+      ],
+      "translations": [
+        {
+          "name": "4K Ultra HD Smart TV",
+          "language_id": 1,
+          "description": "Immerse yourself in stunning visuals with this 4K Ultra HD Smart TV",
+          "meta_title": "4K Ultra HD Smart TV",
+          "meta_keywords": "smart TV, electronics, 4K",
+          "meta_descriptions": "Experience entertainment like never before with the 4K Ultra HD Smart TV."
+        }
+      ],
+      "images": ["https://example.com/electronics-product5-image1.jpg"]
+    },
+    {
+      "sku": "clothing-product-5",
+      "categoryIds": [2],
+      "stocks": [
+        {
+          "sku": "clothing-product-5",
+          "images": ["https://example.com/clothing-product5-image1.jpg"],
+          "translations": [
+            {
+              "name": "Sporty Sneakers",
+              "language_id": 1,
+              "description": "Stay active and stylish with these comfortable sporty sneakers",
+              "meta_title": "Sporty Sneakers",
+              "meta_keywords": "clothing, fashion, sneakers",
+              "meta_descriptions": "Elevate your sporty look with these trendy and comfortable sneakers."
+            }
+          ],
+          "prices": [
+            {
+              "price": "59.99",
+              "currency_id": 1
+            }
+          ]
+        }
+      ],
+      "translations": [
+        {
+          "name": "Sporty Sneakers",
+          "language_id": 1,
+          "description": "Stay active and stylish with these comfortable sporty sneakers",
+          "meta_title": "Sporty Sneakers",
+          "meta_keywords": "clothing, fashion, sneakers",
+          "meta_descriptions": "Elevate your sporty look with these trendy and comfortable sneakers."
+        }
+      ],
+      "images": ["https://example.com/clothing-product5-image1.jpg"]
+    },
+    {
+      "sku": "electronics-product-6",
+      "categoryIds": [1],
+      "stocks": [
+        {
+          "sku": "electronics-product-6",
+          "images": ["https://example.com/electronics-product6-image1.jpg"],
+          "translations": [
+            {
+              "name": "Smart Home Security System",
+              "language_id": 1,
+              "description": "Secure your home with the latest smart home security system",
+              "meta_title": "Smart Home Security System",
+              "meta_keywords": "smart home, security, technology",
+              "meta_descriptions": "Keep your home safe and secure with the Smart Home Security System."
+            }
+          ],
+          "prices": [
+            {
+              "price": "299.99",
+              "currency_id": 1
+            }
+          ]
+        }
+      ],
+      "translations": [
+        {
+          "name": "Smart Home Security System",
+          "language_id": 1,
+          "description": "Secure your home with the latest smart home security system",
+          "meta_title": "Smart Home Security System",
+          "meta_keywords": "smart home, security, technology",
+          "meta_descriptions": "Keep your home safe and secure with the Smart Home Security System."
+        }
+      ],
+      "images": ["https://example.com/electronics-product6-image1.jpg"]
+    },
+    {
+      "sku": "clothing-product-6",
+      "categoryIds": [2],
+      "stocks": [
+        {
+          "sku": "clothing-product-6",
+          "images": ["https://example.com/clothing-product6-image1.jpg"],
+          "translations": [
+            {
+              "name": "Cozy Winter Sweater",
+              "language_id": 1,
+              "description": "Stay warm and stylish with this cozy winter sweater",
+              "meta_title": "Cozy Winter Sweater",
+              "meta_keywords": "clothing, fashion, sweater",
+              "meta_descriptions": "Embrace the winter season with this comfortable and fashionable sweater."
+            }
+          ],
+          "prices": [
+            {
+              "price": "79.99",
+              "currency_id": 1
+            }
+          ]
+        }
+      ],
+      "translations": [
+        {
+          "name": "Cozy Winter Sweater",
+          "language_id": 1,
+          "description": "Stay warm and stylish with this cozy winter sweater",
+          "meta_title": "Cozy Winter Sweater",
+          "meta_keywords": "clothing, fashion, sweater",
+          "meta_descriptions": "Embrace the winter season with this comfortable and fashionable sweater."
+        }
+      ],
+      "images": ["https://example.com/clothing-product6-image1.jpg"]
+    },
+    {
+      "sku": "electronics-product-7",
+      "categoryIds": [1],
+      "stocks": [
+        {
+          "sku": "electronics-product-7",
+          "images": ["https://example.com/electronics-product7-image1.jpg"],
+          "translations": [
+            {
+              "name": "High-Performance Gaming Laptop",
+              "language_id": 1,
+              "description": "Unleash your gaming potential with this high-performance gaming laptop",
+              "meta_title": "Gaming Laptop",
+              "meta_keywords": "gaming, laptop, technology",
+              "meta_descriptions": "Experience immersive gaming with the High-Performance Gaming Laptop."
+            }
+          ],
+          "prices": [
+            {
+              "price": "1299.99",
+              "currency_id": 1
+            }
+          ]
+        }
+      ],
+      "translations": [
+        {
+          "name": "High-Performance Gaming Laptop",
+          "language_id": 1,
+          "description": "Unleash your gaming potential with this high-performance gaming laptop",
+          "meta_title": "Gaming Laptop",
+          "meta_keywords": "gaming, laptop, technology",
+          "meta_descriptions": "Experience immersive gaming with the High-Performance Gaming Laptop."
+        }
+      ],
+      "images": ["https://example.com/electronics-product7-image1.jpg"]
+    },
+    {
+      "sku": "clothing-product-7",
+      "categoryIds": [2],
+      "stocks": [
+        {
+          "sku": "clothing-product-7",
+          "images": ["https://example.com/clothing-product7-image1.jpg"],
+          "translations": [
+            {
+              "name": "Classic Black Suit",
+              "language_id": 1,
+              "description": "Elevate your style with this classic black suit for formal occasions",
+              "meta_title": "Classic Black Suit",
+              "meta_keywords": "clothing, fashion, suit",
+              "meta_descriptions": "Make a statement at formal events with the timeless Classic Black Suit."
+            }
+          ],
+          "prices": [
+            {
+              "price": "299.99",
+              "currency_id": 1
+            }
+          ]
+        }
+      ],
+      "translations": [
+        {
+          "name": "Classic Black Suit",
+          "language_id": 1,
+          "description": "Elevate your style with this classic black suit for formal occasions",
+          "meta_title": "Classic Black Suit",
+          "meta_keywords": "clothing, fashion, suit",
+          "meta_descriptions": "Make a statement at formal events with the timeless Classic Black Suit."
+        }
+      ],
+      "images": ["https://example.com/clothing-product7-image1.jpg"]
+    },
+    {
+      "sku": "electronics-product-8",
+      "categoryIds": [1],
+      "stocks": [
+        {
+          "sku": "electronics-product-8",
+          "images": ["https://example.com/electronics-product8-image1.jpg"],
+          "translations": [
+            {
+              "name": "Smart Home Speaker System",
+              "language_id": 1,
+              "description": "Enhance your home with this smart speaker system for immersive audio",
+              "meta_title": "Smart Home Speaker System",
+              "meta_keywords": "smart home, speaker, audio",
+              "meta_descriptions": "Bring music to life with the Smart Home Speaker System for an immersive audio experience."
+            }
+          ],
+          "prices": [
+            {
+              "price": "149.99",
+              "currency_id": 1
+            }
+          ]
+        }
+      ],
+      "translations": [
+        {
+          "name": "Smart Home Speaker System",
+          "language_id": 1,
+          "description": "Enhance your home with this smart speaker system for immersive audio",
+          "meta_title": "Smart Home Speaker System",
+          "meta_keywords": "smart home, speaker, audio",
+          "meta_descriptions": "Bring music to life with the Smart Home Speaker System for an immersive audio experience."
+        }
+      ],
+      "images": ["https://example.com/electronics-product8-image1.jpg"]
+    },
+    {
+      "sku": "clothing-product-8",
+      "categoryIds": [2],
+      "stocks": [
+        {
+          "sku": "clothing-product-8",
+          "images": ["https://example.com/clothing-product8-image1.jpg"],
+          "translations": [
+            {
+              "name": "Casual Hoodie",
+              "language_id": 1,
+              "description": "Stay comfortable and stylish with this casual hoodie for everyday wear",
+              "meta_title": "Casual Hoodie",
+              "meta_keywords": "clothing, fashion, hoodie",
+              "meta_descriptions": "Add a casual touch to your wardrobe with the comfortable Casual Hoodie for everyday wear."
+            }
+          ],
+          "prices": [
+            {
+              "price": "39.99",
+              "currency_id": 1
+            }
+          ]
+        }
+      ],
+      "translations": [
+        {
+          "name": "Casual Hoodie",
+          "language_id": 1,
+          "description": "Stay comfortable and stylish with this casual hoodie for everyday wear",
+          "meta_title": "Casual Hoodie",
+          "meta_keywords": "clothing, fashion, hoodie",
+          "meta_descriptions": "Add a casual touch to your wardrobe with the comfortable Casual Hoodie for everyday wear."
+        }
+      ],
+      "images": ["https://example.com/clothing-product8-image1.jpg"]
+    },
+    {
+      "sku": "electronics-product-9",
+      "categoryIds": [1],
+      "stocks": [
+        {
+          "sku": "electronics-product-9",
+          "images": ["https://example.com/electronics-product9-image1.jpg"],
+          "translations": [
+            {
+              "name": "Virtual Reality Headset",
+              "language_id": 1,
+              "description": "Immerse yourself in virtual worlds with this advanced virtual reality headset",
+              "meta_title": "Virtual Reality Headset",
+              "meta_keywords": "virtual reality, headset, technology",
+              "meta_descriptions": "Step into a new reality with the Virtual Reality Headset for an immersive experience."
+            }
+          ],
+          "prices": [
+            {
+              "price": "249.99",
+              "currency_id": 1
+            }
+          ]
+        }
+      ],
+      "translations": [
+        {
+          "name": "Virtual Reality Headset",
+          "language_id": 1,
+          "description": "Immerse yourself in virtual worlds with this advanced virtual reality headset",
+          "meta_title": "Virtual Reality Headset",
+          "meta_keywords": "virtual reality, headset, technology",
+          "meta_descriptions": "Step into a new reality with the Virtual Reality Headset for an immersive experience."
+        }
+      ],
+      "images": ["https://example.com/electronics-product9-image1.jpg"]
+    },
+    {
+      "sku": "clothing-product-9",
+      "categoryIds": [2],
+      "stocks": [
+        {
+          "sku": "clothing-product-9",
+          "images": ["https://example.com/clothing-product9-image1.jpg"],
+          "translations": [
+            {
+              "name": "Vintage Denim Jacket",
+              "language_id": 1,
+              "description": "Add a touch of vintage style with this classic denim jacket",
+              "meta_title": "Vintage Denim Jacket",
+              "meta_keywords": "clothing, fashion, jacket",
+              "meta_descriptions": "Elevate your style with the timeless Vintage Denim Jacket, a must-have in your wardrobe."
+            }
+          ],
+          "prices": [
+            {
+              "price": "89.99",
+              "currency_id": 1
+            }
+          ]
+        }
+      ],
+      "translations": [
+        {
+          "name": "Vintage Denim Jacket",
+          "language_id": 1,
+          "description": "Add a touch of vintage style with this classic denim jacket",
+          "meta_title": "Vintage Denim Jacket",
+          "meta_keywords": "clothing, fashion, jacket",
+          "meta_descriptions": "Elevate your style with the timeless Vintage Denim Jacket, a must-have in your wardrobe."
+        }
+      ],
+      "images": ["https://example.com/clothing-product9-image1.jpg"]
+    },
+    {
+      "sku": "electronics-product-10",
+      "categoryIds": [1],
+      "stocks": [
+        {
+          "sku": "electronics-product-10",
+          "images": ["https://example.com/electronics-product10-image1.jpg"],
+          "translations": [
+            {
+              "name": "Wireless Charging Pad",
+              "language_id": 1,
+              "description": "Charge your devices effortlessly with this sleek wireless charging pad",
+              "meta_title": "Wireless Charging Pad",
+              "meta_keywords": "wireless charging, technology, devices",
+              "meta_descriptions": "Experience convenience with the Wireless Charging Pad for easy and efficient device charging."
+            }
+          ],
+          "prices": [
+            {
+              "price": "49.99",
+              "currency_id": 1
+            }
+          ]
+        }
+      ],
+      "translations": [
+        {
+          "name": "Wireless Charging Pad",
+          "language_id": 1,
+          "description": "Charge your devices effortlessly with this sleek wireless charging pad",
+          "meta_title": "Wireless Charging Pad",
+          "meta_keywords": "wireless charging, technology, devices",
+          "meta_descriptions": "Experience convenience with the Wireless Charging Pad for easy and efficient device charging."
+        }
+      ],
+      "images": ["https://example.com/electronics-product10-image1.jpg"]
+    },
+    {
+      "sku": "clothing-product-10",
+      "categoryIds": [2],
+      "stocks": [
+        {
+          "sku": "clothing-product-10",
+          "images": ["https://example.com/clothing-product10-image1.jpg"],
+          "translations": [
+            {
+              "name": "Athletic Running Shoes",
+              "language_id": 1,
+              "description": "Achieve your fitness goals with these comfortable and stylish athletic running shoes",
+              "meta_title": "Athletic Running Shoes",
+              "meta_keywords": "clothing, fashion, shoes, athletic",
+              "meta_descriptions": "Step into fitness with the Athletic Running Shoes, designed for comfort and performance."
+            }
+          ],
+          "prices": [
+            {
+              "price": "69.99",
+              "currency_id": 1
+            }
+          ]
+        }
+      ],
+      "translations": [
+        {
+          "name": "Athletic Running Shoes",
+          "language_id": 1,
+          "description": "Achieve your fitness goals with these comfortable and stylish athletic running shoes",
+          "meta_title": "Athletic Running Shoes",
+          "meta_keywords": "clothing, fashion, shoes, athletic",
+          "meta_descriptions": "Step into fitness with the Athletic Running Shoes, designed for comfort and performance."
+        }
+      ],
+      "images": ["https://example.com/clothing-product10-image1.jpg"]
+    }
+
+  ]
+}
