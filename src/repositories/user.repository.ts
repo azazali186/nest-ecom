@@ -116,7 +116,7 @@ export class UserRepository extends Repository<User> {
     );
   }
 
-  async register(registerDto: RegisterDto) {
+  async register(registerDto: RegisterDto, roleName: string) {
     const { name, username } = registerDto;
 
     // Check for existing user
@@ -132,11 +132,13 @@ export class UserRepository extends Repository<User> {
     }
 
     // Get or create the default role
-    let role = await this.roleRepository.findOne({ where: { name: 'member' } });
+    let role = await this.roleRepository.findOne({ where: { name: roleName } });
     if (!role) {
-      role = this.roleRepository.create({ name: 'member' });
+      role = this.roleRepository.create({ name: roleName });
       await this.roleRepository.save(role);
     }
+
+    const kyc = roleName === 'vendor' ? false : true;
 
     // Create the new user
     const hashPassord = AES.encrypt(
@@ -148,6 +150,7 @@ export class UserRepository extends Repository<User> {
       username: username,
       password: hashPassord,
       roles: role,
+      is_kyc: kyc,
     });
     await this.userRepository.save(user);
 

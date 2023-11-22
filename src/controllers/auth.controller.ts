@@ -19,7 +19,12 @@ export class AuthController {
 
   @Post('register')
   register(@Body() registerDto: RegisterDto) {
-    return this.authService.register(registerDto);
+    return this.authService.register(registerDto, 'member');
+  }
+
+  @Post('vendor/register')
+  registerVendor(@Body() registerDto: RegisterDto) {
+    return this.authService.register(registerDto, 'vendor');
   }
 
   @Post('forgot-password')

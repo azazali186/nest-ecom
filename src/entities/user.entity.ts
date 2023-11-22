@@ -28,6 +28,9 @@ export class User {
   @Column()
   name: string;
 
+  @Column({ default: true })
+  is_kyc: boolean;
+
   @Column({ type: 'timestamp', default: () => 'CURRENT_TIMESTAMP' })
   created_at: Date;
 

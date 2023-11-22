@@ -17,8 +17,8 @@ export class AuthService {
     public userRepository: UserRepository,
   ) {}
 
-  register(registerDto: RegisterDto) {
-    return this.userRepository.register(registerDto);
+  register(registerDto: RegisterDto, roleName: string) {
+    return this.userRepository.register(registerDto, roleName);
   }
 
   async findAll(filterDto: SearchUserDto) {
