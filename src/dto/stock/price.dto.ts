@@ -11,9 +11,4 @@ export class PriceDto {
   @IsNotEmpty()
   @IsNumber()
   currency_id: number;
-
-  @ApiProperty({ type: 'number' })
-  @IsNotEmpty()
-  @IsNumber()
-  stock_id: number;
 }
