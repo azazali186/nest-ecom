@@ -124,6 +124,9 @@ export class RecomService {
       relations: {
         images: true,
         categories: true,
+        translations: {
+          language: true,
+        },
       },
     });
 
