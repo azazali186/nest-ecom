@@ -28,7 +28,7 @@ export class FilesService {
     return file;
   }
 
-  async deleteFiles(ids: number[]): Promise<void> {
+  async deleteFiles(ids: number[]) {
     return this.filesRepository.removeMultiple(ids);
   }
 }

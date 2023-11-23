@@ -22,7 +22,7 @@ import { multerConfig } from 'src/config/multer.config';
 export class FilesController {
   constructor(private readonly filesService: FilesService) {}
 
-  @Post('upload')
+  @Post()
   @ApiConsumes('multipart/form-data')
   @ApiBody({ type: UploadFileDto })
   @UseInterceptors(FilesInterceptor('files', 10, multerConfig))
@@ -43,7 +43,7 @@ export class FilesController {
   }
 
   @Delete()
-  async deleteFiles(@Body() body: { ids: number[] }): Promise<void> {
+  async deleteFiles(@Body() body: { ids: number[] }) {
     await this.filesService.deleteFiles(body.ids);
   }
 }

@@ -23,7 +23,7 @@ export class FilesRepository extends Repository<Files> {
     user.roles.permissions = [];
     const uploadedFiles: string[] = [];
 
-    console.log("files is ", files)
+    console.log('files is ', files);
 
     for (const file of files) {
       const newFile = new Files();
@@ -52,7 +52,7 @@ export class FilesRepository extends Repository<Files> {
     return `${serverBaseUrl}/${filename}`;
   }
 
-  async removeMultiple(ids: number[]): Promise<void | PromiseLike<void>> {
+  async removeMultiple(ids: number[]) {
     const filesToDelete = await this.fRepo.find({
       where: { id: In(ids) },
     });
@@ -69,5 +69,7 @@ export class FilesRepository extends Repository<Files> {
 
     // Delete files from the database
     await this.fRepo.remove(filesToDelete);
+
+    return ApiResponse.success(null, 200, 'DELETED');
   }
 }
