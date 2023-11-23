@@ -12,6 +12,7 @@ import { Images } from './images.entity';
 import { Translations } from './translation.entity';
 import { Price } from './price.entity';
 import { Product } from './product.entity';
+import { Variation } from './variations.entity';
 
 @Entity()
 export class Stock {
@@ -20,6 +21,10 @@ export class Stock {
 
   @Column({ unique: true })
   sku: string;
+
+  @ManyToOne(() => Variation, (tV) => tV.stocks, { nullable: true })
+  @JoinColumn({ name: 'variation_id' })
+  variation: Variation;
 
   @Column({
     type: 'enum',

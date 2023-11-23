@@ -1,5 +1,12 @@
-import { Entity, PrimaryGeneratedColumn, ManyToMany, Column } from 'typeorm';
+import {
+  Entity,
+  PrimaryGeneratedColumn,
+  ManyToMany,
+  Column,
+  OneToMany,
+} from 'typeorm';
 import { Product } from './product.entity';
+import { Stock } from './stock.entity';
 
 @Entity('variations')
 export class Variation {
@@ -16,4 +23,7 @@ export class Variation {
     nullable: true,
   })
   products: Product[] | null;
+
+  @OneToMany(() => Stock, (stock) => stock.variation)  
+  stocks: Stock[];
 }
