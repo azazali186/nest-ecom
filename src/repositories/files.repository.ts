@@ -27,15 +27,15 @@ export class FilesRepository extends Repository<Files> {
 
     for (const file of files) {
       const newFile = new Files();
-      newFile.url = this.getFileUrl(file.filename);
-      newFile.file_name = file.originalname;
+      newFile.url = file.path;
+      newFile.file_name = file.filename;
       newFile.media_type = file.mimetype;
       newFile.extention = extname(file.originalname);
       newFile.size = file.size.toString();
       newFile.original_file_name = file.originalname;
 
       await this.fRepo.save(newFile);
-      uploadedFiles.push(newFile.url);
+      uploadedFiles.push(this.getFileUrl(newFile.url));
     }
     const data = {
       urls: uploadedFiles,
@@ -49,7 +49,7 @@ export class FilesRepository extends Repository<Files> {
       process.env.NODE_ENV === 'prod'
         ? process.env.SWAGGER_DEV_SERVER
         : process.env.SWAGGER_SERVER;
-    return `${serverBaseUrl}/uploads/${filename}`;
+    return `${serverBaseUrl}/${filename}`;
   }
 
   async removeMultiple(ids: number[]): Promise<void | PromiseLike<void>> {
