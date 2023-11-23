@@ -4,6 +4,7 @@ import { QueryFailedErrorFilter } from 'src/middleware/all-exception.filter';
 import { HttpExceptionFilter } from 'src/middleware/http-exception.filter';
 import { JwtWebSocketMiddleware } from 'src/middleware/jwt-socket.middlwware';
 import { AdminPageRepository } from 'src/repositories/admin-page.repository';
+import { CatalogRepository } from 'src/repositories/catalog.repository';
 import { CategoryRepository } from 'src/repositories/category.repository';
 import { CurrencyRepository } from 'src/repositories/currency.repository';
 import { FilesRepository } from 'src/repositories/files.repository';
@@ -20,6 +21,7 @@ import { StockRepository } from 'src/repositories/stock.repository';
 import { TranslationsRepository } from 'src/repositories/translation.repository';
 import { UserRepository } from 'src/repositories/user.repository';
 import { AuthService } from 'src/services/auth.service';
+import { CatalogService } from 'src/services/catalog.service';
 import { CategoryService } from 'src/services/category.service';
 import { CurrencyService } from 'src/services/currency.service';
 import { ElasticService } from 'src/services/elastic.service';
@@ -87,4 +89,6 @@ export const ImportProviders = [
   RecomService,
   FilesService,
   FilesRepository,
+  CatalogService,
+  CatalogRepository,
 ];

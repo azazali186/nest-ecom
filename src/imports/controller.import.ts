@@ -1,5 +1,6 @@
 import { AuthController } from 'src/controllers/auth.controller';
 import { BroadcastingController } from 'src/controllers/broadcasting.controller';
+import { CatalogController } from 'src/controllers/catalogue.controller';
 import { CategoryController } from 'src/controllers/category.controller';
 import { CurrencyController } from 'src/controllers/currency.controller';
 import { FilesController } from 'src/controllers/files.controller';
@@ -21,5 +22,6 @@ export const ImportControllers = [
   CategoryController,
   LanguageController,
   ProductController,
-  FilesController
+  FilesController,
+  CatalogController,
 ];
