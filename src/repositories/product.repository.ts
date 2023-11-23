@@ -271,9 +271,13 @@ export class ProductRepository extends Repository<Product> {
 
     // Join with Stock entity to include price in the search
     query.leftJoinAndSelect('product.stocks', 'stock');
+    query.leftJoinAndSelect('stock.price', 'price');
+    query.leftJoinAndSelect('price.currency', 'currency');
+    // query.leftJoinAndSelect('stock.images', 'stockImages');
 
     // Join with Translations entity to include title in the search
     query.leftJoinAndSelect('product.translations', 'translations');
+    query.leftJoinAndSelect('product.images', 'images');
 
     // Join with Categories entity to filter by category_ids
     query.leftJoin('product.categories', 'category');
