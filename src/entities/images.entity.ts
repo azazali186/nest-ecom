@@ -8,6 +8,7 @@ import {
 import { Category } from './category.entity';
 import { Product } from './product.entity';
 import { Stock } from './stock.entity';
+import { Catalog } from './catalog.entity';
 @Entity()
 export class Images {
   @PrimaryGeneratedColumn()
@@ -27,4 +28,9 @@ export class Images {
   @ManyToOne(() => Stock, (prod) => prod.images, { nullable: true })
   @JoinColumn({ name: 'stock_id' })
   stocks: any;
+
+  @ManyToOne(() => Catalog, (cat) => cat.images, { nullable: true })
+  @JoinColumn({ name: 'catalog_id' })
+  catalogs: Catalog;
+
 }

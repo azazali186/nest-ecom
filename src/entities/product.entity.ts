@@ -14,6 +14,7 @@ import { Category } from './category.entity';
 import { Images } from './images.entity';
 import { Translations } from './translation.entity';
 import { Stock } from './stock.entity';
+import { Catalog } from './catalog.entity';
 
 @Entity('products')
 export class Product {
@@ -33,6 +34,10 @@ export class Product {
   @ManyToMany(() => Category, (category) => category.products)
   @JoinTable({ name: 'product_category' })
   categories: Category[];
+
+  @ManyToMany(() => Catalog, (catalog) => catalog.products)
+  @JoinTable({ name: 'product_catalogs' })
+  catalogs: Catalog[];
 
   @OneToMany(() => Translations, (tr) => tr.products, {
     nullable: true,

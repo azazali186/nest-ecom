@@ -20,4 +20,10 @@ export class ImagesDto {
   @IsOptional()
   @IsNumber()
   stock_id?: number;
+
+  @ApiProperty({ type: 'number', required: false })
+  @IsOptional()
+  @IsNumber()
+  catalog_id?: number;
+
 }

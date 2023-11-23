@@ -24,4 +24,9 @@ export class UpdateImagesDto {
   @IsOptional()
   @IsNumber()
   stock_id?: number;
+
+  @ApiPropertyOptional({ type: 'number', required: false })
+  @IsOptional()
+  @IsNumber()
+  catalog_id?: number;
 }

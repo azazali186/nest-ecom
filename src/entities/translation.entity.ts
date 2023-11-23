@@ -9,6 +9,7 @@ import { Language } from './language.entity';
 import { Category } from './category.entity';
 import { Product } from './product.entity';
 import { Stock } from './stock.entity';
+import { Catalog } from './catalog.entity';
 
 @Entity()
 export class Translations {
@@ -49,4 +50,11 @@ export class Translations {
   @ManyToOne(() => Stock, (st) => st.translations, { nullable: true })
   @JoinColumn({ name: 'stock_id' })
   stock: Stock;
+
+  @ManyToOne(() => Catalog, (category) => category.translations, {
+    nullable: true,
+  })
+  @JoinColumn({ name: 'catalog_id' })
+  catalogs: Catalog;
+
 }
