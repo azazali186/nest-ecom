@@ -8,6 +8,7 @@ import {
 import { ApiProperty, ApiPropertyOptional } from '@nestjs/swagger';
 import { CreateTranslationDto } from '../translation/create-translation.dto';
 import { CreateStockDto } from '../stock/create-stock.dto';
+import { CreateVariationDto } from '../variations/create-variation.dto';
 export class CreateProductDto {
   @ApiProperty()
   @IsString()
@@ -17,6 +18,11 @@ export class CreateProductDto {
   @IsArray()
   @IsNumber({}, { each: true })
   categoryIds: number[];
+
+  @ApiProperty({ type: [CreateVariationDto] })
+  @IsArray()
+  @IsOptional()
+  variations?: CreateVariationDto[];
 
   @ApiProperty({ type: [CreateStockDto] })
   @IsArray()

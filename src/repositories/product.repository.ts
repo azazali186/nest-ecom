@@ -17,6 +17,7 @@ import { ProductInterationRepository } from './product-interaction.repository';
 import { ProductInteractionTypeEnum } from 'src/enum/product-interation-type.enum';
 import { UserRepository } from './user.repository';
 import { getRandomProductInteractionType } from 'src/utils/brain.utils';
+import { VariationRepository } from './varaition.repository';
 export class ProductRepository extends Repository<Product> {
   constructor(
     @InjectRepository(Product)
@@ -39,6 +40,9 @@ export class ProductRepository extends Repository<Product> {
 
     @Inject(forwardRef(() => UserRepository))
     private userRepo: UserRepository,
+
+    @Inject(forwardRef(() => VariationRepository))
+    private varRepo: VariationRepository,    
 
     private langService: LangService,
     private elService: ElasticService,

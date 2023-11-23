@@ -10,6 +10,7 @@ import { UpdateTranslationDto } from '../translation/update-translation.dto';
 import { ProductStatus } from 'src/enum/product-status.enum';
 import { UpdateStockDto } from '../stock/update-stock.dto';
 import { UpdateImagesDto } from '../images/update-image.dto';
+import { CreateVariationDto } from '../variations/create-variation.dto';
 export class UpdateProductDto {
   @ApiPropertyOptional()
   @IsString()
@@ -23,6 +24,11 @@ export class UpdateProductDto {
   @IsArray()
   @IsNumber({}, { each: true })
   categoryIds: number[];
+
+  @ApiPropertyOptional({ type: [CreateVariationDto] })
+  @IsArray()
+  @IsOptional()
+  variations?: CreateVariationDto[];
 
   @ApiPropertyOptional({ type: [UpdateStockDto] })
   @IsArray()

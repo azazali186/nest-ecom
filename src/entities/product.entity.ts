@@ -15,6 +15,7 @@ import { Images } from './images.entity';
 import { Translations } from './translation.entity';
 import { Stock } from './stock.entity';
 import { Catalog } from './catalog.entity';
+import { Variation } from './variations.entity';
 
 @Entity('products')
 export class Product {
@@ -30,6 +31,10 @@ export class Product {
     default: ProductStatus.STOCK,
   })
   status: ProductStatus;
+
+  @ManyToMany(() => Variation, (pv) => pv.products)
+  @JoinTable({ name: 'product_variations' })
+  variations: Variation[];
 
   @ManyToMany(() => Category, (category) => category.products)
   @JoinTable({ name: 'product_category' })

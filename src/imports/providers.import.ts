@@ -20,6 +20,7 @@ import { SessionRepository } from 'src/repositories/session.repository';
 import { StockRepository } from 'src/repositories/stock.repository';
 import { TranslationsRepository } from 'src/repositories/translation.repository';
 import { UserRepository } from 'src/repositories/user.repository';
+import { VariationRepository } from 'src/repositories/varaition.repository';
 import { AuthService } from 'src/services/auth.service';
 import { CatalogService } from 'src/services/catalog.service';
 import { CategoryService } from 'src/services/category.service';
@@ -91,4 +92,5 @@ export const ImportProviders = [
   FilesRepository,
   CatalogService,
   CatalogRepository,
+  VariationRepository,
 ];

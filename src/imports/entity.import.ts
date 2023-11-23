@@ -15,6 +15,7 @@ import { Session } from 'src/entities/session.entity';
 import { Stock } from 'src/entities/stock.entity';
 import { Translations } from 'src/entities/translation.entity';
 import { User } from 'src/entities/user.entity';
+import { Variation } from 'src/entities/variations.entity';
 
 export const ImportEntities = [
   Language,
@@ -35,4 +36,5 @@ export const ImportEntities = [
   ProductInteraction,
   Files,
   Catalog,
+  Variation,
 ];
