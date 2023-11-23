@@ -15,6 +15,7 @@ import { FilesService } from 'src/services/files.service';
 import { ApiTags, ApiBearerAuth, ApiBody, ApiConsumes } from '@nestjs/swagger';
 import { UploadFileDto } from 'src/dto/images/upload-file.dto';
 import { multerConfig } from 'src/config/multer.config';
+import { DeleteFilesDto } from 'src/dto/images/delete-file.dto';
 
 @ApiTags('Files Management')
 @ApiBearerAuth()
@@ -42,6 +43,7 @@ export class FilesController {
   }
 
   @Delete()
+  @ApiBody({ type: DeleteFilesDto })
   async deleteFiles(@Body() body: { ids: number[] }) {
     return await this.filesService.deleteFiles(body.ids);
   }
