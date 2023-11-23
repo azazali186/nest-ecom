@@ -23,8 +23,6 @@ export class FilesRepository extends Repository<Files> {
     user.roles.permissions = [];
     const uploadedFiles: string[] = [];
 
-    console.log('files is ', files);
-
     for (const file of files) {
       const newFile = new Files();
       newFile.url = file.path;
