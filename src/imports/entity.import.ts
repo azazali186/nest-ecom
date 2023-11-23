@@ -1,6 +1,7 @@
 import { AdminPage } from 'src/entities/admin-page.entity';
 import { Category } from 'src/entities/category.entity';
 import { Currency } from 'src/entities/currency.entity';
+import { Files } from 'src/entities/files.entity';
 import { Images } from 'src/entities/images.entity';
 import { Language } from 'src/entities/language.entity';
 import { Log } from 'src/entities/log.entity';
@@ -30,5 +31,6 @@ export const ImportEntities = [
   Stock,
   Price,
   Images,
-  ProductInteraction
+  ProductInteraction,
+  Files
 ];

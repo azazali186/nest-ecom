@@ -12,7 +12,10 @@ import { LoggerMiddleware } from './middleware/logger.middleware';
 import * as expressUserAgent from 'express-useragent';
 import { i18nConfig } from './config/i18n.config';
 import { I18nModule } from 'nestjs-i18n';
-// import { ImagesModule } from './modules/image.module';
+import { MulterModule } from '@nestjs/platform-express';
+import { ServeStaticModule } from '@nestjs/serve-static';
+import { join } from 'path';
+import { multerConfig } from './config/multer.config';
 
 @Module({
   imports: [
@@ -42,6 +45,11 @@ import { I18nModule } from 'nestjs-i18n';
     JwtModule.register({
       secret: process.env.JWT_SECRET || 'SECRET',
       signOptions: { expiresIn: '10d' },
+    }),
+    MulterModule.register(multerConfig),
+    ServeStaticModule.forRoot({
+      rootPath: join(__dirname, '..', 'uploads'), // Adjust the path accordingly
+      serveRoot: '/uploads',
     }),
   ],
   controllers: ImportControllers,

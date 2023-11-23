@@ -2,6 +2,7 @@ import { AuthController } from 'src/controllers/auth.controller';
 import { BroadcastingController } from 'src/controllers/broadcasting.controller';
 import { CategoryController } from 'src/controllers/category.controller';
 import { CurrencyController } from 'src/controllers/currency.controller';
+import { FilesController } from 'src/controllers/files.controller';
 import { LanguageController } from 'src/controllers/language.controller';
 import { LogController } from 'src/controllers/log.controller';
 import { PermissionsController } from 'src/controllers/permission.controller';
@@ -20,4 +21,5 @@ export const ImportControllers = [
   CategoryController,
   LanguageController,
   ProductController,
+  FilesController
 ];

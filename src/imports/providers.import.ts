@@ -6,6 +6,7 @@ import { JwtWebSocketMiddleware } from 'src/middleware/jwt-socket.middlwware';
 import { AdminPageRepository } from 'src/repositories/admin-page.repository';
 import { CategoryRepository } from 'src/repositories/category.repository';
 import { CurrencyRepository } from 'src/repositories/currency.repository';
+import { FilesRepository } from 'src/repositories/files.repository';
 import { ImagesRepository } from 'src/repositories/image.repository';
 import { LanguageRepository } from 'src/repositories/language.repository';
 import { LogRepository } from 'src/repositories/log.repository';
@@ -22,6 +23,7 @@ import { AuthService } from 'src/services/auth.service';
 import { CategoryService } from 'src/services/category.service';
 import { CurrencyService } from 'src/services/currency.service';
 import { ElasticService } from 'src/services/elastic.service';
+import { FilesService } from 'src/services/files.service';
 import { JwtAuthService } from 'src/services/jwt-auth.service';
 import { LangService } from 'src/services/lang.service';
 import { LanguageService } from 'src/services/language.service';
@@ -83,4 +85,6 @@ export const ImportProviders = [
   ElasticService,
   ProductInterationRepository,
   RecomService,
+  FilesService,
+  FilesRepository,
 ];
