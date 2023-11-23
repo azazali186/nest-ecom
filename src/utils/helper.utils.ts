@@ -1,6 +1,7 @@
 import { Between } from 'typeorm';
 import { format } from 'date-fns';
 import { BadRequestException } from '@nestjs/common';
+import { MediaTypeEnum } from 'src/enum/media-type.enum';
 
 export function getPermissionNameFromRoute(
   path: string,
@@ -158,4 +159,29 @@ export function getMultipleSums(jsonArray: any[], keys: any[]) {
   });
 
   return sums;
+}
+
+export function getMediaTypeFromMimetype(
+  mimetype: string,
+): MediaTypeEnum | null {
+  const mediaTypeMap: { [key: string]: MediaTypeEnum } = {
+    image: MediaTypeEnum.IMAGES,
+    video: MediaTypeEnum.VIDEO,
+    audio: MediaTypeEnum.AUDIO,
+    document: MediaTypeEnum.MSWORD,
+    sheet: MediaTypeEnum.EXCEL,
+    pdf: MediaTypeEnum.PDF,
+  };
+  let fileType = mimetype.split('/')[0];
+
+  if (fileType === 'application') {
+    fileType = mimetype.split('/')[1];
+  }
+
+  fileType = fileType?.split('.')?.pop();
+
+  const lowercaseMimetype = fileType.toLowerCase();
+
+  const mt = mediaTypeMap[lowercaseMimetype];
+  return mt;
 }

@@ -1,6 +1,7 @@
 import { NotAcceptableException } from '@nestjs/common';
 import { diskStorage } from 'multer';
 import { extname } from 'path';
+import { AllowedFileTypes } from 'src/enum/allowed-file-type.enum';
 
 export const multerConfig = {
   storage: diskStorage({
@@ -14,15 +15,20 @@ export const multerConfig = {
     },
   }),
   fileFilter: (req, file, callback) => {
-    if (!file.originalname.match(/\.(jpg|jpeg|png|gif|webp|pdf)$/)) {
-      return callback(
-        new NotAcceptableException({
-          statusCode: 406,
-          message: 'Only image and pdf files are allowed!',
-        }).getResponse(),
-        false,
-      );
+    // Extract file type from the mime type
+    let fileType = file.mimetype.split('/')[0];
+
+    if(fileType === 'application'){
+      fileType = file.mimetype.split('/')[1];
     }
-    callback(null, true);
+
+    fileType = fileType?.split('.')?.pop()
+
+    // Check if the file type is in the allowed types
+    if (Object.values(AllowedFileTypes).includes(fileType)) {
+      callback(null, true);
+    } else {
+      callback(new Error('Invalid file type'), false);
+    }
   },
 };

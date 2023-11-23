@@ -7,6 +7,7 @@ import { ApiResponse } from 'src/utils/response.util';
 import { extname, join } from 'path';
 
 import * as fs from 'fs';
+import { getMediaTypeFromMimetype } from 'src/utils/helper.utils';
 
 export class FilesRepository extends Repository<Files> {
   constructor(
@@ -27,7 +28,7 @@ export class FilesRepository extends Repository<Files> {
       const newFile = new Files();
       newFile.url = file.path;
       newFile.file_name = file.filename;
-      newFile.media_type = file.mimetype;
+      newFile.media_type = getMediaTypeFromMimetype(file.mimetype);
       newFile.extention = extname(file.originalname);
       newFile.size = file.size.toString();
       newFile.original_file_name = file.originalname;

@@ -4,4 +4,5 @@ export enum MediaTypeEnum {
   'AUDIO' = 'AUDIO',
   'MSWORD' = 'MSWORD',
   'EXCEL' = 'EXCEL',
+  'PDF' = 'PDF',
 }
