@@ -38,7 +38,7 @@ export class FilesController {
   @Get(':id')
   async getFileById(@Param('id') id: number, @Res() res) {
     const file = await this.filesService.getFileById(id);
-    res.sendFile(file.url.replace('uploads/',''), { root: 'uploads' });
+    res.sendFile(file.file_name, { root: 'uploads' });
   }
 
   @Delete()
