@@ -21,6 +21,9 @@ export class RecomService {
     const mostOrderedProducts = await this.getProductsOfCurrentMonth(
       ProductInteractionTypeEnum.purchased,
     );
+    const mostWishListed = await this.getProductsOfCurrentMonth(
+      ProductInteractionTypeEnum.add_to_wishlist,
+    );
     const recomProduct = await this.getRecommendationsForUser(user.id);
 
     const data = {
@@ -28,6 +31,7 @@ export class RecomService {
       visited: mostViewedProducts,
       orders: mostOrderedProducts,
       recom: recomProduct,
+      wish: mostWishListed,
     };
     return ApiResponse.success(data, 200);
   }

@@ -15,7 +15,7 @@ export class ElasticService {
   async createIndex(index: string, body: any): Promise<any> {
     const indexSettings = {
       id: body.id,
-      product: body,
+      data: body,
     };
 
     return this.client.index({
