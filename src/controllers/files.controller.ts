@@ -27,7 +27,6 @@ export class FilesController {
   @ApiBody({ type: UploadFileDto })
   @UseInterceptors(FilesInterceptor('files', 10, multerConfig))
   async uploadFile(@UploadedFile() files: Express.Multer.File[], @Request() r) {
-    console.log(r.files);
     return await this.filesService.uploadFile(r.files, r.user);
   }
 
@@ -39,11 +38,11 @@ export class FilesController {
   @Get(':id')
   async getFileById(@Param('id') id: number, @Res() res) {
     const file = await this.filesService.getFileById(id);
-    res.sendFile(file.url, { root: 'uploads' }); // Assuming files are stored in the 'uploads' directory
+    res.sendFile(file.url.replace('uploads/',''), { root: 'uploads' });
   }
 
   @Delete()
   async deleteFiles(@Body() body: { ids: number[] }) {
-    await this.filesService.deleteFiles(body.ids);
+    return await this.filesService.deleteFiles(body.ids);
   }
 }

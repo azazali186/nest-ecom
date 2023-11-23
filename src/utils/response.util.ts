@@ -63,4 +63,16 @@ export class ApiResponse<T> {
       return new ApiResponse(null, statusCode, message, err.message || error);
     }
   }
+
+  static async successNoData<T>(
+    statusCode: number = 200,
+    message: any = null,
+    error: any = null,
+  ): Promise<ApiResponse<T>> {
+    try {
+      return new ApiResponse(null, statusCode, message, null);
+    } catch (err) {
+      return new ApiResponse(null, statusCode, message, err.message || error);
+    }
+  }
 }

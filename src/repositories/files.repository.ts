@@ -56,7 +56,10 @@ export class FilesRepository extends Repository<Files> {
     });
 
     if (filesToDelete.length === 0) {
-      throw new NotFoundException('No files found to delete');
+      throw new NotFoundException({
+        statusCode: 404,
+        message: 'No files found to delete',
+      });
     }
 
     // Delete files from storage
@@ -68,6 +71,6 @@ export class FilesRepository extends Repository<Files> {
     // Delete files from the database
     await this.fRepo.remove(filesToDelete);
 
-    return ApiResponse.success(null, 200, 'DELETED');
+    return ApiResponse.success(null, 200, 'DATA DELETED');
   }
 }
