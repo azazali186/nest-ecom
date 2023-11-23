@@ -50,7 +50,6 @@ export class CheckPermissionMiddleware implements NestMiddleware {
           token,
           process.env.ENCRYPTION_KEY_TOKEN,
         ).toString(enc.Utf8);
-        console.log(currentPermission)
         const dt = await this.usersService.findSessionToken(token);
         if (((currentPermission !== 'PUBLIC'  && !dt) || dt?.is_expired === true)) {
           throw new UnauthorizedException({
@@ -62,7 +61,6 @@ export class CheckPermissionMiddleware implements NestMiddleware {
           secret: process.env.JWT_SECRET,
         });
         const user = await this.usersService.findById(decoded.sub);
-        // console.log('user  ', decoded);
         const { password, ...others } = user;
         req.user = others;
         req.user.token = token;

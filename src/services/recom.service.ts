@@ -2,14 +2,35 @@
 
 import { Inject, Injectable, forwardRef } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { In, Repository } from 'typeorm';
+import { Between, In, Repository } from 'typeorm';
 import { ProductInteraction } from 'src/entities/product-interaction.entity';
 import { Product } from 'src/entities/product.entity';
 import { ProductInteractionTypeEnum } from 'src/enum/product-interation-type.enum';
 import { ProductRepository } from 'src/repositories/product.repository';
+import { ApiResponse } from 'src/utils/response.util';
 
 @Injectable()
 export class RecomService {
+  async getLandingPageData(user: any) {
+    const popularProducts = await this.getProductsOfCurrentMonth(
+      ProductInteractionTypeEnum.like,
+    );
+    const mostViewedProducts = await this.getProductsOfCurrentMonth(
+      ProductInteractionTypeEnum.views,
+    );
+    const mostOrderedProducts = await this.getProductsOfCurrentMonth(
+      ProductInteractionTypeEnum.purchased,
+    );
+    const recomProduct = await this.getRecommendationsForUser(user.id);
+
+    const data = {
+      popular: popularProducts,
+      visited: mostViewedProducts,
+      orders: mostOrderedProducts,
+      recom: recomProduct,
+    };
+    return ApiResponse.success(data, 200);
+  }
   constructor(
     @InjectRepository(ProductInteraction)
     private readonly intRepo: Repository<ProductInteraction>,
@@ -158,5 +179,69 @@ export class RecomService {
     }
 
     return dotProduct / (magnitudeA * magnitudeB);
+  }
+
+  async getProductsOfCurrentMonth(
+    type: ProductInteractionTypeEnum,
+  ): Promise<Product[]> {
+    const currentDate = new Date();
+    const currentMonth = currentDate.getMonth() + 1; // Months are zero-based
+
+    // Get user behaviors for the current month with 'rate' action
+    const userBehaviors = await this.intRepo.find({
+      where: {
+        type: type,
+        created_at: Between(
+          new Date(`${currentDate.getFullYear()}-${currentMonth}-01`),
+          new Date(`${currentDate.getFullYear()}-${currentMonth + 1}-01`),
+        ),
+      },
+      relations: {
+        product: true,
+        user: true,
+      },
+    });
+
+    // Calculate the average rating for each product
+    const productRatings: Record<number, { sum: number; count: number }> = {};
+
+    userBehaviors.forEach((behavior) => {
+      if (!productRatings[behavior.product.id]) {
+        productRatings[behavior.product.id] = { sum: 0, count: 0 };
+      }
+      productRatings[behavior.product.id].sum += behavior.rating;
+      productRatings[behavior.product.id].count += 1;
+    });
+
+    // Calculate average ratings
+    const averageRatings: Record<number, number> = {};
+    Object.keys(productRatings).forEach((productId) => {
+      averageRatings[productId] =
+        productRatings[productId].sum / productRatings[productId].count;
+    });
+
+    // Sort products by average rating
+    const sortedProductIds = Object.keys(averageRatings).sort(
+      (a, b) => averageRatings[b] - averageRatings[a],
+    );
+
+    // Get top 10 product ids
+    const top10ProductIds = sortedProductIds.slice(0, 10);
+
+    // Get product details for top 10 product ids
+    const top10Products = await this.prodRepo.find({
+      where: {
+        id: In(top10ProductIds),
+      },
+      relations: {
+        images: true,
+        categories: true,
+        translations: {
+          language: true,
+        },
+      },
+    });
+
+    return top10Products;
   }
 }

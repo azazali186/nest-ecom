@@ -15,6 +15,7 @@ import { BulkProductUploadDto } from 'src/dto/product/bulk-product-upload.dto';
 import { CreateProductDto } from 'src/dto/product/create-product.dto';
 import { SearchProductDto } from 'src/dto/product/search-product.dto';
 import { UpdateProductDto } from 'src/dto/product/update-product.dto';
+import { ProductInteractionTypeEnum } from 'src/enum/product-interation-type.enum';
 import { ProductService } from 'src/services/product.service';
 import { RecomService } from 'src/services/recom.service';
 
@@ -22,7 +23,10 @@ import { RecomService } from 'src/services/recom.service';
 @ApiBearerAuth()
 @Controller('products')
 export class ProductController {
-  constructor(private readonly prodService: ProductService, private readonly recomService: RecomService) {}
+  constructor(
+    private readonly prodService: ProductService,
+    private readonly recomService: RecomService,
+  ) {}
   @Post()
   create(@Body(ValidationPipe) req: CreateProductDto, @Request() r) {
     return this.prodService.create(req, r.user);
@@ -38,9 +42,9 @@ export class ProductController {
     return this.prodService.findAll(req);
   }
 
-  @Get('public/recom')
-  publicRecom(@Request() r) {
-    return this.recomService.getRecommendationsForUser(r.user.id);
+  @Get('public/landing-page')
+  getPopularProductsOfCurrentMonth(@Request() r) {
+    return this.recomService.getLandingPageData(r.user);
   }
 
   @Get('public')

@@ -31,5 +31,5 @@ export class ProductInteraction {
   rating: number;
 
   @Column({ default: () => 'CURRENT_TIMESTAMP' })
-  createdAt: Date;
+  created_at: Date;
 }
