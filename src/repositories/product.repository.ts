@@ -287,10 +287,17 @@ export class ProductRepository extends Repository<Product> {
       });
     }
 
+    if(req.search){
+      query.andWhere(
+        '(product.sku LIKE :title OR translations.name LIKE :title OR stock.sku = :title)',
+        { title: `%${req.search}%` },
+      );
+    }
+
     if (req.title) {
       // Check title in both Product and Translations entities
       query.andWhere(
-        '(product.title LIKE :title OR translations.title LIKE :title)',
+        '(product.title LIKE :title OR translations.name LIKE :title)',
         { title: `%${req.title}%` },
       );
     }
@@ -332,11 +339,7 @@ export class ProductRepository extends Repository<Product> {
       });
     }
 
-    console.log('products Start');
-
     const [products, count] = await query.getManyAndCount();
-
-    console.log('products End', products);
 
     // Execute the query and return the results
     return ApiResponse.paginate({ list: products, count: count }, 200);

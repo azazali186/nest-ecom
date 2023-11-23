@@ -18,6 +18,11 @@ export class SearchProductDto extends SearchBaseDto {
   @ApiPropertyOptional()
   @IsOptional()
   @IsString()
+  search?: string;
+
+  @ApiPropertyOptional()
+  @IsOptional()
+  @IsString()
   created_by?: string;
 
   @ApiPropertyOptional()
