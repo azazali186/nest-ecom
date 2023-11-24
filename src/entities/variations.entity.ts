@@ -4,12 +4,13 @@ import {
   ManyToMany,
   Column,
   OneToMany,
+  BaseEntity,
 } from 'typeorm';
 import { Product } from './product.entity';
 import { Stock } from './stock.entity';
 
 @Entity('variations')
-export class Variation {
+export class Variation extends BaseEntity {
   @PrimaryGeneratedColumn()
   id: number;
 

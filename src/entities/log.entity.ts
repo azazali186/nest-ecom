@@ -1,7 +1,7 @@
-import { Entity, PrimaryGeneratedColumn, Column } from 'typeorm';
+import { Entity, PrimaryGeneratedColumn, Column, BaseEntity } from 'typeorm';
 
 @Entity('logs')
-export class Log {
+export class Log extends BaseEntity {
   @PrimaryGeneratedColumn()
   id: number;
 
@@ -14,11 +14,11 @@ export class Log {
   @Column({ length: 255, nullable: true })
   hostname: string;
 
-  @Column({ type: 'text', nullable: true })
-  request_body: string;
+  @Column({ type: 'simple-json', nullable: true })
+  request_body: any;
 
-  @Column({ type: 'text', nullable: true })
-  response_body: string;
+  @Column({ type: 'simple-json', nullable: true })
+  response_body: any;
 
   @Column({ length: 10, nullable: true })
   status_code: string;

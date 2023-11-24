@@ -5,12 +5,13 @@ import {
   ManyToOne,
   OneToMany,
   JoinTable,
-  ManyToMany, // Import this line
+  ManyToMany,
+  BaseEntity, // Import this line
 } from 'typeorm';
 import { Permission } from './permission.entity';
 
 @Entity('admin_page')
-export class AdminPage {
+export class AdminPage extends BaseEntity  {
   @PrimaryGeneratedColumn()
   id: number;
 

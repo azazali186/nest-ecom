@@ -6,6 +6,7 @@ import {
   OneToMany,
   JoinColumn,
   ManyToOne,
+  BaseEntity,
 } from 'typeorm';
 import { Product } from './product.entity';
 import { Translations } from './translation.entity';
@@ -13,7 +14,7 @@ import { Images } from './images.entity';
 import { User } from './user.entity';
 
 @Entity('catalogs')
-export class Catalog {
+export class Catalog extends BaseEntity  {
   @PrimaryGeneratedColumn()
   id: number;
 

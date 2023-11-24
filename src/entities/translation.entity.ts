@@ -4,6 +4,7 @@ import {
   Column,
   ManyToOne,
   JoinColumn,
+  BaseEntity,
 } from 'typeorm';
 import { Language } from './language.entity';
 import { Category } from './category.entity';
@@ -12,7 +13,7 @@ import { Stock } from './stock.entity';
 import { Catalog } from './catalog.entity';
 
 @Entity()
-export class Translations {
+export class Translations extends BaseEntity {
   @PrimaryGeneratedColumn()
   id: number;
 

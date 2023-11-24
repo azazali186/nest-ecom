@@ -8,13 +8,14 @@ import {
   OneToMany,
   JoinColumn,
   ManyToOne,
+  BaseEntity,
 } from 'typeorm';
 import { User } from './user.entity';
 import { Permission } from './permission.entity';
 import { AdminPage } from './admin-page.entity';
 
 @Entity('roles')
-export class Role {
+export class Role extends BaseEntity {
   @PrimaryGeneratedColumn()
   id: number;
 

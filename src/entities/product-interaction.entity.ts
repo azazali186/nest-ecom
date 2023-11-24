@@ -6,13 +6,14 @@ import {
   Column,
   ManyToOne,
   JoinColumn,
+  BaseEntity,
 } from 'typeorm';
 import { Product } from './product.entity'; // Assuming you have a Product entity
 import { ProductInteractionTypeEnum } from 'src/enum/product-interation-type.enum';
 import { User } from './user.entity';
 
 @Entity()
-export class ProductInteraction {
+export class ProductInteraction extends BaseEntity {
   @PrimaryGeneratedColumn()
   id: number;
 

@@ -4,12 +4,13 @@ import {
   Column,
   ManyToOne,
   JoinColumn,
+  BaseEntity,
 } from 'typeorm';
 import { MediaTypeEnum } from 'src/enum/media-type.enum';
 import { User } from './user.entity';
 
 @Entity()
-export class Files {
+export class Files extends BaseEntity {
   @PrimaryGeneratedColumn()
   id: number;
 

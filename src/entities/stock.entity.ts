@@ -1,5 +1,6 @@
 import { ProductStatus } from 'src/enum/product-status.enum';
 import {
+  BaseEntity,
   Column,
   Entity,
   JoinColumn,
@@ -15,7 +16,7 @@ import { Product } from './product.entity';
 import { Variation } from './variations.entity';
 
 @Entity()
-export class Stock {
+export class Stock extends BaseEntity {
   @PrimaryGeneratedColumn()
   id: number;
 

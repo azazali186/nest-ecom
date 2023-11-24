@@ -4,13 +4,14 @@ import {
   Column,
   ManyToOne,
   JoinColumn,
+  BaseEntity,
 } from 'typeorm';
 import { Category } from './category.entity';
 import { Product } from './product.entity';
 import { Stock } from './stock.entity';
 import { Catalog } from './catalog.entity';
 @Entity()
-export class Images {
+export class Images extends BaseEntity {
   @PrimaryGeneratedColumn()
   id: number;
 

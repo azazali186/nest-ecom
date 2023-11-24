@@ -4,13 +4,14 @@ import {
   Column,
   ManyToOne,
   JoinColumn,
+  BaseEntity,
 } from 'typeorm';
 import { Stock } from './stock.entity';
 import { Currency } from './currency.entity';
 import { Product } from './product.entity';
 
 @Entity()
-export class Price {
+export class Price extends BaseEntity {
   @PrimaryGeneratedColumn()
   id: number;
 

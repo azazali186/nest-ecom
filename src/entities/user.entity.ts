@@ -6,13 +6,14 @@ import {
   JoinColumn,
   ManyToOne,
   OneToOne,
+  BaseEntity,
 } from 'typeorm';
 import { Role } from './role.entity';
 import { Session } from './session.entity';
 import { UserStatus } from '../enum/user-status.enum';
 
 @Entity('users')
-export class User {
+export class User extends BaseEntity {
   @PrimaryGeneratedColumn()
   id: number;
 
