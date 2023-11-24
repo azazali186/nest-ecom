@@ -1,4 +1,4 @@
-import { ProductStatus } from 'src/enum/product-status.enum';
+import { ProductStatus } from '../enum/product-status.enum';
 import {
   BaseEntity,
   Column,
@@ -18,6 +18,7 @@ import { Stock } from './stock.entity';
 import { Catalog } from './catalog.entity';
 import { Variation } from './variations.entity';
 import { Price } from './price.entity';
+import { Cart } from './cart.entity';
 
 @Entity('products')
 export class Product extends BaseEntity {

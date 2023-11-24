@@ -9,7 +9,7 @@ import {
   BaseEntity,
 } from 'typeorm';
 import { Product } from './product.entity'; // Assuming you have a Product entity
-import { ProductInteractionTypeEnum } from 'src/enum/product-interation-type.enum';
+import { ProductInteractionTypeEnum } from '../enum/product-interation-type.enum';
 import { User } from './user.entity';
 
 @Entity()

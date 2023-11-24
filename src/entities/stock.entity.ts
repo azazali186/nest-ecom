@@ -1,4 +1,4 @@
-import { ProductStatus } from 'src/enum/product-status.enum';
+import { ProductStatus } from '../enum/product-status.enum';
 import {
   BaseEntity,
   Column,

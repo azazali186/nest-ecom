@@ -6,7 +6,7 @@ import {
   JoinColumn,
   BaseEntity,
 } from 'typeorm';
-import { MediaTypeEnum } from 'src/enum/media-type.enum';
+import { MediaTypeEnum } from '../enum/media-type.enum';
 import { User } from './user.entity';
 
 @Entity()

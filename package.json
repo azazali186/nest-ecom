@@ -1,11 +1,13 @@
 {
-  "name": "nest-cms",
+  "name": "nest-ecom",
   "version": "0.0.1",
   "description": "",
   "author": "",
   "private": true,
   "license": "UNLICENSED",
   "scripts": {
+    "typeorm": "typeorm-ts-node-commonjs",
+    "generate:migration": "typeorm-ts-node-commonjs migration:generate ./src/migrations/ -d ./src/config/ds.ts",
     "build": "NODE_ENV=local nest build",
     "build:dev": "NODE_ENV=dev nest build",
     "build:prod": "NODE_ENV=prod nest build",

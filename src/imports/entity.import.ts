@@ -1,4 +1,5 @@
 import { AdminPage } from 'src/entities/admin-page.entity';
+import { Cart } from 'src/entities/cart.entity';
 import { Catalog } from 'src/entities/catalog.entity';
 import { Category } from 'src/entities/category.entity';
 import { Currency } from 'src/entities/currency.entity';
@@ -37,4 +38,5 @@ export const ImportEntities = [
   Files,
   Catalog,
   Variation,
+  Cart,
 ];

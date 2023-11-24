@@ -16,4 +16,9 @@ export const typeOrmConfig: TypeOrmModuleOptions = {
   logging: true,
   logger: 'file',
   dateStrings: ['DATE', 'DATETIME', 'TIMESTAMP'],
+  migrations: ['src/migrations/*.ts'],
+  subscribers: ['src/subscribers/*.ts'],
+  /* cli: {
+    migrationsDir: 'src/database/migrations',
+  }, */
 };
