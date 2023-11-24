@@ -138,7 +138,7 @@ export class UserRepository extends Repository<User> {
       await this.roleRepository.save(role);
     }
 
-    const kyc = roleName === 'vendor' ? false : true;
+    const kyc = roleName === process.env.VENDOR_ROLE_NAME ? false : true;
 
     // Create the new user
     const hashPassord = AES.encrypt(

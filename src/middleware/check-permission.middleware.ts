@@ -73,7 +73,7 @@ export class CheckPermissionMiddleware implements NestMiddleware {
         if (
           currentPermission === 'LOGOUT' ||
           currentPermission === 'PUBLIC' ||
-          currentPermission === 'BROADCAST'
+          currentPermission === 'BROADCAST' || req.user.roles.name == process.env.MEMBER_ROLE_NAME 
         ) {
           next();
         } else {

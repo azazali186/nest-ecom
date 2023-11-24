@@ -17,14 +17,14 @@ export class AuthController {
     return this.authService.login(loginDto);
   }
 
-  @Post('register')
+  @Post(`${process.env.MEMBER_ROLE_NAME}/register`)
   register(@Body() registerDto: RegisterDto) {
-    return this.authService.register(registerDto, 'member');
+    return this.authService.register(registerDto, process.env.MEMBER_ROLE_NAME);
   }
 
-  @Post('vendor/register')
+  @Post(`${process.env.VENDOR_ROLE_NAME}/register`)
   registerVendor(@Body() registerDto: RegisterDto) {
-    return this.authService.register(registerDto, 'vendor');
+    return this.authService.register(registerDto, process.env.VENDOR_ROLE_NAME);
   }
 
   @Post('forgot-password')
