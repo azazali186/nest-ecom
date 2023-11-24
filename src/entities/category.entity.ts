@@ -7,6 +7,7 @@ import {
   Tree,
   TreeChildren,
   TreeParent,
+  BaseEntity,
 } from 'typeorm';
 import { Product } from './product.entity';
 import { Translations } from './translation.entity';
@@ -16,7 +17,7 @@ import { Images } from './images.entity';
 @Tree('closure-table', {
   closureTableName: 'category_tree',
 })
-export class Category {
+export class Category extends BaseEntity   {
   @PrimaryGeneratedColumn()
   id: number;
 

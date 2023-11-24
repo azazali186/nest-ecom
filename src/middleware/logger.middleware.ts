@@ -34,7 +34,7 @@ export class LoggerMiddleware implements NestMiddleware {
       log.method = tokens.method(req, res);
       log.url = req.baseUrl + req.path;
       log.hostname = req.hostname;
-      log.request_body = reqBody;
+      log.request_body = JSON.stringify(reqBody);
       log.status_code = tokens.status(req, res);
       log.response_time = tokens['response-time'](req, res) + ' ms';
       log.content_length = tokens.res(req, res, 'content-length');
