@@ -13,8 +13,8 @@ export class CatalogService {
     public cpRepo: CatalogRepository,
   ) {}
 
-  create(req: CreateCatalogDto) {
-    return this.cpRepo.createCatalog(req);
+  create(req: CreateCatalogDto, user:any) {
+    return this.cpRepo.createCatalog(req, user);
   }
   async findAll(name: SearchCatalogDto) {
     return this.cpRepo.findCatalogs(name);

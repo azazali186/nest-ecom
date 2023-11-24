@@ -1,0 +1,1502 @@
+[
+  {
+    "sku": "SKU001",
+    "categoryIds": [1],
+    "variations": [
+      {
+        "name": "Size",
+        "values": ["Small", "Medium", "Large"]
+      }
+    ],
+    "quantity": 100,
+    "prices": [
+      { "price": "20.00", "currency_id": 1 },
+      { "price": "80000.00", "currency_id": 2 },
+      { "price": "1700.00", "currency_id": 3 }
+    ],
+    "translations": [
+      {
+        "name": "Product 1",
+        "language_id": 1,
+        "description": "Description in English",
+        "meta_title": "Title in English",
+        "meta_keywords": "Keywords in English",
+        "meta_descriptions": "Meta Description in English"
+      },
+      {
+        "name": "产品 1",
+        "language_id": 2,
+        "description": "在中文的描述",
+        "meta_title": "在中文的标题",
+        "meta_keywords": "在中文的关键词",
+        "meta_descriptions": "在中文的元描述"
+      },
+      {
+        "name": "ផលិតផល 1",
+        "language_id": 3,
+        "description": "កms្រាងនៅក្នុងភាសាខ្មែរ",
+        "meta_title": "កms្រាងនៅក្នុងភាសាខ្មែរ",
+        "meta_keywords": "កms្រាងនៅក្នុងភាសាខ្មែរ",
+        "meta_descriptions": "កms្រាងនៅក្នុងភាសាខ្មែរ"
+      },
+      {
+        "name": "उत्पाद 1",
+        "language_id": 4,
+        "description": "हिंदी में विवरण",
+        "meta_title": "हिंदी में शीर्षक",
+        "meta_keywords": "हिंदी में कीवर्ड",
+        "meta_descriptions": "हिंदी में मेटा विवरण"
+      }
+    ]
+  },
+  {
+    "sku": "SKU002",
+    "categoryIds": [2],
+    "variations": [
+      {
+        "name": "Color",
+        "values": ["Red", "Blue", "Green"]
+      }
+    ],
+    "quantity": 50,
+    "prices": [
+      { "price": "35.00", "currency_id": 1 },
+      { "price": "140000.00", "currency_id": 2 },
+      { "price": "2975.00", "currency_id": 3 }
+    ],
+    "translations": [
+      {
+        "name": "Product 2",
+        "language_id": 1,
+        "description": "Description in English",
+        "meta_title": "Title in English",
+        "meta_keywords": "Keywords in English",
+        "meta_descriptions": "Meta Description in English"
+      },
+      {
+        "name": "产品 2",
+        "language_id": 2,
+        "description": "在中文的描述",
+        "meta_title": "在中文的标题",
+        "meta_keywords": "在中文的关键词",
+        "meta_descriptions": "在中文的元描述"
+      },
+      {
+        "name": "ផលិតផល 2",
+        "language_id": 3,
+        "description": "កms្រាងនៅក្នុងភាសាខ្មែរ",
+        "meta_title": "កms្រាងនៅក្នុងភាសាខ្មែរ",
+        "meta_keywords": "កms្រាងនៅក្នុងភាសាខ្មែរ",
+        "meta_descriptions": "កms្រាងនៅក្នុងភាសាខ្មែរ"
+      },
+      {
+        "name": "उत्पाद 2",
+        "language_id": 4,
+        "description": "हिंदी में विवरण",
+        "meta_title": "हिंदी में शीर्षक",
+        "meta_keywords": "हिंदी में कीवर्ड",
+        "meta_descriptions": "हिंदी में मेटा विवरण"
+      }
+    ]
+  },
+  {
+    "sku": "SKU003",
+    "categoryIds": [3],
+    "variations": [
+      {
+        "name": "Paper Type",
+        "values": ["Recycled", "Glossy", "Matte"]
+      }
+    ],
+    "quantity": 75,
+    "prices": [
+      { "price": "15.00", "currency_id": 1 },
+      { "price": "60000.00", "currency_id": 2 },
+      { "price": "1275.00", "currency_id": 3 }
+    ],
+    "translations": [
+      {
+        "name": "Product 3",
+        "language_id": 1,
+        "description": "Description in English",
+        "meta_title": "Title in English",
+        "meta_keywords": "Keywords in English",
+        "meta_descriptions": "Meta Description in English"
+      },
+      {
+        "name": "产品 3",
+        "language_id": 2,
+        "description": "在中文的描述",
+        "meta_title": "在中文的标题",
+        "meta_keywords": "在中文的关键词",
+        "meta_descriptions": "在中文的元描述"
+      },
+      {
+        "name": "ផលិតផល 3",
+        "language_id": 3,
+        "description": "កms្រាងនៅក្នុងភាសាខ្មែរ",
+        "meta_title": "កms្រាងនៅក្នុងភាសាខ្មែរ",
+        "meta_keywords": "កms្រាងនៅក្នុងភាសាខ្មែរ",
+        "meta_descriptions": "កms្រាងនៅក្នុងភាសាខ្មែរ"
+      },
+      {
+        "name": "उत्पाद 3",
+        "language_id": 4,
+        "description": "हिंदी में विवरण",
+        "meta_title": "हिंदी में शीर्षक",
+        "meta_keywords": "हिंदी में कीवर्ड",
+        "meta_descriptions": "हिंदी में मेटा विवरण"
+      }
+    ]
+  },
+  {
+    "sku": "SKU004",
+    "categoryIds": [4],
+    "variations": [
+      {
+        "name": "Age Group",
+        "values": ["3-5 years", "6-8 years", "9-12 years"]
+      }
+    ],
+    "quantity": 120,
+    "prices": [
+      { "price": "25.00", "currency_id": 1 },
+      { "price": "100000.00", "currency_id": 2 },
+      { "price": "2125.00", "currency_id": 3 }
+    ],
+    "translations": [
+      {
+        "name": "Product 4",
+        "language_id": 1,
+        "description": "Description in English",
+        "meta_title": "Title in English",
+        "meta_keywords": "Keywords in English",
+        "meta_descriptions": "Meta Description in English"
+      },
+      {
+        "name": "产品 4",
+        "language_id": 2,
+        "description": "在中文的描述",
+        "meta_title": "在中文的标题",
+        "meta_keywords": "在中文的关键词",
+        "meta_descriptions": "在中文的元描述"
+      },
+      {
+        "name": "ផលិតផល 4",
+        "language_id": 3,
+        "description": "កms្រាងនៅក្នុងភាសាខ្មែរ",
+        "meta_title": "កms្រាងនៅក្នុងភាសាខ្មែរ",
+        "meta_keywords": "កms្រាងនៅក្នុងភាសាខ្មែរ",
+        "meta_descriptions": "កms្រាងនៅក្នុងភាសាខ្មែរ"
+      },
+      {
+        "name": "उत्पाद 4",
+        "language_id": 4,
+        "description": "हिंदी में विवरण",
+        "meta_title": "हिंदी में शीर्षक",
+        "meta_keywords": "हिंदी में कीवर्ड",
+        "meta_descriptions": "हिंदी में मेटा विवरण"
+      }
+    ]
+  },
+  {
+    "sku": "SKU005",
+    "categoryIds": [5],
+    "variations": [
+      {
+        "name": "Operating System",
+        "values": ["Windows", "MacOS", "Linux"]
+      }
+    ],
+    "quantity": 80,
+    "prices": [
+      { "price": "120.00", "currency_id": 1 },
+      { "price": "480000.00", "currency_id": 2 },
+      { "price": "10200.00", "currency_id": 3 }
+    ],
+    "translations": [
+      {
+        "name": "Product 5",
+        "language_id": 1,
+        "description": "Description in English",
+        "meta_title": "Title in English",
+        "meta_keywords": "Keywords in English",
+        "meta_descriptions": "Meta Description in English"
+      },
+      {
+        "name": "产品 5",
+        "language_id": 2,
+        "description": "在中文的描述",
+        "meta_title": "在中文的标题",
+        "meta_keywords": "在中文的关键词",
+        "meta_descriptions": "在中文的元描述"
+      },
+      {
+        "name": "ផលិតផល 5",
+        "language_id": 3,
+        "description": "កms្រាងនៅក្នុងភាសាខ្មែរ",
+        "meta_title": "កms្រាងនៅក្នុងភាសាខ្មែរ",
+        "meta_keywords": "កms្រាងនៅក្នុងភាសាខ្មែរ",
+        "meta_descriptions": "កms្រាងនៅក្នុងភាសាខ្មែរ"
+      },
+      {
+        "name": "उत्पाद 5",
+        "language_id": 4,
+        "description": "हिंदी में विवरण",
+        "meta_title": "हिंदी में शीर्षक",
+        "meta_keywords": "हिंदी में कीवर्ड",
+        "meta_descriptions": "हिंदी में मेटा विवरण"
+      }
+    ]
+  },
+  {
+    "sku": "SKU006",
+    "categoryIds": [6],
+    "variations": [
+      {
+        "name": "Material",
+        "values": ["Cotton", "Polyester", "Blend"]
+      }
+    ],
+    "quantity": 60,
+    "prices": [
+      { "price": "50.00", "currency_id": 1 },
+      { "price": "200000.00", "currency_id": 2 },
+      { "price": "4250.00", "currency_id": 3 }
+    ],
+    "translations": [
+      {
+        "name": "Product 6",
+        "language_id": 1,
+        "description": "Description in English",
+        "meta_title": "Title in English",
+        "meta_keywords": "Keywords in English",
+        "meta_descriptions": "Meta Description in English"
+      },
+      {
+        "name": "产品 6",
+        "language_id": 2,
+        "description": "在中文的描述",
+        "meta_title": "在中文的标题",
+        "meta_keywords": "在中文的关键词",
+        "meta_descriptions": "在中文的元描述"
+      },
+      {
+        "name": "ផលិតផល 6",
+        "language_id": 3,
+        "description": "កms្រាងនៅក្នុងភាសាខ្មែរ",
+        "meta_title": "កms្រាងនៅក្នុងភាសាខ្មែរ",
+        "meta_keywords": "កms្រាងនៅក្នុងភាសាខ្មែរ",
+        "meta_descriptions": "កms្រាងនៅក្នុងភាសាខ្មែរ"
+      },
+      {
+        "name": "उत्पाद 6",
+        "language_id": 4,
+        "description": "हिंदी में विवरण",
+        "meta_title": "हिंदी में शीर्षक",
+        "meta_keywords": "हिंदी में कीवर्ड",
+        "meta_descriptions": "हिंदी में मेटा विवरण"
+      }
+    ]
+  },
+  {
+    "sku": "SKU007",
+    "categoryIds": [7],
+    "variations": [
+      {
+        "name": "Style",
+        "values": ["Casual", "Formal", "Sporty"]
+      }
+    ],
+    "quantity": 90,
+    "prices": [
+      { "price": "75.00", "currency_id": 1 },
+      { "price": "300000.00", "currency_id": 2 },
+      { "price": "6375.00", "currency_id": 3 }
+    ],
+    "translations": [
+      {
+        "name": "Product 7",
+        "language_id": 1,
+        "description": "Description in English",
+        "meta_title": "Title in English",
+        "meta_keywords": "Keywords in English",
+        "meta_descriptions": "Meta Description in English"
+      },
+      {
+        "name": "产品 7",
+        "language_id": 2,
+        "description": "在中文的描述",
+        "meta_title": "在中文的标题",
+        "meta_keywords": "在中文的关键词",
+        "meta_descriptions": "在中文的元描述"
+      },
+      {
+        "name": "ផលិតផល 7",
+        "language_id": 3,
+        "description": "កms្រាងនៅក្នុងភាសាខ្មែរ",
+        "meta_title": "កms្រាងនៅក្នុងភាសាខ្មែរ",
+        "meta_keywords": "កms្រាងនៅក្នុងភាសាខ្មែរ",
+        "meta_descriptions": "កms្រាងនៅក្នុងភាសាខ្មែរ"
+      },
+      {
+        "name": "उत्पाद 7",
+        "language_id": 4,
+        "description": "हिंदी में विवरण",
+        "meta_title": "हिंदी में शीर्षक",
+        "meta_keywords": "हिंदी में कीवर्ड",
+        "meta_descriptions": "हिंदी में मेटा विवरण"
+      }
+    ]
+  },
+  {
+    "sku": "SKU008",
+    "categoryIds": [8],
+    "variations": [
+      {
+        "name": "Skin Type",
+        "values": ["Oily", "Dry", "Normal"]
+      }
+    ],
+    "quantity": 70,
+    "prices": [
+      { "price": "40.00", "currency_id": 1 },
+      { "price": "160000.00", "currency_id": 2 },
+      { "price": "3400.00", "currency_id": 3 }
+    ],
+    "translations": [
+      {
+        "name": "Product 8",
+        "language_id": 1,
+        "description": "Description in English",
+        "meta_title": "Title in English",
+        "meta_keywords": "Keywords in English",
+        "meta_descriptions": "Meta Description in English"
+      },
+      {
+        "name": "产品 8",
+        "language_id": 2,
+        "description": "在中文的描述",
+        "meta_title": "在中文的标题",
+        "meta_keywords": "在中文的关键词",
+        "meta_descriptions": "在中文的元描述"
+      },
+      {
+        "name": "ផលិតផល 8",
+        "language_id": 3,
+        "description": "កms្រាងនៅក្នុងភាសាខ្មែរ",
+        "meta_title": "កms្រាងនៅក្នុងភាសាខ្មែរ",
+        "meta_keywords": "កms្រាងនៅក្នុងភាសាខ្មែរ",
+        "meta_descriptions": "កms្រាងនៅក្នុងភាសាខ្មែរ"
+      },
+      {
+        "name": "उत्पाद 8",
+        "language_id": 4,
+        "description": "हिंदी में विवरण",
+        "meta_title": "हिंदी में शीर्षक",
+        "meta_keywords": "हिंदी में कीवर्ड",
+        "meta_descriptions": "हिंदी में मेटा विवरण"
+      }
+    ]
+  },
+  {
+    "sku": "SKU009",
+    "categoryIds": [9],
+    "variations": [
+      {
+        "name": "Flavor",
+        "values": ["Vanilla", "Chocolate", "Strawberry"]
+      }
+    ],
+    "quantity": 120,
+    "prices": [
+      { "price": "10.00", "currency_id": 1 },
+      { "price": "40000.00", "currency_id": 2 },
+      { "price": "850.00", "currency_id": 3 }
+    ],
+    "translations": [
+      {
+        "name": "Product 9",
+        "language_id": 1,
+        "description": "Delicious vanilla-flavored treat",
+        "meta_title": "Vanilla Delight",
+        "meta_keywords": "Vanilla, Dessert, Sweet",
+        "meta_descriptions": "A delightful vanilla-flavored product for your sweet cravings."
+      },
+      {
+        "name": "产品 9",
+        "language_id": 2,
+        "description": "美味的香草口味零食",
+        "meta_title": "香草美味",
+        "meta_keywords": "香草，甜点，甜",
+        "meta_descriptions": "一款令人愉悦的香草口味产品，满足您的甜蜜愿望。"
+      },
+      {
+        "name": "ផលិតផល 9",
+        "language_id": 3,
+        "description": "បង្ហាញពីរបស់ខ្ញុំ",
+        "meta_title": "ពិសេសមួយចំនួន",
+        "meta_keywords": "ពិសេស, ទឹកដោះ, ពោះ",
+        "meta_descriptions": "មួយផលិតផលដែលមានស្រស់ស្អាតរហូតជាពិសេសមួយចំនួនសម្រាប់ការពិតឡើងវិញ។"
+      },
+      {
+        "name": "उत्पाद 9",
+        "language_id": 4,
+        "description": "स्वादिष्ट वैनिला फ्लेवर की चीज़",
+        "meta_title": "वैनिला आनंद",
+        "meta_keywords": "वैनिला, मिठाई, मिठा",
+        "meta_descriptions": "एक आनंदमय वैनिला फ्लेवर उत्पाद आपकी मिठास की इच्छाओं को पूरा करने के लिए।"
+      }
+    ]
+  },
+  {
+    "sku": "SKU010",
+    "categoryIds": [10],
+    "variations": [
+      {
+        "name": "Size",
+        "values": ["Small", "Medium", "Large"]
+      }
+    ],
+    "quantity": 60,
+    "prices": [
+      { "price": "30.00", "currency_id": 1 },
+      { "price": "120000.00", "currency_id": 2 },
+      { "price": "2550.00", "currency_id": 3 }
+    ],
+    "translations": [
+      {
+        "name": "Product 10",
+        "language_id": 1,
+        "description": "Comfortable and stylish sports attire",
+        "meta_title": "Sporty Comfort",
+        "meta_keywords": "Sports, Apparel, Comfortable",
+        "meta_descriptions": "Stay comfortable and stylish with our sports attire."
+      },
+      {
+        "name": "产品 10",
+        "language_id": 2,
+        "description": "舒适时尚的运动服装",
+        "meta_title": "时尚舒适",
+        "meta_keywords": "运动，服装，舒适",
+        "meta_descriptions": "通过我们的运动服装，保持舒适和时尚。"
+      },
+      {
+        "name": "ផលិតផល 10",
+        "language_id": 3,
+        "description": "សម្រាប់ទំនេរ និង ស្តើង",
+        "meta_title": "ស្តើង និង ស្តើង",
+        "meta_keywords": "កីឡារី, អាកាស, ទំនេរ",
+        "meta_descriptions": "សូមនៅតែសម្រាប់ទំនេរ និង ស្តើង ជាមួយនឹងស្តើងរបស់យើង។"
+      },
+      {
+        "name": "उत्पाद 10",
+        "language_id": 4,
+        "description": "आरामदायक और स्टाइलिश खेल कपड़े",
+        "meta_title": "स्पोर्टी आराम",
+        "meta_keywords": "खेल, वस्त्र, आरामदायक",
+        "meta_descriptions": "हमारे खेल कपड़ों के साथ आरामदायक और स्टाइलिश रहें।"
+      }
+    ]
+  },
+  {
+    "sku": "SKU011",
+    "categoryIds": [11],
+    "variations": [
+      {
+        "name": "Cuisine",
+        "values": ["Italian", "Mexican", "Indian"]
+      }
+    ],
+    "quantity": 40,
+    "prices": [
+      { "price": "50.00", "currency_id": 1 },
+      { "price": "200000.00", "currency_id": 2 },
+      { "price": "4250.00", "currency_id": 3 }
+    ],
+    "translations": [
+      {
+        "name": "Product 11",
+        "language_id": 1,
+        "description": "Delicious and authentic Indian cuisine",
+        "meta_title": "Indian Flavors",
+        "meta_keywords": "Indian, Cuisine, Spices",
+        "meta_descriptions": "Experience the rich flavors of authentic Indian cuisine."
+      },
+      {
+        "name": "产品 11",
+        "language_id": 2,
+        "description": "美味正宗的印度美食",
+        "meta_title": "印度风味",
+        "meta_keywords": "印度，烹饪，香料",
+        "meta_descriptions": "品味正宗印度美食的丰富风味。"
+      },
+      {
+        "name": "ផលិតផល 11",
+        "language_id": 3,
+        "description": "បង្ហាញពីរបស់ខ្ញុំ",
+        "meta_title": "ពិសេសមួយចំនួន",
+        "meta_keywords": "ពិសេស, ទឹកដោះ, ពោះ",
+        "meta_descriptions": "មួយផលិតផលដែលមានស្រស់ស្អាតរហូតជាពិសេសមួយចំនួនសម្រាប់ការពិតឡើងវិញ។"
+      },
+      {
+        "name": "उत्पाद 11",
+        "language_id": 4,
+        "description": "स्वादिष्ट और प्रामाणिक भारतीय व्यंजन",
+        "meta_title": "भारतीय फ्लेवर्स",
+        "meta_keywords": "भारतीय, व्यंजन, मसाले",
+        "meta_descriptions": "प्रामाणिक भारतीय व्यंजन के समृद्ध फ्लेवर का अनुभव करें।"
+      }
+    ]
+  },
+  {
+    "sku": "SKU012",
+    "categoryIds": [1],
+    "variations": [
+      {
+        "name": "Color",
+        "values": ["Black", "White", "Silver"]
+      }
+    ],
+    "quantity": 25,
+    "prices": [
+      { "price": "200.00", "currency_id": 1 },
+      { "price": "800000.00", "currency_id": 2 },
+      { "price": "17000.00", "currency_id": 3 }
+    ],
+    "translations": [
+      {
+        "name": "Product 12",
+        "language_id": 1,
+        "description": "High-performance electronics in sleek black design",
+        "meta_title": "Black Tech",
+        "meta_keywords": "Electronics, Black, High-performance",
+        "meta_descriptions": "Experience cutting-edge technology in a sleek black design."
+      },
+      {
+        "name": "产品 12",
+        "language_id": 2,
+        "description": "时尚黑色设计的高性能电子产品",
+        "meta_title": "黑科技",
+        "meta_keywords": "电子产品，黑色，高性能",
+        "meta_descriptions": "在时尚的黑色设计中体验尖端科技。"
+      },
+      {
+        "name": "ផលិតផល 12",
+        "language_id": 3,
+        "description": "សំណើចូលចិត្តប្រើប្រាស់ក្នុងការរចនា",
+        "meta_title": "តម្លៃរបស់ស្តើង",
+        "meta_keywords": "អេឡិចត្រូនិក, ខ្មែរ, តម្លៃរបស់ស្តើង",
+        "meta_descriptions": "សាកល្បងបែបស្តើងនៅក្នុងការរចនា។"
+      },
+      {
+        "name": "उत्पाद 12",
+        "language_id": 4,
+        "description": "शीघ्रता से काम करने वाला इलेक्ट्रॉनिक्स शृंगारी काला डिज़ाइन में",
+        "meta_title": "काला तकनीक",
+        "meta_keywords": "इलेक्ट्रॉनिक्स, काला, शीघ्रता से काम करने वाला",
+        "meta_descriptions": "एक शीघ्रता से काम करने वाले तकनीकी कला का अनुभव करें एक श्रृंगारी काले डिज़ाइन में।"
+      }
+    ]
+  },
+  {
+    "sku": "SKU013",
+    "categoryIds": [2],
+    "variations": [
+      {
+        "name": "Material",
+        "values": ["Denim", "Cotton", "Leather"]
+      }
+    ],
+    "quantity": 50,
+    "prices": [
+      { "price": "60.00", "currency_id": 1 },
+      { "price": "240000.00", "currency_id": 2 },
+      { "price": "5100.00", "currency_id": 3 }
+    ],
+    "translations": [
+      {
+        "name": "Product 13",
+        "language_id": 1,
+        "description": "Comfortable denim jeans for everyday wear",
+        "meta_title": "Everyday Denim",
+        "meta_keywords": "Jeans, Denim, Comfortable",
+        "meta_descriptions": "Stay comfortable with our stylish denim jeans for everyday wear."
+      },
+      {
+        "name": "产品 13",
+        "language_id": 2,
+        "description": "适合日常穿着的舒适牛仔裤",
+        "meta_title": "日常牛仔",
+        "meta_keywords": "牛仔裤，牛仔，舒适",
+        "meta_descriptions": "通过我们时尚的牛仔裤，保持日常穿着的舒适感。"
+      },
+      {
+        "name": "ផលិតផល 13",
+        "language_id": 3,
+        "description": "ពេលវេលាការស្រែកស្រែករបស់អ្នក",
+        "meta_title": "ការស្រែកស្រែករបស់របស់អ្នក",
+        "meta_keywords": "ស្រែក, ស្រែករបស់របស់អ្នក, ការស្រែកស្រែក",
+        "meta_descriptions": "និងនឹងនិងនឹងស្រែករបស់របស់អ្នកបានស្រែកស្រែករបស់របស់អ្នក។"
+      },
+      {
+        "name": "उत्पाद 13",
+        "language_id": 4,
+        "description": "प्रतिदिन पहनने के लिए सुखद डेनिम जीन्स",
+        "meta_title": "प्रतिदिन डेनिम",
+        "meta_keywords": "जीन्स, डेनिम, सुखद",
+        "meta_descriptions": "हमारी शैलीष्ठ डेनिम जीन्स के साथ प्रतिदिन के पहनने में सुखद रहें।"
+      }
+    ]
+  },
+  {
+    "sku": "SKU014",
+    "categoryIds": [3],
+    "variations": [
+      {
+        "name": "Genre",
+        "values": ["Mystery", "Romance", "Science Fiction"]
+      }
+    ],
+    "quantity": 35,
+    "prices": [
+      { "price": "15.00", "currency_id": 1 },
+      { "price": "60000.00", "currency_id": 2 },
+      { "price": "1275.00", "currency_id": 3 }
+    ],
+    "translations": [
+      {
+        "name": "Product 14",
+        "language_id": 1,
+        "description": "Captivating mystery novel for your reading pleasure",
+        "meta_title": "Mystery Read",
+        "meta_keywords": "Novel, Mystery, Captivating",
+        "meta_descriptions": "Dive into the mystery with our captivating novel for your reading pleasure."
+      },
+      {
+        "name": "产品 14",
+        "language_id": 2,
+        "description": "引人入胜的悬疑小说，为您的阅读愉悦",
+        "meta_title": "悬疑阅读",
+        "meta_keywords": "小说，悬疑，引人入胜",
+        "meta_descriptions": "通过我们引人入胜的小说，深入了解神秘之处，为您的阅读带来愉悦。"
+      },
+      {
+        "name": "ផលិតផល 14",
+        "language_id": 3,
+        "description": "ការរក្សាត្រូវទុកឧត្តរណៈស្រឡាញ់",
+        "meta_title": "ការអានស្រឡាញ់",
+        "meta_keywords": "គំរោង, ស្រឡាញ់, ទទួលបាន",
+        "meta_descriptions": "ធ្វើឱ្យអ្នកទទួលបានការរក្សាត្រូវទុកឧត្តរណៈនៅក្នុងរឿងត្រូវបានរាល់ថ្ងៃទៀត។"
+      },
+      {
+        "name": "उत्पाद 14",
+        "language_id": 4,
+        "description": "आपकी पठन सुख के लिए केंद्रित रहने वाला रहस्यमय उपन्यास",
+        "meta_title": "रहस्यमय पठन",
+        "meta_keywords": "उपन्यास, रहस्य, मोहक",
+        "meta_descriptions": "हमारे मोहक उपन्यास के साथ रहस्यमय विश्व में डाइव करें और आपके पठन सुख को बढ़ाएं।"
+      }
+    ]
+  },
+  {
+    "sku": "SKU015",
+    "categoryIds": [4],
+    "variations": [
+      {
+        "name": "Age Group",
+        "values": ["Toddler", "Child", "Teen"]
+      }
+    ],
+    "quantity": 45,
+    "prices": [
+      { "price": "25.00", "currency_id": 1 },
+      { "price": "100000.00", "currency_id": 2 },
+      { "price": "2125.00", "currency_id": 3 }
+    ],
+    "translations": [
+      {
+        "name": "Product 15",
+        "language_id": 1,
+        "description": "Fun and educational toys for toddlers",
+        "meta_title": "Toddler Toys",
+        "meta_keywords": "Toys, Toddler, Educational",
+        "meta_descriptions": "Engage your toddler with our fun and educational toys."
+      },
+      {
+        "name": "产品 15",
+        "language_id": 2,
+        "description": "幼儿有趣教育玩具",
+        "meta_title": "幼儿玩具",
+        "meta_keywords": "玩具，幼儿，教育",
+        "meta_descriptions": "使用我们有趣且教育性的玩具来吸引您的幼儿。"
+      },
+      {
+        "name": "ផលិតផល 15",
+        "language_id": 3,
+        "description": "ជីវិតនិងសាសនា​​ទូទៅសម្រាប់តូចតាច",
+        "meta_title": "អគ្គីសនីសម្រាប់តូចតាច",
+        "meta_keywords": "អគ្គីសនី, តូចតាច, សាសនា",
+        "meta_descriptions": "ចូរអនុវត្តជីវិតរបស់អ្នកដោយអ្នកជួយជួយមើលឃើញកន្លែងផ្លូវបរិស័ទរបស់យើង។"
+      },
+      {
+        "name": "उत्पाद 15",
+        "language_id": 4,
+        "description": "छोटे बच्चों के लिए मजेदार और शिक्षात्मक खिलौने",
+        "meta_title": "बच्चा खिलौने",
+        "meta_keywords": "खिलौने, शिक्षात्मक, बच्चा",
+        "meta_descriptions": "हमारे मजेदार और शिक्षात्मक खिलौनों से अपने छोटे बच्चों को जुड़ाइए।"
+      }
+    ]
+  },
+  {
+    "sku": "SKU016",
+    "categoryIds": [5],
+    "variations": [
+      {
+        "name": "Operating System",
+        "values": ["iOS", "Android", "Windows"]
+      }
+    ],
+    "quantity": 30,
+    "prices": [
+      { "price": "800.00", "currency_id": 1 },
+      { "price": "3200000.00", "currency_id": 2 },
+      { "price": "68000.00", "currency_id": 3 }
+    ],
+    "translations": [
+      {
+        "name": "Product 16",
+        "language_id": 1,
+        "description": "High-end smartphone with the latest features",
+        "meta_title": "Premium Smartphone",
+        "meta_keywords": "Smartphone, High-end, Features",
+        "meta_descriptions": "Experience the latest technology with our high-end smartphone."
+      },
+      {
+        "name": "产品 16",
+        "language_id": 2,
+        "description": "具有最新功能的高端智能手机",
+        "meta_title": "高级智能手机",
+        "meta_keywords": "智能手机，高端，功能",
+        "meta_descriptions": "通过我们的高端智能手机体验最新技术。"
+      },
+      {
+        "name": "ផលិតផល 16",
+        "language_id": 3,
+        "description": "ទូរស័ព្ទម៉ាស៊ីនជនទូលាយពេលដែលមានកម្រិតខ្ពស់",
+        "meta_title": "ស្មើស្រលាញ់ទូរស័ព្ទ",
+        "meta_keywords": "ទូរស័ព្ទ, ស្មើស្រលាញ់, មានមុខងារ",
+        "meta_descriptions": "ធ្វើឱ្យអ្នកបានបទពិសោធន៍ជាមួយទូរស័ព្ទម៉ាស៊ីនជនទូលាយ។"
+      },
+      {
+        "name": "उत्पाद 16",
+        "language_id": 4,
+        "description": "नवीनतम सुविधाओं के साथ हाई-एंड स्मार्टफोन",
+        "meta_title": "प्रीमियम स्मार्टफोन",
+        "meta_keywords": "स्मार्टफोन, हाई-एंड, सुविधाएं",
+        "meta_descriptions": "हमारे हाई-एंड स्मार्टफोन के साथ नवीनतम प्रौद्योगिकी का अनुभव करें।"
+      }
+    ]
+  },
+  {
+    "sku": "SKU017",
+    "categoryIds": [6],
+    "variations": [
+      {
+        "name": "Style",
+        "values": ["Casual", "Formal", "Sporty"]
+      }
+    ],
+    "quantity": 20,
+    "prices": [
+      { "price": "45.00", "currency_id": 1 },
+      { "price": "180000.00", "currency_id": 2 },
+      { "price": "3825.00", "currency_id": 3 }
+    ],
+    "translations": [
+      {
+        "name": "Product 17",
+        "language_id": 1,
+        "description": "Stylish and comfortable formal wear",
+        "meta_title": "Formal Elegance",
+        "meta_keywords": "Formal Wear, Stylish, Comfortable",
+        "meta_descriptions": "Look elegant and feel comfortable with our stylish formal wear."
+      },
+      {
+        "name": "产品 17",
+        "language_id": 2,
+        "description": "时尚舒适的正装",
+        "meta_title": "正式典雅",
+        "meta_keywords": "正式着装，时尚，舒适",
+        "meta_descriptions": "通过我们时尚的正式着装，看起来典雅，感觉舒适。"
+      },
+      {
+        "name": "ផលិតផល 17",
+        "language_id": 3,
+        "description": "អាវិលដោយស្ម័គ្រ",
+        "meta_title": "កំពូលស្ម័គ្រ",
+        "meta_keywords": "បំពងទុក, ស្ម័គ្រ, អាវិល",
+        "meta_descriptions": "ទស្សនាអាវិលប្រឆាំងនឹងស្ម័គ្ររបស់យើង។"
+      },
+      {
+        "name": "उत्पाद 17",
+        "language_id": 4,
+        "description": "शैलीष्ठ और सुखद और सुखद फॉर्मल पहनावा",
+        "meta_title": "आधिकारिक शैली",
+        "meta_keywords": "आधिकारिक पहनावा, शैलीष्ठ, सुखद",
+        "meta_descriptions": "हमारे शैलीष्ठ आधिकारिक पहनावे के साथ आधिकारिक और सुखद देखें और महसूस करें।"
+      }
+    ]
+  },
+  {
+    "sku": "SKU018",
+    "categoryIds": [7],
+    "variations": [
+      {
+        "name": "Type",
+        "values": ["Necklace", "Earrings", "Bracelet"]
+      }
+    ],
+    "quantity": 15,
+    "prices": [
+      { "price": "35.00", "currency_id": 1 },
+      { "price": "140000.00", "currency_id": 2 },
+      { "price": "2975.00", "currency_id": 3 }
+    ],
+    "translations": [
+      {
+        "name": "Product 18",
+        "language_id": 1,
+        "description": "Elegant jewelry to complement your style",
+        "meta_title": "Fashion Accessories",
+        "meta_keywords": "Jewelry, Elegant, Fashion",
+        "meta_descriptions": "Enhance your style with our elegant jewelry."
+      },
+      {
+        "name": "产品 18",
+        "language_id": 2,
+        "description": "优雅的珠宝，搭配您的风格",
+        "meta_title": "时尚配饰",
+        "meta_keywords": "珠宝，优雅，时尚",
+        "meta_descriptions": "通过我们的优雅珠宝提升您的时尚品味。"
+      },
+      {
+        "name": "ផលិតផល 18",
+        "language_id": 3,
+        "description": "ជម្រើសប្រចាំទីប្រាំ",
+        "meta_title": "កម្មវិធីផ្នែក",
+        "meta_keywords": "ជម្រើសប្រចាំទីប្រាំ, ស្រឡាញ់, ស្រឡាញ់",
+        "meta_descriptions": "ធ្វើឱ្យនិស្សិតក្នុងការរួមបញ្ចូលរបស់អ្នកដោយយួនយុន។"
+      },
+      {
+        "name": "उत्पाद 18",
+        "language_id": 4,
+        "description": "आपके शैली को पूर्ण करने के लिए सुरुचिपूर्ण आभूषण",
+        "meta_title": "फैशन एक्सेसरीज",
+        "meta_keywords": "आभूषण, सुरुचिपूर्ण, फैशन",
+        "meta_descriptions": "हमारे सुरुचिपूर्ण आभूषण के साथ अपने शैली को बढ़ाएं।"
+      }
+    ]
+  },
+  {
+    "sku": "SKU019",
+    "categoryIds": [8],
+    "variations": [
+      {
+        "name": "Skin Type",
+        "values": ["Oily", "Dry", "Combination"]
+      }
+    ],
+    "quantity": 40,
+    "prices": [
+      { "price": "30.00", "currency_id": 1 },
+      { "price": "120000.00", "currency_id": 2 },
+      { "price": "2550.00", "currency_id": 3 }
+    ],
+    "translations": [
+      {
+        "name": "Product 19",
+        "language_id": 1,
+        "description": "Premium beauty products for radiant skin",
+        "meta_title": "Luxury Skincare",
+        "meta_keywords": "Skincare, Premium, Radiant",
+        "meta_descriptions": "Achieve radiant skin with our premium beauty products."
+      },
+      {
+        "name": "产品 19",
+        "language_id": 2,
+        "description": "使皮肤光彩照人的高级美容产品",
+        "meta_title": "豪华护肤品",
+        "meta_keywords": "护肤品，高级，光彩",
+        "meta_descriptions": "通过我们的高级美容产品获得光彩照人的皮肤。"
+      },
+      {
+        "name": "ផលិតផល 19",
+        "language_id": 3,
+        "description": "ផលិតផលសំខាន់សម្រាប់សូម្បីធ្វើឱ្យផ្ទុកសង្ហា",
+        "meta_title": "ការផ្តល់ជូនការធ្វើឱ្យបទពិសោធន៍",
+        "meta_keywords": "ការធ្វើឱ្យផ្ទុកសង្ហា, សម្រាប់បទពិសោធន៍, សូម្បីធ្វើឱ្យផ្ទុកសង្ហា",
+        "meta_descriptions": "លទ្ធផលស្តីពីការធ្វើឱ្យបទពិសោធន៍ដោយផ្ទុកសង្ហារបស់យើង។"
+      },
+      {
+        "name": "उत्पाद 19",
+        "language_id": 4,
+        "description": "ब्रिलियंट त्वचा के लिए प्रीमियम सौंदर्य उत्पाद",
+        "meta_title": "लक्जरी स्किनकेयर",
+        "meta_keywords": "स्किनकेयर, प्रीमियम, ब्रिलियंट",
+        "meta_descriptions": "हमारे प्रीमियम सौंदर्य उत्पादों के साथ ब्रिलियंट त्वचा प्राप्त करें।"
+      }
+    ]
+  },
+  {
+    "sku": "SKU020",
+    "categoryIds": [9],
+    "variations": [
+      {
+        "name": "Size",
+        "values": ["King", "Queen", "Double"]
+      }
+    ],
+    "quantity": 25,
+    "prices": [
+      { "price": "120.00", "currency_id": 1 },
+      { "price": "480000.00", "currency_id": 2 },
+      { "price": "10200.00", "currency_id": 3 }
+    ],
+    "translations": [
+      {
+        "name": "Product 20",
+        "language_id": 1,
+        "description": "Luxurious king-size bed for a restful sleep",
+        "meta_title": "King Size Comfort",
+        "meta_keywords": "Bed, King Size, Luxurious",
+        "meta_descriptions": "Indulge in a restful sleep with our luxurious king-size bed."
+      },
+      {
+        "name": "产品 20",
+        "language_id": 2,
+        "description": "豪华的特大号床，确保宁静的睡眠",
+        "meta_title": "特大号舒适",
+        "meta_keywords": "床，特大号，豪华",
+        "meta_descriptions": "通过我们豪华的特大号床，尽情享受宁静的睡眠。"
+      },
+      {
+        "name": "ផលិតផល 20",
+        "language_id": 3,
+        "description": "មានជម្រើសប្រភេទក្រុម",
+        "meta_title": "ទំហំជម្រើសប្រភេទក្រុម",
+        "meta_keywords": "គ្រឿងជម្រើសប្រភេទក្រុម, គ្រឿងជម្រើសប្រភេទក្រុម, គ្រឿងជម្រើសប្រភេទក្រុម",
+        "meta_descriptions": "មានជម្រើសប្រភេទក្រុមដោយយើងដើរទៅយកតម្លៃរបស់យើងសម្រាប់ការទំនាក់ទំនង។"
+      },
+      {
+        "name": "उत्पाद 20",
+        "language_id": 4,
+        "description": "एक आरामदायक नींद के लिए विलासी राजा साइज बेड",
+        "meta_title": "राजा साइज आराम",
+        "meta_keywords": "बेड, राजा साइज, विलासी",
+        "meta_descriptions": "हमारे विलासी राजा साइज बेड के साथ एक आरामदायक नींद में खो जाएं।"
+      }
+    ]
+  },
+  {
+    "sku": "SKU021",
+    "categoryIds": [10],
+    "variations": [
+      {
+        "name": "Sport Type",
+        "values": ["Running", "Cycling", "Yoga"]
+      }
+    ],
+    "quantity": 50,
+    "prices": [
+      { "price": "40.00", "currency_id": 1 },
+      { "price": "160000.00", "currency_id": 2 },
+      { "price": "3400.00", "currency_id": 3 }
+    ],
+    "translations": [
+      {
+        "name": "Product 21",
+        "language_id": 1,
+        "description": "High-performance sports gear for an active lifestyle",
+        "meta_title": "Active Sports Gear",
+        "meta_keywords": "Sports Gear, High-performance, Active Lifestyle",
+        "meta_descriptions": "Gear up for an active lifestyle with our high-performance sports gear."
+      },
+      {
+        "name": "产品 21",
+        "language_id": 2,
+        "description": "高性能运动装备，适合积极的生活方式",
+        "meta_title": "积极运动装备",
+        "meta_keywords": "运动装备，高性能，积极的生活方式",
+        "meta_descriptions": "使用我们的高性能运动装备为积极的生活方式做好准备。"
+      },
+      {
+        "name": "ផលិតផល 21",
+        "language_id": 3,
+        "description": "សំរាប់ឧបករណ៍សកម្មរបស់កម្មវិធីសាធារណៈ",
+        "meta_title": "ឧបករណ៍សកម្មស្រាប់ជីវិតរបស់យើង",
+        "meta_keywords": "ឧបករណ៍សកម្ម, ស្មើស្រលាញ់, សកម្មស្រាប់ជីវិត",
+        "meta_descriptions": "រំលងសកម្មស្រាប់ជីវិតរបស់អ្នកជាមួយឧបករណ៍សាធារណៈរបស់យើង។"
+      },
+      {
+        "name": "उत्पाद 21",
+        "language_id": 4,
+        "description": "सक्रिय जीवनशैली के लिए उच्च प्रदर्शन खेल सामग्री",
+        "meta_title": "सक्रिय खेल सामग्री",
+        "meta_keywords": "खेल सामग्री, उच्च प्रदर्शन, सक्रिय जीवनशैली",
+        "meta_descriptions": "हमारे उच्च प्रदर्शन खेल सामग्री के साथ सक्रिय जीवनशैली के लिए तैयारी करें।"
+      }
+    ]
+  },
+  {
+    "sku": "SKU022",
+    "categoryIds": [11],
+    "variations": [
+      {
+        "name": "Flavor",
+        "values": ["Chocolate", "Vanilla", "Strawberry"]
+      }
+    ],
+    "quantity": 60,
+    "prices": [
+      { "price": "12.00", "currency_id": 1 },
+      { "price": "48000.00", "currency_id": 2 },
+      { "price": "1020.00", "currency_id": 3 }
+    ],
+    "translations": [
+      {
+        "name": "Product 22",
+        "language_id": 1,
+        "description": "Delicious and creamy ice cream for a sweet treat",
+        "meta_title": "Gourmet Ice Cream",
+        "meta_keywords": "Ice Cream, Delicious, Creamy",
+        "meta_descriptions": "Indulge in the sweetness with our delicious and creamy gourmet ice cream."
+      },
+      {
+        "name": "产品 22",
+        "language_id": 2,
+        "description": "美味浓郁的冰淇淋，甜蜜的美味",
+        "meta_title": "美食冰淇淋",
+        "meta_keywords": "冰淇淋，美味，浓郁",
+        "meta_descriptions": "通过我们美味浓郁的美食冰淇淋，尽情享受甜蜜的美味。"
+      },
+      {
+        "name": "ផលិតផល 22",
+        "language_id": 3,
+        "description": "ម្ហូបត្រីម្រេចសកម្មភាពស្រឡាញ់",
+        "meta_title": "ម្ហូបត្រីម្រេចសកម្មភាពស្រឡាញ់",
+        "meta_keywords": "ត្រីម្រេចសកម្មភាព, ស្រឡាញ់, ម្ហូបត្រីម្រេច",
+        "meta_descriptions": "ចូរទាញយកពត៌មានពីយើងសម្រាប់ការទំនាក់ទំនង។"
+      },
+      {
+        "name": "उत्पाद 22",
+        "language_id": 4,
+        "description": "स्वीट ट्रीट के लिए स्वादिष्ट और क्रीमी आइसक्रीम",
+        "meta_title": "गौरमेट आइसक्रीम",
+        "meta_keywords": "आइसक्रीम, स्वादिष्ट, क्रीमी",
+        "meta_descriptions": "हमारे स्वादिष्ट और क्रीमी गौरमेट आइसक्रीम के साथ मिठास में खो जाएं।"
+      }
+    ]
+  },
+  {
+    "sku": "SKU023",
+    "categoryIds": [1],
+    "variations": [
+      {
+        "name": "Screen Size",
+        "values": ["15 inches", "17 inches", "20 inches"]
+      }
+    ],
+    "quantity": 35,
+    "prices": [
+      { "price": "500.00", "currency_id": 1 },
+      { "price": "2000000.00", "currency_id": 2 },
+      { "price": "42500.00", "currency_id": 3 }
+    ],
+    "translations": [
+      {
+        "name": "Product 23",
+        "language_id": 1,
+        "description": "Sleek and powerful laptop for productivity",
+        "meta_title": "Productivity Laptop",
+        "meta_keywords": "Laptop, Sleek, Productivity",
+        "meta_descriptions": "Boost your productivity with our sleek and powerful laptop."
+      },
+      {
+        "name": "产品 23",
+        "language_id": 2,
+        "description": "时尚而强大的笔记本电脑，提高生产力",
+        "meta_title": "生产力笔记本电脑",
+        "meta_keywords": "笔记本电脑, 时尚, 生产力",
+        "meta_descriptions": "通过我们时尚而强大的笔记本电脑提高您的生产力。"
+      },
+      {
+        "name": "ផលិតផល 23",
+        "language_id": 3,
+        "description": "កុំព្យូទ័រទាបនិងស្ម័គ្រ",
+        "meta_title": "កុំព្យូទ័រករណីបម្រែបម្រួល",
+        "meta_keywords": "កុំព្យូទ័រ, ស្ម័គ្រ, ករណីបម្រែបម្រួល",
+        "meta_descriptions": "ធ្វើឱ្យករណីបម្រែបម្រួលរបស់អ្នកបានបង្កើតបានប្រសើរឡើងជាមួយកុំព្យូទ័រទាបនិងស្ម័គ្ររបស់យើង។"
+      },
+      {
+        "name": "उत्पाद 23",
+        "language_id": 4,
+        "description": "कार्यक्षमता के लिए स्लीक और शक्तिशाली लैपटॉप",
+        "meta_title": "कार्यक्षमता लैपटॉप",
+        "meta_keywords": "लैपटॉप, स्लीक, कार्यक्षमता",
+        "meta_descriptions": "हमारे स्लीक और शक्तिशाली लैपटॉप के साथ अपनी कार्यक्षमता को बढ़ाएं।"
+      }
+    ]
+  },
+  {
+    "sku": "SKU024",
+    "categoryIds": [2],
+    "variations": [
+      {
+        "name": "Color",
+        "values": ["Black", "White", "Red"]
+      }
+    ],
+    "quantity": 30,
+    "prices": [
+      { "price": "25.00", "currency_id": 1 },
+      { "price": "100000.00", "currency_id": 2 },
+      { "price": "2125.00", "currency_id": 3 }
+    ],
+    "translations": [
+      {
+        "name": "Product 24",
+        "language_id": 1,
+        "description": "Classic t-shirt for everyday comfort",
+        "meta_title": "Everyday T-Shirt",
+        "meta_keywords": "T-Shirt, Classic, Comfort",
+        "meta_descriptions": "Experience everyday comfort with our classic t-shirt."
+      },
+      {
+        "name": "产品 24",
+        "language_id": 2,
+        "description": "经典T恤，每天都很舒适",
+        "meta_title": "每日T恤",
+        "meta_keywords": "T恤, 经典, 舒适",
+        "meta_descriptions": "通过我们的经典T恤，每天都感受舒适。"
+      },
+      {
+        "name": "ផលិតផល 24",
+        "language_id": 3,
+        "description": "កម្មវិធីសាធារណៈសម្រាប់ការសង្សារ",
+        "meta_title": "ការសង្សារសាធារណៈ",
+        "meta_keywords": "ការសង្សារ, សាធារណៈ, ការសង្សារ",
+        "meta_descriptions": "ធ្វើឱ្យរក្សាសាធារណៈនៅជារឿងនិងការសង្សារសាធារណៈរបស់យើង។"
+      },
+      {
+        "name": "उत्पाद 24",
+        "language_id": 4,
+        "description": "प्रतिदिन की आरामदायकता के लिए क्लासिक टी-शर्ट",
+        "meta_title": "प्रतिदिन टी-शर्ट",
+        "meta_keywords": "टी-शर्ट, क्लासिक, आराम",
+        "meta_descriptions": "हमारे क्लासिक टी-शर्ट के साथ प्रतिदिन की आरामदायकता का anubhav करें।"
+      }
+    ]
+  },
+  {
+    "sku": "SKU025",
+    "categoryIds": [3],
+    "variations": [
+      {
+        "name": "Genre",
+        "values": ["Mystery", "Romance", "Science Fiction"]
+      }
+    ],
+    "quantity": 25,
+    "prices": [
+      { "price": "18.00", "currency_id": 1 },
+      { "price": "72000.00", "currency_id": 2 },
+      { "price": "1530.00", "currency_id": 3 }
+    ],
+    "translations": [
+      {
+        "name": "Product 25",
+        "language_id": 1,
+        "description": "Captivating mystery novel for an immersive experience",
+        "meta_title": "Mystery Novel",
+        "meta_keywords": "Novel, Mystery, Immersive",
+        "meta_descriptions": "Immerse yourself in a captivating mystery novel for an immersive experience."
+      },
+      {
+        "name": "产品 25",
+        "language_id": 2,
+        "description": "引人入胜的悬疑小说，沉浸式体验",
+        "meta_title": "悬疑小说",
+        "meta_keywords": "小说, 悬疑, 沉浸式",
+        "meta_descriptions": "通过沉浸式体验，沉浸在引人入胜的悬疑小说中。"
+      },
+      {
+        "name": "ផលិតផល 25",
+        "language_id": 3,
+        "description": "ក្រុមហ៊ុនរបស់ពួកគេសម្រាប់បទពិសោន៍",
+        "meta_title": "ប្រុងប្រយ័ត្នសំរាប់ទិននឹងចេញ",
+        "meta_keywords": "ទិននឹងចេញ, ប្រុង, ប្រុងប្រយ័ត្ន",
+        "meta_descriptions": "រីឯសូម្បីទិននឹងចេញពីរូបក្បិតសន្សំនឹងជម្រើសពេលគេក្រុមហ៊ុនរបស់ពួកគេរួមសម្រាប់ពួកគេដោយសារសំខាន់របស់យើង។"
+      },
+      {
+        "name": "उत्पाद 25",
+        "language_id": 4,
+        "description": "प्रवाहमय अनुभव के लिए कैप्टिवेटिंग मिस्ट्री नॉवेल",
+        "meta_title": "मिस्ट्री नॉवेल",
+        "meta_keywords": "नॉवेल, मिस्ट्री, अनुभवशील",
+        "meta_descriptions": "कैप्टिवेटिंग मिस्ट्री नॉवेल में डूबकी लगाकर प्रवाहमय अनुभव में खो जाएं।"
+      }
+    ]
+  },
+  {
+    "sku": "SKU026",
+    "categoryIds": [4],
+    "variations": [
+      {
+        "name": "Age Group",
+        "values": ["3-5 years", "6-8 years", "9-12 years"]
+      }
+    ],
+    "quantity": 40,
+    "prices": [
+      { "price": "30.00", "currency_id": 1 },
+      { "price": "120000.00", "currency_id": 2 },
+      { "price": "2550.00", "currency_id": 3 }
+    ],
+    "translations": [
+      {
+        "name": "Product 26",
+        "language_id": 1,
+        "description": "Fun and educational board game for kids",
+        "meta_title": "Educational Board Game",
+        "meta_keywords": "Board Game, Fun, Educational",
+        "meta_descriptions": "Provide fun and education with our board game designed for kids."
+      },
+      {
+        "name": "产品 26",
+        "language_id": 2,
+        "description": "儿童益智棋盘游戏，寓教于乐",
+        "meta_title": "教育棋盘游戏",
+        "meta_keywords": "棋盘游戏, 有趣, 教育",
+        "meta_descriptions": "通过我们为儿童设计的棋盘游戏，提供乐趣和教育。"
+      },
+      {
+        "name": "ផលិតផល 26",
+        "language_id": 3,
+        "description": "ហ្គេមសកម្មរបស់កូនរបស់យើង",
+        "meta_title": "ហ្គេមសកម្មរបស់កូនរបស់យើង",
+        "meta_keywords": "ហ្គេមសកម្ម, ពិសោន៍, អប់រំ",
+        "meta_descriptions": "បញ្ចេញភាពហើយនិងបណ្តឹងជាតិទៅលើកុនរបស់យើងជាគ្រឿងបកប្រែសកម្មរបស់កូន។"
+      },
+      {
+        "name": "उत्पाद 26",
+        "language_id": 4,
+        "description": "बच्चों के लिए मजेदार और शिक्षात्मक बोर्ड गेम",
+        "meta_title": "शिक्षात्मक बोर्ड गेम",
+        "meta_keywords": "बोर्ड गेम, मजा, शिक्षात्मक",
+        "meta_descriptions": "हमारे बच्चों के लिए डिज़ाइन किए गए हमारे बोर्ड गेम के साथ मजा और शिक्षा प्रदान करें।"
+      }
+    ]
+  },
+  {
+    "sku": "SKU027",
+    "categoryIds": [5],
+    "variations": [
+      {
+        "name": "Gadget Type",
+        "values": ["Smartwatch", "Fitness Tracker", "Bluetooth Earphones"]
+      }
+    ],
+    "quantity": 20,
+    "prices": [
+      { "price": "80.00", "currency_id": 1 },
+      { "price": "320000.00", "currency_id": 2 },
+      { "price": "6800.00", "currency_id": 3 }
+    ],
+    "translations": [
+      {
+        "name": "Product 27",
+        "language_id": 1,
+        "description": "Stay connected with our high-tech smartwatch",
+        "meta_title": "High-Tech Smartwatch",
+        "meta_keywords": "Smartwatch, High-Tech, Stay Connected",
+        "meta_descriptions": "Stay connected and stay in style with our high-tech smartwatch."
+      },
+      {
+        "name": "产品 27",
+        "language_id": 2,
+        "description": "与我们的高科技智能手表保持联系",
+        "meta_title": "高科技智能手表",
+        "meta_keywords": "智能手表, 高科技, 保持联系",
+        "meta_descriptions": "通过我们的高科技智能手表保持联系并保持时尚。"
+      },
+      {
+        "name": "ផលិតផល 27",
+        "language_id": 3,
+        "description": "ទំនុកជាងនៅជាតិដើម្បីទំនុកជាង",
+        "meta_title": "ទំនុកជាងនៅជាតិដើម្បីទំនុកជាង",
+        "meta_keywords": "ជាតិដើម្បីទំនុកជាង, ទំនុកជាង, ទំនុកជាងនៅជាតិ",
+        "meta_descriptions": "ទិញទិញនិងទទួលបានការទំនុកជាងនៅជាតិដើម្បីទំនុកជាងដោយនិងនៅជាតិ។"
+      },
+      {
+        "name": "उत्पाद 27",
+        "language_id": 4,
+        "description": "हमारे हाईटेक स्मार्टवॉच के साथ जुड़े रहें",
+        "meta_title": "हाईटेक स्मार्टवॉच",
+        "meta_keywords": "स्मार्टवॉच, हाईटेक, जुड़े रहें",
+        "meta_descriptions": "हाईटेक स्मार्टवॉच के साथ जुड़े रहें और स्टाइल में रहें।"
+      }
+    ]
+  },
+  {
+    "sku": "SKU028",
+    "categoryIds": [6],
+    "variations": [
+      {
+        "name": "Fashion Style",
+        "values": ["Casual", "Formal", "Sporty"]
+      }
+    ],
+    "quantity": 35,
+    "prices": [
+      { "price": "55.00", "currency_id": 1 },
+      { "price": "220000.00", "currency_id": 2 },
+      { "price": "4675.00", "currency_id": 3 }
+    ],
+    "translations": [
+      {
+        "name": "Product 28",
+        "language_id": 1,
+        "description": "Elegant formal wear for special occasions",
+        "meta_title": "Formal Fashion",
+        "meta_keywords": "Fashion, Formal Wear, Elegant",
+        "meta_descriptions": "Dress elegantly for special occasions with our formal wear."
+      },
+      {
+        "name": "产品 28",
+        "language_id": 2,
+        "description": "特殊场合的优雅正式服装",
+        "meta_title": "正式时尚",
+        "meta_keywords": "时尚, 正式服装, 优雅",
+        "meta_descriptions": "通过我们的正式服装，为特殊场合穿着典雅。"
+      },
+      {
+        "name": "ផលិតផល 28",
+        "language_id": 3,
+        "description": "ការសំបកសម្រាប់ទិសដៅពិសោធន៍",
+        "meta_title": "ស្ម័រសំបកសម្រាប់ទិស",
+        "meta_keywords": "ទិស, សំបកទិស, ស្ម័រ",
+        "meta_descriptions": "សំបកសម្រាប់ទិសជាដំបូងសម្រាប់ទិសពិសោធន៍ជាមួយការបង្ហាញរបស់យើង។"
+      },
+      {
+        "name": "उत्पाद 28",
+        "language_id": 4,
+        "description": "विशेष अवसरों के लिए शैलीष्ठ और साकारात्मक वस्त्र",
+        "meta_title": "साकारात्मक फैशन",
+        "meta_keywords": "फैशन, साकारात्मक वस्त्र, शैलीष्ठ",
+        "meta_descriptions": "हमारे साकारात्मक वस्त्र के साथ विशेष अवसरों के लिए शैलीष्ठ बनें।"
+      }
+    ]
+  },
+  {
+    "sku": "SKU029",
+    "categoryIds": [7],
+    "variations": [
+      {
+        "name": "Beauty Type",
+        "values": ["Skincare Set", "Makeup Kit", "Haircare Bundle"]
+      }
+    ],
+    "quantity": 25,
+    "prices": [
+      { "price": "120.00", "currency_id": 1 },
+      { "price": "480000.00", "currency_id": 2 },
+      { "price": "10200.00", "currency_id": 3 }
+    ],
+    "translations": [
+      {
+        "name": "Product 29",
+        "language_id": 1,
+        "description": "Complete beauty package for a radiant look",
+        "meta_title": "Radiant Beauty Set",
+        "meta_keywords": "Beauty Set, Radiant Look, Complete Package",
+        "meta_descriptions": "Achieve a radiant look with our complete beauty package."
+      },
+      {
+        "name": "产品 29",
+        "language_id": 2,
+        "description": "完整的美容套装，散发光彩",
+        "meta_title": "光彩美容套装",
+        "meta_keywords": "美容套装, 光彩外观, 完整套餐",
+        "meta_descriptions": "通过我们的完整美容套装，散发出光彩的外观。"
+      },
+      {
+        "name": "ផលិតផល 29",
+        "language_id": 3,
+        "description": "សំបកពិសោធន៍សម្រាប់ទម្រង់មាស",
+        "meta_title": "ទម្រង់សំបកពិសោធន៍",
+        "meta_keywords": "សំបក, ទម្រង់ពិសោធន៍, កម្មសិទ្ធិ",
+        "meta_descriptions": "ឈានមុខការសម្រាប់ទម្រង់ពិសោធន៍ជាមួយការបង្ហាញរបស់យើង។"
+      },
+      {
+        "name": "उत्पाद 29",
+        "language_id": 4,
+        "description": "एक रेडियंट दिखावा के लिए पूर्ण सौंदर्य पैकेज",
+        "meta_title": "रेडियंट सौंदर्य सेट",
+        "meta_keywords": "सौंदर्य सेट, रेडियंट दिखावा, पूर्ण पैकेज",
+        "meta_descriptions": "हमारे पूर्ण सौंदर्य पैकेज के साथ एक रेडियंट दिखावा प्राप्त करें।"
+      }
+    ]
+  },
+  {
+    "sku": "SKU030",
+    "categoryIds": [8],
+    "variations": [
+      {
+        "name": "Scent",
+        "values": ["Floral", "Woody", "Citrus"]
+      }
+    ],
+    "quantity": 30,
+    "prices": [
+      { "price": "40.00", "currency_id": 1 },
+      { "price": "160000.00", "currency_id": 2 },
+      { "price": "3400.00", "currency_id": 3 }
+    ],
+    "translations": [
+      {
+        "name": "Product 30",
+        "language_id": 1,
+        "description": "Elegant floral perfume for a lasting impression",
+        "meta_title": "Floral Perfume",
+        "meta_keywords": "Perfume, Floral, Elegant",
+        "meta_descriptions": "Leave a lasting impression with our elegant floral perfume."
+      },
+      {
+        "name": "产品 30",
+        "language_id": 2,
+        "description": "优雅的花香香水，留下持久印象",
+        "meta_title": "花香香水",
+        "meta_keywords": "香水, 花香, 优雅",
+        "meta_descriptions": "通过我们优雅的花香香水，留下持久的印象。"
+      },
+      {
+        "name": "ផលិតផល 30",
+        "language_id": 3,
+        "description": "ក្តារសម្រាប់ការស្រស់ស្អាត",
+        "meta_title": "ក្តា​ក្រោយសម្រាប់ការស្រស់ស្អាត",
+        "meta_keywords": "ក្តា​ក្រោយ, ស្រស់ស្អាត, ស្រស់ស្អាត",
+        "meta_descriptions": "និងការអប់រំរបស់យើងដោយក្តារសម្រាប់ការស្រស់ស្អាត។"
+      },
+      {
+        "name": "उत्पाद 30",
+        "language_id": 4,
+        "description": "स्थायी प्रभाव के लिए शानदार फूलों का इत्र",
+        "meta_title": "फूलों का इत्र",
+        "meta_keywords": "इत्र, फूल, शानदार",
+        "meta_descriptions": "हमारे शानदार फूलों के इत्र के साथ स्थायी प्रभाव छोड़ें।"
+      }
+    ]
+  }
+]

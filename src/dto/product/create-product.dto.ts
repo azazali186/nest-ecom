@@ -9,6 +9,7 @@ import { ApiProperty, ApiPropertyOptional } from '@nestjs/swagger';
 import { CreateTranslationDto } from '../translation/create-translation.dto';
 import { CreateStockDto } from '../stock/create-stock.dto';
 import { CreateVariationDto } from '../variations/create-variation.dto';
+import { PriceDto } from '../stock/price.dto';
 export class CreateProductDto {
   @ApiProperty()
   @IsString()
@@ -24,10 +25,20 @@ export class CreateProductDto {
   @IsOptional()
   variations?: CreateVariationDto[];
 
-  @ApiProperty({ type: [CreateStockDto] })
+/*   @ApiProperty({ type: [CreateStockDto] })
   @IsArray()
   @IsOptional()
-  stocks?: CreateStockDto[];
+  stocks?: CreateStockDto[]; */
+
+  @ApiProperty({ type: Number })
+  @IsNumber()
+  @IsOptional()
+  quantity: number;
+
+  @ApiProperty({ type: [PriceDto], required: false })
+  @IsArray()
+  @IsNotEmpty()
+  prices?: PriceDto[];
 
   @ApiProperty({ type: [CreateTranslationDto] })
   @IsNotEmpty({
@@ -38,9 +49,11 @@ export class CreateProductDto {
   })
   translations: CreateTranslationDto[];
 
-  @ApiPropertyOptional({ type: 'text' })
+  @ApiProperty({ type: [String], required: false })
   @IsArray({
     message: 'IMAGES_IS_ARRAY',
   })
-  images: string[];
+  @IsOptional()
+  @IsString({ each: true })
+  images?: string[];
 }

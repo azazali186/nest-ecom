@@ -1,6 +1,6 @@
-import { Between } from 'typeorm';
+import { Between, Repository } from 'typeorm';
 import { format } from 'date-fns';
-import { BadRequestException } from '@nestjs/common';
+import { BadRequestException, NotFoundException } from '@nestjs/common';
 import { MediaTypeEnum } from 'src/enum/media-type.enum';
 
 export function getPermissionNameFromRoute(
@@ -185,3 +185,7 @@ export function getMediaTypeFromMimetype(
   const mt = mediaTypeMap[lowercaseMimetype];
   return mt;
 }
+
+export const getEntityById = async (repo: Repository<any>, id: number) => {
+  return await repo.findOneOrFail({ where: { id: id } });
+};

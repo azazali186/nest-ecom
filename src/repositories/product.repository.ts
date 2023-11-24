@@ -18,6 +18,9 @@ import { ProductInteractionTypeEnum } from 'src/enum/product-interation-type.enu
 import { UserRepository } from './user.repository';
 import { getRandomProductInteractionType } from 'src/utils/brain.utils';
 import { VariationRepository } from './varaition.repository';
+import { CreateStockDto } from 'src/dto/stock/create-stock.dto';
+import { PriceRepository } from './price.repository';
+import { PriceDto } from 'src/dto/stock/price.dto';
 export class ProductRepository extends Repository<Product> {
   constructor(
     @InjectRepository(Product)
@@ -42,7 +45,10 @@ export class ProductRepository extends Repository<Product> {
     private userRepo: UserRepository,
 
     @Inject(forwardRef(() => VariationRepository))
-    private varRepo: VariationRepository,    
+    private varRepo: VariationRepository,
+
+    @Inject(forwardRef(() => PriceRepository))
+    private prRepo: PriceRepository,
 
     private langService: LangService,
     private elService: ElasticService,
@@ -50,11 +56,17 @@ export class ProductRepository extends Repository<Product> {
     super(prodRepo.target, prodRepo.manager, prodRepo.queryRunner);
   }
   private readonly indexName = process.env.PRODUCT_INDEX_ELK;
-  async createProduct(
-    createProductDto: CreateProductDto,
-    user: any,
-  ): Promise<ApiResponse<Product>> {
-    const { sku, categoryIds, stocks, translations, images } = createProductDto;
+
+  async createProduct(createProductDto: CreateProductDto, user: any) {
+    const {
+      sku,
+      categoryIds,
+      /* stocks ,*/ translations,
+      images,
+      variations,
+      prices,
+      quantity,
+    } = createProductDto;
 
     const product = new Product();
     product.sku = sku;
@@ -70,18 +82,51 @@ export class ProductRepository extends Repository<Product> {
 
     await this.prodRepo.save(product);
 
-    // Create and associate stocks
-    const stocksData = await Promise.all(
-      stocks.map(async (stockDto) => {
-        const stock = await this.stRepo.createStock(stockDto, user);
-        return stock;
+    const pricesData = await Promise.all(
+      prices?.map(async (priceDto: PriceDto) => {
+        const data = await this.prRepo.createProductPrice(priceDto, product);
+        return data;
       }),
     );
-    product.stocks = stocksData;
+    product.price = pricesData;
+
+    
+
+    let variationData = []
+    // Create and associate variations
+    if (variations && variations?.length > 0) {
+      const varData = await Promise.all(
+        variations.map(async (varDto) => {
+          const variation = await this.varRepo.createVar(varDto);
+          return variation;
+        }),
+      );
+      
+      variationData = varData.flat();
+      product.variations = variationData;
+    }
+
+    // Create and associate stocks
+    if (variationData && variationData?.length > 0) {
+      const stocksData = await Promise.all(
+        variationData?.map(async (vd) => {
+          const stockDto = new CreateStockDto();
+          stockDto.sku = `${sku}-${vd.name}-${vd.value}`;
+          stockDto.prices = prices;
+          stockDto.translations = translations;
+          stockDto.quantity = quantity;
+
+          const stock = await this.stRepo.createStock(stockDto, user, vd);
+          return stock;
+        }),
+      );
+      product.stocks = stocksData;
+    }
+
 
     // Create and associate translations
     const translationsData = await Promise.all(
-      translations.map(async (translationDto) => {
+      translations?.map(async (translationDto) => {
         const translation = await this.trRepo.createTranslation(
           translationDto,
           'product',
@@ -92,23 +137,29 @@ export class ProductRepository extends Repository<Product> {
     );
     product.translations = translationsData;
 
-    // Create and associate images
-    const imagesData = await Promise.all(
-      images.map(async (imageDto) => {
-        const image = await this.imgRepo.createImage(
-          imageDto,
-          'product',
-          product.id,
-        );
-        return image;
-      }),
-    );
-    product.images = imagesData;
+    if (images && images?.length > 0) {
+      // Create and associate images
+      const imagesData = await Promise.all(
+        images?.map(async (imageDto) => {
+          const image = await this.imgRepo.createImage(
+            imageDto,
+            'product',
+            product.id,
+          );
+          return image;
+        }),
+      );
+      product.images = imagesData;
+    }
+
+    await this.prodRepo.save(product);
+
+    
 
     // Save the product with all associations
     await this.prodRepo.save(product);
-    return ApiResponse.create(
-      this.prodRepo.save(product),
+    return ApiResponse.success(
+      product,
       201,
       this.langService.getTranslation('CREATED_SUCCESSFULLY', 'Product'),
     );
@@ -174,8 +225,6 @@ export class ProductRepository extends Repository<Product> {
 
     return ApiResponse.success(product, 200);
   }
-
-  
 
   async updateProduct(id: any, updateProductDto: UpdateProductDto, user: any) {
     const { sku, categoryIds, status, stocks, translations, images } =
@@ -295,7 +344,7 @@ export class ProductRepository extends Repository<Product> {
       });
     }
 
-    if(req.search){
+    if (req.search) {
       query.andWhere(
         '(product.sku LIKE :title OR translations.name LIKE :title OR stock.sku = :title)',
         { title: `%${req.search}%` },

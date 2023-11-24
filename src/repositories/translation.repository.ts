@@ -7,7 +7,10 @@ import { CategoryRepository } from './category.repository';
 import { ProductRepository } from './product.repository';
 import { StockRepository } from './stock.repository';
 import { UpdateTranslationDto } from 'src/dto/translation/update-translation.dto';
-import { Inject, forwardRef } from '@nestjs/common';
+import { Inject, NotFoundException, forwardRef } from '@nestjs/common';
+import { Variation } from 'src/entities/variations.entity';
+import { getEntityById } from 'src/utils/helper.utils';
+import { CatalogRepository } from './catalog.repository';
 
 export class TranslationsRepository extends Repository<Translations> {
   constructor(
@@ -25,76 +28,72 @@ export class TranslationsRepository extends Repository<Translations> {
 
     @Inject(forwardRef(() => LanguageRepository))
     private langRepo: LanguageRepository,
+
+    @Inject(forwardRef(() => CatalogRepository))
+    private cpRepo: CatalogRepository,
   ) {
     super(transRepo.target, transRepo.manager, transRepo.queryRunner);
   }
 
   async createTranslation(
-    translationDto: CreateTranslationDto | UpdateTranslationDto,
-    type: string,
-    id: number,
-  ) {
-    const {
+    {
       name,
       language_id,
       description,
       meta_title,
       meta_keywords,
       meta_descriptions,
-    } = translationDto;
-
+    }: CreateTranslationDto | UpdateTranslationDto,
+    type: string,
+    id: number,
+    variation: Variation = null,
+  ) {
     const translation = new Translations();
 
-    if (name) {
-      translation.name = name;
+    if (variation) {
+      const variationText = `${variation.name} ${variation.value}`;
+      name && (name += ` ${variationText}`);
+      description && (description += ` ${variationText}`);
+      meta_title && (meta_title += ` ${variationText}`);
+      meta_keywords && (meta_keywords += ` ${variationText}`);
+      meta_descriptions && (meta_descriptions += ` ${variationText}`);
     }
 
-    if (description) {
-      translation.description = description;
-    }
-
-    if (meta_title) {
-      translation.meta_title = meta_title;
-    }
-
-    if (meta_keywords) {
-      translation.meta_keywords = meta_keywords;
-    }
-
-    if (meta_descriptions) {
-      translation.meta_descriptions = meta_descriptions;
-    }
+    translation.name = name;
+    translation.description = description;
+    translation.meta_title = meta_title;
+    translation.meta_keywords = meta_keywords;
+    translation.meta_descriptions = meta_descriptions;
 
     if (language_id) {
-      const lang = await this.langRepo.findOne({ where: { id: language_id } });
-      translation.language = lang;
-    }
-
-    if (name) {
-      translation.name = name;
+      try {
+        const lang = await getEntityById(this.langRepo, language_id);
+        translation.language = lang;
+      } catch (error) {
+        throw new NotFoundException(
+          `Language with id ${language_id} not found.`,
+        );
+      }
     }
 
     switch (type) {
       case 'product':
-        const product = await this.prodRepo.findOne({
-          where: { id: id },
-        });
-        translation.products = product;
+        translation.products = await getEntityById(this.prodRepo, id);
         break;
 
       case 'category':
-        const category = await this.catRepo.findOne({
-          where: { id: id },
-        });
-        translation.categories = category;
+        translation.categories = await getEntityById(this.catRepo, id);
         break;
 
       case 'stocks':
-        const stock = await this.stRepo.findOne({
-          where: { id: id },
-        });
-        translation.stock = stock;
+        translation.stock = await getEntityById(this.stRepo, id);
         break;
+      case 'catalog':
+        translation.catalogs = await getEntityById(this.cpRepo, id);
+        break;
+
+      default:
+        throw new Error(`Unsupported type: ${type}`);
     }
 
     await this.transRepo.save(translation);
@@ -112,40 +111,32 @@ export class TranslationsRepository extends Repository<Translations> {
       meta_keywords,
       meta_descriptions,
     } = translationDto;
+    try {
+      const translation = await getEntityById(this.transRepo, id);
 
-    const translation = await this.transRepo.findOne({ where: { id: id } });
+      if (language_id) {
+        try {
+          const lang = await getEntityById(this.langRepo, language_id);
+          translation.language = lang;
+        } catch (error) {
+          throw new NotFoundException(
+            `Language with id ${language_id} not found.`,
+          );
+        }
+      }
 
-    if (language_id) {
-      const lang = await this.langRepo.findOne({ where: { id: language_id } });
-      translation.language = lang;
+      translation.name = name || translation.name;
+      translation.description = description || translation.description;
+      translation.meta_title = meta_title || translation.meta_title;
+      translation.meta_keywords = meta_keywords || translation.meta_keywords;
+      translation.meta_descriptions =
+        meta_descriptions || translation.meta_descriptions;
+
+      await this.transRepo.save(translation);
+
+      return translation;
+    } catch (error) {
+      throw new NotFoundException(`Translation with ID ${id} not found.`);
     }
-
-    if (name) {
-      translation.name = name;
-    }
-
-    if (description) {
-      translation.description = description;
-    }
-
-    if (meta_title) {
-      translation.meta_title = meta_title;
-    }
-
-    if (meta_keywords) {
-      translation.meta_keywords = meta_keywords;
-    }
-
-    if (meta_descriptions) {
-      translation.meta_descriptions = meta_descriptions;
-    }
-
-    if (name) {
-      translation.name = name;
-    }
-
-    await this.transRepo.save(translation);
-
-    return translation;
   }
 }

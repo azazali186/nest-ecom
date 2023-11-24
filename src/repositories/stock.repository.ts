@@ -9,6 +9,7 @@ import { UpdateStockDto } from 'src/dto/stock/update-stock.dto';
 import { PriceRepository } from './price.repository';
 import { PriceDto } from 'src/dto/stock/price.dto';
 import { UpdatePriceDto } from 'src/dto/stock/update-price.dto';
+import { Variation } from 'src/entities/variations.entity';
 
 export class StockRepository extends Repository<Stock> {
   constructor(
@@ -27,8 +28,12 @@ export class StockRepository extends Repository<Stock> {
     super(stRepo.target, stRepo.manager, stRepo.queryRunner);
   }
 
-  async createStock(stockDto: CreateStockDto | UpdateStockDto, user) {
-    const { sku, images, translations, prices, quantity } = stockDto;
+  async createStock(
+    stockDto: CreateStockDto | UpdateStockDto,
+    user: any,
+    variation: Variation = null,
+  ) {
+    const { sku, translations, prices, quantity } = stockDto;
     const stock = new Stock();
     stock.sku = sku;
     stock.quantity = quantity;
@@ -40,8 +45,9 @@ export class StockRepository extends Repository<Stock> {
       translations.map(async (translationDto: any) => {
         const translation = await this.trRepo.createTranslation(
           translationDto,
-          'stock',
+          'stocks',
           stock.id,
+          variation,
         );
         return translation;
       }),
@@ -49,7 +55,7 @@ export class StockRepository extends Repository<Stock> {
     stock.translations = translationsData;
 
     // Create and associate images
-    const imagesData = await Promise.all(
+    /* const imagesData = await Promise.all(
       images.map(async (imageDto: any) => {
         const image = await this.imgRepo.createImage(
           imageDto,
@@ -59,7 +65,7 @@ export class StockRepository extends Repository<Stock> {
         return image;
       }),
     );
-    stock.images = imagesData;
+    stock.images = imagesData; */
 
     // Create and associate images
     const pricesData = await Promise.all(

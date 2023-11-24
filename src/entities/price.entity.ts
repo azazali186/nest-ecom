@@ -7,6 +7,7 @@ import {
 } from 'typeorm';
 import { Stock } from './stock.entity';
 import { Currency } from './currency.entity';
+import { Product } from './product.entity';
 
 @Entity()
 export class Price {
@@ -20,7 +21,17 @@ export class Price {
   @JoinColumn({ name: 'currency_id' })
   currency: Currency;
 
-  @ManyToOne(() => Stock, (st) => st.price)
+  @ManyToOne(() => Stock, (st) => st.price, { nullable: true })
   @JoinColumn({ name: 'stock_id' })
   stock: Stock;
+
+  @ManyToOne(() => Product, (pd) => pd.price, { nullable: true })
+  @JoinColumn({ name: 'product_id' })
+  product: Product;
+
+  toJSON() {
+    // Exclude the circular reference to the parent Product
+    const { product,stock, ...rest } = this;
+    return rest;
+  }
 }

@@ -17,9 +17,6 @@ export class Catalog {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @Column()
-  name: string;
-
   @ManyToMany(() => Product, (product) => product.catalogs, {
     nullable: true,
   })

@@ -8,6 +8,7 @@ import {
     ValidationPipe,
     Query,
     Patch,
+    Request,
   } from '@nestjs/common';
   import { ApiBearerAuth, ApiTags } from '@nestjs/swagger';
   import { CreateCatalogDto } from 'src/dto/catalog/create-catalog.dto';
@@ -21,8 +22,8 @@ import {
   export class CatalogController {
     constructor(private readonly cpService: CatalogService) {}
     @Post()
-    create(@Body(ValidationPipe) req: CreateCatalogDto) {
-      return this.cpService.create(req);
+    create(@Body(ValidationPipe) req: CreateCatalogDto, @Request() r) {
+      return this.cpService.create(req, r.user);
     }
     @Get()
     findAll(@Query() req: SearchCatalogDto) {

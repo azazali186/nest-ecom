@@ -1,597 +1,1004 @@
 {
   "data": [
     {
-      "sku": "electronics-product-3",
+      "sku": "SKU001",
       "categoryIds": [1],
-      "stocks": [
+      "variations": [
         {
-          "sku": "electronics-product-3",
-          "images": ["https://example.com/electronics-product3-image1.jpg"],
-          "translations": [
-            {
-              "name": "Smartwatch Pro",
-              "language_id": 1,
-              "description": "Stay connected and track your fitness with the Smartwatch Pro",
-              "meta_title": "Smartwatch Pro",
-              "meta_keywords": "smartwatch, technology, fitness",
-              "meta_descriptions": "Enhance your lifestyle with the Smartwatch Pro - your personal fitness companion."
-            }
-          ],
-          "prices": [
-            {
-              "price": "179.99",
-              "currency_id": 1
-            }
-          ]
+          "name": "Size",
+          "values": ["Small", "Medium", "Large"]
         }
+      ],
+      "quantity": 100,
+      "prices": [
+        { "price": "20.00", "currency_id": 1 },
+        { "price": "80000.00", "currency_id": 2 },
+        { "price": "1700.00", "currency_id": 3 }
       ],
       "translations": [
         {
-          "name": "Smartwatch Pro",
+          "name": "Product 1",
           "language_id": 1,
-          "description": "Stay connected and track your fitness with the Smartwatch Pro",
-          "meta_title": "Smartwatch Pro",
-          "meta_keywords": "smartwatch, technology, fitness",
-          "meta_descriptions": "Enhance your lifestyle with the Smartwatch Pro - your personal fitness companion."
+          "description": "Description in English",
+          "meta_title": "Title in English",
+          "meta_keywords": "Keywords in English",
+          "meta_descriptions": "Meta Description in English"
+        },
+        {
+          "name": "产品 1",
+          "language_id": 2,
+          "description": "在中文的描述",
+          "meta_title": "在中文的标题",
+          "meta_keywords": "在中文的关键词",
+          "meta_descriptions": "在中文的元描述"
+        },
+        {
+          "name": "ផលិតផល 1",
+          "language_id": 3,
+          "description": "កms្រាងនៅក្នុងភាសាខ្មែរ",
+          "meta_title": "កms្រាងនៅក្នុងភាសាខ្មែរ",
+          "meta_keywords": "កms្រាងនៅក្នុងភាសាខ្មែរ",
+          "meta_descriptions": "កms្រាងនៅក្នុងភាសាខ្មែរ"
+        },
+        {
+          "name": "उत्पाद 1",
+          "language_id": 4,
+          "description": "हिंदी में विवरण",
+          "meta_title": "हिंदी में शीर्षक",
+          "meta_keywords": "हिंदी में कीवर्ड",
+          "meta_descriptions": "हिंदी में मेटा विवरण"
         }
-      ],
-      "images": ["https://example.com/electronics-product3-image1.jpg"]
+      ]
     },
     {
-      "sku": "clothing-product-3",
+      "sku": "SKU002",
       "categoryIds": [2],
-      "stocks": [
+      "variations": [
         {
-          "sku": "clothing-product-3",
-          "images": ["https://example.com/clothing-product3-image1.jpg"],
-          "translations": [
-            {
-              "name": "Casual Jeans",
-              "language_id": 1,
-              "description": "Comfortable and stylish casual jeans for everyday wear",
-              "meta_title": "Casual Jeans",
-              "meta_keywords": "clothing, fashion, jeans",
-              "meta_descriptions": "Upgrade your wardrobe with these comfortable and trendy casual jeans."
-            }
-          ],
-          "prices": [
-            {
-              "price": "69.99",
-              "currency_id": 1
-            }
-          ]
+          "name": "Color",
+          "values": ["Red", "Blue", "Green"]
         }
+      ],
+      "quantity": 50,
+      "prices": [
+        { "price": "35.00", "currency_id": 1 },
+        { "price": "140000.00", "currency_id": 2 },
+        { "price": "2975.00", "currency_id": 3 }
       ],
       "translations": [
         {
-          "name": "Casual Jeans",
+          "name": "Product 2",
           "language_id": 1,
-          "description": "Comfortable and stylish casual jeans for everyday wear",
-          "meta_title": "Casual Jeans",
-          "meta_keywords": "clothing, fashion, jeans",
-          "meta_descriptions": "Upgrade your wardrobe with these comfortable and trendy casual jeans."
+          "description": "Description in English",
+          "meta_title": "Title in English",
+          "meta_keywords": "Keywords in English",
+          "meta_descriptions": "Meta Description in English"
+        },
+        {
+          "name": "产品 2",
+          "language_id": 2,
+          "description": "在中文的描述",
+          "meta_title": "在中文的标题",
+          "meta_keywords": "在中文的关键词",
+          "meta_descriptions": "在中文的元描述"
+        },
+        {
+          "name": "ផលិតផល 2",
+          "language_id": 3,
+          "description": "កms្រាងនៅក្នុងភាសាខ្មែរ",
+          "meta_title": "កms្រាងនៅក្នុងភាសាខ្មែរ",
+          "meta_keywords": "កms្រាងនៅក្នុងភាសាខ្មែរ",
+          "meta_descriptions": "កms្រាងនៅក្នុងភាសាខ្មែរ"
+        },
+        {
+          "name": "उत्पाद 2",
+          "language_id": 4,
+          "description": "हिंदी में विवरण",
+          "meta_title": "हिंदी में शीर्षक",
+          "meta_keywords": "हिंदी में कीवर्ड",
+          "meta_descriptions": "हिंदी में मेटा विवरण"
         }
-      ],
-      "images": ["https://example.com/clothing-product3-image1.jpg"]
+      ]
     },
     {
-      "sku": "electronics-product-4",
+      "sku": "SKU003",
+      "categoryIds": [3],
+      "variations": [
+        {
+          "name": "Paper Type",
+          "values": ["Recycled", "Glossy", "Matte"]
+        }
+      ],
+      "quantity": 75,
+      "prices": [
+        { "price": "15.00", "currency_id": 1 },
+        { "price": "60000.00", "currency_id": 2 },
+        { "price": "1275.00", "currency_id": 3 }
+      ],
+      "translations": [
+        {
+          "name": "Product 3",
+          "language_id": 1,
+          "description": "Description in English",
+          "meta_title": "Title in English",
+          "meta_keywords": "Keywords in English",
+          "meta_descriptions": "Meta Description in English"
+        },
+        {
+          "name": "产品 3",
+          "language_id": 2,
+          "description": "在中文的描述",
+          "meta_title": "在中文的标题",
+          "meta_keywords": "在中文的关键词",
+          "meta_descriptions": "在中文的元描述"
+        },
+        {
+          "name": "ផលិតផល 3",
+          "language_id": 3,
+          "description": "កms្រាងនៅក្នុងភាសាខ្មែរ",
+          "meta_title": "កms្រាងនៅក្នុងភាសាខ្មែរ",
+          "meta_keywords": "កms្រាងនៅក្នុងភាសាខ្មែរ",
+          "meta_descriptions": "កms្រាងនៅក្នុងភាសាខ្មែរ"
+        },
+        {
+          "name": "उत्पाद 3",
+          "language_id": 4,
+          "description": "हिंदी में विवरण",
+          "meta_title": "हिंदी में शीर्षक",
+          "meta_keywords": "हिंदी में कीवर्ड",
+          "meta_descriptions": "हिंदी में मेटा विवरण"
+        }
+      ]
+    },
+    {
+      "sku": "SKU004",
+      "categoryIds": [4],
+      "variations": [
+        {
+          "name": "Age Group",
+          "values": ["3-5 years", "6-8 years", "9-12 years"]
+        }
+      ],
+      "quantity": 120,
+      "prices": [
+        { "price": "25.00", "currency_id": 1 },
+        { "price": "100000.00", "currency_id": 2 },
+        { "price": "2125.00", "currency_id": 3 }
+      ],
+      "translations": [
+        {
+          "name": "Product 4",
+          "language_id": 1,
+          "description": "Description in English",
+          "meta_title": "Title in English",
+          "meta_keywords": "Keywords in English",
+          "meta_descriptions": "Meta Description in English"
+        },
+        {
+          "name": "产品 4",
+          "language_id": 2,
+          "description": "在中文的描述",
+          "meta_title": "在中文的标题",
+          "meta_keywords": "在中文的关键词",
+          "meta_descriptions": "在中文的元描述"
+        },
+        {
+          "name": "ផលិតផល 4",
+          "language_id": 3,
+          "description": "កms្រាងនៅក្នុងភាសាខ្មែរ",
+          "meta_title": "កms្រាងនៅក្នុងភាសាខ្មែរ",
+          "meta_keywords": "កms្រាងនៅក្នុងភាសាខ្មែរ",
+          "meta_descriptions": "កms្រាងនៅក្នុងភាសាខ្មែរ"
+        },
+        {
+          "name": "उत्पाद 4",
+          "language_id": 4,
+          "description": "हिंदी में विवरण",
+          "meta_title": "हिंदी में शीर्षक",
+          "meta_keywords": "हिंदी में कीवर्ड",
+          "meta_descriptions": "हिंदी में मेटा विवरण"
+        }
+      ]
+    },
+    {
+      "sku": "SKU005",
+      "categoryIds": [5],
+      "variations": [
+        {
+          "name": "Operating System",
+          "values": ["Windows", "MacOS", "Linux"]
+        }
+      ],
+      "quantity": 80,
+      "prices": [
+        { "price": "120.00", "currency_id": 1 },
+        { "price": "480000.00", "currency_id": 2 },
+        { "price": "10200.00", "currency_id": 3 }
+      ],
+      "translations": [
+        {
+          "name": "Product 5",
+          "language_id": 1,
+          "description": "Description in English",
+          "meta_title": "Title in English",
+          "meta_keywords": "Keywords in English",
+          "meta_descriptions": "Meta Description in English"
+        },
+        {
+          "name": "产品 5",
+          "language_id": 2,
+          "description": "在中文的描述",
+          "meta_title": "在中文的标题",
+          "meta_keywords": "在中文的关键词",
+          "meta_descriptions": "在中文的元描述"
+        },
+        {
+          "name": "ផលិតផល 5",
+          "language_id": 3,
+          "description": "កms្រាងនៅក្នុងភាសាខ្មែរ",
+          "meta_title": "កms្រាងនៅក្នុងភាសាខ្មែរ",
+          "meta_keywords": "កms្រាងនៅក្នុងភាសាខ្មែរ",
+          "meta_descriptions": "កms្រាងនៅក្នុងភាសាខ្មែរ"
+        },
+        {
+          "name": "उत्पाद 5",
+          "language_id": 4,
+          "description": "हिंदी में विवरण",
+          "meta_title": "हिंदी में शीर्षक",
+          "meta_keywords": "हिंदी में कीवर्ड",
+          "meta_descriptions": "हिंदी में मेटा विवरण"
+        }
+      ]
+    },
+    {
+      "sku": "SKU006",
+      "categoryIds": [6],
+      "variations": [
+        {
+          "name": "Material",
+          "values": ["Cotton", "Polyester", "Blend"]
+        }
+      ],
+      "quantity": 60,
+      "prices": [
+        { "price": "50.00", "currency_id": 1 },
+        { "price": "200000.00", "currency_id": 2 },
+        { "price": "4250.00", "currency_id": 3 }
+      ],
+      "translations": [
+        {
+          "name": "Product 6",
+          "language_id": 1,
+          "description": "Description in English",
+          "meta_title": "Title in English",
+          "meta_keywords": "Keywords in English",
+          "meta_descriptions": "Meta Description in English"
+        },
+        {
+          "name": "产品 6",
+          "language_id": 2,
+          "description": "在中文的描述",
+          "meta_title": "在中文的标题",
+          "meta_keywords": "在中文的关键词",
+          "meta_descriptions": "在中文的元描述"
+        },
+        {
+          "name": "ផលិតផល 6",
+          "language_id": 3,
+          "description": "កms្រាងនៅក្នុងភាសាខ្មែរ",
+          "meta_title": "កms្រាងនៅក្នុងភាសាខ្មែរ",
+          "meta_keywords": "កms្រាងនៅក្នុងភាសាខ្មែរ",
+          "meta_descriptions": "កms្រាងនៅក្នុងភាសាខ្មែរ"
+        },
+        {
+          "name": "उत्पाद 6",
+          "language_id": 4,
+          "description": "हिंदी में विवरण",
+          "meta_title": "हिंदी में शीर्षक",
+          "meta_keywords": "हिंदी में कीवर्ड",
+          "meta_descriptions": "हिंदी में मेटा विवरण"
+        }
+      ]
+    },
+    {
+      "sku": "SKU007",
+      "categoryIds": [7],
+      "variations": [
+        {
+          "name": "Style",
+          "values": ["Casual", "Formal", "Sporty"]
+        }
+      ],
+      "quantity": 90,
+      "prices": [
+        { "price": "75.00", "currency_id": 1 },
+        { "price": "300000.00", "currency_id": 2 },
+        { "price": "6375.00", "currency_id": 3 }
+      ],
+      "translations": [
+        {
+          "name": "Product 7",
+          "language_id": 1,
+          "description": "Description in English",
+          "meta_title": "Title in English",
+          "meta_keywords": "Keywords in English",
+          "meta_descriptions": "Meta Description in English"
+        },
+        {
+          "name": "产品 7",
+          "language_id": 2,
+          "description": "在中文的描述",
+          "meta_title": "在中文的标题",
+          "meta_keywords": "在中文的关键词",
+          "meta_descriptions": "在中文的元描述"
+        },
+        {
+          "name": "ផលិតផល 7",
+          "language_id": 3,
+          "description": "កms្រាងនៅក្នុងភាសាខ្មែរ",
+          "meta_title": "កms្រាងនៅក្នុងភាសាខ្មែរ",
+          "meta_keywords": "កms្រាងនៅក្នុងភាសាខ្មែរ",
+          "meta_descriptions": "កms្រាងនៅក្នុងភាសាខ្មែរ"
+        },
+        {
+          "name": "उत्पाद 7",
+          "language_id": 4,
+          "description": "हिंदी में विवरण",
+          "meta_title": "हिंदी में शीर्षक",
+          "meta_keywords": "हिंदी में कीवर्ड",
+          "meta_descriptions": "हिंदी में मेटा विवरण"
+        }
+      ]
+    },
+    {
+      "sku": "SKU008",
+      "categoryIds": [8],
+      "variations": [
+        {
+          "name": "Skin Type",
+          "values": ["Oily", "Dry", "Normal"]
+        }
+      ],
+      "quantity": 70,
+      "prices": [
+        { "price": "40.00", "currency_id": 1 },
+        { "price": "160000.00", "currency_id": 2 },
+        { "price": "3400.00", "currency_id": 3 }
+      ],
+      "translations": [
+        {
+          "name": "Product 8",
+          "language_id": 1,
+          "description": "Description in English",
+          "meta_title": "Title in English",
+          "meta_keywords": "Keywords in English",
+          "meta_descriptions": "Meta Description in English"
+        },
+        {
+          "name": "产品 8",
+          "language_id": 2,
+          "description": "在中文的描述",
+          "meta_title": "在中文的标题",
+          "meta_keywords": "在中文的关键词",
+          "meta_descriptions": "在中文的元描述"
+        },
+        {
+          "name": "ផលិតផល 8",
+          "language_id": 3,
+          "description": "កms្រាងនៅក្នុងភាសាខ្មែរ",
+          "meta_title": "កms្រាងនៅក្នុងភាសាខ្មែរ",
+          "meta_keywords": "កms្រាងនៅក្នុងភាសាខ្មែរ",
+          "meta_descriptions": "កms្រាងនៅក្នុងភាសាខ្មែរ"
+        },
+        {
+          "name": "उत्पाद 8",
+          "language_id": 4,
+          "description": "हिंदी में विवरण",
+          "meta_title": "हिंदी में शीर्षक",
+          "meta_keywords": "हिंदी में कीवर्ड",
+          "meta_descriptions": "हिंदी में मेटा विवरण"
+        }
+      ]
+    },
+    {
+      "sku": "SKU009",
+      "categoryIds": [9],
+      "variations": [
+        {
+          "name": "Flavor",
+          "values": ["Vanilla", "Chocolate", "Strawberry"]
+        }
+      ],
+      "quantity": 120,
+      "prices": [
+        { "price": "10.00", "currency_id": 1 },
+        { "price": "40000.00", "currency_id": 2 },
+        { "price": "850.00", "currency_id": 3 }
+      ],
+      "translations": [
+        {
+          "name": "Product 9",
+          "language_id": 1,
+          "description": "Delicious vanilla-flavored treat",
+          "meta_title": "Vanilla Delight",
+          "meta_keywords": "Vanilla, Dessert, Sweet",
+          "meta_descriptions": "A delightful vanilla-flavored product for your sweet cravings."
+        },
+        {
+          "name": "产品 9",
+          "language_id": 2,
+          "description": "美味的香草口味零食",
+          "meta_title": "香草美味",
+          "meta_keywords": "香草，甜点，甜",
+          "meta_descriptions": "一款令人愉悦的香草口味产品，满足您的甜蜜愿望。"
+        },
+        {
+          "name": "ផលិតផល 9",
+          "language_id": 3,
+          "description": "បង្ហាញពីរបស់ខ្ញុំ",
+          "meta_title": "ពិសេសមួយចំនួន",
+          "meta_keywords": "ពិសេស, ទឹកដោះ, ពោះ",
+          "meta_descriptions": "មួយផលិតផលដែលមានស្រស់ស្អាតរហូតជាពិសេសមួយចំនួនសម្រាប់ការពិតឡើងវិញ។"
+        },
+        {
+          "name": "उत्पाद 9",
+          "language_id": 4,
+          "description": "स्वादिष्ट वैनिला फ्लेवर की चीज़",
+          "meta_title": "वैनिला आनंद",
+          "meta_keywords": "वैनिला, मिठाई, मिठा",
+          "meta_descriptions": "एक आनंदमय वैनिला फ्लेवर उत्पाद आपकी मिठास की इच्छाओं को पूरा करने के लिए।"
+        }
+      ]
+    },
+    {
+      "sku": "SKU010",
+      "categoryIds": [10],
+      "variations": [
+        {
+          "name": "Size",
+          "values": ["Small", "Medium", "Large"]
+        }
+      ],
+      "quantity": 60,
+      "prices": [
+        { "price": "30.00", "currency_id": 1 },
+        { "price": "120000.00", "currency_id": 2 },
+        { "price": "2550.00", "currency_id": 3 }
+      ],
+      "translations": [
+        {
+          "name": "Product 10",
+          "language_id": 1,
+          "description": "Comfortable and stylish sports attire",
+          "meta_title": "Sporty Comfort",
+          "meta_keywords": "Sports, Apparel, Comfortable",
+          "meta_descriptions": "Stay comfortable and stylish with our sports attire."
+        },
+        {
+          "name": "产品 10",
+          "language_id": 2,
+          "description": "舒适时尚的运动服装",
+          "meta_title": "时尚舒适",
+          "meta_keywords": "运动，服装，舒适",
+          "meta_descriptions": "通过我们的运动服装，保持舒适和时尚。"
+        },
+        {
+          "name": "ផលិតផល 10",
+          "language_id": 3,
+          "description": "សម្រាប់ទំនេរ និង ស្តើង",
+          "meta_title": "ស្តើង និង ស្តើង",
+          "meta_keywords": "កីឡារី, អាកាស, ទំនេរ",
+          "meta_descriptions": "សូមនៅតែសម្រាប់ទំនេរ និង ស្តើង ជាមួយនឹងស្តើងរបស់យើង។"
+        },
+        {
+          "name": "उत्पाद 10",
+          "language_id": 4,
+          "description": "आरामदायक और स्टाइलिश खेल कपड़े",
+          "meta_title": "स्पोर्टी आराम",
+          "meta_keywords": "खेल, वस्त्र, आरामदायक",
+          "meta_descriptions": "हमारे खेल कपड़ों के साथ आरामदायक और स्टाइलिश रहें।"
+        }
+      ]
+    },
+    {
+      "sku": "SKU011",
+      "categoryIds": [11],
+      "variations": [
+        {
+          "name": "Cuisine",
+          "values": ["Italian", "Mexican", "Indian"]
+        }
+      ],
+      "quantity": 40,
+      "prices": [
+        { "price": "50.00", "currency_id": 1 },
+        { "price": "200000.00", "currency_id": 2 },
+        { "price": "4250.00", "currency_id": 3 }
+      ],
+      "translations": [
+        {
+          "name": "Product 11",
+          "language_id": 1,
+          "description": "Delicious and authentic Indian cuisine",
+          "meta_title": "Indian Flavors",
+          "meta_keywords": "Indian, Cuisine, Spices",
+          "meta_descriptions": "Experience the rich flavors of authentic Indian cuisine."
+        },
+        {
+          "name": "产品 11",
+          "language_id": 2,
+          "description": "美味正宗的印度美食",
+          "meta_title": "印度风味",
+          "meta_keywords": "印度，烹饪，香料",
+          "meta_descriptions": "品味正宗印度美食的丰富风味。"
+        },
+        {
+          "name": "ផលិតផល 11",
+          "language_id": 3,
+          "description": "បង្ហាញពីរបស់ខ្ញុំ",
+          "meta_title": "ពិសេសមួយចំនួន",
+          "meta_keywords": "ពិសេស, ទឹកដោះ, ពោះ",
+          "meta_descriptions": "មួយផលិតផលដែលមានស្រស់ស្អាតរហូតជាពិសេសមួយចំនួនសម្រាប់ការពិតឡើងវិញ។"
+        },
+        {
+          "name": "उत्पाद 11",
+          "language_id": 4,
+          "description": "स्वादिष्ट और प्रामाणिक भारतीय व्यंजन",
+          "meta_title": "भारतीय फ्लेवर्स",
+          "meta_keywords": "भारतीय, व्यंजन, मसाले",
+          "meta_descriptions": "प्रामाणिक भारतीय व्यंजन के समृद्ध फ्लेवर का अनुभव करें।"
+        }
+      ]
+    },
+    {
+      "sku": "SKU012",
       "categoryIds": [1],
-      "stocks": [
+      "variations": [
         {
-          "sku": "electronics-product-4",
-          "images": ["https://example.com/electronics-product4-image1.jpg"],
-          "translations": [
-            {
-              "name": "Wireless Earbuds",
-              "language_id": 1,
-              "description": "Enjoy seamless audio with these compact and stylish wireless earbuds",
-              "meta_title": "Wireless Earbuds",
-              "meta_keywords": "earbuds, audio, wireless",
-              "meta_descriptions": "Immerse yourself in music with these high-quality wireless earbuds."
-            }
-          ],
-          "prices": [
-            {
-              "price": "89.99",
-              "currency_id": 1
-            }
-          ]
+          "name": "Color",
+          "values": ["Black", "White", "Silver"]
         }
+      ],
+      "quantity": 25,
+      "prices": [
+        { "price": "200.00", "currency_id": 1 },
+        { "price": "800000.00", "currency_id": 2 },
+        { "price": "17000.00", "currency_id": 3 }
       ],
       "translations": [
         {
-          "name": "Wireless Earbuds",
+          "name": "Product 12",
           "language_id": 1,
-          "description": "Enjoy seamless audio with these compact and stylish wireless earbuds",
-          "meta_title": "Wireless Earbuds",
-          "meta_keywords": "earbuds, audio, wireless",
-          "meta_descriptions": "Immerse yourself in music with these high-quality wireless earbuds."
+          "description": "High-performance electronics in sleek black design",
+          "meta_title": "Black Tech",
+          "meta_keywords": "Electronics, Black, High-performance",
+          "meta_descriptions": "Experience cutting-edge technology in a sleek black design."
+        },
+        {
+          "name": "产品 12",
+          "language_id": 2,
+          "description": "时尚黑色设计的高性能电子产品",
+          "meta_title": "黑科技",
+          "meta_keywords": "电子产品，黑色，高性能",
+          "meta_descriptions": "在时尚的黑色设计中体验尖端科技。"
+        },
+        {
+          "name": "ផលិតផល 12",
+          "language_id": 3,
+          "description": "សំណើចូលចិត្តប្រើប្រាស់ក្នុងការរចនា",
+          "meta_title": "តម្លៃរបស់ស្តើង",
+          "meta_keywords": "អេឡិចត្រូនិក, ខ្មែរ, តម្លៃរបស់ស្តើង",
+          "meta_descriptions": "សាកល្បងបែបស្តើងនៅក្នុងការរចនា។"
+        },
+        {
+          "name": "उत्पाद 12",
+          "language_id": 4,
+          "description": "शीघ्रता से काम करने वाला इलेक्ट्रॉनिक्स शृंगारी काला डिज़ाइन में",
+          "meta_title": "काला तकनीक",
+          "meta_keywords": "इलेक्ट्रॉनिक्स, काला, शीघ्रता से काम करने वाला",
+          "meta_descriptions": "एक शीघ्रता से काम करने वाले तकनीकी कला का अनुभव करें एक श्रृंगारी काले डिज़ाइन में।"
         }
-      ],
-      "images": ["https://example.com/electronics-product4-image1.jpg"]
+      ]
     },
     {
-      "sku": "clothing-product-4",
+      "sku": "SKU013",
       "categoryIds": [2],
-      "stocks": [
+      "variations": [
         {
-          "sku": "clothing-product-4",
-          "images": ["https://example.com/clothing-product4-image1.jpg"],
-          "translations": [
-            {
-              "name": "Formal Shirt",
-              "language_id": 1,
-              "description": "Look sharp and professional with this formal shirt",
-              "meta_title": "Formal Shirt",
-              "meta_keywords": "clothing, fashion, shirt",
-              "meta_descriptions": "Upgrade your formal attire with this stylish and comfortable formal shirt."
-            }
-          ],
-          "prices": [
-            {
-              "price": "49.99",
-              "currency_id": 1
-            }
-          ]
+          "name": "Material",
+          "values": ["Denim", "Cotton", "Leather"]
         }
+      ],
+      "quantity": 50,
+      "prices": [
+        { "price": "60.00", "currency_id": 1 },
+        { "price": "240000.00", "currency_id": 2 },
+        { "price": "5100.00", "currency_id": 3 }
       ],
       "translations": [
         {
-          "name": "Formal Shirt",
+          "name": "Product 13",
           "language_id": 1,
-          "description": "Look sharp and professional with this formal shirt",
-          "meta_title": "Formal Shirt",
-          "meta_keywords": "clothing, fashion, shirt",
-          "meta_descriptions": "Upgrade your formal attire with this stylish and comfortable formal shirt."
+          "description": "Comfortable denim jeans for everyday wear",
+          "meta_title": "Everyday Denim",
+          "meta_keywords": "Jeans, Denim, Comfortable",
+          "meta_descriptions": "Stay comfortable with our stylish denim jeans for everyday wear."
+        },
+        {
+          "name": "产品 13",
+          "language_id": 2,
+          "description": "适合日常穿着的舒适牛仔裤",
+          "meta_title": "日常牛仔",
+          "meta_keywords": "牛仔裤，牛仔，舒适",
+          "meta_descriptions": "通过我们时尚的牛仔裤，保持日常穿着的舒适感。"
+        },
+        {
+          "name": "ផលិតផល 13",
+          "language_id": 3,
+          "description": "ពេលវេលាការស្រែកស្រែករបស់អ្នក",
+          "meta_title": "ការស្រែកស្រែករបស់របស់អ្នក",
+          "meta_keywords": "ស្រែក, ស្រែករបស់របស់អ្នក, ការស្រែកស្រែក",
+          "meta_descriptions": "និងនឹងនិងនឹងស្រែករបស់របស់អ្នកបានស្រែកស្រែករបស់របស់អ្នក។"
+        },
+        {
+          "name": "उत्पाद 13",
+          "language_id": 4,
+          "description": "प्रतिदिन पहनने के लिए सुखद डेनिम जीन्स",
+          "meta_title": "प्रतिदिन डेनिम",
+          "meta_keywords": "जीन्स, डेनिम, सुखद",
+          "meta_descriptions": "हमारी शैलीष्ठ डेनिम जीन्स के साथ प्रतिदिन के पहनने में सुखद रहें।"
         }
-      ],
-      "images": ["https://example.com/clothing-product4-image1.jpg"]
+      ]
     },
     {
-      "sku": "electronics-product-5",
-      "categoryIds": [1],
-      "stocks": [
+      "sku": "SKU014",
+      "categoryIds": [3],
+      "variations": [
         {
-          "sku": "electronics-product-5",
-          "images": ["https://example.com/electronics-product5-image1.jpg"],
-          "translations": [
-            {
-              "name": "4K Ultra HD Smart TV",
-              "language_id": 1,
-              "description": "Immerse yourself in stunning visuals with this 4K Ultra HD Smart TV",
-              "meta_title": "4K Ultra HD Smart TV",
-              "meta_keywords": "smart TV, electronics, 4K",
-              "meta_descriptions": "Experience entertainment like never before with the 4K Ultra HD Smart TV."
-            }
-          ],
-          "prices": [
-            {
-              "price": "799.99",
-              "currency_id": 1
-            }
-          ]
+          "name": "Genre",
+          "values": ["Mystery", "Romance", "Science Fiction"]
         }
+      ],
+      "quantity": 35,
+      "prices": [
+        { "price": "15.00", "currency_id": 1 },
+        { "price": "60000.00", "currency_id": 2 },
+        { "price": "1275.00", "currency_id": 3 }
       ],
       "translations": [
         {
-          "name": "4K Ultra HD Smart TV",
+          "name": "Product 14",
           "language_id": 1,
-          "description": "Immerse yourself in stunning visuals with this 4K Ultra HD Smart TV",
-          "meta_title": "4K Ultra HD Smart TV",
-          "meta_keywords": "smart TV, electronics, 4K",
-          "meta_descriptions": "Experience entertainment like never before with the 4K Ultra HD Smart TV."
+          "description": "Captivating mystery novel for your reading pleasure",
+          "meta_title": "Mystery Read",
+          "meta_keywords": "Novel, Mystery, Captivating",
+          "meta_descriptions": "Dive into the mystery with our captivating novel for your reading pleasure."
+        },
+        {
+          "name": "产品 14",
+          "language_id": 2,
+          "description": "引人入胜的悬疑小说，为您的阅读愉悦",
+          "meta_title": "悬疑阅读",
+          "meta_keywords": "小说，悬疑，引人入胜",
+          "meta_descriptions": "通过我们引人入胜的小说，深入了解神秘之处，为您的阅读带来愉悦。"
+        },
+        {
+          "name": "ផលិតផល 14",
+          "language_id": 3,
+          "description": "ការរក្សាត្រូវទុកឧត្តរណៈស្រឡាញ់",
+          "meta_title": "ការអានស្រឡាញ់",
+          "meta_keywords": "គំរោង, ស្រឡាញ់, ទទួលបាន",
+          "meta_descriptions": "ធ្វើឱ្យអ្នកទទួលបានការរក្សាត្រូវទុកឧត្តរណៈនៅក្នុងរឿងត្រូវបានរាល់ថ្ងៃទៀត។"
+        },
+        {
+          "name": "उत्पाद 14",
+          "language_id": 4,
+          "description": "आपकी पठन सुख के लिए केंद्रित रहने वाला रहस्यमय उपन्यास",
+          "meta_title": "रहस्यमय पठन",
+          "meta_keywords": "उपन्यास, रहस्य, मोहक",
+          "meta_descriptions": "हमारे मोहक उपन्यास के साथ रहस्यमय विश्व में डाइव करें और आपके पठन सुख को बढ़ाएं।"
         }
-      ],
-      "images": ["https://example.com/electronics-product5-image1.jpg"]
+      ]
     },
     {
-      "sku": "clothing-product-5",
-      "categoryIds": [2],
-      "stocks": [
+      "sku": "SKU015",
+      "categoryIds": [4],
+      "variations": [
         {
-          "sku": "clothing-product-5",
-          "images": ["https://example.com/clothing-product5-image1.jpg"],
-          "translations": [
-            {
-              "name": "Sporty Sneakers",
-              "language_id": 1,
-              "description": "Stay active and stylish with these comfortable sporty sneakers",
-              "meta_title": "Sporty Sneakers",
-              "meta_keywords": "clothing, fashion, sneakers",
-              "meta_descriptions": "Elevate your sporty look with these trendy and comfortable sneakers."
-            }
-          ],
-          "prices": [
-            {
-              "price": "59.99",
-              "currency_id": 1
-            }
-          ]
+          "name": "Age Group",
+          "values": ["Toddler", "Child", "Teen"]
         }
+      ],
+      "quantity": 45,
+      "prices": [
+        { "price": "25.00", "currency_id": 1 },
+        { "price": "100000.00", "currency_id": 2 },
+        { "price": "2125.00", "currency_id": 3 }
       ],
       "translations": [
         {
-          "name": "Sporty Sneakers",
+          "name": "Product 15",
           "language_id": 1,
-          "description": "Stay active and stylish with these comfortable sporty sneakers",
-          "meta_title": "Sporty Sneakers",
-          "meta_keywords": "clothing, fashion, sneakers",
-          "meta_descriptions": "Elevate your sporty look with these trendy and comfortable sneakers."
+          "description": "Fun and educational toys for toddlers",
+          "meta_title": "Toddler Toys",
+          "meta_keywords": "Toys, Toddler, Educational",
+          "meta_descriptions": "Engage your toddler with our fun and educational toys."
+        },
+        {
+          "name": "产品 15",
+          "language_id": 2,
+          "description": "幼儿有趣教育玩具",
+          "meta_title": "幼儿玩具",
+          "meta_keywords": "玩具，幼儿，教育",
+          "meta_descriptions": "使用我们有趣且教育性的玩具来吸引您的幼儿。"
+        },
+        {
+          "name": "ផលិតផល 15",
+          "language_id": 3,
+          "description": "ជីវិតនិងសាសនា​​ទូទៅសម្រាប់តូចតាច",
+          "meta_title": "អគ្គីសនីសម្រាប់តូចតាច",
+          "meta_keywords": "អគ្គីសនី, តូចតាច, សាសនា",
+          "meta_descriptions": "ចូរអនុវត្តជីវិតរបស់អ្នកដោយអ្នកជួយជួយមើលឃើញកន្លែងផ្លូវបរិស័ទរបស់យើង។"
+        },
+        {
+          "name": "उत्पाद 15",
+          "language_id": 4,
+          "description": "छोटे बच्चों के लिए मजेदार और शिक्षात्मक खिलौने",
+          "meta_title": "बच्चा खिलौने",
+          "meta_keywords": "खिलौने, शिक्षात्मक, बच्चा",
+          "meta_descriptions": "हमारे मजेदार और शिक्षात्मक खिलौनों से अपने छोटे बच्चों को जुड़ाइए।"
         }
-      ],
-      "images": ["https://example.com/clothing-product5-image1.jpg"]
+      ]
     },
     {
-      "sku": "electronics-product-6",
-      "categoryIds": [1],
-      "stocks": [
+      "sku": "SKU016",
+      "categoryIds": [5],
+      "variations": [
         {
-          "sku": "electronics-product-6",
-          "images": ["https://example.com/electronics-product6-image1.jpg"],
-          "translations": [
-            {
-              "name": "Smart Home Security System",
-              "language_id": 1,
-              "description": "Secure your home with the latest smart home security system",
-              "meta_title": "Smart Home Security System",
-              "meta_keywords": "smart home, security, technology",
-              "meta_descriptions": "Keep your home safe and secure with the Smart Home Security System."
-            }
-          ],
-          "prices": [
-            {
-              "price": "299.99",
-              "currency_id": 1
-            }
-          ]
+          "name": "Operating System",
+          "values": ["iOS", "Android", "Windows"]
         }
+      ],
+      "quantity": 30,
+      "prices": [
+        { "price": "800.00", "currency_id": 1 },
+        { "price": "3200000.00", "currency_id": 2 },
+        { "price": "68000.00", "currency_id": 3 }
       ],
       "translations": [
         {
-          "name": "Smart Home Security System",
+          "name": "Product 16",
           "language_id": 1,
-          "description": "Secure your home with the latest smart home security system",
-          "meta_title": "Smart Home Security System",
-          "meta_keywords": "smart home, security, technology",
-          "meta_descriptions": "Keep your home safe and secure with the Smart Home Security System."
+          "description": "High-end smartphone with the latest features",
+          "meta_title": "Premium Smartphone",
+          "meta_keywords": "Smartphone, High-end, Features",
+          "meta_descriptions": "Experience the latest technology with our high-end smartphone."
+        },
+        {
+          "name": "产品 16",
+          "language_id": 2,
+          "description": "具有最新功能的高端智能手机",
+          "meta_title": "高级智能手机",
+          "meta_keywords": "智能手机，高端，功能",
+          "meta_descriptions": "通过我们的高端智能手机体验最新技术。"
+        },
+        {
+          "name": "ផលិតផល 16",
+          "language_id": 3,
+          "description": "ទូរស័ព្ទម៉ាស៊ីនជនទូលាយពេលដែលមានកម្រិតខ្ពស់",
+          "meta_title": "ស្មើស្រលាញ់ទូរស័ព្ទ",
+          "meta_keywords": "ទូរស័ព្ទ, ស្មើស្រលាញ់, មានមុខងារ",
+          "meta_descriptions": "ធ្វើឱ្យអ្នកបានបទពិសោធន៍ជាមួយទូរស័ព្ទម៉ាស៊ីនជនទូលាយ។"
+        },
+        {
+          "name": "उत्पाद 16",
+          "language_id": 4,
+          "description": "नवीनतम सुविधाओं के साथ हाई-एंड स्मार्टफोन",
+          "meta_title": "प्रीमियम स्मार्टफोन",
+          "meta_keywords": "स्मार्टफोन, हाई-एंड, सुविधाएं",
+          "meta_descriptions": "हमारे हाई-एंड स्मार्टफोन के साथ नवीनतम प्रौद्योगिकी का अनुभव करें।"
         }
-      ],
-      "images": ["https://example.com/electronics-product6-image1.jpg"]
+      ]
     },
     {
-      "sku": "clothing-product-6",
-      "categoryIds": [2],
-      "stocks": [
+      "sku": "SKU017",
+      "categoryIds": [6],
+      "variations": [
         {
-          "sku": "clothing-product-6",
-          "images": ["https://example.com/clothing-product6-image1.jpg"],
-          "translations": [
-            {
-              "name": "Cozy Winter Sweater",
-              "language_id": 1,
-              "description": "Stay warm and stylish with this cozy winter sweater",
-              "meta_title": "Cozy Winter Sweater",
-              "meta_keywords": "clothing, fashion, sweater",
-              "meta_descriptions": "Embrace the winter season with this comfortable and fashionable sweater."
-            }
-          ],
-          "prices": [
-            {
-              "price": "79.99",
-              "currency_id": 1
-            }
-          ]
+          "name": "Style",
+          "values": ["Casual", "Formal", "Sporty"]
         }
+      ],
+      "quantity": 20,
+      "prices": [
+        { "price": "45.00", "currency_id": 1 },
+        { "price": "180000.00", "currency_id": 2 },
+        { "price": "3825.00", "currency_id": 3 }
       ],
       "translations": [
         {
-          "name": "Cozy Winter Sweater",
+          "name": "Product 17",
           "language_id": 1,
-          "description": "Stay warm and stylish with this cozy winter sweater",
-          "meta_title": "Cozy Winter Sweater",
-          "meta_keywords": "clothing, fashion, sweater",
-          "meta_descriptions": "Embrace the winter season with this comfortable and fashionable sweater."
+          "description": "Stylish and comfortable formal wear",
+          "meta_title": "Formal Elegance",
+          "meta_keywords": "Formal Wear, Stylish, Comfortable",
+          "meta_descriptions": "Look elegant and feel comfortable with our stylish formal wear."
+        },
+        {
+          "name": "产品 17",
+          "language_id": 2,
+          "description": "时尚舒适的正装",
+          "meta_title": "正式典雅",
+          "meta_keywords": "正式着装，时尚，舒适",
+          "meta_descriptions": "通过我们时尚的正式着装，看起来典雅，感觉舒适。"
+        },
+        {
+          "name": "ផលិតផល 17",
+          "language_id": 3,
+          "description": "អាវិលដោយស្ម័គ្រ",
+          "meta_title": "កំពូលស្ម័គ្រ",
+          "meta_keywords": "បំពងទុក, ស្ម័គ្រ, អាវិល",
+          "meta_descriptions": "ទស្សនាអាវិលប្រឆាំងនឹងស្ម័គ្ររបស់យើង។"
+        },
+        {
+          "name": "उत्पाद 17",
+          "language_id": 4,
+          "description": "शैलीष्ठ और सुखद और सुखद फॉर्मल पहनावा",
+          "meta_title": "आधिकारिक शैली",
+          "meta_keywords": "आधिकारिक पहनावा, शैलीष्ठ, सुखद",
+          "meta_descriptions": "हमारे शैलीष्ठ आधिकारिक पहनावे के साथ आधिकारिक और सुखद देखें और महसूस करें।"
         }
-      ],
-      "images": ["https://example.com/clothing-product6-image1.jpg"]
+      ]
     },
     {
-      "sku": "electronics-product-7",
-      "categoryIds": [1],
-      "stocks": [
+      "sku": "SKU018",
+      "categoryIds": [7],
+      "variations": [
         {
-          "sku": "electronics-product-7",
-          "images": ["https://example.com/electronics-product7-image1.jpg"],
-          "translations": [
-            {
-              "name": "High-Performance Gaming Laptop",
-              "language_id": 1,
-              "description": "Unleash your gaming potential with this high-performance gaming laptop",
-              "meta_title": "Gaming Laptop",
-              "meta_keywords": "gaming, laptop, technology",
-              "meta_descriptions": "Experience immersive gaming with the High-Performance Gaming Laptop."
-            }
-          ],
-          "prices": [
-            {
-              "price": "1299.99",
-              "currency_id": 1
-            }
-          ]
+          "name": "Type",
+          "values": ["Necklace", "Earrings", "Bracelet"]
         }
+      ],
+      "quantity": 15,
+      "prices": [
+        { "price": "35.00", "currency_id": 1 },
+        { "price": "140000.00", "currency_id": 2 },
+        { "price": "2975.00", "currency_id": 3 }
       ],
       "translations": [
         {
-          "name": "High-Performance Gaming Laptop",
+          "name": "Product 18",
           "language_id": 1,
-          "description": "Unleash your gaming potential with this high-performance gaming laptop",
-          "meta_title": "Gaming Laptop",
-          "meta_keywords": "gaming, laptop, technology",
-          "meta_descriptions": "Experience immersive gaming with the High-Performance Gaming Laptop."
+          "description": "Elegant jewelry to complement your style",
+          "meta_title": "Fashion Accessories",
+          "meta_keywords": "Jewelry, Elegant, Fashion",
+          "meta_descriptions": "Enhance your style with our elegant jewelry."
+        },
+        {
+          "name": "产品 18",
+          "language_id": 2,
+          "description": "优雅的珠宝，搭配您的风格",
+          "meta_title": "时尚配饰",
+          "meta_keywords": "珠宝，优雅，时尚",
+          "meta_descriptions": "通过我们的优雅珠宝提升您的时尚品味。"
+        },
+        {
+          "name": "ផលិតផល 18",
+          "language_id": 3,
+          "description": "ជម្រើសប្រចាំទីប្រាំ",
+          "meta_title": "កម្មវិធីផ្នែក",
+          "meta_keywords": "ជម្រើសប្រចាំទីប្រាំ, ស្រឡាញ់, ស្រឡាញ់",
+          "meta_descriptions": "ធ្វើឱ្យនិស្សិតក្នុងការរួមបញ្ចូលរបស់អ្នកដោយយួនយុន។"
+        },
+        {
+          "name": "उत्पाद 18",
+          "language_id": 4,
+          "description": "आपके शैली को पूर्ण करने के लिए सुरुचिपूर्ण आभूषण",
+          "meta_title": "फैशन एक्सेसरीज",
+          "meta_keywords": "आभूषण, सुरुचिपूर्ण, फैशन",
+          "meta_descriptions": "हमारे सुरुचिपूर्ण आभूषण के साथ अपने शैली को बढ़ाएं।"
         }
-      ],
-      "images": ["https://example.com/electronics-product7-image1.jpg"]
+      ]
     },
     {
-      "sku": "clothing-product-7",
-      "categoryIds": [2],
-      "stocks": [
+      "sku": "SKU019",
+      "categoryIds": [8],
+      "variations": [
         {
-          "sku": "clothing-product-7",
-          "images": ["https://example.com/clothing-product7-image1.jpg"],
-          "translations": [
-            {
-              "name": "Classic Black Suit",
-              "language_id": 1,
-              "description": "Elevate your style with this classic black suit for formal occasions",
-              "meta_title": "Classic Black Suit",
-              "meta_keywords": "clothing, fashion, suit",
-              "meta_descriptions": "Make a statement at formal events with the timeless Classic Black Suit."
-            }
-          ],
-          "prices": [
-            {
-              "price": "299.99",
-              "currency_id": 1
-            }
-          ]
+          "name": "Skin Type",
+          "values": ["Oily", "Dry", "Combination"]
         }
+      ],
+      "quantity": 40,
+      "prices": [
+        { "price": "30.00", "currency_id": 1 },
+        { "price": "120000.00", "currency_id": 2 },
+        { "price": "2550.00", "currency_id": 3 }
       ],
       "translations": [
         {
-          "name": "Classic Black Suit",
+          "name": "Product 19",
           "language_id": 1,
-          "description": "Elevate your style with this classic black suit for formal occasions",
-          "meta_title": "Classic Black Suit",
-          "meta_keywords": "clothing, fashion, suit",
-          "meta_descriptions": "Make a statement at formal events with the timeless Classic Black Suit."
+          "description": "Premium beauty products for radiant skin",
+          "meta_title": "Luxury Skincare",
+          "meta_keywords": "Skincare, Premium, Radiant",
+          "meta_descriptions": "Achieve radiant skin with our premium beauty products."
+        },
+        {
+          "name": "产品 19",
+          "language_id": 2,
+          "description": "使皮肤光彩照人的高级美容产品",
+          "meta_title": "豪华护肤品",
+          "meta_keywords": "护肤品，高级，光彩",
+          "meta_descriptions": "通过我们的高级美容产品获得光彩照人的皮肤。"
+        },
+        {
+          "name": "ផលិតផល 19",
+          "language_id": 3,
+          "description": "ផលិតផលសំខាន់សម្រាប់សូម្បីធ្វើឱ្យផ្ទុកសង្ហា",
+          "meta_title": "ការផ្តល់ជូនការធ្វើឱ្យបទពិសោធន៍",
+          "meta_keywords": "ការធ្វើឱ្យផ្ទុកសង្ហា, សម្រាប់បទពិសោធន៍, សូម្បីធ្វើឱ្យផ្ទុកសង្ហា",
+          "meta_descriptions": "លទ្ធផលស្តីពីការធ្វើឱ្យបទពិសោធន៍ដោយផ្ទុកសង្ហារបស់យើង។"
+        },
+        {
+          "name": "उत्पाद 19",
+          "language_id": 4,
+          "description": "ब्रिलियंट त्वचा के लिए प्रीमियम सौंदर्य उत्पाद",
+          "meta_title": "लक्जरी स्किनकेयर",
+          "meta_keywords": "स्किनकेयर, प्रीमियम, ब्रिलियंट",
+          "meta_descriptions": "हमारे प्रीमियम सौंदर्य उत्पादों के साथ ब्रिलियंट त्वचा प्राप्त करें।"
         }
-      ],
-      "images": ["https://example.com/clothing-product7-image1.jpg"]
+      ]
     },
     {
-      "sku": "electronics-product-8",
-      "categoryIds": [1],
-      "stocks": [
+      "sku": "SKU020",
+      "categoryIds": [9],
+      "variations": [
         {
-          "sku": "electronics-product-8",
-          "images": ["https://example.com/electronics-product8-image1.jpg"],
-          "translations": [
-            {
-              "name": "Smart Home Speaker System",
-              "language_id": 1,
-              "description": "Enhance your home with this smart speaker system for immersive audio",
-              "meta_title": "Smart Home Speaker System",
-              "meta_keywords": "smart home, speaker, audio",
-              "meta_descriptions": "Bring music to life with the Smart Home Speaker System for an immersive audio experience."
-            }
-          ],
-          "prices": [
-            {
-              "price": "149.99",
-              "currency_id": 1
-            }
-          ]
+          "name": "Size",
+          "values": ["King", "Queen", "Double"]
         }
+      ],
+      "quantity": 25,
+      "prices": [
+        { "price": "120.00", "currency_id": 1 },
+        { "price": "480000.00", "currency_id": 2 },
+        { "price": "10200.00", "currency_id": 3 }
       ],
       "translations": [
         {
-          "name": "Smart Home Speaker System",
+          "name": "Product 20",
           "language_id": 1,
-          "description": "Enhance your home with this smart speaker system for immersive audio",
-          "meta_title": "Smart Home Speaker System",
-          "meta_keywords": "smart home, speaker, audio",
-          "meta_descriptions": "Bring music to life with the Smart Home Speaker System for an immersive audio experience."
-        }
-      ],
-      "images": ["https://example.com/electronics-product8-image1.jpg"]
-    },
-    {
-      "sku": "clothing-product-8",
-      "categoryIds": [2],
-      "stocks": [
+          "description": "Luxurious king-size bed for a restful sleep",
+          "meta_title": "King Size Comfort",
+          "meta_keywords": "Bed, King Size, Luxurious",
+          "meta_descriptions": "Indulge in a restful sleep with our luxurious king-size bed."
+        },
         {
-          "sku": "clothing-product-8",
-          "images": ["https://example.com/clothing-product8-image1.jpg"],
-          "translations": [
-            {
-              "name": "Casual Hoodie",
-              "language_id": 1,
-              "description": "Stay comfortable and stylish with this casual hoodie for everyday wear",
-              "meta_title": "Casual Hoodie",
-              "meta_keywords": "clothing, fashion, hoodie",
-              "meta_descriptions": "Add a casual touch to your wardrobe with the comfortable Casual Hoodie for everyday wear."
-            }
-          ],
-          "prices": [
-            {
-              "price": "39.99",
-              "currency_id": 1
-            }
-          ]
-        }
-      ],
-      "translations": [
+          "name": "产品 20",
+          "language_id": 2,
+          "description": "豪华的特大号床，确保宁静的睡眠",
+          "meta_title": "特大号舒适",
+          "meta_keywords": "床，特大号，豪华",
+          "meta_descriptions": "通过我们豪华的特大号床，尽情享受宁静的睡眠。"
+        },
         {
-          "name": "Casual Hoodie",
-          "language_id": 1,
-          "description": "Stay comfortable and stylish with this casual hoodie for everyday wear",
-          "meta_title": "Casual Hoodie",
-          "meta_keywords": "clothing, fashion, hoodie",
-          "meta_descriptions": "Add a casual touch to your wardrobe with the comfortable Casual Hoodie for everyday wear."
-        }
-      ],
-      "images": ["https://example.com/clothing-product8-image1.jpg"]
-    },
-    {
-      "sku": "electronics-product-9",
-      "categoryIds": [1],
-      "stocks": [
+          "name": "ផលិតផល 20",
+          "language_id": 3,
+          "description": "មានជម្រើសប្រភេទក្រុម",
+          "meta_title": "ទំហំជម្រើសប្រភេទក្រុម",
+          "meta_keywords": "គ្រឿងជម្រើសប្រភេទក្រុម, គ្រឿងជម្រើសប្រភេទក្រុម, គ្រឿងជម្រើសប្រភេទក្រុម",
+          "meta_descriptions": "មានជម្រើសប្រភេទក្រុមដោយយើងដើរទៅយកតម្លៃរបស់យើងសម្រាប់ការទំនាក់ទំនង។"
+        },
         {
-          "sku": "electronics-product-9",
-          "images": ["https://example.com/electronics-product9-image1.jpg"],
-          "translations": [
-            {
-              "name": "Virtual Reality Headset",
-              "language_id": 1,
-              "description": "Immerse yourself in virtual worlds with this advanced virtual reality headset",
-              "meta_title": "Virtual Reality Headset",
-              "meta_keywords": "virtual reality, headset, technology",
-              "meta_descriptions": "Step into a new reality with the Virtual Reality Headset for an immersive experience."
-            }
-          ],
-          "prices": [
-            {
-              "price": "249.99",
-              "currency_id": 1
-            }
-          ]
+          "name": "उत्पाद 20",
+          "language_id": 4,
+          "description": "एक आरामदायक नींद के लिए विलासी राजा साइज बेड",
+          "meta_title": "राजा साइज आराम",
+          "meta_keywords": "बेड, राजा साइज, विलासी",
+          "meta_descriptions": "हमारे विलासी राजा साइज बेड के साथ एक आरामदायक नींद में खो जाएं।"
         }
-      ],
-      "translations": [
-        {
-          "name": "Virtual Reality Headset",
-          "language_id": 1,
-          "description": "Immerse yourself in virtual worlds with this advanced virtual reality headset",
-          "meta_title": "Virtual Reality Headset",
-          "meta_keywords": "virtual reality, headset, technology",
-          "meta_descriptions": "Step into a new reality with the Virtual Reality Headset for an immersive experience."
-        }
-      ],
-      "images": ["https://example.com/electronics-product9-image1.jpg"]
-    },
-    {
-      "sku": "clothing-product-9",
-      "categoryIds": [2],
-      "stocks": [
-        {
-          "sku": "clothing-product-9",
-          "images": ["https://example.com/clothing-product9-image1.jpg"],
-          "translations": [
-            {
-              "name": "Vintage Denim Jacket",
-              "language_id": 1,
-              "description": "Add a touch of vintage style with this classic denim jacket",
-              "meta_title": "Vintage Denim Jacket",
-              "meta_keywords": "clothing, fashion, jacket",
-              "meta_descriptions": "Elevate your style with the timeless Vintage Denim Jacket, a must-have in your wardrobe."
-            }
-          ],
-          "prices": [
-            {
-              "price": "89.99",
-              "currency_id": 1
-            }
-          ]
-        }
-      ],
-      "translations": [
-        {
-          "name": "Vintage Denim Jacket",
-          "language_id": 1,
-          "description": "Add a touch of vintage style with this classic denim jacket",
-          "meta_title": "Vintage Denim Jacket",
-          "meta_keywords": "clothing, fashion, jacket",
-          "meta_descriptions": "Elevate your style with the timeless Vintage Denim Jacket, a must-have in your wardrobe."
-        }
-      ],
-      "images": ["https://example.com/clothing-product9-image1.jpg"]
-    },
-    {
-      "sku": "electronics-product-10",
-      "categoryIds": [1],
-      "stocks": [
-        {
-          "sku": "electronics-product-10",
-          "images": ["https://example.com/electronics-product10-image1.jpg"],
-          "translations": [
-            {
-              "name": "Wireless Charging Pad",
-              "language_id": 1,
-              "description": "Charge your devices effortlessly with this sleek wireless charging pad",
-              "meta_title": "Wireless Charging Pad",
-              "meta_keywords": "wireless charging, technology, devices",
-              "meta_descriptions": "Experience convenience with the Wireless Charging Pad for easy and efficient device charging."
-            }
-          ],
-          "prices": [
-            {
-              "price": "49.99",
-              "currency_id": 1
-            }
-          ]
-        }
-      ],
-      "translations": [
-        {
-          "name": "Wireless Charging Pad",
-          "language_id": 1,
-          "description": "Charge your devices effortlessly with this sleek wireless charging pad",
-          "meta_title": "Wireless Charging Pad",
-          "meta_keywords": "wireless charging, technology, devices",
-          "meta_descriptions": "Experience convenience with the Wireless Charging Pad for easy and efficient device charging."
-        }
-      ],
-      "images": ["https://example.com/electronics-product10-image1.jpg"]
-    },
-    {
-      "sku": "clothing-product-10",
-      "categoryIds": [2],
-      "stocks": [
-        {
-          "sku": "clothing-product-10",
-          "images": ["https://example.com/clothing-product10-image1.jpg"],
-          "translations": [
-            {
-              "name": "Athletic Running Shoes",
-              "language_id": 1,
-              "description": "Achieve your fitness goals with these comfortable and stylish athletic running shoes",
-              "meta_title": "Athletic Running Shoes",
-              "meta_keywords": "clothing, fashion, shoes, athletic",
-              "meta_descriptions": "Step into fitness with the Athletic Running Shoes, designed for comfort and performance."
-            }
-          ],
-          "prices": [
-            {
-              "price": "69.99",
-              "currency_id": 1
-            }
-          ]
-        }
-      ],
-      "translations": [
-        {
-          "name": "Athletic Running Shoes",
-          "language_id": 1,
-          "description": "Achieve your fitness goals with these comfortable and stylish athletic running shoes",
-          "meta_title": "Athletic Running Shoes",
-          "meta_keywords": "clothing, fashion, shoes, athletic",
-          "meta_descriptions": "Step into fitness with the Athletic Running Shoes, designed for comfort and performance."
-        }
-      ],
-      "images": ["https://example.com/clothing-product10-image1.jpg"]
+      ]
     }
-
   ]
 }

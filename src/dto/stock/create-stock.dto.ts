@@ -8,17 +8,10 @@ export class CreateStockDto {
   @IsString()
   sku: string;
 
-  @ApiProperty({ type: [String], required: false })
-  @IsArray()
-  @IsOptional()
-  @IsString({ each: true })
-  images?: string[];
-
   @ApiProperty({ type: Number })
   @IsNumber()
   @IsOptional()
   quantity: number;
-
 
   @ApiProperty({ type: [CreateTranslationDto], required: false })
   @IsArray()
