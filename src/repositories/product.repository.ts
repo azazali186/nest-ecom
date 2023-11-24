@@ -70,6 +70,7 @@ export class ProductRepository extends Repository<Product> {
 
     const product = new Product();
     product.sku = sku;
+    product.quantity = quantity;
     product.created_by = user;
 
     if (categoryIds.length > 0) {

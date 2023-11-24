@@ -73,7 +73,12 @@ export class CatalogRepository extends Repository<Catalog> {
     const cat = await this.findOneOrFail({
       where: { id },
       relations: {
-        products: { translations: true },
+        products: {
+          translations: true,
+          price: true,
+          // stocks: { translations: true, price: true },
+          images: true,
+        },
         translations: true,
         images: true,
       },
