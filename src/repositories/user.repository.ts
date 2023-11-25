@@ -107,6 +107,7 @@ export class UserRepository extends Repository<User> {
       ])
       .skip(filterDto.offset)
       .take(filterDto.limit)
+      .cache(30000)
       .getManyAndCount();
 
     return ApiResponse.paginate(

@@ -3,6 +3,25 @@ import { ImportEntities } from 'src/imports/entity.import';
 const username = process.env.DB_USERNAME || '';
 const password = process.env.DB_PASSWORD || 'Aj189628@';
 const dbName = process.env.DB_NAME || 'nest-ecom';
+let cache: any = process.env.IS_CACHE
+  ? {
+      duration: 60000,
+    }
+  : false;
+
+if (process.env.IS_REDIS) {
+  cache = {
+    duration: 60000,
+    type: 'redis',
+    options: {
+      host: 'localhost',
+      port: 6379,
+      database: 1,
+      password: 'Aj189628@',
+    },
+  };
+}
+
 export const typeOrmConfig: TypeOrmModuleOptions = {
   type: 'mysql',
   host: process.env.DB_HOSTNAME || '192.168.30.98',
@@ -18,7 +37,5 @@ export const typeOrmConfig: TypeOrmModuleOptions = {
   dateStrings: ['DATE', 'DATETIME', 'TIMESTAMP'],
   migrations: ['src/migrations/*.ts'],
   subscribers: ['src/subscribers/*.ts'],
-  /* cli: {
-    migrationsDir: 'src/database/migrations',
-  }, */
+  cache: cache,
 };

@@ -35,12 +35,18 @@ export class User extends BaseEntity {
   @Column({ type: 'timestamp', default: () => 'CURRENT_TIMESTAMP' })
   created_at: Date;
 
+  @Column({ nullable: true })
+  created_by_id: number;
+
+  @Column({ nullable: true })
+  updated_by_id: number;
+
   @ManyToOne(() => User, { nullable: true })
-  @JoinColumn()
+  @JoinColumn({ name: 'created_by_id' })
   created_by: User | null;
 
   @ManyToOne(() => User, { nullable: true })
-  @JoinColumn()
+  @JoinColumn({ name: 'updated_by_id' })
   updated_by: User | null;
 
   @Column({
@@ -57,7 +63,11 @@ export class User extends BaseEntity {
   })
   status: UserStatus;
 
+  @Column({ nullable: true })
+  roles_id: number;
+
   @ManyToOne(() => Role, (role) => role.users)
+  @JoinColumn({ name: 'roles_id' })
   // @Transform(({ value }) => value.name)
   roles: Role;
 
@@ -71,7 +81,7 @@ export class User extends BaseEntity {
   last_login: Date;
 
   @OneToOne(() => Session)
-  @JoinColumn()
+  @JoinColumn({ name: 'latest_session_id' })
   get latestSession(): Session | undefined {
     if (this.sessions && this.sessions.length > 0) {
       return this.sessions.reduce((latest, current) =>

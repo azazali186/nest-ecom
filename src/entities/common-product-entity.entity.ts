@@ -6,11 +6,11 @@ export abstract class CommonProduct extends BaseEntity {
     @PrimaryGeneratedColumn()
   id: number;
 
-  @ManyToOne(() => Product, (pd) => pd.id, { nullable: true })
+  @ManyToOne(() => Product)
   @JoinColumn({ name: 'product_id' })
   product: Product;
 
-  @ManyToOne(() => User, (pd) => pd.id, { nullable: true })
+  @ManyToOne(() => User)
   @JoinColumn({ name: 'user_id' })
   user: User;
 }

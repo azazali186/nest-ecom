@@ -4,21 +4,36 @@ import * as mysqlDriver from 'mysql2';
 const username = process.env.DB_USERNAME || 'root';
 const password = process.env.DB_PASSWORD || 'Aj189628@';
 const dbName = process.env.DB_NAME || 'nest-ecom';
+const cache: any = process.env.IS_CACHE
+  ? {
+      duration: 60000,
+    }
+  : {
+      duration: 60000,
+      type: 'redis',
+      options: {
+        host: 'localhost',
+        port: 6379,
+        database: 2,
+        password: 'Aj189628@',
+      },
+    };
 
 export function getConfig() {
-    return {
-        driver: mysqlDriver,
-        type: 'mysql',
-        host: process.env.DB_HOSTNAME || '127.0.0.1',
-        port: parseInt(process.env.DB_PORT) || 3306,
-        username: username,
-        password: password,
-        database: dbName,
-        synchronize: false,
-        migrations: ['../migrations/*.ts'],
-        subscribers: ['../subscribers/*.ts'],
-        entities: ['../entities/**.*.ts'],
-    } as DataSourceOptions;
+  return {
+    driver: mysqlDriver,
+    type: 'mysql',
+    host: process.env.DB_HOSTNAME || '127.0.0.1',
+    port: parseInt(process.env.DB_PORT) || 3306,
+    username: username,
+    password: password,
+    database: dbName,
+    synchronize: false,
+    migrations: ['../migrations/*.ts'],
+    subscribers: ['../subscribers/*.ts'],
+    entities: ['../entities/**.*.ts'],
+    cache: cache,
+  } as DataSourceOptions;
 }
 
 class DataSource {
@@ -40,6 +55,7 @@ class DataSource {
         logging: true,
         migrations: ['src/migrations/*.ts'],
         subscribers: ['src/subscribers/*.ts'],
+        cache: cache,
       });
 
       console.log('Database connection established');

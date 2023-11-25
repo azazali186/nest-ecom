@@ -18,7 +18,6 @@ import { Stock } from './stock.entity';
 import { Catalog } from './catalog.entity';
 import { Variation } from './variations.entity';
 import { Price } from './price.entity';
-import { Cart } from './cart.entity';
 
 @Entity('products')
 export class Product extends BaseEntity {

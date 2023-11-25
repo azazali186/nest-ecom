@@ -7,6 +7,7 @@
   "license": "UNLICENSED",
   "scripts": {
     "typeorm": "typeorm-ts-node-commonjs",
+    "cache:clear":"typeorm-ts-node-commonjs cache:clear -d ./src/config/ds.ts",
     "generate:migration": "typeorm-ts-node-commonjs migration:generate ./src/migrations/ -d ./src/config/ds.ts",
     "build": "NODE_ENV=local nest build",
     "build:dev": "NODE_ENV=dev nest build",
