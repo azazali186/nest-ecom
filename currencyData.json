@@ -1,0 +1,17 @@
+﻿[
+  {
+    "name": "US Dollar",
+    "code": "USD",
+    "symbol": "$"
+  },
+  {
+    "name": "Cambodian Riyal",
+    "code": "KHR",
+    "symbol": "៛"
+  },
+  {
+    "name": "Indian Rupee",
+    "code": "INR",
+    "symbol": "₹"
+  }
+]

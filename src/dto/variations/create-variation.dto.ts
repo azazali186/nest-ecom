@@ -13,4 +13,11 @@ export class CreateVariationDto {
   })
   @IsOptional()
   values: string[];
+
+  @ApiPropertyOptional({ type: [Number] })
+  @IsArray({
+    message: 'Qty_IS_ARRAY',
+  })
+  @IsOptional()
+  qty: number[];
 }

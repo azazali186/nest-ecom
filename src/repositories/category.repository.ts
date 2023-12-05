@@ -34,7 +34,7 @@ export class CategoryRepository extends Repository<Category> {
   async updateCategory(id: any, updateData: UpdateCategoryDto) {
     try {
       const category = await this.catRepo.findOne({
-        relations: ['translation', 'images'],
+        relations: ['translations', 'images'],
         where: {
           id,
         },
@@ -97,9 +97,9 @@ export class CategoryRepository extends Repository<Category> {
   }
   async getCategoryId(id: number) {
     const data = await this.catRepo.findOne({
-      relations: ['translation', 'images', 'products'],
+      relations: ['translations', 'images', 'products'],
       where: {
-        id,
+        id: id,
       },
     });
     return ApiResponse.success(data);
@@ -162,7 +162,7 @@ export class CategoryRepository extends Repository<Category> {
 
   async deleteCategory(id: number) {
     const category = await this.catRepo.findOne({
-      relations: ['translation', 'images'],
+      relations: ['translations', 'images'],
       where: { id },
     });
 
@@ -187,7 +187,7 @@ export class CategoryRepository extends Repository<Category> {
     const { name, category_id, limit, offset } = req;
     const where = {};
     if (name) {
-      where['translation']['name'] = Like(name);
+      where['translations']['name'] = Like(name);
     }
     if (category_id) {
       where['id'] = category_id;

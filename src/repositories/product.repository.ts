@@ -91,9 +91,7 @@ export class ProductRepository extends Repository<Product> {
     );
     product.price = pricesData;
 
-    
-
-    let variationData = []
+    let variationData = [];
     // Create and associate variations
     if (variations && variations?.length > 0) {
       const varData = await Promise.all(
@@ -102,28 +100,30 @@ export class ProductRepository extends Repository<Product> {
           return variation;
         }),
       );
-      
+
       variationData = varData.flat();
       product.variations = variationData;
     }
 
     // Create and associate stocks
     if (variationData && variationData?.length > 0) {
+      let qty = 0;
       const stocksData = await Promise.all(
         variationData?.map(async (vd) => {
+          const stQty = vd.quantity || quantity;
           const stockDto = new CreateStockDto();
           stockDto.sku = `${sku}-${vd.name}-${vd.value}`;
           stockDto.prices = prices;
           stockDto.translations = translations;
-          stockDto.quantity = quantity;
-
+          stockDto.quantity = stQty;
+          qty = qty + stQty;
           const stock = await this.stRepo.createStock(stockDto, user, vd);
           return stock;
         }),
       );
+      product.quantity = qty;
       product.stocks = stocksData;
     }
-
 
     // Create and associate translations
     const translationsData = await Promise.all(
@@ -155,8 +155,6 @@ export class ProductRepository extends Repository<Product> {
 
     await this.prodRepo.save(product);
 
-    
-
     // Save the product with all associations
     await this.prodRepo.save(product);
     return ApiResponse.success(
@@ -182,7 +180,26 @@ export class ProductRepository extends Repository<Product> {
 
   async getProductId(id: number, user: any): Promise<ApiResponse<Product>> {
     const product = await this.prodRepo.findOne({
-      where: { id },
+      where: {
+        id,
+        translations: {
+          language: {
+            code: user.lang,
+          },
+        },
+        stocks: {
+          translations: {
+            language: {
+              code: user.lang,
+            },
+          },
+          price: {
+            currency: {
+              code: user.currency,
+            },
+          },
+        },
+      },
       relations: [
         'categories',
         'stocks',
@@ -194,6 +211,7 @@ export class ProductRepository extends Repository<Product> {
         'translations',
         'translations.language',
         'images',
+        'variations',
       ],
     });
 
@@ -222,7 +240,7 @@ export class ProductRepository extends Repository<Product> {
       type: type,
     });
 
-    const elk = await this.elService.createIndex(this.indexName, product);
+    await this.elService.createIndex(this.indexName, product);
 
     return ApiResponse.success(product, 200);
   }

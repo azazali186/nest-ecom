@@ -1,0 +1,18 @@
+﻿[
+  {
+    "name": "English",
+    "code": "en"
+  },
+  {
+    "name": "Chinese",
+    "code": "zh"
+  },
+  {
+    "name": "Khmer",
+    "code": "km"
+  },
+  {
+    "name": "Hindi",
+    "code": "hn"
+  }
+]

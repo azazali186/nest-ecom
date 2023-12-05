@@ -90,4 +90,7 @@ export class User extends BaseEntity {
     }
     return undefined;
   }
+
+  lang: string;
+  currency: string;
 }

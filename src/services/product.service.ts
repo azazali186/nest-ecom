@@ -13,13 +13,13 @@ export class ProductService {
     public prodRepo: ProductRepository,
   ) {}
 
-  create(req: CreateProductDto, user) {
+  create(req: CreateProductDto, user: any) {
     return this.prodRepo.createProduct(req, user);
   }
   async findAll(req: SearchProductDto) {
     return this.prodRepo.findProducts(req);
   }
-  findOne(id: number, user:any) {
+  findOne(id: number, user: any) {
     return this.prodRepo.getProductId(id, user);
   }
   update(id: any, req: UpdateProductDto, user: any) {

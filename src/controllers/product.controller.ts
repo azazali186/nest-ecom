@@ -15,7 +15,6 @@ import { BulkProductUploadDto } from 'src/dto/product/bulk-product-upload.dto';
 import { CreateProductDto } from 'src/dto/product/create-product.dto';
 import { SearchProductDto } from 'src/dto/product/search-product.dto';
 import { UpdateProductDto } from 'src/dto/product/update-product.dto';
-import { ProductInteractionTypeEnum } from 'src/enum/product-interation-type.enum';
 import { ProductService } from 'src/services/product.service';
 import { RecomService } from 'src/services/recom.service';
 

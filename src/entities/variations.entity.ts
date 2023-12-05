@@ -25,6 +25,8 @@ export class Variation extends BaseEntity {
   })
   products: Product[] | null;
 
-  @OneToMany(() => Stock, (stock) => stock.variation)  
+  @OneToMany(() => Stock, (stock) => stock.variation)
   stocks: Stock[];
+
+  quantity: number;
 }

@@ -5,9 +5,8 @@ import {
   IsOptional,
   IsString,
 } from 'class-validator';
-import { ApiProperty, ApiPropertyOptional } from '@nestjs/swagger';
+import { ApiProperty } from '@nestjs/swagger';
 import { CreateTranslationDto } from '../translation/create-translation.dto';
-import { CreateStockDto } from '../stock/create-stock.dto';
 import { CreateVariationDto } from '../variations/create-variation.dto';
 import { PriceDto } from '../stock/price.dto';
 export class CreateProductDto {
@@ -24,11 +23,6 @@ export class CreateProductDto {
   @IsArray()
   @IsOptional()
   variations?: CreateVariationDto[];
-
-/*   @ApiProperty({ type: [CreateStockDto] })
-  @IsArray()
-  @IsOptional()
-  stocks?: CreateStockDto[]; */
 
   @ApiProperty({ type: Number })
   @IsNumber()

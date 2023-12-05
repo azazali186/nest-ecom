@@ -43,6 +43,8 @@ export class CheckPermissionMiddleware implements NestMiddleware {
       next();
     } else {
       const authHeader = req.headers.authorization;
+      const langHeader = req.headers.lang;
+      const currencyHeader = req.headers.currency;
       if (authHeader) {
         const token = authHeader.split(' ')[1];
         // try {
@@ -51,7 +53,10 @@ export class CheckPermissionMiddleware implements NestMiddleware {
           process.env.ENCRYPTION_KEY_TOKEN,
         ).toString(enc.Utf8);
         const dt = await this.usersService.findSessionToken(token);
-        if (((currentPermission !== 'PUBLIC'  && !dt) || dt?.is_expired === true)) {
+        if (
+          (currentPermission !== 'PUBLIC' && !dt) ||
+          dt?.is_expired === true
+        ) {
           throw new UnauthorizedException({
             statusCode: 401,
             message: 'INVALID_TOKEN',
@@ -61,6 +66,8 @@ export class CheckPermissionMiddleware implements NestMiddleware {
           secret: process.env.JWT_SECRET,
         });
         const user = await this.usersService.findById(decoded.sub);
+        user.lang = langHeader || 'en';
+        user.currency = currencyHeader || 'USD';
         const { password, ...others } = user;
         req.user = others;
         req.user.token = token;
@@ -73,7 +80,8 @@ export class CheckPermissionMiddleware implements NestMiddleware {
         if (
           currentPermission === 'LOGOUT' ||
           currentPermission === 'PUBLIC' ||
-          currentPermission === 'BROADCAST' || req.user.roles.name == process.env.MEMBER_ROLE_NAME 
+          currentPermission === 'BROADCAST' ||
+          req.user.roles.name == process.env.MEMBER_ROLE_NAME
         ) {
           next();
         } else {
