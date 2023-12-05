@@ -22,6 +22,7 @@ import {
 import { IoAdapter } from '@nestjs/platform-socket.io';
 import { User } from './entities/user.entity';
 import { AES } from 'crypto-js';
+import { createLanguageData, createCurrencyData } from './utils/master.util';
 
 let permissionRepo: Repository<Permission>;
 let roleRepo: Repository<Role>;
@@ -73,6 +74,7 @@ async function bootstrap() {
   userRepo = entityManager.getRepository(User);
 
   extractAndSaveRoutes(server);
+  createMasterData();
 }
 
 bootstrap();
@@ -184,4 +186,8 @@ async function associatePermissionWithAdminRole() {
     guestUser.password = hashPassord;
     await userRepo.save(guestUser);
   }
+}
+function createMasterData() {
+  createLanguageData();
+  createCurrencyData();
 }

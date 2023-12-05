@@ -7,6 +7,7 @@ import {
 import { HttpAdapterHost } from '@nestjs/core';
 import { QueryFailedError } from 'typeorm';
 import { LangService } from '../services/lang.service';
+import { ApiResponse } from 'src/utils/response.util';
 
 @Catch(QueryFailedError)
 export class QueryFailedErrorFilter implements ExceptionFilter {
@@ -29,7 +30,7 @@ export class QueryFailedErrorFilter implements ExceptionFilter {
           exception.driverError.message,
         );
         const duplicatedValue = match ? match[1] : null;
-        responseBody['message'] = this.i18n.getErrorTranslation(
+        responseBody.error = this.i18n.getErrorTranslation(
           'ALREADY_EXIST',
           duplicatedValue,
         );
@@ -38,6 +39,8 @@ export class QueryFailedErrorFilter implements ExceptionFilter {
       }
     }
 
-    httpAdapter.reply(ctx.getResponse(), responseBody, HttpStatus.CONFLICT);
+    httpAdapter
+      .status(null, 409)
+      .reply(ctx.getResponse(), responseBody, HttpStatus.CONFLICT);
   }
 }

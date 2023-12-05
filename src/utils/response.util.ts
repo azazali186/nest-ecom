@@ -27,7 +27,7 @@ export class ApiResponse<T> {
       const data = await promise;
       return new ApiResponse(data, statusCode, message, null);
     } catch (err) {
-      return new ApiResponse(null, statusCode, message, err.message || error);
+      return new ApiResponse(null, 400, null, err.message || error);
     }
   }
 
@@ -46,7 +46,7 @@ export class ApiResponse<T> {
         null,
       );
     } catch (err) {
-      return new ApiResponse(null, statusCode, message, err.message || error);
+      return new ApiResponse(null, 400, null, err.message || error);
     }
   }
 
@@ -60,7 +60,7 @@ export class ApiResponse<T> {
       const data = await promise;
       return new ApiResponse(data, statusCode, message, null);
     } catch (err) {
-      return new ApiResponse(null, statusCode, message, err.message || error);
+      return new ApiResponse(null, 400, null, err.message || error);
     }
   }
 
@@ -72,7 +72,7 @@ export class ApiResponse<T> {
     try {
       return new ApiResponse(null, statusCode, message, null);
     } catch (err) {
-      return new ApiResponse(null, statusCode, message, err.message || error);
+      return new ApiResponse(null, 400, null, err.message || error);
     }
   }
 }
