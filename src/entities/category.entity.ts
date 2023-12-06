@@ -17,7 +17,7 @@ import { Images } from './images.entity';
 @Tree('closure-table', {
   closureTableName: 'category_tree',
 })
-export class Category extends BaseEntity   {
+export class Category extends BaseEntity {
   @PrimaryGeneratedColumn()
   id: number;
 

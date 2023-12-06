@@ -25,7 +25,11 @@ export class ProductInteraction extends BaseEntity {
   @JoinColumn({ name: 'user_id' })
   user: User; // ID of the user who performed the interaction
 
-  @Column({ type: 'enum', enum: ProductInteractionTypeEnum, default: ProductInteractionTypeEnum.views })
+  @Column({
+    type: 'enum',
+    enum: ProductInteractionTypeEnum,
+    default: ProductInteractionTypeEnum.views,
+  })
   type: ProductInteractionTypeEnum; // Example interaction types
 
   @Column({ default: 1 })

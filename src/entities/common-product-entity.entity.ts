@@ -1,9 +1,14 @@
-import { PrimaryGeneratedColumn, ManyToOne, JoinColumn, BaseEntity } from "typeorm";
-import { Product } from "./product.entity";
-import { User } from "./user.entity";
+import {
+  PrimaryGeneratedColumn,
+  ManyToOne,
+  JoinColumn,
+  BaseEntity,
+} from 'typeorm';
+import { Product } from './product.entity';
+import { User } from './user.entity';
 
 export abstract class CommonProduct extends BaseEntity {
-    @PrimaryGeneratedColumn()
+  @PrimaryGeneratedColumn()
   id: number;
 
   @ManyToOne(() => Product)

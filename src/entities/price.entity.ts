@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import {
   Entity,
   PrimaryGeneratedColumn,
@@ -32,7 +33,7 @@ export class Price extends BaseEntity {
 
   toJSON() {
     // Exclude the circular reference to the parent Product
-    const { product,stock, ...rest } = this;
+    const { product, stock, ...rest } = this;
     return rest;
   }
 }

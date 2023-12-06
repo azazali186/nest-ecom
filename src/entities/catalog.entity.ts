@@ -14,7 +14,7 @@ import { Images } from './images.entity';
 import { User } from './user.entity';
 
 @Entity('catalogs')
-export class Catalog extends BaseEntity  {
+export class Catalog extends BaseEntity {
   @PrimaryGeneratedColumn()
   id: number;
 
@@ -38,7 +38,7 @@ export class Catalog extends BaseEntity  {
   @ManyToOne(() => User, { nullable: true })
   @JoinColumn({ name: 'updated_by_id' })
   updated_by: User | null;
-  
+
   @Column({ type: 'timestamp', default: () => 'CURRENT_TIMESTAMP' })
   created_at: Date;
 
