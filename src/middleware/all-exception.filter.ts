@@ -7,7 +7,6 @@ import {
 import { HttpAdapterHost } from '@nestjs/core';
 import { QueryFailedError } from 'typeorm';
 import { LangService } from '../services/lang.service';
-import { ApiResponse } from 'src/utils/response.util';
 
 @Catch(QueryFailedError)
 export class QueryFailedErrorFilter implements ExceptionFilter {
