@@ -7,7 +7,7 @@
   "license": "UNLICENSED",
   "scripts": {
     "typeorm": "typeorm-ts-node-commonjs",
-    "cache:clear":"typeorm-ts-node-commonjs cache:clear -d ./src/config/ds.ts",
+    "cache:clear": "typeorm-ts-node-commonjs cache:clear -d ./src/config/ds.ts",
     "generate:migration": "typeorm-ts-node-commonjs migration:generate ./src/migrations/ -d ./src/config/ds.ts",
     "build": "NODE_ENV=local nest build",
     "build:dev": "NODE_ENV=dev nest build",
@@ -76,6 +76,7 @@
     "@types/jest": "^29.5.2",
     "@types/node": "^20.3.1",
     "@types/supertest": "^2.0.12",
+    "@types/swagger-ui-express": "^4.1.6",
     "@typescript-eslint/eslint-plugin": "^6.0.0",
     "@typescript-eslint/parser": "^6.0.0",
     "eslint": "^8.42.0",

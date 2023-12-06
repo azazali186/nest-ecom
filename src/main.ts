@@ -60,6 +60,7 @@ async function bootstrap() {
     swaggerUi.setup(document, {
       swaggerOptions: {
         persistAuthorization: true,
+        docExpansion: false,
       },
     }),
   );
