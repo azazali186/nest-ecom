@@ -1,3 +1,4 @@
+import { AdminPageController } from 'src/controllers/admin-page.controller';
 import { AuthController } from 'src/controllers/auth.controller';
 import { BroadcastingController } from 'src/controllers/broadcasting.controller';
 import { CatalogController } from 'src/controllers/catalogue.controller';
@@ -24,4 +25,5 @@ export const ImportControllers = [
   ProductController,
   FilesController,
   CatalogController,
+  AdminPageController,
 ];

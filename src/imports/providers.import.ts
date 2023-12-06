@@ -21,6 +21,7 @@ import { StockRepository } from 'src/repositories/stock.repository';
 import { TranslationsRepository } from 'src/repositories/translation.repository';
 import { UserRepository } from 'src/repositories/user.repository';
 import { VariationRepository } from 'src/repositories/varaition.repository';
+import { AdminPageService } from 'src/services/admin-page.service';
 import { AuthService } from 'src/services/auth.service';
 import { CatalogService } from 'src/services/catalog.service';
 import { CategoryService } from 'src/services/category.service';
@@ -93,4 +94,5 @@ export const ImportProviders = [
   CatalogService,
   CatalogRepository,
   VariationRepository,
+  AdminPageService,
 ];
