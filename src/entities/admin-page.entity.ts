@@ -11,7 +11,7 @@ import {
 import { Permission } from './permission.entity';
 
 @Entity('admin_page')
-export class AdminPage extends BaseEntity  {
+export class AdminPage extends BaseEntity {
   @PrimaryGeneratedColumn()
   id: number;
 

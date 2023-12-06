@@ -20,7 +20,11 @@ export class PermissionService {
     return result;
   }
 
-  findAll(filterDto: SearchPermissionDto) {
+  findPermissionByAdminPage(filterDto: SearchPermissionDto) {
     return this.permissionRepository.findPermissionByAdminPage();
+  }
+
+  findAll(filterDto: SearchPermissionDto) {
+    return this.permissionRepository.findAll(filterDto);
   }
 }

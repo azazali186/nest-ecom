@@ -1,16 +1,19 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import { InjectRepository } from '@nestjs/typeorm';
 import { Permission } from 'src/entities/permission.entity';
 import { Repository } from 'typeorm';
 import { AdminPageRepository } from './admin-page.repository';
 import { ApiResponse } from 'src/utils/response.util';
+import { SearchPermissionDto } from 'src/dto/search-permission.dto';
+import { Inject, forwardRef } from '@nestjs/common';
 
 export class PermissionRepository extends Repository<Permission> {
   constructor(
     @InjectRepository(Permission)
     private permissionRepo: Repository<Permission>,
 
-    @InjectRepository(AdminPageRepository)
-    public apRepo: AdminPageRepository,
+    @Inject(forwardRef(() => AdminPageRepository))
+    private apRepo: AdminPageRepository,
   ) {
     super(
       permissionRepo.target,
@@ -52,5 +55,10 @@ export class PermissionRepository extends Repository<Permission> {
       }
     });
     return ApiResponse.success(adminPages, 200);
+  }
+
+  async findAll(filterDto: SearchPermissionDto) {
+    const permissions = await this.permissionRepo.find();
+    return ApiResponse.success(permissions, 200);
   }
 }

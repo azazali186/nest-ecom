@@ -32,7 +32,7 @@ export class CurrencyController {
   findOne(@Param('id') id: number) {
     return this.currService.findOne(id);
   }
-  @Patch()
+  @Patch(':id')
   update(
     @Param('id') id: number,
     @Body(ValidationPipe) req: UpdateCurrencyDto,
