@@ -37,8 +37,8 @@ export class ProductController {
   }
 
   @Get()
-  findAll(@Query() req: SearchProductDto) {
-    return this.prodService.findAll(req);
+  findAll(@Query() req: SearchProductDto, @Request() r) {
+    return this.prodService.findAll(req, r.user);
   }
 
   @Get('public/landing-page')
@@ -47,8 +47,8 @@ export class ProductController {
   }
 
   @Get('public')
-  public(@Query() req: SearchProductDto) {
-    return this.prodService.findAll(req);
+  public(@Query() req: SearchProductDto, @Request() r) {
+    return this.prodService.findAll(req, r.user);
   }
 
   @Get('public/:id')

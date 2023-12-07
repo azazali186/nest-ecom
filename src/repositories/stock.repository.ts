@@ -53,6 +53,7 @@ export class StockRepository extends Repository<Stock> {
       }),
     );
     stock.translations = translationsData;
+    stock.variation = variation;
 
     // Create and associate images
     /* const imagesData = await Promise.all(

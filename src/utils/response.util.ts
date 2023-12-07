@@ -33,15 +33,15 @@ export class ApiResponse<T> {
   }
 
   static async paginate<T>(
-    data: { list: T; count: number },
+    data: { list: T[]; count: number },
     statusCode: number = 200,
     message: any = null,
     error: any = null,
   ): Promise<ApiResponse<{ list: T[]; count: number }>> {
     try {
-      const result = await data.list;
+      const result = data.list;
       return new ApiResponse(
-        { list: [result], count: data.count }, // Wrap result in an array
+        { list: result, count: data.count }, // Wrap result in an array
         statusCode,
         message,
         null,

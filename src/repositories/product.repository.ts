@@ -61,7 +61,7 @@ export class ProductRepository extends Repository<Product> {
     const {
       sku,
       categoryIds,
-      /* stocks ,*/ translations,
+      translations,
       images,
       variations,
       prices,
@@ -112,7 +112,7 @@ export class ProductRepository extends Repository<Product> {
         variationData?.map(async (vd) => {
           const stQty = vd.quantity || quantity;
           const stockDto = new CreateStockDto();
-          stockDto.sku = `${sku}-${vd.name}-${vd.value}`;
+          stockDto.sku = `${sku}~${vd.value}`;
           stockDto.prices = prices;
           stockDto.translations = translations;
           stockDto.quantity = stQty;
@@ -179,23 +179,25 @@ export class ProductRepository extends Repository<Product> {
   }
 
   async getProductId(id: number, user: any): Promise<ApiResponse<Product>> {
+    const lang = user?.lang || 'en';
+    const currency = user?.currency || 'USD';
     const product = await this.prodRepo.findOne({
       where: {
         id,
         translations: {
           language: {
-            code: user.lang,
+            code: lang,
           },
         },
         stocks: {
           translations: {
             language: {
-              code: user.lang,
+              code: lang,
             },
           },
           price: {
             currency: {
-              code: user.currency,
+              code: currency,
             },
           },
         },
@@ -206,6 +208,7 @@ export class ProductRepository extends Repository<Product> {
         'stocks.translations',
         'stocks.translations.language',
         'stocks.images',
+        'stocks.variation',
         'stocks.price',
         'stocks.price.currency',
         'translations',
@@ -338,23 +341,23 @@ export class ProductRepository extends Repository<Product> {
     }
   }
 
-  async findProducts(req: SearchProductDto) {
+  async findProducts(req: SearchProductDto, user: any) {
+    const lang = user?.lang || 'en';
+    const currency = user?.currency || 'USD';
     const query = this.createQueryBuilder('product');
 
-    // Join with Stock entity to include price in the search
     query.leftJoinAndSelect('product.stocks', 'stock');
     query.leftJoinAndSelect('stock.price', 'price');
+    query.leftJoinAndSelect('stock.variation', 'stockVariation');
     query.leftJoinAndSelect('price.currency', 'currency');
-    // query.leftJoinAndSelect('stock.images', 'stockImages');
+    query.leftJoinAndSelect('product.variations', 'variations');
 
-    // Join with Translations entity to include title in the search
     query.leftJoinAndSelect('product.translations', 'translations');
+    query.leftJoinAndSelect('translations.language', 'language');
     query.leftJoinAndSelect('product.images', 'images');
 
-    // Join with Categories entity to filter by category_ids
     query.leftJoin('product.categories', 'category');
 
-    // Add filters based on the provided search criteria
     if (req.createdDate) {
       const [startDate, endDate] = req.createdDate.split(',');
       query.andWhere('product.created_at BETWEEN :startDate AND :endDate', {
@@ -362,6 +365,9 @@ export class ProductRepository extends Repository<Product> {
         endDate,
       });
     }
+
+    query.andWhere(" currency.code = '" + currency + "'");
+    query.andWhere(" language.code = '" + lang + "'");
 
     if (req.search) {
       query.andWhere(
@@ -371,7 +377,6 @@ export class ProductRepository extends Repository<Product> {
     }
 
     if (req.title) {
-      // Check title in both Product and Translations entities
       query.andWhere(
         '(product.title LIKE :title OR translations.name LIKE :title)',
         { title: `%${req.title}%` },
@@ -391,7 +396,6 @@ export class ProductRepository extends Repository<Product> {
     }
 
     if (req.sku) {
-      // Check sku in both Product and Stock entities
       query.andWhere('(product.sku = :sku OR stock.sku = :sku)', {
         sku: req.sku,
       });
@@ -414,15 +418,12 @@ export class ProductRepository extends Repository<Product> {
         categoryIds: req.category_ids,
       });
     }
+    const [list, count] = await query.getManyAndCount();
 
-    const [products, count] = await query.getManyAndCount();
-
-    // Execute the query and return the results
-    return ApiResponse.paginate({ list: products, count: count }, 200);
+    return ApiResponse.paginate({ list, count }, 200);
   }
 
   async deleteProduct(id: number) {
-    // Retrieve the product from the database
     const product = await this.prodRepo.findOne({
       where: { id },
       relations: ['stocks', 'translations', 'images'],
