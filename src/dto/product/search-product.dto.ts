@@ -45,9 +45,8 @@ export class SearchProductDto extends SearchBaseDto {
   @IsEnum(ProductStatus, { message: 'Invalid product status' })
   status?: ProductStatus;
 
-  @ApiPropertyOptional({ type: [Number] })
-  @IsArray()
-  @IsNumber({}, { each: true })
+  @ApiPropertyOptional({ type: String })
   @IsOptional()
-  category_ids: number[];
+  @IsString()
+  category_ids: string;
 }

@@ -1,6 +1,6 @@
 import { Between, Repository } from 'typeorm';
 import { format } from 'date-fns';
-import { BadRequestException, NotFoundException } from '@nestjs/common';
+import { BadRequestException } from '@nestjs/common';
 import { MediaTypeEnum } from 'src/enum/media-type.enum';
 
 export function getPermissionNameFromRoute(

@@ -415,7 +415,7 @@ export class ProductRepository extends Repository<Product> {
 
     if (req.category_ids && req.category_ids.length > 0) {
       query.andWhere('category.id IN (:...categoryIds)', {
-        categoryIds: req.category_ids,
+        categoryIds: req.category_ids.split(','),
       });
     }
     const [list, count] = await query.getManyAndCount();
