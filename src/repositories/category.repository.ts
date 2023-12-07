@@ -168,7 +168,7 @@ export class CategoryRepository extends Repository<Category> {
 
     if (category) {
       // Remove images and translations associated with the category
-      // await Promise.all(category.images.map((img) => this.imgRepo.remove(img)));
+      await Promise.all(category.images.map((img) => this.imgRepo.remove(img)));
       await Promise.all(
         category.translations.map((tr) => this.trRepo.remove(tr)),
       );
@@ -183,11 +183,19 @@ export class CategoryRepository extends Repository<Category> {
     });
   }
 
-  async findCategories(req: SearchCategoryDto) {
+  async findCategories(req: SearchCategoryDto, user: any) {
+    const lang = user?.lang || 'en';
+
     const { name, category_id, limit, offset } = req;
-    const where = {};
+    const where: any = {
+      translations: {
+        language: {
+          code: lang,
+        },
+      },
+    };
     if (name) {
-      where['translations']['name'] = Like(name);
+      where['translations']['name'] = Like('%' + name + '%');
     }
     if (category_id) {
       where['id'] = category_id;
@@ -196,7 +204,9 @@ export class CategoryRepository extends Repository<Category> {
     const [list, count] = await this.catRepo.findAndCount({
       where: where,
       relations: {
-        translations: true,
+        translations: {
+          language: true,
+        },
         images: true,
       },
       skip: offset,

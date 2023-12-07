@@ -8,6 +8,7 @@ import {
   ValidationPipe,
   Query,
   Patch,
+  Request,
 } from '@nestjs/common';
 import { ApiBearerAuth, ApiTags } from '@nestjs/swagger';
 import { BulkCreateCategoryDto } from 'src/dto/category/bulk-product-upload.dto';
@@ -32,13 +33,13 @@ export class CategoryController {
   }
 
   @Get('public')
-  public(@Query() req: SearchCategoryDto) {
-    return this.catService.findAll(req);
+  public(@Query() req: SearchCategoryDto, @Request() r) {
+    return this.catService.findAll(req, r.user);
   }
 
   @Get()
-  findAll(@Query() req: SearchCategoryDto) {
-    return this.catService.findAll(req);
+  findAll(@Query() req: SearchCategoryDto, @Request() r) {
+    return this.catService.findAll(req, r.user);
   }
   @Get(':id')
   findOne(@Param('id') id: number) {

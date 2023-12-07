@@ -16,8 +16,8 @@ export class CategoryService {
   create(req: CreateCategoryDto) {
     return this.curRepo.createCategory(req);
   }
-  async findAll(req: SearchCategoryDto) {
-    return this.curRepo.findCategories(req);
+  async findAll(req: SearchCategoryDto, user: any) {
+    return this.curRepo.findCategories(req, user);
   }
   findOne(id: number) {
     return this.curRepo.getCategoryId(id);
