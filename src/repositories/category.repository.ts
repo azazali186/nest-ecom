@@ -211,6 +211,9 @@ export class CategoryRepository extends Repository<Category> {
       },
       skip: offset,
       take: limit,
+      order: {
+        id: 'DESC',
+      },
     });
     return ApiResponse.paginate({ list, count });
   }

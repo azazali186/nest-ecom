@@ -1,4 +1,4 @@
-import { Controller, Post, Body } from '@nestjs/common';
+import { Controller, Post, Body, Request, Get } from '@nestjs/common';
 import { ApiTags } from '@nestjs/swagger';
 import { ForgetPasswordDto } from 'src/dto/forget-password.dto.ts';
 import { LoginDto } from 'src/dto/login.dto';
@@ -40,5 +40,10 @@ export class AuthController {
   @Post('verify-email')
   verifyEmail(@Body() verifyEmaildto: VerifyEmailDto) {
     return this.authService.verifyEmail(verifyEmaildto);
+  }
+
+  @Get('user')
+  getUserInfo(@Request() r) {
+    return this.authService.getUserInfo(r.user);
   }
 }

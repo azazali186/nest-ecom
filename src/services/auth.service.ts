@@ -9,6 +9,7 @@ import { SearchUserDto } from 'src/dto/search-user.dto';
 import { User } from 'src/entities/user.entity';
 import { InjectRepository } from '@nestjs/typeorm';
 import { UserRepository } from '../repositories/user.repository';
+import { ApiResponse } from 'src/utils/response.util.js';
 
 @Injectable()
 export class AuthService {
@@ -25,13 +26,8 @@ export class AuthService {
     return this.userRepository.getUsers(filterDto);
   }
 
-  async findOne(id: number): Promise<User> {
-    return this.userRepository.findOne({
-      relations: ['role'],
-      where: {
-        id: id,
-      },
-    });
+  async findOne(id: number) {
+    return this.userRepository.findUserWithId(id);
   }
 
   login(loginDto: LoginDto) {
@@ -50,5 +46,9 @@ export class AuthService {
 
   forgetPassword(forgetPasswordDto: ForgetPasswordDto) {
     throw new Error('Method not implemented.');
+  }
+
+  getUserInfo(user: any) {
+    return this.findOne(user.id);
   }
 }

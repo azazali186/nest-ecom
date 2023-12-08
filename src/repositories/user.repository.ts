@@ -56,6 +56,20 @@ export class UserRepository extends Repository<User> {
     return token;
   }
 
+  async findSessionTokenByUserId(id: number) {
+    const token = await this.sessionRepository.findOne({
+      where: {
+        user: {
+          id: id,
+        },
+      },
+      order: {
+        id: 'DESC',
+      },
+    });
+    return token;
+  }
+
   async getUsers(filterDto: SearchUserDto) {
     const { status, search, createdDate } = filterDto;
     const limit =
@@ -115,6 +129,32 @@ export class UserRepository extends Repository<User> {
       200,
       this.langService.getTranslation('GET_DATA_SUCCESS', 'Users'),
     );
+  }
+
+  async findUserWithId(id: number) {
+    const user = await this.userRepository.findOne({
+      relations: {
+        roles: {
+          permissions: true,
+        },
+      },
+      where: {
+        id: id,
+      },
+    });
+
+    const role = user.roles;
+    delete user.roles;
+    const permissions = await this.peramRepo.find();
+
+    const token = await this.findSessionTokenByUserId(user.id);
+
+    return ApiResponse.success({
+      token: token.string_token,
+      user: user,
+      role: role,
+      permissions: permissions,
+    });
   }
 
   async register(registerDto: RegisterDto, roleName: string) {
