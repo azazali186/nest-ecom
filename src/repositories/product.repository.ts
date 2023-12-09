@@ -215,6 +215,8 @@ export class ProductRepository extends Repository<Product> {
         'translations.language',
         'images',
         'variations',
+        'price',
+        'price.currency',
       ],
     });
 
