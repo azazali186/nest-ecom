@@ -1,6 +1,6 @@
 import { TypeOrmModuleOptions } from '@nestjs/typeorm';
 import { ImportEntities } from 'src/imports/entity.import';
-const username = process.env.DB_USERNAME || '';
+const username = process.env.DB_USERNAME || 'root';
 const password = process.env.DB_PASSWORD || 'Aj189628@';
 const dbName = process.env.DB_NAME || 'nest-ecom';
 let cache: any = process.env.IS_CACHE
@@ -24,7 +24,7 @@ if (process.env.IS_REDIS) {
 
 export const typeOrmConfig: TypeOrmModuleOptions = {
   type: 'mysql',
-  host: process.env.DB_HOSTNAME || '192.168.30.98',
+  host: process.env.DB_HOSTNAME || '192.168.1.114',
   port: parseInt(process.env.DB_PORT) || 3306,
   username: username,
   password: password,
