@@ -16,6 +16,8 @@ export class RedisService {
     });
   }
 
+  
+
   init() {
     console.log('redis connected');
     this.redisClient.connect();

@@ -72,9 +72,6 @@ Nest is an MIT-licensed open source project. It can grow thanks to the sponsors 
 
 Nest is [MIT licensed](LICENSE).
 
-
-
-
 Password for the elastic user (reset with `bin/elasticsearch-reset-password -u elastic`):
 2023-12-10 15:38:44   Wg=8BIsqIXnkE+z*1T5O
 2023-12-10 15:38:44 
