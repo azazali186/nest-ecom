@@ -9,6 +9,7 @@ import { Language } from 'src/entities/language.entity';
 import { Log } from 'src/entities/log.entity';
 import { Permission } from 'src/entities/permission.entity';
 import { Price } from 'src/entities/price.entity';
+import { ProductFeature } from 'src/entities/product-features.entity';
 import { ProductInteraction } from 'src/entities/product-interaction.entity';
 import { Product } from 'src/entities/product.entity';
 import { Role } from 'src/entities/role.entity';
@@ -31,6 +32,7 @@ export const ImportEntities = [
   Product,
   Category,
   Translations,
+  ProductFeature,
   Stock,
   Price,
   Images,

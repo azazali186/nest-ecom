@@ -51,11 +51,11 @@ export class CategoryRepository extends Repository<Category> {
           category.translations = [];
           for (const tr of updateData.translations) {
             const language = await this.langRepo.findOne({
-              where: { id: tr.language_id },
+              where: { code: tr.language_code },
             });
 
             if (!language) {
-              errors.push(`Language id ${tr.language_id} does not exist.`);
+              errors.push(`Language id ${tr.language_code} does not exist.`);
               continue;
             }
 
@@ -116,11 +116,11 @@ export class CategoryRepository extends Repository<Category> {
         const translationData = [];
         for (const tr of translations) {
           const language = await this.langRepo.findOne({
-            where: { id: tr.language_id },
+            where: { code: tr.language_code },
           });
 
           if (!language) {
-            errors.push(`Language id ${tr.language_id} does not exist.`);
+            errors.push(`Language id ${tr.language_code} does not exist.`);
             continue;
           }
           const translation = new Translations();

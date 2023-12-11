@@ -13,6 +13,7 @@ import { LanguageRepository } from 'src/repositories/language.repository';
 import { LogRepository } from 'src/repositories/log.repository';
 import { PermissionRepository } from 'src/repositories/permission.repository';
 import { PriceRepository } from 'src/repositories/price.repository';
+import { ProductFeatureRepository } from 'src/repositories/product-features.repository';
 import { ProductInterationRepository } from 'src/repositories/product-interaction.repository';
 import { ProductRepository } from 'src/repositories/product.repository';
 import { RoleRepository } from 'src/repositories/role.repository';
@@ -95,4 +96,5 @@ export const ImportProviders = [
   CatalogRepository,
   VariationRepository,
   AdminPageService,
+  ProductFeatureRepository,
 ];
