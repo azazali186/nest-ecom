@@ -189,3 +189,7 @@ export function getMediaTypeFromMimetype(
 export const getEntityById = async (repo: Repository<any>, id: number) => {
   return await repo.findOneOrFail({ where: { id: id } });
 };
+
+export const getEntityByCode = async (repo: Repository<any>, code: string) => {
+  return await repo.findOneOrFail({ where: { code: code } });
+};

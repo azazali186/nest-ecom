@@ -12,8 +12,10 @@ export class UpdateTranslationDto {
   name: string;
 
   @ApiPropertyOptional()
-  @IsNumber()
-  language_id: number;
+  @IsString({
+    message: 'LANGUAGE_CODE_IS_STRING',
+  })
+  language_code: string;
 
   @ApiPropertyOptional()
   @IsString({

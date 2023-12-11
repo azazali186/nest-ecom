@@ -21,6 +21,7 @@ import { VariationRepository } from './varaition.repository';
 import { CreateStockDto } from 'src/dto/stock/create-stock.dto';
 import { PriceRepository } from './price.repository';
 import { PriceDto } from 'src/dto/stock/price.dto';
+import { ProductFeatureRepository } from './product-features.repository';
 export class ProductRepository extends Repository<Product> {
   constructor(
     @InjectRepository(Product)
@@ -50,6 +51,9 @@ export class ProductRepository extends Repository<Product> {
     @Inject(forwardRef(() => PriceRepository))
     private prRepo: PriceRepository,
 
+    @Inject(forwardRef(() => ProductFeatureRepository))
+    private pfRepo: ProductFeatureRepository,
+
     private langService: LangService,
     private elService: ElasticService,
   ) {
@@ -66,6 +70,7 @@ export class ProductRepository extends Repository<Product> {
       variations,
       prices,
       quantity,
+      features,
     } = createProductDto;
 
     const product = new Product();
@@ -139,7 +144,6 @@ export class ProductRepository extends Repository<Product> {
     product.translations = translationsData;
 
     if (images && images?.length > 0) {
-      // Create and associate images
       const imagesData = await Promise.all(
         images?.map(async (imageDto) => {
           const image = await this.imgRepo.createImage(
@@ -151,6 +155,16 @@ export class ProductRepository extends Repository<Product> {
         }),
       );
       product.images = imagesData;
+    }
+
+    if (features && features?.length > 0) {
+      const featuresData = await Promise.all(
+        features?.map(async (imageDto) => {
+          const image = await this.pfRepo.createFeatures(imageDto, product);
+          return image;
+        }),
+      );
+      product.features = featuresData;
     }
 
     await this.prodRepo.save(product);

@@ -9,6 +9,7 @@ import { ApiProperty } from '@nestjs/swagger';
 import { CreateTranslationDto } from '../translation/create-translation.dto';
 import { CreateVariationDto } from '../variations/create-variation.dto';
 import { PriceDto } from '../stock/price.dto';
+import { CreateFeaturesDto } from './create-features.dto';
 export class CreateProductDto {
   @ApiProperty()
   @IsString()
@@ -50,4 +51,9 @@ export class CreateProductDto {
   @IsOptional()
   @IsString({ each: true })
   images?: string[];
+
+  @ApiProperty({ type: [CreateFeaturesDto], required: false })
+  @IsOptional()
+  @IsString({ each: true })
+  features?: CreateFeaturesDto[];
 }

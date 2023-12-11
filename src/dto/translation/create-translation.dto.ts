@@ -1,4 +1,4 @@
-import { IsNotEmpty, IsNumber, IsString } from 'class-validator';
+import { IsNotEmpty, IsString } from 'class-validator';
 import { ApiProperty, ApiPropertyOptional } from '@nestjs/swagger';
 export class CreateTranslationDto {
   @ApiProperty()
@@ -12,10 +12,10 @@ export class CreateTranslationDto {
 
   @ApiProperty()
   @IsNotEmpty({
-    message: 'LANGUAGE_ID_IS_REQUIRED',
+    message: 'LANGUAGE_CODE_IS_REQUIRED',
   })
-  @IsNumber()
-  language_id: number;
+  @IsString()
+  language_code: string;
 
   @ApiPropertyOptional()
   @IsString({

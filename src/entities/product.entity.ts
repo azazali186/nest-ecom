@@ -18,6 +18,7 @@ import { Stock } from './stock.entity';
 import { Catalog } from './catalog.entity';
 import { Variation } from './variations.entity';
 import { Price } from './price.entity';
+import { ProductFeature } from './product-features.entity';
 
 @Entity('products')
 export class Product extends BaseEntity {
@@ -61,6 +62,11 @@ export class Product extends BaseEntity {
     nullable: true,
   })
   images: Images[] | null;
+
+  @OneToMany(() => ProductFeature, (pf) => pf.products, {
+    nullable: true,
+  })
+  features: ProductFeature[] | null;
 
   @OneToMany(() => Stock, (st) => st.products)
   stocks: Stock[];

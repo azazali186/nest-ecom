@@ -9,8 +9,9 @@ import { StockRepository } from './stock.repository';
 import { UpdateTranslationDto } from 'src/dto/translation/update-translation.dto';
 import { Inject, NotFoundException, forwardRef } from '@nestjs/common';
 import { Variation } from 'src/entities/variations.entity';
-import { getEntityById } from 'src/utils/helper.utils';
+import { getEntityByCode, getEntityById } from 'src/utils/helper.utils';
 import { CatalogRepository } from './catalog.repository';
+import { ProductFeatureRepository } from './product-features.repository';
 
 export class TranslationsRepository extends Repository<Translations> {
   constructor(
@@ -31,6 +32,9 @@ export class TranslationsRepository extends Repository<Translations> {
 
     @Inject(forwardRef(() => CatalogRepository))
     private cpRepo: CatalogRepository,
+
+    @Inject(forwardRef(() => ProductFeatureRepository))
+    private pfRepo: ProductFeatureRepository,
   ) {
     super(transRepo.target, transRepo.manager, transRepo.queryRunner);
   }
@@ -38,7 +42,7 @@ export class TranslationsRepository extends Repository<Translations> {
   async createTranslation(
     {
       name,
-      language_id,
+      language_code,
       description,
       meta_title,
       meta_keywords,
@@ -65,13 +69,13 @@ export class TranslationsRepository extends Repository<Translations> {
     translation.meta_keywords = meta_keywords;
     translation.meta_descriptions = meta_descriptions;
 
-    if (language_id) {
+    if (language_code) {
       try {
-        const lang = await getEntityById(this.langRepo, language_id);
+        const lang = await getEntityByCode(this.langRepo, language_code);
         translation.language = lang;
       } catch (error) {
         throw new NotFoundException(
-          `Language with id ${language_id} not found.`,
+          `Language with code ${language_code} not found.`,
         );
       }
     }
@@ -91,6 +95,9 @@ export class TranslationsRepository extends Repository<Translations> {
       case 'catalog':
         translation.catalogs = await getEntityById(this.cpRepo, id);
         break;
+      case 'feature':
+        translation.product_feature = await getEntityById(this.pfRepo, id);
+        break;
 
       default:
         throw new Error(`Unsupported type: ${type}`);
@@ -105,7 +112,7 @@ export class TranslationsRepository extends Repository<Translations> {
     const {
       id,
       name,
-      language_id,
+      language_code,
       description,
       meta_title,
       meta_keywords,
@@ -114,13 +121,13 @@ export class TranslationsRepository extends Repository<Translations> {
     try {
       const translation = await getEntityById(this.transRepo, id);
 
-      if (language_id) {
+      if (language_code) {
         try {
-          const lang = await getEntityById(this.langRepo, language_id);
+          const lang = await getEntityByCode(this.langRepo, language_code);
           translation.language = lang;
         } catch (error) {
           throw new NotFoundException(
-            `Language with id ${language_id} not found.`,
+            `Language with code ${language_code} not found.`,
           );
         }
       }
