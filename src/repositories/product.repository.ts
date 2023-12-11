@@ -91,6 +91,7 @@ export class ProductRepository extends Repository<Product> {
 
     await this.prodRepo.save(product);
 
+    console.log(createProductDto);
     const pricesData = await Promise.all(
       prices?.map(async (priceDto: PriceDto) => {
         const data = await this.prRepo.createProductPrice(priceDto, product);
@@ -108,19 +109,23 @@ export class ProductRepository extends Repository<Product> {
           return variation;
         }),
       );
-
       variationData = varData.flat();
       product.variations = variationData;
     }
 
+    const combinations = this.generateCombinations(variations);
+
     // Create and associate stocks
-    if (variationData && variationData?.length > 0) {
+    if (combinations && combinations?.length > 0) {
       let qty = 0;
       const stocksData = await Promise.all(
-        variationData?.map(async (vd) => {
+        combinations?.map(async (vd) => {
           const stQty = vd.quantity || quantity;
           const stockDto = new CreateStockDto();
-          stockDto.sku = `${sku}~${vd.value}`;
+          const skuCombi = vd
+            .map((item: any) => Object.entries(item)[0].join('-'))
+            .join('-');
+          stockDto.sku = `${sku}~${skuCombi}`;
           stockDto.prices = prices;
           stockDto.translations = translations;
           stockDto.quantity = stQty;
@@ -145,7 +150,7 @@ export class ProductRepository extends Repository<Product> {
       }),
     );
     product.translations = translationsData;
-
+    console.log('save product data ');
     if (images && images?.length > 0) {
       const imagesData = await Promise.all(
         images?.map(async (imageDto) => {
@@ -159,7 +164,6 @@ export class ProductRepository extends Repository<Product> {
       );
       product.images = imagesData;
     }
-
     if (features && features?.length > 0) {
       const featuresData = await Promise.all(
         features?.map(async (imageDto) => {
@@ -172,13 +176,34 @@ export class ProductRepository extends Repository<Product> {
 
     await this.prodRepo.save(product);
 
-    // Save the product with all associations
-    await this.prodRepo.save(product);
     return ApiResponse.success(
       product,
       201,
       this.langService.getTranslation('CREATED_SUCCESSFULLY', 'Product'),
     );
+  }
+
+  generateCombinations(variations) {
+    const result = [];
+
+    const generate = (index, currentCombination) => {
+      if (index === variations.length) {
+        result.push(currentCombination.slice());
+        return;
+      }
+
+      const variation = variations[index];
+
+      for (const value of variation.values) {
+        currentCombination.push({ [variation.name]: value });
+        generate(index + 1, currentCombination);
+        currentCombination.pop();
+      }
+    };
+
+    generate(0, []);
+
+    return result;
   }
 
   bulkCreate(req: BulkProductUploadDto, user: any) {

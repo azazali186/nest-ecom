@@ -50,12 +50,16 @@ export class TranslationsRepository extends Repository<Translations> {
     }: CreateTranslationDto | UpdateTranslationDto,
     type: string,
     id: number,
-    variation: Variation = null,
+    variation: Variation[] = null,
   ) {
     const translation = new Translations();
 
     if (variation) {
-      const variationText = `${variation.name} ${variation.value}`;
+      const variationText = variation
+        .map((item) => {
+          return item.name + ' ' + item.value;
+        })
+        .join(' ');
       name && (name += ` ${variationText}`);
       description && (description += ` ${variationText}`);
       meta_title && (meta_title += ` ${variationText}`);

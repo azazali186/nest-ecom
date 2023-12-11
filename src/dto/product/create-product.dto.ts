@@ -54,6 +54,5 @@ export class CreateProductDto {
 
   @ApiProperty({ type: [CreateFeaturesDto], required: false })
   @IsOptional()
-  @IsString({ each: true })
   features?: CreateFeaturesDto[];
 }

@@ -5,6 +5,7 @@
   PrimaryGeneratedColumn,
   OneToMany,
   Column,
+  ManyToOne,
 } from 'typeorm';
 import { Product } from './product.entity';
 import { Translations } from './translation.entity';
@@ -17,6 +18,7 @@ export class ProductFeature extends BaseEntity {
   @Column({ name: 'type' })
   type: string;
 
+  @ManyToOne(() => Product, (pd) => pd.features, { nullable: true })
   @JoinColumn({ name: 'product_id' })
   products: Product;
 
@@ -24,4 +26,10 @@ export class ProductFeature extends BaseEntity {
     nullable: true,
   })
   translations: Translations[] | null;
+
+  toJSON() {
+    // Exclude the circular reference to the parent Product
+    const { products, ...rest } = this;
+    return rest;
+  }
 }

@@ -4,6 +4,8 @@ import {
   Column,
   Entity,
   JoinColumn,
+  JoinTable,
+  ManyToMany,
   ManyToOne,
   OneToMany,
   PrimaryGeneratedColumn,
@@ -23,9 +25,9 @@ export class Stock extends BaseEntity {
   @Column({ unique: true })
   sku: string;
 
-  @ManyToOne(() => Variation, (tV) => tV.stocks, { nullable: true })
-  @JoinColumn({ name: 'variation_id' })
-  variation: Variation;
+  @ManyToMany(() => Variation, (pv) => pv.products)
+  @JoinTable({ name: 'stock_variations' })
+  variations: Variation[];
 
   @Column({
     type: 'enum',

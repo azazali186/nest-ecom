@@ -31,7 +31,7 @@ export class StockRepository extends Repository<Stock> {
   async createStock(
     stockDto: CreateStockDto | UpdateStockDto,
     user: any,
-    variation: Variation = null,
+    variation: Variation[] = null,
   ) {
     const { sku, translations, prices, quantity } = stockDto;
     const stock = new Stock();
@@ -53,7 +53,7 @@ export class StockRepository extends Repository<Stock> {
       }),
     );
     stock.translations = translationsData;
-    stock.variation = variation;
+    stock.variations = variation;
 
     // Create and associate images
     /* const imagesData = await Promise.all(
