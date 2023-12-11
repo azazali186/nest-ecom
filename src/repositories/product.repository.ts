@@ -231,6 +231,8 @@ export class ProductRepository extends Repository<Product> {
         'variations',
         'price',
         'price.currency',
+        'features',
+        'features.translations',
       ],
     });
 
@@ -373,6 +375,8 @@ export class ProductRepository extends Repository<Product> {
     query.leftJoinAndSelect('product.images', 'images');
 
     query.leftJoin('product.categories', 'category');
+    query.leftJoin('product.features', 'features');
+    query.leftJoin('features.translations', 'featuresTranslations');
 
     if (req.createdDate) {
       const [startDate, endDate] = req.createdDate.split(',');
@@ -387,7 +391,7 @@ export class ProductRepository extends Repository<Product> {
 
     if (req.search) {
       query.andWhere(
-        '(product.sku LIKE :title OR translations.name LIKE :title OR stock.sku = :title)',
+        '(product.sku LIKE :title OR translations.name LIKE :title OR stock.sku = :title OR featuresTranslations.name = :title )',
         { title: `%${req.search}%` },
       );
     }
@@ -442,7 +446,7 @@ export class ProductRepository extends Repository<Product> {
   async deleteProduct(id: number) {
     const product = await this.prodRepo.findOne({
       where: { id },
-      relations: ['stocks', 'translations', 'images'],
+      relations: ['stocks', 'translations', 'images', 'features'],
     });
 
     if (!product) {
@@ -474,6 +478,12 @@ export class ProductRepository extends Repository<Product> {
     if (product.images && product.images.length > 0) {
       await Promise.all(
         product.images.map((image) => this.imgRepo.delete(image.id)),
+      );
+    }
+
+    if (product.features && product.features.length > 0) {
+      await Promise.all(
+        product.features.map((pf) => this.pfRepo.delete(pf.id)),
       );
     }
 
