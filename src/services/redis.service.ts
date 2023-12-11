@@ -10,13 +10,13 @@ export class RedisService {
   constructor() {
     // Initialize the Redis client
     this.redisClient = createClient({
-      url: `redis://${process.env.REDIS_HOST || '127.0.0.1'}:${process.env.REDIS_PORT || 6379}`,
+      url: `redis://${process.env.REDIS_HOST || '127.0.0.1'}:${
+        process.env.REDIS_PORT || 6379
+      }`,
       password: `${process.env.REDIS_PASSWORD}`,
       database: parseInt(`${process.env.REDIS_DB}`),
     });
   }
-
-  
 
   init() {
     console.log('redis connected');
