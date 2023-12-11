@@ -4,6 +4,7 @@
   JoinColumn,
   PrimaryGeneratedColumn,
   OneToMany,
+  Column,
 } from 'typeorm';
 import { Product } from './product.entity';
 import { Translations } from './translation.entity';
@@ -12,6 +13,9 @@ import { Translations } from './translation.entity';
 export class ProductFeature extends BaseEntity {
   @PrimaryGeneratedColumn()
   id: number;
+
+  @Column({ name: 'type' })
+  type: string;
 
   @JoinColumn({ name: 'product_id' })
   products: Product;

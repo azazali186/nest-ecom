@@ -12,8 +12,10 @@ import {
 } from '@nestjs/common';
 import { ApiBearerAuth, ApiTags } from '@nestjs/swagger';
 import { BulkProductUploadDto } from 'src/dto/product/bulk-product-upload.dto';
+import { CreateFeaturesDto } from 'src/dto/product/create-features.dto';
 import { CreateProductDto } from 'src/dto/product/create-product.dto';
 import { SearchProductDto } from 'src/dto/product/search-product.dto';
+import { UpdateFeaturesDto } from 'src/dto/product/update-features.dto';
 import { UpdateProductDto } from 'src/dto/product/update-product.dto';
 import { ProductService } from 'src/services/product.service';
 import { RecomService } from 'src/services/recom.service';
@@ -59,6 +61,24 @@ export class ProductController {
   @Get(':id')
   findOne(@Param('id') id: number, @Request() r) {
     return this.prodService.findOne(id, r.user);
+  }
+
+  @Patch('seo-create/:id')
+  createSeo(
+    @Param('id') id: number,
+    @Body(ValidationPipe) req: CreateFeaturesDto[],
+    @Request() r,
+  ) {
+    return this.prodService.createSeo(id, req, r.user);
+  }
+
+  @Patch('seo-update/:id')
+  updateSeo(
+    @Param('id') id: number,
+    @Body(ValidationPipe) req: UpdateFeaturesDto[],
+    @Request() r,
+  ) {
+    return this.prodService.updateSeo(id, req, r.user);
   }
 
   @Patch()

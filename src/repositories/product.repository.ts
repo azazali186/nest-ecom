@@ -22,6 +22,9 @@ import { CreateStockDto } from 'src/dto/stock/create-stock.dto';
 import { PriceRepository } from './price.repository';
 import { PriceDto } from 'src/dto/stock/price.dto';
 import { ProductFeatureRepository } from './product-features.repository';
+import { CreateFeaturesDto } from 'src/dto/product/create-features.dto';
+import { getEntityById } from 'src/utils/helper.utils';
+import { UpdateFeaturesDto } from 'src/dto/product/update-features.dto';
 export class ProductRepository extends Repository<Product> {
   constructor(
     @InjectRepository(Product)
@@ -494,6 +497,50 @@ export class ProductRepository extends Repository<Product> {
       null,
       200,
       this.langService.getTranslation('DELETED_SUCCESSFULLY', 'Product'),
+    );
+  }
+
+  async createSeo(id: number, req: CreateFeaturesDto[], user: any) {
+    const product = await getEntityById(this.prRepo, id);
+    if (req && req?.length > 0) {
+      const featuresData = await Promise.all(
+        req?.map(async (imageDto) => {
+          const image = await this.pfRepo.createFeatures(imageDto, product);
+          return image;
+        }),
+      );
+      product.features = featuresData;
+    }
+    product.updated_by = user;
+
+    await product.save();
+
+    return ApiResponse.success(
+      product,
+      200,
+      this.langService.getTranslation('UPDATED_SUCCESSFULLY', 'Product'),
+    );
+  }
+
+  async updateSeo(id: number, req: UpdateFeaturesDto[], user: any) {
+    const product = await getEntityById(this.prRepo, id);
+    if (req && req?.length > 0) {
+      const featuresData = await Promise.all(
+        req?.map(async (imageDto) => {
+          const image = await this.pfRepo.updateFeatures(imageDto);
+          return image;
+        }),
+      );
+      product.features = featuresData;
+    }
+    product.updated_by = user;
+
+    await product.save();
+
+    return ApiResponse.success(
+      product,
+      200,
+      this.langService.getTranslation('UPDATED_SUCCESSFULLY', 'Product'),
     );
   }
 }
