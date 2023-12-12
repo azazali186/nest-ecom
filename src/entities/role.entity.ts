@@ -13,6 +13,7 @@ import {
 import { User } from './user.entity';
 import { Permission } from './permission.entity';
 import { AdminPage } from './admin-page.entity';
+import { Exclude } from 'class-transformer';
 
 @Entity('roles')
 export class Role extends BaseEntity {
@@ -21,6 +22,10 @@ export class Role extends BaseEntity {
 
   @Column({ unique: true })
   name: string;
+
+  @Exclude()
+  @Column({ default: true })
+  is_public: boolean;
 
   @Column({ type: 'text', nullable: true })
   description: string;

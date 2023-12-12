@@ -11,6 +11,7 @@ import {
 import { Role } from './role.entity';
 import { Session } from './session.entity';
 import { UserStatus } from '../enum/user-status.enum';
+import { Exclude, Expose } from 'class-transformer';
 
 @Entity('users')
 export class User extends BaseEntity {
@@ -20,7 +21,7 @@ export class User extends BaseEntity {
   @Column({ unique: true })
   username: string;
 
-  @Column()
+  @Exclude()
   password: string;
 
   @Column({ default: '', length: 15 })
@@ -80,12 +81,13 @@ export class User extends BaseEntity {
   })
   last_login: Date;
 
+  @Expose()
   @OneToOne(() => Session)
   @JoinColumn({ name: 'latest_session_id' })
   get latestSession(): Session | undefined {
     if (this.sessions && this.sessions.length > 0) {
       return this.sessions.reduce((latest, current) =>
-        current.created_at > latest.created_at ? current : latest,
+        current.id > latest.id ? current : latest,
       );
     }
     return undefined;

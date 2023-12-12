@@ -2,6 +2,7 @@ import { Between, Repository } from 'typeorm';
 import { format } from 'date-fns';
 import { BadRequestException } from '@nestjs/common';
 import { MediaTypeEnum } from 'src/enum/media-type.enum';
+import { User } from 'src/entities/user.entity';
 
 export function getPermissionNameFromRoute(
   path: string,
@@ -192,4 +193,13 @@ export const getEntityById = async (repo: Repository<any>, id: number) => {
 
 export const getEntityByCode = async (repo: Repository<any>, code: string) => {
   return await repo.findOneOrFail({ where: { code: code } });
+};
+
+export const getCustomUserResponse = (user: User): Record<string, any> => {
+  return {
+    id: user.id,
+    username: user.username,
+    roles_id: user.roles_id,
+    status: user.status,
+  };
 };

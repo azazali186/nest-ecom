@@ -19,6 +19,8 @@ import { Catalog } from './catalog.entity';
 import { Variation } from './variations.entity';
 import { Price } from './price.entity';
 import { ProductFeature } from './product-features.entity';
+import { Exclude, Transform } from 'class-transformer';
+import { getCustomUserResponse } from 'src/utils/helper.utils';
 
 @Entity('products')
 export class Product extends BaseEntity {
@@ -79,6 +81,7 @@ export class Product extends BaseEntity {
 
   @ManyToOne(() => User, { nullable: true })
   @JoinColumn({ name: 'created_by_id' })
+  @Exclude()
   created_by: User | null;
 
   @ManyToOne(() => User, { nullable: true })
@@ -91,4 +94,9 @@ export class Product extends BaseEntity {
     nullable: true,
   })
   updated_at: Date;
+
+  @Transform(() => getCustomUserResponse, { toClassOnly: true })
+  get createdBy(): Record<string, any> {
+    return getCustomUserResponse(this.created_by);
+  }
 }

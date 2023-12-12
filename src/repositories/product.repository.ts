@@ -250,7 +250,7 @@ export class ProductRepository extends Repository<Product> {
         'stocks.translations',
         'stocks.translations.language',
         'stocks.images',
-        'stocks.variation',
+        'stocks.variations',
         'stocks.price',
         'stocks.price.currency',
         'translations',
@@ -261,6 +261,8 @@ export class ProductRepository extends Repository<Product> {
         'price.currency',
         'features',
         'features.translations',
+        'created_by',
+        'updated_by',
       ],
     });
 
@@ -271,6 +273,8 @@ export class ProductRepository extends Repository<Product> {
         param: `Product`,
       });
     }
+
+    console.log('product.createdByTransformed  ', product.createdBy);
 
     if (!user) {
       user = await this.userRepo.findOne({

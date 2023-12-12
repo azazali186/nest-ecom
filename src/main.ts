@@ -134,6 +134,7 @@ async function associatePermissionWithAdminRole() {
     role = new Role();
     role.name = 'admin';
     role.description = 'Administrator';
+    role.is_public = false;
     role.permissions = permissions;
     await roleRepo.save(role);
   } else {
@@ -162,6 +163,19 @@ async function associatePermissionWithAdminRole() {
   }
 
   role = await roleRepo.findOne({
+    where: { name: 'vendor' },
+  });
+
+  if (!role) {
+    role = new Role();
+    role.name = 'vendor';
+    role.description = 'Vendor';
+    role.permissions = [];
+    role.is_public = false;
+    await roleRepo.save(role);
+  }
+
+  role = await roleRepo.findOne({
     where: { name: 'guest' },
   });
 
@@ -170,6 +184,7 @@ async function associatePermissionWithAdminRole() {
     role.name = 'guest';
     role.description = 'Guest';
     role.permissions = [];
+    role.is_public = false;
     await roleRepo.save(role);
   }
 
