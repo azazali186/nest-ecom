@@ -394,7 +394,7 @@ export class ProductRepository extends Repository<Product> {
 
     query.leftJoinAndSelect('product.stocks', 'stock');
     query.leftJoinAndSelect('stock.price', 'price');
-    query.leftJoinAndSelect('stock.variation', 'stockVariation');
+    query.leftJoinAndSelect('stock.variations', 'stockVariation');
     query.leftJoinAndSelect('price.currency', 'currency');
     query.leftJoinAndSelect('product.variations', 'variations');
 

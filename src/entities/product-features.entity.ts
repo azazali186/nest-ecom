@@ -1,4 +1,5 @@
-﻿import {
+﻿/* eslint-disable @typescript-eslint/no-unused-vars */
+import {
   Entity,
   BaseEntity,
   JoinColumn,
