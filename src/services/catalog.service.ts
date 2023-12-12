@@ -13,7 +13,7 @@ export class CatalogService {
     public cpRepo: CatalogRepository,
   ) {}
 
-  create(req: CreateCatalogDto, user:any) {
+  create(req: CreateCatalogDto, user: any) {
     return this.cpRepo.createCatalog(req, user);
   }
   async findAll(name: SearchCatalogDto) {
@@ -22,8 +22,8 @@ export class CatalogService {
   findOne(id: number) {
     return this.cpRepo.getCatalogId(id);
   }
-  update(id: any, req: UpdateCatalogDto) {
-    return this.cpRepo.updateCatalog(id, req);
+  update(id: any, req: UpdateCatalogDto, user: any) {
+    return this.cpRepo.updateCatalog(id, req, user);
   }
   async remove(id: number) {
     const res = await this.cpRepo.delete(id);

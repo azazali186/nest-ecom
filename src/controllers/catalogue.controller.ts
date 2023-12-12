@@ -34,8 +34,12 @@ export class CatalogController {
     return this.cpService.findOne(id);
   }
   @Patch()
-  update(@Param('id') id: number, @Body(ValidationPipe) req: UpdateCatalogDto) {
-    return this.cpService.update(id, req);
+  update(
+    @Param('id') id: number,
+    @Body(ValidationPipe) req: UpdateCatalogDto,
+    @Request() r,
+  ) {
+    return this.cpService.update(id, req, r.user);
   }
   @Delete(':id')
   remove(@Param('id') id: number) {

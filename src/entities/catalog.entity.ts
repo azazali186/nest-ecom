@@ -18,6 +18,9 @@ export class Catalog extends BaseEntity {
   @PrimaryGeneratedColumn()
   id: number;
 
+  @Column()
+  code: string;
+
   @ManyToMany(() => Product, (product) => product.catalogs, {
     nullable: true,
   })

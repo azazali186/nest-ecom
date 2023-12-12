@@ -28,6 +28,9 @@ export class Product extends BaseEntity {
   @Column({ unique: true })
   sku: string;
 
+  @Column({ unique: true, nullable: true, default: null })
+  slug: string;
+
   @Column({
     type: 'enum',
     enum: ProductStatus,

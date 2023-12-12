@@ -1,15 +1,20 @@
-import { IsString } from 'class-validator';
+import { IsArray, IsString } from 'class-validator';
 import { ApiPropertyOptional } from '@nestjs/swagger';
+import { UpdateTranslationDto } from '../translation/update-translation.dto';
 export class UpdateCatalogDto {
-  @ApiPropertyOptional()
-  @IsString({
-    message: 'NAME_IS_STRING',
-  })
-  name: string;
-
-  @ApiPropertyOptional()
-  @IsString({
-    message: 'SYMBOL_IS_STRING',
-  })
+  @ApiPropertyOptional({ type: String })
+  @IsString()
   code: string;
+
+  @ApiPropertyOptional({ type: [Number] })
+  @IsArray()
+  productIds: number[];
+
+  @ApiPropertyOptional({ type: [UpdateTranslationDto] })
+  @IsArray()
+  translations: UpdateTranslationDto[] | null;
+
+  @ApiPropertyOptional({ type: [String] })
+  @IsArray()
+  images?: string[];
 }
