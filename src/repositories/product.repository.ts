@@ -166,8 +166,8 @@ export class ProductRepository extends Repository<Product> {
     }
     if (features && features?.length > 0) {
       const featuresData = await Promise.all(
-        features?.map(async (imageDto) => {
-          const image = await this.pfRepo.createFeatures(imageDto, product);
+        features?.map(async (createPFDto) => {
+          const image = await this.pfRepo.createFeatures(createPFDto, product);
           return image;
         }),
       );
