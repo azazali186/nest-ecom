@@ -5,7 +5,7 @@ import {
   IsOptional,
   IsString,
 } from 'class-validator';
-import { ApiProperty } from '@nestjs/swagger';
+import { ApiHideProperty, ApiProperty } from '@nestjs/swagger';
 import { CreateTranslationDto } from '../translation/create-translation.dto';
 import { CreateVariationDto } from '../variations/create-variation.dto';
 import { PriceDto } from '../stock/price.dto';
@@ -55,4 +55,7 @@ export class CreateProductDto {
   @ApiProperty({ type: [CreateFeaturesDto], required: false })
   @IsOptional()
   features?: CreateFeaturesDto[];
+
+  @ApiHideProperty()
+  user: any;
 }

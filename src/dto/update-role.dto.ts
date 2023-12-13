@@ -1,4 +1,4 @@
-import { ApiPropertyOptional } from '@nestjs/swagger';
+import { ApiHideProperty, ApiPropertyOptional } from '@nestjs/swagger';
 import { IsArray, IsOptional, IsString } from 'class-validator';
 import { AdminPagePermissionsDto } from './admin-page-permissions.dto';
 
@@ -23,4 +23,7 @@ export class UpdateRoleDto {
   })
   @IsOptional()
   permissions?: AdminPagePermissionsDto[];
+
+  @ApiHideProperty()
+  user: any;
 }

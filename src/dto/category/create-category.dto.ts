@@ -1,5 +1,9 @@
 import { IsArray, IsNotEmpty, IsString } from 'class-validator';
-import { ApiProperty, ApiPropertyOptional } from '@nestjs/swagger';
+import {
+  ApiHideProperty,
+  ApiProperty,
+  ApiPropertyOptional,
+} from '@nestjs/swagger';
 import { CreateTranslationDto } from '../translation/create-translation.dto';
 import { ImagesDto } from '../images/image.dto';
 export class CreateCategoryDto {
@@ -26,4 +30,7 @@ export class CreateCategoryDto {
     message: 'IMAGES_IS_ARRAY',
   })
   images: ImagesDto[];
+
+  @ApiHideProperty()
+  user: any;
 }

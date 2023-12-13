@@ -1,5 +1,5 @@
 import { IsArray, IsNotEmpty, IsString } from 'class-validator';
-import { ApiProperty } from '@nestjs/swagger';
+import { ApiHideProperty, ApiProperty } from '@nestjs/swagger';
 import { AdminPagePermissionsDto } from './admin-page-permissions.dto';
 export class CreateRoleDto {
   @ApiProperty()
@@ -28,4 +28,7 @@ export class CreateRoleDto {
     message: 'PERMISSION_IS_ARRAY',
   })
   permissions: AdminPagePermissionsDto[];
+
+  @ApiHideProperty()
+  user: any;
 }

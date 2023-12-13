@@ -1,4 +1,4 @@
-import { ApiProperty } from '@nestjs/swagger';
+import { ApiHideProperty, ApiProperty } from '@nestjs/swagger';
 import { IsNotEmpty, IsArray } from 'class-validator';
 
 export class DeleteFilesDto {
@@ -6,4 +6,7 @@ export class DeleteFilesDto {
   @IsArray()
   @IsNotEmpty()
   ids: number[];
+
+  @ApiHideProperty()
+  user: any;
 }

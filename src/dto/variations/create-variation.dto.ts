@@ -1,4 +1,4 @@
-import { ApiPropertyOptional } from '@nestjs/swagger';
+import { ApiHideProperty, ApiPropertyOptional } from '@nestjs/swagger';
 import { IsArray, IsOptional, IsString } from 'class-validator';
 
 export class CreateVariationDto {
@@ -14,10 +14,9 @@ export class CreateVariationDto {
   @IsOptional()
   values: string[];
 
-  @ApiPropertyOptional({ type: [Number] })
-  @IsArray({
-    message: 'Qty_IS_ARRAY',
-  })
-  @IsOptional()
+  @ApiHideProperty()
   qty: number[];
+
+  @ApiHideProperty()
+  user: any;
 }

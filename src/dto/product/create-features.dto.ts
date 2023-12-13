@@ -1,4 +1,4 @@
-﻿import { ApiProperty } from '@nestjs/swagger';
+﻿import { ApiHideProperty, ApiProperty } from '@nestjs/swagger';
 import { IsNotEmpty, IsArray, IsString } from 'class-validator';
 import { CreateTranslationDto } from '../translation/create-translation.dto';
 
@@ -20,4 +20,7 @@ export class CreateFeaturesDto {
     message: 'NAME_IS_STRING',
   })
   name: string;
+
+  @ApiHideProperty()
+  user: any;
 }

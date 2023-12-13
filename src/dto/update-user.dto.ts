@@ -1,4 +1,4 @@
-import { ApiPropertyOptional } from '@nestjs/swagger';
+import { ApiHideProperty, ApiPropertyOptional } from '@nestjs/swagger';
 import {
   IsString,
   IsOptional,
@@ -68,4 +68,7 @@ export class UpdateUserDto {
     message: 'INVALID_STATUS_ACTIVE_INACTIVE',
   })
   status: UserStatus;
+
+  @ApiHideProperty()
+  user: any;
 }

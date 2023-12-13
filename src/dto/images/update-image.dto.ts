@@ -1,4 +1,4 @@
-import { ApiPropertyOptional } from '@nestjs/swagger';
+import { ApiHideProperty, ApiPropertyOptional } from '@nestjs/swagger';
 import { IsString, IsOptional, IsNumber } from 'class-validator';
 
 export class UpdateImagesDto {
@@ -29,4 +29,7 @@ export class UpdateImagesDto {
   @IsOptional()
   @IsNumber()
   catalog_id?: number;
+
+  @ApiHideProperty()
+  user: any;
 }

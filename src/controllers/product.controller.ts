@@ -50,6 +50,7 @@ export class ProductController {
 
   @Get('public')
   public(@Query() req: SearchProductDto, @Request() r) {
+    console.log(req.user);
     return this.prodService.findAll(req, r.user);
   }
 

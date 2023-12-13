@@ -1,4 +1,4 @@
-import { ApiProperty } from '@nestjs/swagger';
+import { ApiHideProperty, ApiProperty } from '@nestjs/swagger';
 
 export class BroadcastEventDto {
   @ApiProperty()
@@ -6,4 +6,7 @@ export class BroadcastEventDto {
 
   @ApiProperty()
   data: any;
+
+  @ApiHideProperty()
+  user: any;
 }

@@ -1,4 +1,4 @@
-import { ApiProperty } from '@nestjs/swagger';
+import { ApiHideProperty, ApiProperty } from '@nestjs/swagger';
 import { IsString, IsNumber, IsNotEmpty } from 'class-validator';
 
 export class PriceDto {
@@ -11,4 +11,7 @@ export class PriceDto {
   @IsNotEmpty()
   @IsNumber()
   currency_id: number;
+
+  @ApiHideProperty()
+  user: any;
 }

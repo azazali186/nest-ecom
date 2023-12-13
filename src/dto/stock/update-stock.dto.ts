@@ -1,4 +1,4 @@
-import { ApiPropertyOptional } from '@nestjs/swagger';
+import { ApiHideProperty, ApiPropertyOptional } from '@nestjs/swagger';
 import {
   IsString,
   IsArray,
@@ -40,4 +40,7 @@ export class UpdateStockDto {
   @IsArray()
   @IsNotEmpty()
   prices?: UpdatePriceDto[];
+
+  @ApiHideProperty()
+  user: any;
 }

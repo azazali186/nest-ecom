@@ -1,4 +1,4 @@
-import { ApiProperty } from '@nestjs/swagger';
+import { ApiHideProperty, ApiProperty } from '@nestjs/swagger';
 import { IsString, IsOptional, IsNumber } from 'class-validator';
 
 export class ImagesDto {
@@ -26,4 +26,6 @@ export class ImagesDto {
   @IsNumber()
   catalog_id?: number;
 
+  @ApiHideProperty()
+  user: any;
 }

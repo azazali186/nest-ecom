@@ -1,4 +1,4 @@
-import { ApiProperty } from '@nestjs/swagger';
+import { ApiHideProperty, ApiProperty } from '@nestjs/swagger';
 import { IsString, MinLength, Matches, IsNotEmpty } from 'class-validator';
 
 export class ChangePasswordDto {
@@ -31,4 +31,7 @@ export class ChangePasswordDto {
     message: 'NEW_PASSWORD_IS_REQUIRED',
   })
   new_password: string;
+
+  @ApiHideProperty()
+  user: any;
 }

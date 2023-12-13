@@ -1,5 +1,5 @@
 import { IsArray, IsString } from 'class-validator';
-import { ApiPropertyOptional } from '@nestjs/swagger';
+import { ApiHideProperty, ApiPropertyOptional } from '@nestjs/swagger';
 import { UpdateTranslationDto } from '../translation/update-translation.dto';
 import { ImagesDto } from '../images/image.dto';
 export class UpdateCategoryDto {
@@ -20,4 +20,7 @@ export class UpdateCategoryDto {
     message: 'IMAGES_IS_ARRAY',
   })
   images: ImagesDto[];
+
+  @ApiHideProperty()
+  user: any;
 }

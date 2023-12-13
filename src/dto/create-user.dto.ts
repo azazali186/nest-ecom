@@ -1,4 +1,4 @@
-import { ApiProperty } from '@nestjs/swagger';
+import { ApiHideProperty, ApiProperty } from '@nestjs/swagger';
 import {
   IsNotEmpty,
   IsNumber,
@@ -69,4 +69,7 @@ export class CreateUserDto {
     message: 'MOBILE_NUMBER_IS_REQUIRED',
   })
   mobileNumber: string;
+
+  @ApiHideProperty()
+  user: any;
 }

@@ -1,4 +1,8 @@
-﻿import { ApiProperty, ApiPropertyOptional } from '@nestjs/swagger';
+﻿import {
+  ApiHideProperty,
+  ApiProperty,
+  ApiPropertyOptional,
+} from '@nestjs/swagger';
 import { IsArray, IsString, IsNumber } from 'class-validator';
 import { UpdateTranslationDto } from '../translation/update-translation.dto';
 
@@ -18,4 +22,7 @@ export class UpdateFeaturesDto {
     message: 'NAME_IS_STRING',
   })
   name: string;
+
+  @ApiHideProperty()
+  user: any;
 }

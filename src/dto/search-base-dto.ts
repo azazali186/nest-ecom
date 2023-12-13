@@ -1,4 +1,4 @@
-import { ApiPropertyOptional } from '@nestjs/swagger';
+import { ApiHideProperty, ApiPropertyOptional } from '@nestjs/swagger';
 
 export class SearchBaseDto {
   @ApiPropertyOptional({
@@ -11,4 +11,7 @@ export class SearchBaseDto {
 
   @ApiPropertyOptional({ default: 0 })
   offset: number;
+
+  @ApiHideProperty()
+  user: any;
 }

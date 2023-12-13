@@ -1,5 +1,9 @@
 import { IsOptional, IsString, IsArray, IsNumber } from 'class-validator';
-import { ApiProperty, ApiPropertyOptional } from '@nestjs/swagger';
+import {
+  ApiHideProperty,
+  ApiProperty,
+  ApiPropertyOptional,
+} from '@nestjs/swagger';
 
 export class CreateAdminPageDto {
   @ApiProperty({ type: [Number] })
@@ -39,4 +43,7 @@ export class CreateAdminPageDto {
   @IsOptional()
   @IsNumber()
   parentId: number;
+
+  @ApiHideProperty()
+  user: any;
 }

@@ -1,6 +1,6 @@
 import { IsString, IsArray } from 'class-validator';
 import { CreateTranslationDto } from '../translation/create-translation.dto';
-import { ApiProperty } from '@nestjs/swagger';
+import { ApiHideProperty, ApiProperty } from '@nestjs/swagger';
 
 export class CreateCatalogDto {
   @ApiProperty({ type: String })
@@ -18,4 +18,7 @@ export class CreateCatalogDto {
   @ApiProperty({ type: [String] })
   @IsArray()
   images?: string[];
+
+  @ApiHideProperty()
+  user: any;
 }

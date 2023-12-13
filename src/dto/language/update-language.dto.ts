@@ -1,5 +1,5 @@
 import { IsString } from 'class-validator';
-import { ApiPropertyOptional } from '@nestjs/swagger';
+import { ApiHideProperty, ApiPropertyOptional } from '@nestjs/swagger';
 export class UpdateLanguageDto {
   @ApiPropertyOptional()
   @IsString({
@@ -12,4 +12,7 @@ export class UpdateLanguageDto {
     message: 'SYMBOL_IS_STRING',
   })
   code: string;
+
+  @ApiHideProperty()
+  user: any;
 }

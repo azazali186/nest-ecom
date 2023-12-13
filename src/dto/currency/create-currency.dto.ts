@@ -1,5 +1,5 @@
 import { IsNotEmpty, IsString } from 'class-validator';
-import { ApiProperty } from '@nestjs/swagger';
+import { ApiHideProperty, ApiProperty } from '@nestjs/swagger';
 export class CreateCurrencyDto {
   @ApiProperty()
   @IsString({
@@ -27,4 +27,7 @@ export class CreateCurrencyDto {
     message: 'SYMBOL_IS_REQUIRED',
   })
   symbol: string;
+
+  @ApiHideProperty()
+  user: any;
 }

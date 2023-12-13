@@ -5,7 +5,7 @@ import {
   IsOptional,
   IsString,
 } from 'class-validator';
-import { ApiPropertyOptional } from '@nestjs/swagger';
+import { ApiHideProperty, ApiPropertyOptional } from '@nestjs/swagger';
 import { UpdateTranslationDto } from '../translation/update-translation.dto';
 import { ProductStatus } from 'src/enum/product-status.enum';
 import { UpdateStockDto } from '../stock/update-stock.dto';
@@ -47,4 +47,7 @@ export class UpdateProductDto {
     message: 'IMAGES_IS_ARRAY',
   })
   images: UpdateImagesDto[];
+
+  @ApiHideProperty()
+  user: any;
 }

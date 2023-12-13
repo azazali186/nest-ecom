@@ -1,4 +1,4 @@
-import { ApiPropertyOptional } from '@nestjs/swagger';
+import { ApiHideProperty, ApiPropertyOptional } from '@nestjs/swagger';
 import { IsEnum, IsOptional, IsString } from 'class-validator';
 import { SearchBaseDto } from '../search-base-dto';
 import { ProductStatus } from 'src/enum/product-status.enum';
@@ -43,4 +43,7 @@ export class SearchProductDto extends SearchBaseDto {
   @IsOptional()
   @IsString()
   category_ids: string;
+
+  @ApiHideProperty()
+  user: any;
 }

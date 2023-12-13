@@ -1,6 +1,6 @@
 /* eslint-disable prettier/prettier */
 import { ApiPropertyOptional } from '@nestjs/swagger';
-import { IsIn, IsOptional, Matches } from 'class-validator';
+import { IsIn, IsOptional } from 'class-validator';
 import { UserStatus } from 'src/enum/user-status.enum';
 import { SearchBaseDto } from './search-base-dto';
 
