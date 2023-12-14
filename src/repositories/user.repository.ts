@@ -24,6 +24,7 @@ import { LangService } from 'src/services/lang.service';
 import { UserStatus } from 'src/enum/user-status.enum';
 import { splitDateRange } from '../utils/helper.utils';
 import { ChangePasswordDto } from 'src/dto/change-password.dto';
+import { RegisterVendorDto } from 'src/dto/register-vendor.dto';
 
 export class UserRepository extends Repository<User> {
   constructor(
@@ -157,7 +158,10 @@ export class UserRepository extends Repository<User> {
     });
   }
 
-  async register(registerDto: RegisterDto, roleName: string) {
+  async register(
+    registerDto: RegisterDto | RegisterVendorDto,
+    roleName: string,
+  ) {
     const { name, username } = registerDto;
 
     // Check for existing user
@@ -180,6 +184,9 @@ export class UserRepository extends Repository<User> {
     }
 
     const kyc = roleName === process.env.VENDOR_ROLE_NAME ? false : true;
+
+    if (roleName === process.env.VENDOR_ROLE_NAME) {
+    }
 
     // Create the new user
     const hashPassord = AES.encrypt(
