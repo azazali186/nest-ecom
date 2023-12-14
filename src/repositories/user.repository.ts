@@ -226,7 +226,7 @@ export class UserRepository extends Repository<User> {
       });
     }
 
-    console.log('login User', user);
+    // console.log('login User', user);
 
     // Check password
     const decryptedPassword = AES.decrypt(
