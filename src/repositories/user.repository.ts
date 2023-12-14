@@ -15,7 +15,7 @@ import { SearchUserDto } from 'src/dto/search-user.dto';
 import { UpdateUserDto } from 'src/dto/update-user.dto';
 import { RoleRepository } from './role.repository';
 import { SessionRepository } from './session.repository';
-import { RegisterDto } from 'src/dto/register.dto.ts';
+import { RegisterDto } from 'src/dto/register.dto';
 import { PermissionRepository } from './permission.repository';
 import { AdminPageRepository } from './admin-page.repository';
 import { ApiResponse } from 'src/utils/response.util';

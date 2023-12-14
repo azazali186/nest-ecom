@@ -2,7 +2,8 @@ import { Controller, Post, Body, Request, Get } from '@nestjs/common';
 import { ApiTags } from '@nestjs/swagger';
 import { ForgetPasswordDto } from 'src/dto/forget-password.dto.ts';
 import { LoginDto } from 'src/dto/login.dto';
-import { RegisterDto } from 'src/dto/register.dto.ts';
+import { RegisterVendorDto } from 'src/dto/register-vendor.dto';
+import { RegisterDto } from 'src/dto/register.dto';
 import { ResetPasswordDto } from 'src/dto/reset-password.dto';
 import { VerifyEmailDto } from 'src/dto/verify-email.dto.ts';
 import { AuthService } from 'src/services/auth.service';
@@ -23,7 +24,7 @@ export class AuthController {
   }
 
   @Post(`${process.env.VENDOR_ROLE_NAME}/register`)
-  registerVendor(@Body() registerDto: RegisterDto) {
+  registerVendor(@Body() registerDto: RegisterVendorDto) {
     return this.authService.register(registerDto, process.env.VENDOR_ROLE_NAME);
   }
 

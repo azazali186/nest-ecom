@@ -2,7 +2,7 @@
 import { Injectable } from '@nestjs/common';
 import { ForgetPasswordDto } from '../dto/forget-password.dto.ts';
 import { LoginDto } from '../dto/login.dto';
-import { RegisterDto } from '../dto/register.dto.ts';
+import { RegisterDto } from '../dto/register.dto';
 import { ResetPasswordDto } from '../dto/reset-password.dto';
 import { VerifyEmailDto } from '../dto/verify-email.dto.ts';
 import { SearchUserDto } from 'src/dto/search-user.dto';
