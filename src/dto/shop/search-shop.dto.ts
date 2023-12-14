@@ -1,16 +1,14 @@
-import { IsString } from 'class-validator';
 import { ApiHideProperty, ApiPropertyOptional } from '@nestjs/swagger';
-export class UpdateLanguageDto {
+import { IsOptional } from 'class-validator';
+import { SearchBaseDto } from '../search-base-dto';
+
+export class SearchShopDto extends SearchBaseDto {
   @ApiPropertyOptional()
-  @IsString({
-    message: 'NAME_IS_STRING',
-  })
+  @IsOptional()
   name: string;
 
   @ApiPropertyOptional()
-  @IsString({
-    message: 'CODE_IS_STRING',
-  })
+  @IsOptional()
   code: string;
 
   @ApiHideProperty()

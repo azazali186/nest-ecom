@@ -1,6 +1,7 @@
 import { IsString } from 'class-validator';
 import { ApiHideProperty, ApiPropertyOptional } from '@nestjs/swagger';
-export class UpdateLanguageDto {
+import { SocialMediaDto } from '../social-media.dto';
+export class UpdateShopDto extends SocialMediaDto {
   @ApiPropertyOptional()
   @IsString({
     message: 'NAME_IS_STRING',
@@ -9,9 +10,9 @@ export class UpdateLanguageDto {
 
   @ApiPropertyOptional()
   @IsString({
-    message: 'CODE_IS_STRING',
+    message: 'SLUG_IS_STRING',
   })
-  code: string;
+  slug: string;
 
   @ApiHideProperty()
   user: any;
