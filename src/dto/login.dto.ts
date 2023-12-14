@@ -4,13 +4,13 @@ import { IsNotEmpty } from 'class-validator';
 export class LoginDto {
   @ApiProperty()
   @IsNotEmpty({
-    message: 'USERNAME_IS REQUIRED',
+    message: 'USERNAME_IS_REQUIRED',
   })
   username: string;
 
   @ApiProperty()
   @IsNotEmpty({
-    message: 'PASSWORD_IS REQUIRED',
+    message: 'PASSWORD_IS_REQUIRED',
   })
   password: string;
 }

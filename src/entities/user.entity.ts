@@ -11,7 +11,7 @@ import {
 import { Role } from './role.entity';
 import { Session } from './session.entity';
 import { UserStatus } from '../enum/user-status.enum';
-import { Exclude, Expose } from 'class-transformer';
+import { Expose } from 'class-transformer';
 
 @Entity('users')
 export class User extends BaseEntity {
@@ -21,7 +21,8 @@ export class User extends BaseEntity {
   @Column({ unique: true })
   username: string;
 
-  @Exclude()
+  // @Exclude()
+  @Column()
   password: string;
 
   @Column({ default: '', length: 15 })

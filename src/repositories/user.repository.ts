@@ -226,6 +226,8 @@ export class UserRepository extends Repository<User> {
       });
     }
 
+    console.log('login User', user);
+
     // Check password
     const decryptedPassword = AES.decrypt(
       user.password,
@@ -237,7 +239,6 @@ export class UserRepository extends Repository<User> {
         message: 'WRONG_PASSWORD',
       });
     }
-    // console.log('login User', user);
 
     // Generate JWT token and create a session
     const tokenDetails = await this.generateToken(user);

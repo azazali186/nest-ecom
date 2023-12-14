@@ -14,25 +14,21 @@ import { LangService } from 'src/services/lang.service';
 @Injectable()
 export class HttpExceptionFilter implements ExceptionFilter {
   constructor(private readonly i18n: LangService) {}
-  catch(exception: HttpException, host: ArgumentsHost) {
+  async catch(exception: HttpException, host: ArgumentsHost) {
     const ctx = host.switchToHttp();
     const response = ctx.getResponse<Response>();
     const req = ctx.getRequest<any>();
     const status = exception.getStatus();
-
     logger.error(exception.getResponse());
-
-    const lang = req.headers?.lang?.toLowerCase() || 'zh';
+    const lang = req.headers?.lang?.toLowerCase() || 'en';
 
     let errorResponse: any; // Define a variable to store the error response
 
     if (typeof exception.getResponse() === 'object') {
       errorResponse = exception.getResponse();
     } else {
-      // If it's a string, create an object with an 'error' property
       errorResponse = { error: exception.getResponse() as string };
     }
-    console.log(exception);
     const data = new Set(errorResponse.message.toString().split(','));
     const translatedMessage = [];
     data.forEach((d) => {
@@ -46,9 +42,7 @@ export class HttpExceptionFilter implements ExceptionFilter {
         translatedMessage.push(msg);
       }
     });
-
-    const res = ApiResponse.success(null, status, null, translatedMessage);
-
+    const res = await ApiResponse.error(status, translatedMessage);
     response.status(status).json(res);
   }
 }

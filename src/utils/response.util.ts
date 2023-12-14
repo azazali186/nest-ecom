@@ -79,4 +79,8 @@ export class ApiResponse<T> {
       return new ApiResponse(null, statusCode, null, err.message || error);
     }
   }
+
+  static async error(statusCode: number = 200, error: any = null) {
+    return new ApiResponse(null, statusCode, null, error);
+  }
 }
