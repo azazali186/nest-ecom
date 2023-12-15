@@ -39,7 +39,12 @@ async function bootstrap() {
 
   app.useWebSocketAdapter(new IoAdapter(app));
   // app.useGlobalFilters(new HttpExceptionFilter());
-  const whitelist = ['http://localhost:3001', 'http://localhost:3000'];
+  const whitelist = [
+    'http://localhost:3001',
+    'http://localhost:3000',
+    'http://localhost:3002',
+    'http://localhost:3003',
+  ];
   const corsOptions = {
     origin: function (origin, callback) {
       if (whitelist.indexOf(origin) !== -1) {

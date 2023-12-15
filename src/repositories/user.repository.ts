@@ -299,7 +299,7 @@ export class UserRepository extends Repository<User> {
   async prepareLoginResponse(user: User, tokenDetails: any) {
     const { name, username, status, roles } = user;
 
-    const permissions = await this.peramRepo.find();
+    // const permissions = await this.peramRepo.find();
 
     return ApiResponse.success(
       {
