@@ -8,6 +8,12 @@ import { CategoryRepository } from 'src/repositories/category.repository';
 
 @Injectable()
 export class CategoryService {
+  updateSeo(id: number, req: import("../dto/product/update-features.dto").UpdateFeaturesDto[], user: any) {
+    throw new Error('Method not implemented.');
+  }
+  createSeo(id: number, req: import("../dto/product/create-features.dto").CreateFeaturesDto[], user: any) {
+    throw new Error('Method not implemented.');
+  }
   constructor(
     @InjectRepository(CategoryRepository)
     public curRepo: CategoryRepository,

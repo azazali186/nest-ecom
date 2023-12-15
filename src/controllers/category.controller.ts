@@ -15,6 +15,8 @@ import { BulkCreateCategoryDto } from 'src/dto/category/bulk-product-upload.dto'
 import { CreateCategoryDto } from 'src/dto/category/create-category.dto';
 import { SearchCategoryDto } from 'src/dto/category/search-category.dto';
 import { UpdateCategoryDto } from 'src/dto/category/update-category.dto';
+import { CreateFeaturesDto } from 'src/dto/product/create-features.dto';
+import { UpdateFeaturesDto } from 'src/dto/product/update-features.dto';
 import { CategoryService } from 'src/services/category.service';
 
 @ApiTags('Category Management')
@@ -55,5 +57,41 @@ export class CategoryController {
   @Delete(':id')
   remove(@Param('id') id: number) {
     return this.catService.remove(id);
+  }
+
+  @Patch('seo-create/:id')
+  createSeo(
+    @Param('id') id: number,
+    @Body(ValidationPipe) req: CreateFeaturesDto[],
+    @Request() r,
+  ) {
+    return this.catService.createSeo(id, req, r.user);
+  }
+
+  @Patch('image-upload/:id')
+  imageUpload(
+    @Param('id') id: number,
+    @Body(ValidationPipe) req: CreateFeaturesDto[],
+    @Request() r,
+  ) {
+    return this.catService.createSeo(id, req, r.user);
+  }
+
+  @Patch('image-remove/:id')
+  imageDelete(
+    @Param('id') id: number,
+    @Body(ValidationPipe) req: CreateFeaturesDto[],
+    @Request() r,
+  ) {
+    return this.catService.createSeo(id, req, r.user);
+  }
+
+  @Patch('seo-update/:id')
+  updateSeo(
+    @Param('id') id: number,
+    @Body(ValidationPipe) req: UpdateFeaturesDto[],
+    @Request() r,
+  ) {
+    return this.catService.updateSeo(id, req, r.user);
   }
 }

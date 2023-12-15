@@ -8,6 +8,12 @@ import { ApiResponse } from 'src/utils/response.util';
 
 @Injectable()
 export class CatalogService {
+  updateSeo(id: number, req: import("../dto/product/update-features.dto").UpdateFeaturesDto[], user: any) {
+    throw new Error('Method not implemented.');
+  }
+  createSeo(id: number, req: import("../dto/product/create-features.dto").CreateFeaturesDto[], user: any) {
+    throw new Error('Method not implemented.');
+  }
   constructor(
     @InjectRepository(CatalogRepository)
     public cpRepo: CatalogRepository,

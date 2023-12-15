@@ -71,6 +71,8 @@ export const EXCLUDED_ROUTES = [
   'RESET_PASSWORD',
   'BROADCAST',
   'PUBLIC',
+  'VIEW_ALL_CURRENCIES',
+  'VIEW_ALL_LANGUAGES',
 ];
 
 export function getMethodName(path: string, method: string): string {

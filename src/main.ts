@@ -39,7 +39,20 @@ async function bootstrap() {
 
   app.useWebSocketAdapter(new IoAdapter(app));
   // app.useGlobalFilters(new HttpExceptionFilter());
-  app.enableCors();
+  const whitelist = ['http://localhost:3001', 'http://localhost:3000'];
+  const corsOptions = {
+    origin: function (origin, callback) {
+      if (whitelist.indexOf(origin) !== -1) {
+        callback(null, true);
+      } else {
+        callback(null, false);
+      }
+    },
+    methods: ['*'],
+    credentials: true, //access-control-allow-credentials:true
+    optionSuccessStatus: 200,
+  };
+  app.enableCors(corsOptions);
 
   await app.startAllMicroservices();
 
@@ -65,7 +78,11 @@ async function bootstrap() {
     }),
   );
 
-  app.use(helmet());
+  app.use(
+    helmet({
+      crossOriginResourcePolicy: false,
+    }),
+  );
   app.use(errorLogMiddleware);
   await app.listen(process.env.PORT || 4000);
 

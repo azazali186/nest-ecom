@@ -297,13 +297,17 @@ export class UserRepository extends Repository<User> {
   }
 
   async prepareLoginResponse(user: User, tokenDetails: any) {
-    const { name, username, status } = user;
+    const { name, username, status, roles } = user;
+
+    const permissions = await this.peramRepo.find();
 
     return ApiResponse.success(
       {
-        user: { name, username, status },
+        user: { name, username, status, roles },
         // permissions: allPermissions.map((p) => p.name),
         token: tokenDetails.tokenString,
+        roles: roles,
+        permissions: roles.permissions,
       },
       200,
       this.langService.getTranslation('LOGIN_SUCCESS'),

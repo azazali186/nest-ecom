@@ -73,6 +73,24 @@ export class ProductController {
     return this.prodService.createSeo(id, req, r.user);
   }
 
+  @Patch('image-upload/:id')
+  imageUpload(
+    @Param('id') id: number,
+    @Body(ValidationPipe) req: CreateFeaturesDto[],
+    @Request() r,
+  ) {
+    return this.prodService.createSeo(id, req, r.user);
+  }
+
+  @Patch('image-remove/:id')
+  imageDelete(
+    @Param('id') id: number,
+    @Body(ValidationPipe) req: CreateFeaturesDto[],
+    @Request() r,
+  ) {
+    return this.prodService.createSeo(id, req, r.user);
+  }
+
   @Patch('seo-update/:id')
   updateSeo(
     @Param('id') id: number,
