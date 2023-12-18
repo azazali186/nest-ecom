@@ -185,12 +185,12 @@ async function associatePermissionWithAdminRole() {
   }
 
   role = await roleRepo.findOne({
-    where: { name: 'vendor' },
+    where: { name: process.env.VENDOR_ROLE_NAME },
   });
 
   if (!role) {
     role = new Role();
-    role.name = 'vendor';
+    role.name = process.env.VENDOR_ROLE_NAME;
     role.description = 'Vendor';
     role.permissions = [];
     role.is_public = false;
@@ -198,19 +198,19 @@ async function associatePermissionWithAdminRole() {
   }
 
   role = await roleRepo.findOne({
-    where: { name: 'guest' },
+    where: { name: process.env.MEMBER_ROLE_NAME },
   });
 
   if (!role) {
     role = new Role();
-    role.name = 'guest';
+    role.name = process.env.MEMBER_ROLE_NAME;
     role.description = 'Guest';
     role.permissions = [];
     role.is_public = false;
     await roleRepo.save(role);
   }
 
-  username = process.env.GUEST_USERNAME || 'guest';
+  username = process.env.GUEST_USERNAME || process.env.MEMBER_ROLE_NAME;
   pwd = process.env.GUEST_PASSWORD || 'Guest@123';
   let guestUser = await userRepo.findOne({
     where: { roles: { id: role.id }, username },

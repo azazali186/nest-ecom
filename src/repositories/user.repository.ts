@@ -72,7 +72,7 @@ export class UserRepository extends Repository<User> {
   }
 
   async getUsers(filterDto: SearchUserDto) {
-    const { status, search, createdDate } = filterDto;
+    const { status, search, createdDate, role } = filterDto;
     const limit =
       filterDto.limit && !isNaN(filterDto.limit) && filterDto.limit > 0
         ? filterDto.limit
@@ -102,7 +102,31 @@ export class UserRepository extends Repository<User> {
       });
     }
 
-    const [users, count] = await query
+    if (role) {
+      switch (role) {
+        case 'admin':
+          query.andWhere(
+            'roles.name NOT IN ( "' +
+              process.env.MEMBER_ROLE_NAME +
+              '" , "' +
+              process.env.VENDOR_ROLE_NAME +
+              '" )',
+          );
+          break;
+        case 'member':
+          query.andWhere(
+            'roles.name  = "' + process.env.MEMBER_ROLE_NAME + '" ',
+          );
+          break;
+        case 'vendor':
+          query.andWhere(
+            'roles.name  = "' + process.env.VENDOR_ROLE_NAME + '" ',
+          );
+          break;
+      }
+    }
+
+    query
       .leftJoinAndSelect('user.roles', 'roles')
       .leftJoinAndSelect('user.updated_by', 'updated_by')
       .leftJoinAndSelect('user.created_by', 'created_by')
@@ -123,7 +147,9 @@ export class UserRepository extends Repository<User> {
       .skip(filterDto.offset)
       .take(filterDto.limit)
       .cache(30000)
-      .getManyAndCount();
+      .orderBy('user.id', 'DESC');
+
+    const [users, count] = await query.getManyAndCount();
 
     return ApiResponse.paginate(
       { list: users, count: count },

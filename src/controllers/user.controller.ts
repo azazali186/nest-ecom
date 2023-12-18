@@ -28,6 +28,7 @@ export class UserController {
   findAll(
     @Query(UserStatusValidationPipes) filterDto: SearchUserDto,
   ): Promise<ApiResponse<any>> {
+    filterDto.role = 'admin';
     return this.userService.findAll(filterDto);
   }
 
