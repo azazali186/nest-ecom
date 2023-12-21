@@ -470,7 +470,10 @@ export class ProductRepository extends Repository<Product> {
         categoryIds: req.category_ids.split(','),
       });
     }
-    const [list, count] = await query.getManyAndCount();
+    const [list, count] = await query
+      .skip(req.offset)
+      .take(req.limit)
+      .getManyAndCount();
 
     return ApiResponse.paginate({ list, count }, 200);
   }

@@ -57,7 +57,11 @@ export class CurrencyRepository extends Repository<Currency> {
       options.where['code'] = Like(code);
     }
 
-    const [list, count] = await this.findAndCount({ where: options.where });
+    const [list, count] = await this.curRepo.findAndCount({
+      where: options.where,
+      skip: req.offset,
+      take: req.limit,
+    });
 
     return ApiResponse.paginate({ list, count });
   }

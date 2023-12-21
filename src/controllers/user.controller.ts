@@ -17,14 +17,14 @@ import { UserStatusValidationPipes } from 'src/pipes/user-status-validation.pipe
 import { UserService } from 'src/services/user.service';
 import { ApiResponse } from 'src/utils/response.util';
 
-@ApiTags('User Management')
+@ApiTags('User / Member and Vendor Management')
 @ApiBearerAuth()
-@Controller('users')
+@Controller('')
 export class UserController {
   constructor(private readonly userService: UserService) {}
 
   @ApiQuery({ name: 'status', enum: UserStatus })
-  @Get('')
+  @Get('users')
   findAll(
     @Query(UserStatusValidationPipes) filterDto: SearchUserDto,
   ): Promise<ApiResponse<any>> {
@@ -32,12 +32,30 @@ export class UserController {
     return this.userService.findAll(filterDto);
   }
 
-  @Get('/:id')
+  @ApiQuery({ name: 'status', enum: UserStatus })
+  @Get(`${process.env.VENDOR_ROLE_NAME}`)
+  findAllVendors(
+    @Query(UserStatusValidationPipes) filterDto: SearchUserDto,
+  ): Promise<ApiResponse<any>> {
+    filterDto.role = `${process.env.VENDOR_ROLE_NAME}`;
+    return this.userService.findAll(filterDto);
+  }
+
+  @ApiQuery({ name: 'status', enum: UserStatus })
+  @Get(`${process.env.MEMBER_ROLE_NAME}`)
+  findAllMembers(
+    @Query(UserStatusValidationPipes) filterDto: SearchUserDto,
+  ): Promise<ApiResponse<any>> {
+    filterDto.role = `${process.env.MEMBER_ROLE_NAME}`;
+    return this.userService.findAll(filterDto);
+  }
+
+  @Get('users/:id')
   findOne(@Param('id', ParseUUIDPipe) id: number) {
     return this.userService.findOne(id);
   }
 
-  @Patch('/:id')
+  @Patch('users/:id')
   updateUser(
     @Param('id', ParseUUIDPipe) id: number,
     @Body() updateUserDto: UpdateUserDto,
@@ -45,8 +63,8 @@ export class UserController {
   ): Promise<ApiResponse<any>> {
     return this.userService.updateUser(id, updateUserDto, req.user);
   }
-
-  @Delete('/:id')
+  
+  @Delete('users/:id')
   remove(@Param() id: number) {
     return this.userService.remove(id);
   }
