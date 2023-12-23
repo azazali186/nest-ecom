@@ -252,13 +252,10 @@ export class UserRepository extends Repository<User> {
   async login(loginDto: LoginDto) {
     try {
       const { username, password } = loginDto;
-
-      // Find the user based on mobileNumber
       const user = await this.userRepository.findOne({
-        where: [{ username }],
+        where: [{ username, delated_at: IsNull() }],
         relations: ['roles', 'roles.permissions'],
       });
-
       if (!user) {
         throw new NotFoundException({
           statusCode: 404,
@@ -272,10 +269,6 @@ export class UserRepository extends Repository<User> {
           message: 'DISABLED_ACCOUNT',
         });
       }
-
-      // console.log('login User', user);
-
-      // Check password
       const decryptedPassword = AES.decrypt(
         user.password,
         process.env.ENCRYPTION_KEY,
@@ -296,7 +289,12 @@ export class UserRepository extends Repository<User> {
       const response = await this.prepareLoginResponse(user, tokenDetails);
 
       return response;
-    } catch (error) {}
+    } catch (error) {
+      throw new BadRequestException({
+        statusCode: 404,
+        message: 'WRONG_USERNAME_PASSWORD',
+      });
+    }
   }
 
   async generateToken(user: User) {

@@ -41,5 +41,6 @@
   "IP_ADDRESS_NOT_FOUND": "ip: {data} not found",
   "ALREADY_EXIST": "{data} already exist!",
   "INVALID_ID": "{data} invalid id!",
-  "NOT_FOUND": "{data} Not found"
+  "NOT_FOUND": "{data} Not found",
+  "WRONG_USERNAME_PASSWORD": "Wrong username and password combination"
 }

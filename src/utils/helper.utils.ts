@@ -33,9 +33,6 @@ export function getPermissionNameFromRoute(
   if (path.includes('verify-email')) {
     path = 'verify-email';
   }
-  if (path.includes('broadcast')) {
-    path = 'broadcast';
-  }
   if (path.includes('swagger')) {
     path = 'swagger';
   }
