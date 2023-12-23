@@ -7,11 +7,12 @@ import {
   ManyToOne,
   OneToOne,
   BaseEntity,
+  DeleteDateColumn,
 } from 'typeorm';
 import { Role } from './role.entity';
 import { Session } from './session.entity';
 import { UserStatus } from '../enum/user-status.enum';
-import { Expose } from 'class-transformer';
+import { Exclude, Expose } from 'class-transformer';
 
 @Entity('users')
 export class User extends BaseEntity {
@@ -96,4 +97,8 @@ export class User extends BaseEntity {
 
   lang: string;
   currency: string;
+
+  /* @Exclude()
+  @DeleteDateColumn({ type: 'timestamp', nullable: true })
+  delated_at: Date; */
 }

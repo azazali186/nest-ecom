@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import { In, Like, Repository } from 'typeorm';
+import { In, IsNull, Like, Repository } from 'typeorm';
 import { AES, enc } from 'crypto-js';
 import { InjectRepository } from '@nestjs/typeorm';
 import {
@@ -237,51 +237,53 @@ export class UserRepository extends Repository<User> {
   }
 
   async login(loginDto: LoginDto) {
-    const { username, password } = loginDto;
+    try {
+      const { username, password } = loginDto;
 
-    // Find the user based on mobileNumber
-    const user = await this.userRepository.findOne({
-      where: [{ username }],
-      relations: ['roles', 'roles.permissions'],
-    });
-
-    if (!user) {
-      throw new NotFoundException({
-        statusCode: 404,
-        message: `WRONG_USERNAME`,
-        param: username,
+      // Find the user based on mobileNumber
+      const user = await this.userRepository.findOne({
+        where: [{ username }],
+        relations: ['roles', 'roles.permissions'],
       });
-    }
-    if (user.status === UserStatus.INACTIVE) {
-      throw new UnauthorizedException({
-        statusCode: 401,
-        message: 'DISABLED_ACCOUNT',
-      });
-    }
 
-    // console.log('login User', user);
+      if (!user) {
+        throw new NotFoundException({
+          statusCode: 404,
+          message: `WRONG_USERNAME`,
+          param: username,
+        });
+      }
+      if (user.status === UserStatus.INACTIVE) {
+        throw new UnauthorizedException({
+          statusCode: 401,
+          message: 'DISABLED_ACCOUNT',
+        });
+      }
 
-    // Check password
-    const decryptedPassword = AES.decrypt(
-      user.password,
-      process.env.ENCRYPTION_KEY,
-    ).toString(enc.Utf8);
-    if (decryptedPassword !== password) {
-      throw new NotFoundException({
-        statusCode: 404,
-        message: 'WRONG_PASSWORD',
-      });
-    }
+      // console.log('login User', user);
 
-    // Generate JWT token and create a session
-    const tokenDetails = await this.generateToken(user);
-    const session = this.createSession(tokenDetails, user);
-    await session;
+      // Check password
+      const decryptedPassword = AES.decrypt(
+        user.password,
+        process.env.ENCRYPTION_KEY,
+      ).toString(enc.Utf8);
+      if (decryptedPassword !== password) {
+        throw new NotFoundException({
+          statusCode: 404,
+          message: 'WRONG_PASSWORD',
+        });
+      }
 
-    // Prepare the response
-    const response = await this.prepareLoginResponse(user, tokenDetails);
+      // Generate JWT token and create a session
+      const tokenDetails = await this.generateToken(user);
+      const session = this.createSession(tokenDetails, user);
+      await session;
 
-    return response;
+      // Prepare the response
+      const response = await this.prepareLoginResponse(user, tokenDetails);
+
+      return response;
+    } catch (error) {}
   }
 
   async generateToken(user: User) {
@@ -515,5 +517,30 @@ export class UserRepository extends Repository<User> {
       200,
       this.langService.getTranslation('UPDATED_SUCCESSFULLY', 'User Password'),
     );
+  }
+
+  async removeUser(id: number) {
+    try {
+      /* this.sessionRepository.delete({
+        user: {
+          id: id,
+        },
+      }); */
+      const result = await this.userRepository.delete(id);
+      console.log(result);
+      if (result.affected === 0) {
+        throw new NotFoundException({
+          statusCode: 404,
+          message: `User with ID ${id} not found`,
+        });
+      }
+      return ApiResponse.create(null, 200, 'User Deleted');
+    } catch (error) {
+      console.log(error);
+      throw new BadRequestException({
+        statusCode: 400,
+        message: `Can Not Delete this user`,
+      });
+    }
   }
 }

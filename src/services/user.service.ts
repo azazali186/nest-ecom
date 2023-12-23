@@ -27,22 +27,7 @@ export class UserService {
   }
 
   async remove(id: number) {
-    try {
-      const result = await this.userRepository.delete(id);
-      console.log(result);
-      if (result.affected === 0) {
-        throw new NotFoundException({
-          statusCode: 404,
-          message: `User with ID ${id} not found`,
-        });
-      }
-      return ApiResponse.create(null, 200, 'User Deleted');
-    } catch (error) {
-      throw new BadRequestException({
-        statusCode: 400,
-        message: `Can Not Delete this user`,
-      });
-    }
+    return this.userRepository.removeUser(id);
   }
 
   findById(userId: number) {
