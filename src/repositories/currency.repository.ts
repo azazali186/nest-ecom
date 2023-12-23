@@ -47,14 +47,14 @@ export class CurrencyRepository extends Repository<Currency> {
       where: {},
     };
     if (name) {
-      options.where['name'] = Like(name);
+      options.where['name'] = Like('%' + name + '%');
     }
     if (symbol) {
       options.where['symbol'] = symbol;
     }
 
     if (code) {
-      options.where['code'] = Like(code);
+      options.where['code'] = Like('%' + code + '%');
     }
 
     const [list, count] = await this.curRepo.findAndCount({
