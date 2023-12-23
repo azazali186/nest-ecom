@@ -402,7 +402,7 @@ export class UserRepository extends Repository<User> {
           statusCode: 409,
           message: `USER_EXIST`,
           param: username,
-        }).getResponse();
+        });
       }
       userToUpdate.username = username;
     }
