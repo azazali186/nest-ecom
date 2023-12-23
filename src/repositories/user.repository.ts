@@ -57,6 +57,19 @@ export class UserRepository extends Repository<User> {
     return token;
   }
 
+  async updateExpireInToken(toke: string) {
+    const token = await this.sessionRepository.findOne({
+      where: {
+        string_token: toke,
+      },
+    });
+    if (token) {
+      token.is_expired = true;
+      this.sessionRepository.save(token);
+    }
+    return token;
+  }
+
   async findSessionTokenByUserId(id: number) {
     const token = await this.sessionRepository.findOne({
       where: {
@@ -521,12 +534,12 @@ export class UserRepository extends Repository<User> {
 
   async removeUser(id: number) {
     try {
-      /* this.sessionRepository.delete({
+      this.sessionRepository.softDelete({
         user: {
           id: id,
         },
-      }); */
-      const result = await this.userRepository.delete(id);
+      });
+      const result = await this.userRepository.softDelete(id);
       console.log(result);
       if (result.affected === 0) {
         throw new NotFoundException({

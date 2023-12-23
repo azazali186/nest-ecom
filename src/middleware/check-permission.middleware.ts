@@ -11,6 +11,7 @@ import { JwtService } from '@nestjs/jwt';
 import { UserService } from 'src/services/user.service';
 import { AES, enc } from 'crypto-js';
 import {
+  CHECK_LOGIN_ROUTES,
   EXCLUDED_ROUTES,
   getPermissionNameFromRoute,
 } from 'src/utils/helper.utils';
@@ -34,40 +35,38 @@ export class CheckPermissionMiddleware implements NestMiddleware {
       .toUpperCase()
       .replaceAll('-', '_');
 
-    if (
-      EXCLUDED_ROUTES.includes(currentPermission.toUpperCase()) &&
-      currentPermission != 'LOGOUT' &&
-      currentPermission != 'PUBLIC' &&
-      currentPermission != 'BROADCAST'
-    ) {
+    if (EXCLUDED_ROUTES.includes(currentPermission.toUpperCase())) {
       next();
     } else {
       const authHeader = req.headers.authorization;
-      const langHeader = req.headers.lang;
-      const currencyHeader = req.headers.currency;
       if (authHeader) {
         const token = authHeader.split(' ')[1];
-        // try {
-        const decryptedToken = AES.decrypt(
-          token,
-          process.env.ENCRYPTION_KEY_TOKEN,
-        ).toString(enc.Utf8);
         const dt = await this.usersService.findSessionToken(token);
-        if (
-          (currentPermission !== 'PUBLIC' && !dt) ||
-          dt?.is_expired === true
-        ) {
+        if (!dt || dt.is_expired === true) {
           throw new UnauthorizedException({
             statusCode: 401,
             message: 'INVALID_TOKEN',
           });
         }
-        const decoded = this.jwtService.verify(decryptedToken, {
-          secret: process.env.JWT_SECRET,
-        });
+        // try {
+        const decryptedToken = AES.decrypt(
+          token,
+          process.env.ENCRYPTION_KEY_TOKEN,
+        ).toString(enc.Utf8);
+        let decoded = null;
+        try {
+          decoded = await this.jwtService.verify(decryptedToken, {
+            secret: process.env.JWT_SECRET,
+          });
+        } catch (error) {
+          await this.usersService.updateExpireInToken(token);
+          throw new UnauthorizedException({
+            statusCode: 401,
+            message: 'INVALID_TOKEN',
+          });
+        }
         const user = await this.usersService.findById(decoded.sub);
-        user.lang = langHeader || 'en';
-        user.currency = currencyHeader || 'USD';
+        // console.log('user  ', decoded);
         const { password, ...others } = user;
         req.user = others;
         req.user.token = token;
@@ -77,13 +76,7 @@ export class CheckPermissionMiddleware implements NestMiddleware {
             message: 'UNAUTHORIZED_ACCESS',
           });
         }
-        if (
-          currentPermission === 'LOGOUT' ||
-          currentPermission === 'PUBLIC' ||
-          currentPermission === 'BROADCAST' ||
-          'VIEW_ALL_AUTH_USER' === currentPermission ||
-          req.user.roles.name == process.env.MEMBER_ROLE_NAME
-        ) {
+        if (CHECK_LOGIN_ROUTES.includes(currentPermission)) {
           next();
         } else {
           if (
@@ -96,6 +89,7 @@ export class CheckPermissionMiddleware implements NestMiddleware {
             throw new ForbiddenException({
               statusCode: 403,
               message: 'UNAUTHORIZED_ACCESS',
+              cause: currentPermission,
             });
           }
         }
@@ -104,14 +98,13 @@ export class CheckPermissionMiddleware implements NestMiddleware {
         //   throw new ForbiddenException('Invalid token or permission denied');
         // }
       } else {
-        if (currentPermission == 'PUBLIC') {
-          next();
-        } else {
-          throw new UnauthorizedException({
-            statusCode: 401,
-            message: 'TOKEN_REQUIRED',
-          });
-        }
+        throw new UnauthorizedException({
+          statusCode: 401,
+          message: 'TOKEN_REQUIRED',
+          error: {
+            currentPermission: currentPermission,
+          },
+        });
       }
     }
   }

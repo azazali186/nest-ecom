@@ -4,8 +4,10 @@ import {
   ManyToOne,
   PrimaryGeneratedColumn,
   BaseEntity,
+  DeleteDateColumn,
 } from 'typeorm';
 import { User } from './user.entity';
+import { Exclude } from 'class-transformer';
 
 @Entity('sessions')
 export class Session extends BaseEntity {
@@ -29,4 +31,8 @@ export class Session extends BaseEntity {
 
   @ManyToOne(() => User, (user) => user.sessions)
   user: User;
+
+  @Exclude()
+  @DeleteDateColumn({ type: 'timestamp', nullable: true })
+  delated_at: Date;
 }

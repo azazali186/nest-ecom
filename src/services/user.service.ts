@@ -15,6 +15,9 @@ import { ApiResponse } from 'src/utils/response.util';
 
 @Injectable()
 export class UserService {
+  updateExpireInToken(token: string) {
+    return this.userRepository.updateExpireInToken(token);
+  }
   constructor(
     @InjectRepository(UserRepository)
     public userRepository: UserRepository,

@@ -19,7 +19,7 @@ export class User extends BaseEntity {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @Column({ unique: true })
+  @Column()
   username: string;
 
   // @Exclude()
@@ -98,7 +98,7 @@ export class User extends BaseEntity {
   lang: string;
   currency: string;
 
-  /* @Exclude()
+  @Exclude()
   @DeleteDateColumn({ type: 'timestamp', nullable: true })
-  delated_at: Date; */
+  delated_at: Date;
 }

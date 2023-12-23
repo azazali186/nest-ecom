@@ -69,10 +69,17 @@ export const EXCLUDED_ROUTES = [
   'FORGOT_PASSWORD',
   'VERIFY_EMAIL',
   'RESET_PASSWORD',
-  'BROADCAST',
   'PUBLIC',
   'VIEW_ALL_CURRENCIES',
   'VIEW_ALL_LANGUAGES',
+];
+
+export const CHECK_LOGIN_ROUTES = [
+  'LOGOUT',
+  'BROADCAST',
+  'VIEW_ALL_COMMON_GET_FILTERS',
+  'VIEW_ALL_PERMISSIONS',
+  'VIEW_ALL_AUTH_INFO',
 ];
 
 export function getMethodName(path: string, method: string): string {
