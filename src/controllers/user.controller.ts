@@ -4,12 +4,13 @@ import {
   Delete,
   Get,
   Param,
-  ParseUUIDPipe,
   Patch,
+  Post,
   Query,
   Request,
 } from '@nestjs/common';
 import { ApiBearerAuth, ApiQuery, ApiTags } from '@nestjs/swagger';
+import { CreateUserDto } from 'src/dto/create-user.dto';
 import { SearchUserDto } from 'src/dto/search-user.dto';
 import { UpdateUserDto } from 'src/dto/update-user.dto';
 import { UserStatus } from 'src/enum/user-status.enum';
@@ -22,6 +23,12 @@ import { ApiResponse } from 'src/utils/response.util';
 @Controller('')
 export class UserController {
   constructor(private readonly userService: UserService) {}
+
+  @Delete('users/:id')
+  remove(@Param('id') id: number) {
+    console.log('remove user called', id);
+    return this.userService.remove(id);
+  }
 
   @ApiQuery({ name: 'status', enum: UserStatus })
   @Get('users')
@@ -51,21 +58,24 @@ export class UserController {
   }
 
   @Get('users/:id')
-  findOne(@Param('id', ParseUUIDPipe) id: number) {
+  findOne(@Param('id') id: number) {
     return this.userService.findOne(id);
+  }
+
+  @Post('users')
+  CreateUser(
+    @Body() updateUserDto: CreateUserDto,
+    @Request() req,
+  ): Promise<ApiResponse<any>> {
+    return this.userService.create(updateUserDto, req.user.id);
   }
 
   @Patch('users/:id')
   updateUser(
-    @Param('id', ParseUUIDPipe) id: number,
+    @Param('id') id: number,
     @Body() updateUserDto: UpdateUserDto,
     @Request() req,
   ): Promise<ApiResponse<any>> {
     return this.userService.updateUser(id, updateUserDto, req.user);
-  }
-  
-  @Delete('users/:id')
-  remove(@Param() id: number) {
-    return this.userService.remove(id);
   }
 }

@@ -1,5 +1,10 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import { Injectable, NotFoundException } from '@nestjs/common';
+import {
+  BadRequestException,
+  ForbiddenException,
+  Injectable,
+  NotFoundException,
+} from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { ChangePasswordDto } from 'src/dto/change-password.dto';
 import { CreateUserDto } from 'src/dto/create-user.dto';
@@ -22,11 +27,22 @@ export class UserService {
   }
 
   async remove(id: number) {
-    const result = await this.userRepository.delete(id);
-    if (result.affected === 0) {
-      throw new NotFoundException(`User with ID ${id} not found`);
+    try {
+      const result = await this.userRepository.delete(id);
+      console.log(result);
+      if (result.affected === 0) {
+        throw new NotFoundException({
+          statusCode: 404,
+          message: `User with ID ${id} not found`,
+        });
+      }
+      return ApiResponse.create(null, 200, 'User Deleted');
+    } catch (error) {
+      throw new BadRequestException({
+        statusCode: 400,
+        message: `Can Not Delete this user`,
+      });
     }
-    return ApiResponse.create(null, 200, 'User Deleted');
   }
 
   findById(userId: number) {
@@ -48,7 +64,10 @@ export class UserService {
       relations: ['roles'],
     });
     if (!user) {
-      return new NotFoundException('User Not Found with this id');
+      return new NotFoundException({
+        statusCode: 404,
+        message: `User with ID ${id} not found`,
+      });
     }
     const { password, ...others } = user;
     return others;
