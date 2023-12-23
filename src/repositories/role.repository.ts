@@ -214,7 +214,7 @@ export class RoleRepository extends Repository<Role> {
         'updated_by.username as updated_by',
         'COUNT(user.id) AS users',
       ])
-      .groupBy('role.id')      
+      .groupBy('role.id')
       .addGroupBy('role.name');
 
     if (req.name) {
@@ -228,7 +228,11 @@ export class RoleRepository extends Repository<Role> {
       });
     }
 
-    const roles = await query.limit(limit).offset(offset).cache(true).getRawMany();
+    const roles = await query
+      .limit(limit)
+      .offset(offset)
+      .cache(true)
+      .getRawMany();
     const count = await query.getCount();
 
     return ApiResponse.paginate(

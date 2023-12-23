@@ -18,7 +18,7 @@
         "translations": [
             {
                 "name": "智能手表",
-                "language_id": 1,
+                "language_code": "en",
                 "description": "与我们的智能手表一起体验智能科技的便捷。",
                 "meta_title": "智能手表 - 智能科技新体验",
                 "meta_keywords": "智能手表，科技，健康监测",
@@ -26,7 +26,7 @@
             },
             {
                 "name": "स्मार्टवॉच",
-                "language_id": 2,
+                "language_code": "zh",
                 "description": "हमारे स्मार्टवॉच के साथ स्मार्ट टेक्नोलॉजी का अनुभव करें।",
                 "meta_title": "स्मार्टवॉच - स्मार्ट टेक्नोलॉजी का नया अनुभव",
                 "meta_keywords": "स्मार्टवॉच, टेक्नोलॉजी, स्वास्थ्य मॉनिटरिंग",
@@ -34,7 +34,7 @@
             },
             {
                 "name": "នាងស្មាន់អនឡាញ",
-                "language_id": 3,
+                "language_code": "km",
                 "description": "ធ្វើបុរសមុននិងប្រើប្រាស់បណ្តាញអនឡាញរបស់យើង។",
                 "meta_title": "នាងស្មាន់អនឡាញ - បទពិសោធន៍សម្រាប់ការចូលរួម",
                 "meta_keywords": "នាងស្មាន់អនឡាញ, បទពិសោធន៍, បណ្តាញអនឡាញ",
@@ -42,7 +42,7 @@
             },
             {
                 "name": "Smartwatch",
-                "language_id": 4,
+                "language_code": "hn",
                 "description": "Experience the convenience of smart technology with our smartwatch.",
                 "meta_title": "Smartwatch - New Experience in Smart Technology",
                 "meta_keywords": "smartwatch, technology, health monitoring",
@@ -75,7 +75,7 @@
         "translations": [
             {
                 "name": "带高清摄像头的无人机",
-                "language_id": 1,
+                "language_code": "en",
                 "description": "使用我们的高清摄像头无人机捕捉震撼的航拍画面。",
                 "meta_title": "带高清摄像头的无人机 - 航拍新体验",
                 "meta_keywords": "无人机，高清摄像头，航拍，科技",
@@ -83,7 +83,7 @@
             },
             {
                 "name": "एचडी कैमरे के साथ ड्रोन",
-                "language_id": 2,
+                "language_code": "zh",
                 "description": "हमारे एचडी कैमरे के साथ ड्रोन के साथ दिलचस्प हवाई छवियों को कैद करें।",
                 "meta_title": "एचडी कैमरे के साथ ड्रोन - हवाई नई अनुभव",
                 "meta_keywords": "ड्रोन, एचडी कैमरा, हवाई, टेक्नोलॉजी",
@@ -91,7 +91,7 @@
             },
             {
                 "name": "ដ្រូនមួយមានតម្រូវការ HD",
-                "language_id": 3,
+                "language_code": "km",
                 "description": "ប្រើប្រាស់គ្រឿងរូប HD របស់យើងដើម្បីបង្កើតរូបភាពទាន់ហេតុការណ៍មានចម្ងាយ។",
                 "meta_title": "ដ្រូនមួយមានតម្រូវការ HD - បទពិសោធន៍រូបភាពថ្មី",
                 "meta_keywords": "ដ្រូន, HD គ្រឿងរូប, ផ្សារ, បទពិសោធន៍",
@@ -99,7 +99,7 @@
             },
             {
                 "name": "Drone with HD Camera",
-                "language_id": 4,
+                "language_code": "hn",
                 "description": "Capture breathtaking aerial shots with our drone equipped with an HD camera.",
                 "meta_title": "Drone with HD Camera - New Experience in Aerial Photography",
                 "meta_keywords": "drone, HD camera, aerial photography, technology",
@@ -136,7 +136,7 @@
         "translations": [
             {
                 "name": "游戏笔记本电脑",
-                "language_id": 1,
+                "language_code": "en",
                 "description": "通过我们的高性能游戏笔记本电脑，畅享游戏世界。",
                 "meta_title": "游戏笔记本电脑 - 极致游戏体验",
                 "meta_keywords": "游戏笔记本电脑，游戏，性能，娱乐",
@@ -144,7 +144,7 @@
             },
             {
                 "name": "गेमिंग लैपटॉप",
-                "language_id": 2,
+                "language_code": "zh",
                 "description": "हमारे उच्च प्रदर्शन वाले गेमिंग लैपटॉप के साथ खेलों का आनंद लें।",
                 "meta_title": "गेमिंग लैपटॉप - अद्वितीय खेल अनुभव",
                 "meta_keywords": "गेमिंग लैपटॉप, खेल, प्रदर्शन, मनोरंजन",
@@ -152,7 +152,7 @@
             },
             {
                 "name": "កំពុងផ្តល់ព័ត៌មានសម្រាប់អ្នកដឹកនាំ",
-                "language_id": 3,
+                "language_code": "km",
                 "description": "តាមដានលទ្ធផលដែលមាននៅក្នុងការព័ត៌មានសម្រាប់អ្នកដឹកនាំ។",
                 "meta_title": "អំពីកុំព្យូទ័រហ្គេម",
                 "meta_keywords": "កុំព្យូទ័រហ្គេម, ហាងគ្រួសារ, បទពិសោធន៍, ការរស់នៅ",
@@ -160,7 +160,7 @@
             },
             {
                 "name": "Gaming Laptop",
-                "language_id": 4,
+                "language_code": "hn",
                 "description": "Immerse yourself in the gaming world with our high-performance gaming laptop.",
                 "meta_title": "Gaming Laptop - Ultimate Gaming Experience",
                 "meta_keywords": "gaming laptop, gaming, performance, entertainment",
@@ -192,7 +192,7 @@
         "translations": [
             {
                 "name": "虚拟现实头戴式显示器",
-                "language_id": 1,
+                "language_code": "en",
                 "description": "通过我们的虚拟现实头戴式显示器，沉浸式体验游戏和影视。",
                 "meta_title": "虚拟现实头戴式显示器 - 沉浸式娱乐体验",
                 "meta_keywords": "虚拟现实，头戴式显示器，游戏，影视",
@@ -200,7 +200,7 @@
             },
             {
                 "name": "VR हेडसेट",
-                "language_id": 2,
+                "language_code": "zh",
                 "description": "हमारे वर्चुअल रियलिटी हेडसेट के साथ गेम और फिल्म का आनंद लें।",
                 "meta_title": "VR हेडसेट - शानदार मनोरंजन अनुभव",
                 "meta_keywords": "वर्चुअल रियलिटी, हेडसेट, गेम, फिल्म",
@@ -208,7 +208,7 @@
             },
             {
                 "name": "ប៊ូរុសភេសជនភៀសខ្លួន",
-                "language_id": 3,
+                "language_code": "km",
                 "description": "តាមដានលទ្ធផលដែលមាននៅក្នុងការព័ត៌មានសម្រាប់អ្នកដឹកនាំ។",
                 "meta_title": "អំពីមុខវិជ្ជា",
                 "meta_keywords": "មុខវិជ្ជា, ការងារ, រក្សាទុក, ការរីកចម្រើន",
@@ -216,7 +216,7 @@
             },
             {
                 "name": "VR Headset",
-                "language_id": 4,
+                "language_code": "hn",
                 "description": "Immerse yourself in gaming and movies with our virtual reality headset.",
                 "meta_title": "VR Headset - Immersive Entertainment Experience",
                 "meta_keywords": "virtual reality, headset, gaming, movies",
@@ -253,7 +253,7 @@
         "translations": [
             {
                 "name": "游戏笔记本电脑",
-                "language_id": 1,
+                "language_code": "en",
                 "description": "通过我们的高性能游戏笔记本电脑，享受游戏的无限乐趣。",
                 "meta_title": "游戏笔记本电脑 - 极致游戏体验",
                 "meta_keywords": "游戏笔记本电脑，高性能，游戏体验",
@@ -261,7 +261,7 @@
             },
             {
                 "name": "गेमिंग लैपटॉप",
-                "language_id": 2,
+                "language_code": "zh",
                 "description": "हमारे उच्च प्रदर्शन वाले गेमिंग लैपटॉप के साथ खेल का आनंद लें।",
                 "meta_title": "गेमिंग लैपटॉप - अद्वितीय खेल अनुभव",
                 "meta_keywords": "गेमिंग लैपटॉप, उच्च प्रदर्शन, खेल अनुभव",
@@ -269,7 +269,7 @@
             },
             {
                 "name": "កុំព្យូទ័រហាង",
-                "language_id": 3,
+                "language_code": "km",
                 "description": "ចេញពីសកម្មភាពដ៏ដំណាក់កាលនេះដោយក្តារចម្លងទ័រហាងលើមុខ។",
                 "meta_title": "កុំព្យូទ័រហាង - បទប្រុសសន្ធការកម្សាន្ត",
                 "meta_keywords": "កុំព្យូទ័រហាង, សម្រាប់សកម្មភាព, លទ្ធផលមានចិត្ត",
@@ -277,7 +277,7 @@
             },
             {
                 "name": "Gaming Laptop",
-                "language_id": 4,
+                "language_code": "hn",
                 "description": "Enjoy endless gaming fun with our high-performance gaming laptop.",
                 "meta_title": "Gaming Laptop - Ultimate Gaming Experience",
                 "meta_keywords": "gaming laptop, high performance, gaming experience",
@@ -310,7 +310,7 @@
         "translations": [
             {
                 "name": "4K运动相机",
-                "language_id": 1,
+                "language_code": "en",
                 "description": "记录您的冒险和活动，享受清晰的4K视频质量。",
                 "meta_title": "4K运动相机 - 清晰视觉冒险",
                 "meta_keywords": "4K相机，运动相机，冒险，视频记录",
@@ -318,7 +318,7 @@
             },
             {
                 "name": "4K एक्शन कैमरा",
-                "language_id": 2,
+                "language_code": "zh",
                 "description": "अपने साहसिक और क्रियाशील लम्हों को दर्शाता है, स्पष्ट 4K वीडियो गुणवत्ता का आनंद लें।",
                 "meta_title": "4K एक्शन कैमरा - स्पष्ट दृष्टिकोण साहस",
                 "meta_keywords": "4K कैमरा, एक्शन कैमरा, साहसिक, वीडियो रिकॉर्डिंग",
@@ -326,7 +326,7 @@
             },
             {
                 "name": "4K ឆាម៉ា",
-                "language_id": 3,
+                "language_code": "km",
                 "description": "កំណត់ត្រាផ្តល់នូវមតិការ និងសម្រាប់អ្នកប្រើប្រាស់កម្មវិធីចម្លងតុងវីដេអូ 4K ហើយទទួលបានការបង្កើតអ្នកផ្សេងគ្នា។",
                 "meta_title": "4K ឆាម៉ា - ជីវភាពមើលឃើញដ៏ឆ្លាក់",
                 "meta_keywords": "4K ឆាម៉ា, ឆាម៉ា, ស្វែងរក, ការថតវីដេអូ",
@@ -334,7 +334,7 @@
             },
             {
                 "name": "4K Action Camera",
-                "language_id": 4,
+                "language_code": "hn",
                 "description": "Capture your adventures and activities with clear 4K video quality.",
                 "meta_title": "4K Action Camera - Clear Visual Adventures",
                 "meta_keywords": "4K camera, action camera, adventure, video recording",

@@ -5,7 +5,7 @@
       "translations": [
         {
           "name": "Electronics",
-          "language_id": 1,
+          "language_code": "en",
           "description": "Explore the latest gadgets and technology.",
           "meta_title": "Electronic Devices",
           "meta_keywords": "gadgets, technology, electronics",
@@ -13,7 +13,7 @@
         },
         {
           "name": "电子产品",
-          "language_id": 2,
+          "language_code": "zh",
           "description": "探索最新的小工具和技术。",
           "meta_title": "电子设备",
           "meta_keywords": "小工具，技术，电子产品",
@@ -21,7 +21,7 @@
         },
         {
           "name": "ឧបករណ៍អេឡិចត្រូនិក",
-          "language_id": 3,
+          "language_code": "km",
           "description": "រកមើលឧបករណ៍ថ្មីៗ និងបច្ចេកវិទ្យា។",
           "meta_title": "ឧបករណ៍អេឡិចត្រូនិក",
           "meta_keywords": "ឧបករណ៍, បច្ចេកវិទ្យា, អេឡិចត្រូនិក",
@@ -29,7 +29,7 @@
         },
         {
           "name": "इलेक्ट्रॉनिक्स",
-          "language_id": 4,
+          "language_code": "hn",
           "description": "नवीनतम गैजेट्स और तकनीक की खोज करें।",
           "meta_title": "इलेक्ट्रॉनिक डिवाइसेस",
           "meta_keywords": "गैजेट्स, तकनीक, इलेक्ट्रॉनिक्स",
@@ -47,7 +47,7 @@
       "translations": [
         {
           "name": "Fashion",
-          "language_id": 1,
+          "language_code": "en",
           "description": "Stay trendy with the latest fashion styles.",
           "meta_title": "Trendy Apparel",
           "meta_keywords": "fashion, clothing, style",
@@ -55,7 +55,7 @@
         },
         {
           "name": "时尚",
-          "language_id": 2,
+          "language_code": "zh",
           "description": "保持时尚，跟随最新的时尚风格。",
           "meta_title": "时尚服装",
           "meta_keywords": "时尚，服装，风格",
@@ -63,7 +63,7 @@
         },
         {
           "name": "ស្បែក",
-          "language_id": 3,
+          "language_code": "km",
           "description": "ទុកជាស្បែកជាក់លាក់ជាតិតិច។",
           "meta_title": "ស្បែកអេឡិចត្រូនិក",
           "meta_keywords": "ស្បែក, សម្លៀក, ទិដ្ឋភាព",
@@ -71,7 +71,7 @@
         },
         {
           "name": "फैशन",
-          "language_id": 4,
+          "language_code": "hn",
           "description": "नवीनतम फैशन स्टाइल के साथ ट्रेंडी रहें।",
           "meta_title": "फैशन एपैरल",
           "meta_keywords": "फैशन, कपड़े, स्टाइल",
@@ -90,7 +90,7 @@
       "translations": [
         {
           "name": "Home and Living",
-          "language_id": 1,
+          "language_code": "en",
           "description": "Transform your space with stylish home decor.",
           "meta_title": "Chic Home Accessories",
           "meta_keywords": "home decor, living, interior",
@@ -98,7 +98,7 @@
         },
         {
           "name": "家居生活",
-          "language_id": 2,
+          "language_code": "zh",
           "description": "用时尚的家居装饰改变您的空间。",
           "meta_title": "时尚家居配饰",
           "meta_keywords": "家居装饰，生活，室内",
@@ -106,7 +106,7 @@
         },
         {
           "name": "ផ្ទះនិងក្រុមគ្រឿង",
-          "language_id": 3,
+          "language_code": "km",
           "description": "ប្ដូរបន្ទប់របស់អ្នកជាមួយនឹងគ្រឿងដំបូង។",
           "meta_title": "គ្រឿងដំបូងស្ហំប្រើប្រាស់",
           "meta_keywords": "គ្រឿងដំបូង, ក្រុមគ្រឿង, ផ្ទះបំប៉ន",
@@ -114,7 +114,7 @@
         },
         {
           "name": "गृह और जीवन",
-          "language_id": 4,
+          "language_code": "hn",
           "description": "स्टाइलिश होम डेकोर के साथ अपने स्थान को परिवर्तित करें।",
           "meta_title": "शीक होम एक्सेसरीज",
           "meta_keywords": "होम डेकोर, जीवन, इंटीरियर",
@@ -132,7 +132,7 @@
       "translations": [
         {
           "name": "Sports and Outdoors",
-          "language_id": 1,
+          "language_code": "en",
           "description": "Gear up for your outdoor adventures with top-quality sports equipment.",
           "meta_title": "Outdoor Gear and Equipment",
           "meta_keywords": "sports, outdoors, equipment",
@@ -140,7 +140,7 @@
         },
         {
           "name": "运动与户外",
-          "language_id": 2,
+          "language_code": "zh",
           "description": "为户外冒险备齐顶级运动装备。",
           "meta_title": "户外装备",
           "meta_keywords": "运动，户外，装备",
@@ -148,7 +148,7 @@
         },
         {
           "name": "កីឡា និងក្រៅប្រទេស",
-          "language_id": 3,
+          "language_code": "km",
           "description": "រៀបចំសំបុត្របើកស្រូវសម្រាប់ការបង្កើតចម្បងរបស់អ្នក។",
           "meta_title": "ឧបករណ៍ និងសំបុត្រក្រៅប្រទេស",
           "meta_keywords": "កីឡា, ក្រៅប្រទេស, ឧបករណ៍",
@@ -156,7 +156,7 @@
         },
         {
           "name": "खेल और आउटडोर्स",
-          "language_id": 4,
+          "language_code": "hn",
           "description": "अपने आउटडोर साहसिक क्रियाओं के लिए उच्च गुणवत्ता वाले खेल सामग्री के साथ तैयारी करें।",
           "meta_title": "आउटडोर गियर और सामग्री",
           "meta_keywords": "खेल, आउटडोर्स, सामग्री",
@@ -175,7 +175,7 @@
       "translations": [
         {
           "name": "Beauty and Personal Care",
-          "language_id": 1,
+          "language_code": "en",
           "description": "Enhance your beauty routine with high-quality skincare and personal care products.",
           "meta_title": "Luxurious Beauty Essentials",
           "meta_keywords": "beauty, personal care, skincare",
@@ -183,7 +183,7 @@
         },
         {
           "name": "美容与个人护理",
-          "language_id": 2,
+          "language_code": "zh",
           "description": "用高品质的护肤品和个人护理产品提升您的美容日常。",
           "meta_title": "奢华美容必备品",
           "meta_keywords": "美容，个人护理，护肤",
@@ -191,7 +191,7 @@
         },
         {
           "name": "សម្រស់ និងការថែទាំផ្ទាល់ខ្លួន",
-          "language_id": 3,
+          "language_code": "km",
           "description": "ពិតជាធ្វើឱ្យមានទិដ្ឋភាពល្អជាងមុនដែលយើងមាននៅតំបន់ខ្លួនផងដែរ។",
           "meta_title": "ឧបករណ៍សម្រស់គ្រឿងដំបូង",
           "meta_keywords": "សម្រស់, ការថែទាំផ្ទាល់ខ្លួន, គ្រឿងដំបូង",
@@ -199,7 +199,7 @@
         },
         {
           "name": "सौंदर्य और व्यक्तिगत देखभाल",
-          "language_id": 4,
+          "language_code": "hn",
           "description": "अपनी सौंदर्य रूटीन को उच्च गुणवत्ता वाले स्किनकेयर और व्यक्तिगत देखभाल उत्पादों के साथ बढ़ाएं।",
           "meta_title": "शानदार सौंदर्य आवश्यक",
           "meta_keywords": "सौंदर्य, व्यक्तिगत देखभाल, स्किनकेयर",
@@ -217,7 +217,7 @@
       "translations": [
         {
           "name": "Books and Stationery",
-          "language_id": 1,
+          "language_code": "en",
           "description": "Immerse yourself in captivating stories and find stylish stationery for your creative endeavors.",
           "meta_title": "Literary Escapes and Artistic Supplies",
           "meta_keywords": "books, stationery, creativity",
@@ -225,7 +225,7 @@
         },
         {
           "name": "图书与文具",
-          "language_id": 2,
+          "language_code": "zh",
           "description": "沉浸在引人入胜的故事中，找到时尚的文具，为您的创意努力提供支持。",
           "meta_title": "文学逸品与艺术用品",
           "meta_keywords": "图书，文具，创造力",
@@ -233,7 +233,7 @@
         },
         {
           "name": "សៀវភៅ និងស្បែកធ្វើការ",
-          "language_id": 3,
+          "language_code": "km",
           "description": "សួស្តីក្នុងរឿងនិងរកស្បែកទៅសិស្សពីរចម្បាញបច្ចេកទេសរបស់អ្នក។",
           "meta_title": "ជាប្រជាជននិងឧបករណ៍អក្សរ",
           "meta_keywords": "សៀវភៅ, ស្បែកធ្វើការ, ការបង្កើតបច្ចេកទេស",
@@ -241,7 +241,7 @@
         },
         {
           "name": "किताबें और स्टेशनरी",
-          "language_id": 4,
+          "language_code": "hn",
           "description": "जुड़िए रोचक कहानियों में और अपनी रचनात्मक प्रयासों के लिए स्टाइलिश स्टेशनरी ढूंढें।",
           "meta_title": "साहित्यिक भटकान और कलात्मक सप्लाईज़",
           "meta_keywords": "किताबें, स्टेशनरी, रचनात्मकता",
@@ -259,7 +259,7 @@
       "translations": [
         {
           "name": "Toys and Games",
-          "language_id": 1,
+          "language_code": "en",
           "description": "Explore a world of fun with a wide range of toys and games for all ages.",
           "meta_title": "Playful Delights for All Ages",
           "meta_keywords": "toys, games, play",
@@ -267,7 +267,7 @@
         },
         {
           "name": "玩具与游戏",
-          "language_id": 2,
+          "language_code": "zh",
           "description": "通过各种各样的玩具和游戏探索一个充满乐趣的世界，适合所有年龄段。",
           "meta_title": "适合所有年龄段的欢乐玩具",
           "meta_keywords": "玩具，游戏，玩耍",
@@ -275,7 +275,7 @@
         },
         {
           "name": "គ្រឿងលេខ និងហ្គេម",
-          "language_id": 3,
+          "language_code": "km",
           "description": "រកមើលរបស់បងប្អូនទាំងអស់ដែលត្រូវការនៅទីនេះដោយគ្រឿងលេខនិងហ្គេមសម្រាប់ទំនុកប្រចាំអាយុ។",
           "meta_title": "រដូវអស់ទាំងអស់សម្រាប់ការការទូទៅ",
           "meta_keywords": "គ្រឿងលេខ, ហ្គេម, លេខហង្ស",
@@ -283,7 +283,7 @@
         },
         {
           "name": "खिलौने और खेल",
-          "language_id": 4,
+          "language_code": "hn",
           "description": "सभी आयुवर्गों के लिए विभिन्न खिलौनों और खेलों की दुनिया का अन्वेषण करें।",
           "meta_title": "सभी आयुवर्गों के लिए खिलाड़ी आनंद",
           "meta_keywords": "खिलौने, खेल, खेलना",
@@ -301,7 +301,7 @@
       "translations": [
         {
           "name": "Food and Beverages",
-          "language_id": 1,
+          "language_code": "en",
           "description": "Satisfy your cravings with a delicious selection of food and beverages from around the world.",
           "meta_title": "Global Flavors on Your Plate",
           "meta_keywords": "food, beverages, flavors",
@@ -309,7 +309,7 @@
         },
         {
           "name": "食品与饮料",
-          "language_id": 2,
+          "language_code": "zh",
           "description": "从世界各地的美味食品和饮料中满足您的口腹之欲。",
           "meta_title": "您盘中的全球风味",
           "meta_keywords": "食品，饮料，风味",
@@ -317,7 +317,7 @@
         },
         {
           "name": "អាហារ និងទឹកកក",
-          "language_id": 3,
+          "language_code": "km",
           "description": "បំពង់អាហាររួមសម្រាប់តំបន់ជាមួយនឹងទឹកកកពីរបស់ពុកម៉ែត្រប្រទេស។",
           "meta_title": "ប្រជាជនសម្រាប់ម្តងទៀតលើសពីបំពង់",
           "meta_keywords": "អាហារ, ទឹកកក, ស្រឡាញ់",
@@ -325,7 +325,7 @@
         },
         {
           "name": "खाद्य और पेय",
-          "language_id": 4,
+          "language_code": "hn",
           "description": "दुनिया भर से आने वाले स्वादिष्ट खाद्य और पेय का एक सुन्दर चयन करके अपनी खामियां मिटाएं।",
           "meta_title": "आपकी प्लेट पर विश्वव्यापी रुचियां",
           "meta_keywords": "खाद्य, पेय, रुचियां",
@@ -344,7 +344,7 @@
       "translations": [
         {
           "name": "Fashion and Accessories",
-          "language_id": 1,
+          "language_code": "en",
           "description": "Elevate your style with the latest fashion trends and chic accessories for every occasion.",
           "meta_title": "Trendy Fashion Statements",
           "meta_keywords": "fashion, accessories, style",
@@ -352,7 +352,7 @@
         },
         {
           "name": "时尚与配饰",
-          "language_id": 2,
+          "language_code": "zh",
           "description": "通过最新的时尚趋势和别致的配饰，提升您的时尚品味。",
           "meta_title": "时尚潮流",
           "meta_keywords": "时尚，配饰，风格",
@@ -360,7 +360,7 @@
         },
         {
           "name": "ស្បែកអេក្រង់ និងកម្ពស់កក់",
-          "language_id": 3,
+          "language_code": "km",
           "description": "រកមើលសម្រាប់ទៅសិស្សពីរចម្បាញនិងស្បែករបស់អ្នកសម្រាប់គ្រឿងលេខរបស់អ្នក។",
           "meta_title": "តំបន់រក្សាអេក្រង់និងសម្រាប់សិស្ស",
           "meta_keywords": "ស្បែកអេក្រង់, កម្ពស់កក់, ប្រភេទចិន",
@@ -368,7 +368,7 @@
         },
         {
           "name": "फैशन और सहायक",
-          "language_id": 4,
+          "language_code": "hn",
           "description": "नवीनतम फैशन ट्रेंड्स और हर अवसर के लिए शीक सहायकों के साथ अपने शैली को उन्नत करें।",
           "meta_title": "ट्रेंडी फैशन स्टेटमेंट्स",
           "meta_keywords": "फैशन, सहायक, शैली",
@@ -386,7 +386,7 @@
       "translations": [
         {
           "name": "Electronics and Gadgets",
-          "language_id": 1,
+          "language_code": "en",
           "description": "Discover the latest in cutting-edge electronics and innovative gadgets for a tech-savvy lifestyle.",
           "meta_title": "Tech Wonders for the Modern Age",
           "meta_keywords": "electronics, gadgets, technology",
@@ -394,7 +394,7 @@
         },
         {
           "name": "电子产品和小工具",
-          "language_id": 2,
+          "language_code": "zh",
           "description": "发现尖端电子产品和创新小工具，过上科技生活。",
           "meta_title": "现代科技奇迹",
           "meta_keywords": "电子产品，小工具，科技",
@@ -402,7 +402,7 @@
         },
         {
           "name": "អេឡិចត្រូនិក និងឧបករណ៍",
-          "language_id": 3,
+          "language_code": "km",
           "description": "រកមើលអេឡិចត្រូនិកនិងឧបករណ៍ល្អបំផុតសម្រាប់របស់អ្នកដោយទិដ្ឋភាពវេទិកា។",
           "meta_title": "ជីវិតជាឧបករណ៍អេឡិចត្រូនិក",
           "meta_keywords": "អេឡិចត្រូនិក, ឧបករណ៍, វេទិកា",
@@ -410,7 +410,7 @@
         },
         {
           "name": "इलेक्ट्रॉनिक्स और गैजेट्स",
-          "language_id": 4,
+          "language_code": "hn",
           "description": "एक टेक-सैवी जीवनशैली के लिए नवीनतम इलेक्ट्रॉनिक्स और अभिन्न गैजेट्स की दुनिया की खोज करें।",
           "meta_title": "आधुनिक युग के लिए टेक वंडर्स",
           "meta_keywords": "इलेक्ट्रॉनिक्स, गैजेट्स, तकनीक",

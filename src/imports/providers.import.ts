@@ -19,6 +19,7 @@ import { ProductRepository } from 'src/repositories/product.repository';
 import { RoleRepository } from 'src/repositories/role.repository';
 import { SessionRepository } from 'src/repositories/session.repository';
 import { StockRepository } from 'src/repositories/stock.repository';
+import { TagRepository } from 'src/repositories/tag.repository';
 import { TranslationsRepository } from 'src/repositories/translation.repository';
 import { UserRepository } from 'src/repositories/user.repository';
 import { VariationRepository } from 'src/repositories/varaition.repository';
@@ -38,6 +39,7 @@ import { ProductService } from 'src/services/product.service';
 import { RecomService } from 'src/services/recom.service';
 import { RedisService } from 'src/services/redis.service';
 import { RoleService } from 'src/services/role.service';
+import { TagService } from 'src/services/tag.setvice';
 import { UserService } from 'src/services/user.service';
 import { WsCustomService } from 'src/services/ws.service';
 import { WsGateway } from 'src/ws/ws.gateway';
@@ -97,4 +99,6 @@ export const ImportProviders = [
   VariationRepository,
   AdminPageService,
   ProductFeatureRepository,
+  TagService,
+  TagRepository,
 ];

@@ -4,7 +4,7 @@ import * as path from 'path';
 import { AcceptLanguageResolver, QueryResolver } from 'nestjs-i18n';
 
 export const i18nConfig: I18nOptions = {
-  fallbackLanguage: 'zh',
+  fallbackLanguage: 'en',
   fallbacks: {
     en: 'en',
     zh: 'zh',

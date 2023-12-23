@@ -11,7 +11,7 @@ import {
 import { Product } from './product.entity';
 import { Translations } from './translation.entity';
 
-@Entity('product-features')
+@Entity('product_features')
 export class ProductFeature extends BaseEntity {
   @PrimaryGeneratedColumn()
   id: number;

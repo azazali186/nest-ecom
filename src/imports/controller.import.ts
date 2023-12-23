@@ -10,6 +10,7 @@ import { LogController } from 'src/controllers/log.controller';
 import { PermissionsController } from 'src/controllers/permission.controller';
 import { ProductController } from 'src/controllers/product.controller';
 import { RoleController } from 'src/controllers/role.controller';
+import { TagController } from 'src/controllers/tags.controller';
 import { UserController } from 'src/controllers/user.controller';
 
 export const ImportControllers = [
@@ -26,4 +27,5 @@ export const ImportControllers = [
   FilesController,
   CatalogController,
   AdminPageController,
+  TagController,
 ];

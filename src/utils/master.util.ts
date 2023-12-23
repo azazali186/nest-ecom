@@ -4,18 +4,22 @@ import { Language } from 'src/entities/language.entity';
 export const createLanguageData = () => {
   const data = [
     {
+      id: 1,
       name: 'English',
       code: 'en',
     },
     {
+      id: 2,
       name: 'Chinese',
       code: 'zh',
     },
     {
+      id: 3,
       name: 'Khmer',
       code: 'km',
     },
     {
+      id: 4,
       name: 'Hindi',
       code: 'hn',
     },
@@ -39,16 +43,19 @@ export const createLanguageData = () => {
 export const createCurrencyData = () => {
   const data = [
     {
+      id: 1,
       name: 'US Dollar',
       code: 'USD',
       symbol: '$',
     },
     {
+      id: 2,
       name: 'Cambodian Riyal',
       code: 'KHR',
       symbol: '៛',
     },
     {
+      id: 3,
       name: 'Indian Rupee',
       code: 'INR',
       symbol: '₹',

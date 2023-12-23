@@ -46,11 +46,11 @@ export class LanguageRepository extends Repository<Language> {
       where: {},
     };
     if (name) {
-      options.where['name'] = Like(name);
+      options.where['name'] = Like('%' + name + '%');
     }
 
     if (code) {
-      options.where['code'] = Like(code);
+      options.where['name'] = Like('%' + code + '%');
     }
 
     const [list, count] = await this.findAndCount({ where: options.where });
@@ -64,6 +64,8 @@ export class LanguageRepository extends Repository<Language> {
         id: id,
       },
     });
+    console.log('Req', req);
+    console.log('id', id);
     if (!curUpdate) {
       throw new NotFoundException({
         statusCode: 404,
@@ -79,7 +81,7 @@ export class LanguageRepository extends Repository<Language> {
     if (code) {
       curUpdate.code = code;
     }
-
-    return ApiResponse.create(this.save(curUpdate));
+    console.log('Req', req);
+    return ApiResponse.create(this.langRepo.save(curUpdate));
   }
 }
