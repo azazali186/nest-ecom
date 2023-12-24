@@ -38,7 +38,7 @@
       ],
       "images": [
         {
-          "url": "https://example.com/electronics.jpg"
+          "url": "https://picsum.photos/1080/1080?random=electronics.jpg"
         }
       ]
     },
@@ -80,7 +80,7 @@
       ],
       "images": [
         {
-          "url": "https://example.com/fashion.jpg"
+          "url": "https://picsum.photos/1080/1080?random=fashion.jpg"
         }
       ]
     },
@@ -123,7 +123,7 @@
       ],
       "images": [
         {
-          "url": "https://example.com/home_and_living.jpg"
+          "url": "https://picsum.photos/1080/1080?random=home_and_living.jpg"
         }
       ]
     },
@@ -165,7 +165,7 @@
       ],
       "images": [
         {
-          "url": "https://example.com/sports_and_outdoors.jpg"
+          "url": "https://picsum.photos/1080/1080?random=sports_and_outdoors.jpg"
         }
       ]
     },
@@ -208,7 +208,7 @@
       ],
       "images": [
         {
-          "url": "https://example.com/beauty_and_personal_care.jpg"
+          "url": "https://picsum.photos/1080/1080?random=beauty_and_personal_care.jpg"
         }
       ]
     },
@@ -250,7 +250,7 @@
       ],
       "images": [
         {
-          "url": "https://example.com/books_and_stationery.jpg"
+          "url": "https://picsum.photos/1080/1080?random=books_and_stationery.jpg"
         }
       ]
     },
@@ -292,7 +292,7 @@
       ],
       "images": [
         {
-          "url": "https://example.com/toys_and_games.jpg"
+          "url": "https://picsum.photos/1080/1080?random=toys_and_games.jpg"
         }
       ]
     },
@@ -334,7 +334,7 @@
       ],
       "images": [
         {
-          "url": "https://example.com/food_and_beverages.jpg"
+          "url": "https://picsum.photos/1080/1080?random=food_and_beverages.jpg"
         }
       ]
     },
@@ -377,7 +377,7 @@
       ],
       "images": [
         {
-          "url": "https://example.com/fashion_and_accessories.jpg"
+          "url": "https://picsum.photos/1080/1080?random=fashion_and_accessories.jpg"
         }
       ]
     },
@@ -419,7 +419,7 @@
       ],
       "images": [
         {
-          "url": "https://example.com/electronics_and_gadgets.jpg"
+          "url": "https://picsum.photos/1080/1080?random=electronics_and_gadgets.jpg"
         }
       ]
     }

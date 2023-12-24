@@ -436,20 +436,20 @@ export class ProductRepository extends Repository<Product> {
     }
 
     if (req.created_by) {
-      query.andWhere('product.created_by_username = :createdBy', {
-        createdBy: req.created_by,
+      query.andWhere('product.created_by_username LIKE :createdBy', {
+        createdBy: `%${req.created_by}%`,
       });
     }
 
     if (req.updated_by) {
-      query.andWhere('product.updated_by_username = :updatedBy', {
-        updatedBy: req.updated_by,
+      query.andWhere('product.updated_by_username LIKE :updatedBy', {
+        updatedBy: `%${req.updated_by}%`,
       });
     }
 
     if (req.sku) {
-      query.andWhere('(product.sku = :sku OR stock.sku = :sku)', {
-        sku: req.sku,
+      query.andWhere('(product.sku LIKE :sku OR stock.sku LIKE :sku)', {
+        sku: `%${req.sku}%`,
       });
     }
 

@@ -1,3 +1,5 @@
+/* eslint-disable prettier/prettier */
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import { Controller, Post, Body, Request, Get } from '@nestjs/common';
 import { ApiTags } from '@nestjs/swagger';
 import { ForgetPasswordDto } from 'src/dto/forget-password.dto.ts';

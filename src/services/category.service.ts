@@ -1,17 +1,21 @@
+/* eslint-disable prettier/prettier */
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { BulkCreateCategoryDto } from 'src/dto/category/bulk-product-upload.dto';
 import { CreateCategoryDto } from 'src/dto/category/create-category.dto';
 import { SearchCategoryDto } from 'src/dto/category/search-category.dto';
 import { UpdateCategoryDto } from 'src/dto/category/update-category.dto';
+import { CreateFeaturesDto } from 'src/dto/product/create-features.dto';
+import { UpdateFeaturesDto } from 'src/dto/product/update-features.dto';
 import { CategoryRepository } from 'src/repositories/category.repository';
 
 @Injectable()
 export class CategoryService {
-  updateSeo(id: number, req: import("../dto/product/update-features.dto").UpdateFeaturesDto[], user: any) {
+  updateSeo(id: number, req: UpdateFeaturesDto[], user: any) {
     throw new Error('Method not implemented.');
   }
-  createSeo(id: number, req: import("../dto/product/create-features.dto").CreateFeaturesDto[], user: any) {
+  createSeo(id: number, req: CreateFeaturesDto[], user: any) {
     throw new Error('Method not implemented.');
   }
   constructor(

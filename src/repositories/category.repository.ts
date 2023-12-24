@@ -1,3 +1,5 @@
+/* eslint-disable prettier/prettier */
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import { InjectRepository } from '@nestjs/typeorm';
 import { CreateCategoryDto } from 'src/dto/category/create-category.dto';
 import { SearchCategoryDto } from 'src/dto/category/search-category.dto';
@@ -202,12 +204,27 @@ export class CategoryRepository extends Repository<Category> {
     }
 
     const [list, count] = await this.catRepo.findAndCount({
+      select: {
+        id: true,
+        translations: {
+          id: true,
+          name: true,
+        },
+        images: {
+          id: true,
+          url: true,
+        },
+        products: {
+          id: true,
+        },
+      },
       where: where,
       relations: {
         translations: {
           language: true,
         },
         images: true,
+        products: true,
       },
       skip: offset,
       take: limit,
