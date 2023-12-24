@@ -24,7 +24,7 @@ if (process.env.IS_REDIS) {
 
 export const typeOrmConfig: TypeOrmModuleOptions = {
   type: 'mysql',
-  host: process.env.DB_HOSTNAME || '192.168.1.114',
+  host: process.env.DB_HOSTNAME || '192.168.1.107',
   port: parseInt(process.env.DB_PORT) || 3306,
   username: username,
   password: password,
