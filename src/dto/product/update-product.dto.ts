@@ -14,15 +14,18 @@ import { CreateVariationDto } from '../variations/create-variation.dto';
 export class UpdateProductDto {
   @ApiPropertyOptional()
   @IsString()
+  @IsOptional()
   sku: string;
 
   @ApiPropertyOptional({ enum: ProductStatus })
   @IsEnum(ProductStatus)
+  @IsOptional()
   status: ProductStatus;
 
   @ApiPropertyOptional({ type: [Number] })
   @IsArray()
   @IsNumber({}, { each: true })
+  @IsOptional()
   categoryIds: number[];
 
   @ApiPropertyOptional({ type: [CreateVariationDto] })
@@ -46,6 +49,7 @@ export class UpdateProductDto {
   @IsArray({
     message: 'IMAGES_IS_ARRAY',
   })
+  @IsOptional()
   images: UpdateImagesDto[];
 
   @ApiHideProperty()

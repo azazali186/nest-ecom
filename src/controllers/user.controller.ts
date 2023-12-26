@@ -40,24 +40,6 @@ export class UserController {
     return this.userService.findAll(filterDto);
   }
 
-  @ApiQuery({ name: 'status', enum: UserStatus })
-  @Get(`${process.env.VENDOR_ROLE_NAME}`)
-  findAllVendors(
-    @Query(UserStatusValidationPipes) filterDto: SearchUserDto,
-  ): Promise<ApiResponse<any>> {
-    filterDto.role = `${process.env.VENDOR_ROLE_NAME}`;
-    return this.userService.findAll(filterDto);
-  }
-
-  @ApiQuery({ name: 'status', enum: UserStatus })
-  @Get(`${process.env.MEMBER_ROLE_NAME}`)
-  findAllMembers(
-    @Query(UserStatusValidationPipes) filterDto: SearchUserDto,
-  ): Promise<ApiResponse<any>> {
-    filterDto.role = `${process.env.MEMBER_ROLE_NAME}`;
-    return this.userService.findAll(filterDto);
-  }
-
   @Get('users/:id')
   findOne(@Param('id') id: number) {
     return this.userService.findOne(id);

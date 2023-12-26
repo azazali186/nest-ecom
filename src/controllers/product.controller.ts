@@ -5,7 +5,6 @@ import {
   Get,
   Param,
   Post,
-  ValidationPipe,
   Query,
   Patch,
   Request,
@@ -29,12 +28,12 @@ export class ProductController {
     private readonly recomService: RecomService,
   ) {}
   @Post()
-  create(@Body(ValidationPipe) req: CreateProductDto, @Request() r) {
+  create(@Body() req: CreateProductDto, @Request() r) {
     return this.prodService.create(req, r.user);
   }
 
   @Post('bulk')
-  bulk(@Body(ValidationPipe) req: BulkProductUploadDto, @Request() r) {
+  bulk(@Body() req: BulkProductUploadDto, @Request() r) {
     return this.prodService.bulk(req, r.user);
   }
 
@@ -67,7 +66,7 @@ export class ProductController {
   @Patch('seo-create/:id')
   createSeo(
     @Param('id') id: number,
-    @Body(ValidationPipe) req: CreateFeaturesDto[],
+    @Body() req: CreateFeaturesDto[],
     @Request() r,
   ) {
     return this.prodService.createSeo(id, req, r.user);
@@ -76,7 +75,7 @@ export class ProductController {
   @Patch('image-upload/:id')
   imageUpload(
     @Param('id') id: number,
-    @Body(ValidationPipe) req: CreateFeaturesDto[],
+    @Body() req: CreateFeaturesDto[],
     @Request() r,
   ) {
     return this.prodService.createSeo(id, req, r.user);
@@ -85,7 +84,7 @@ export class ProductController {
   @Patch('image-remove/:id')
   imageDelete(
     @Param('id') id: number,
-    @Body(ValidationPipe) req: CreateFeaturesDto[],
+    @Body() req: CreateFeaturesDto[],
     @Request() r,
   ) {
     return this.prodService.createSeo(id, req, r.user);
@@ -94,18 +93,14 @@ export class ProductController {
   @Patch('seo-update/:id')
   updateSeo(
     @Param('id') id: number,
-    @Body(ValidationPipe) req: UpdateFeaturesDto[],
+    @Body() req: UpdateFeaturesDto[],
     @Request() r,
   ) {
     return this.prodService.updateSeo(id, req, r.user);
   }
 
-  @Patch()
-  update(
-    @Param('id') id: number,
-    @Body(ValidationPipe) req: UpdateProductDto,
-    @Request() r,
-  ) {
+  @Patch(':id')
+  update(@Param('id') id: number, @Body() req: UpdateProductDto, @Request() r) {
     return this.prodService.update(id, req, r.user);
   }
   @Delete(':id')

@@ -302,7 +302,11 @@ export class ProductRepository extends Repository<Product> {
     const { sku, categoryIds, status, stocks, translations, images } =
       updateProductDto;
     // Retrieve the existing product from the database
-    const product = await this.prodRepo.findOne(id);
+    const product = await this.prodRepo.findOne({
+      where: {
+        id,
+      },
+    });
 
     if (!product) {
       // Handle the case where the product with the given ID is not found
@@ -382,13 +386,19 @@ export class ProductRepository extends Repository<Product> {
               return existingImage;
             }
           }
-
-          // If image doesn't have an ID, create a new image
           return this.imgRepo.createImage(imageDto.url, 'product', product.id);
         }),
       );
       product.images = updatedImages;
     }
+
+    await product.save();
+
+    return ApiResponse.success(
+      null,
+      200,
+      this.langService.getTranslation('UPDATED_SUCCESSFULLY', 'Product'),
+    );
   }
 
   async findProducts(req: SearchProductDto, user: any) {
@@ -396,8 +406,26 @@ export class ProductRepository extends Repository<Product> {
     const currency = user?.currency || 'USD';
     const query = this.createQueryBuilder('product');
 
+    const select = [
+      'product',
+      'stock',
+      'created_by.username',
+      'updated_by.username',
+      'stockVariation',
+      'currency',
+      'price',
+      'variations',
+      'translations',
+      'language',
+      'images',
+      'features',
+      'featuresTranslations',
+    ];
+
     query.leftJoinAndSelect('product.stocks', 'stock');
     query.leftJoinAndSelect('stock.price', 'price');
+    query.leftJoinAndSelect('product.created_by', 'created_by');
+    query.leftJoinAndSelect('product.updated_by', 'updated_by');
     query.leftJoinAndSelect('stock.variations', 'stockVariation');
     query.leftJoinAndSelect('price.currency', 'currency');
     query.leftJoinAndSelect('product.variations', 'variations');
@@ -436,13 +464,13 @@ export class ProductRepository extends Repository<Product> {
     }
 
     if (req.created_by) {
-      query.andWhere('product.created_by_username LIKE :createdBy', {
+      query.andWhere('created_by.username LIKE :createdBy', {
         createdBy: `%${req.created_by}%`,
       });
     }
 
     if (req.updated_by) {
-      query.andWhere('product.updated_by_username LIKE :updatedBy', {
+      query.andWhere('updated_by.username LIKE :updatedBy', {
         updatedBy: `%${req.updated_by}%`,
       });
     }
@@ -471,6 +499,7 @@ export class ProductRepository extends Repository<Product> {
       });
     }
     const [list, count] = await query
+      .select(select)
       .skip(req.offset)
       .take(req.limit)
       .getManyAndCount();
