@@ -30,6 +30,10 @@ export class RoleController {
   findAll(@Query() name: SearchRoleDto) {
     return this.roleService.findAll(name);
   }
+  @Get('all')
+  getAll() {
+    return this.roleService.getAll();
+  }
   @Get(':id')
   findOne(@Param('id') id: number) {
     return this.roleService.findOne(id);

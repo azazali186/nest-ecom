@@ -11,6 +11,7 @@ import { FilesRepository } from 'src/repositories/files.repository';
 import { ImagesRepository } from 'src/repositories/image.repository';
 import { LanguageRepository } from 'src/repositories/language.repository';
 import { LogRepository } from 'src/repositories/log.repository';
+import { MemberRepository } from 'src/repositories/member.repository';
 import { PermissionRepository } from 'src/repositories/permission.repository';
 import { PriceRepository } from 'src/repositories/price.repository';
 import { ProductFeatureRepository } from 'src/repositories/product-features.repository';
@@ -34,6 +35,7 @@ import { JwtAuthService } from 'src/services/jwt-auth.service';
 import { LangService } from 'src/services/lang.service';
 import { LanguageService } from 'src/services/language.service';
 import { LogService } from 'src/services/log.service';
+import { MemberService } from 'src/services/member.service';
 import { PermissionService } from 'src/services/permission.service';
 import { ProductService } from 'src/services/product.service';
 import { RecomService } from 'src/services/recom.service';
@@ -101,4 +103,6 @@ export const ImportProviders = [
   ProductFeatureRepository,
   TagService,
   TagRepository,
+  MemberService,
+  MemberRepository,
 ];

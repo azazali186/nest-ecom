@@ -10,6 +10,7 @@ import {
   Request,
 } from '@nestjs/common';
 import { ApiBearerAuth, ApiQuery, ApiTags } from '@nestjs/swagger';
+import { ChangePasswordDto } from 'src/dto/change-password.dto';
 import { CreateUserDto } from 'src/dto/create-user.dto';
 import { SearchUserDto } from 'src/dto/search-user.dto';
 import { UpdateUserDto } from 'src/dto/update-user.dto';
@@ -68,6 +69,14 @@ export class UserController {
     @Request() req,
   ): Promise<ApiResponse<any>> {
     return this.userService.create(updateUserDto, req.user.id);
+  }
+
+  @Patch('users/change-password')
+  changePassword(
+    @Body() changePasswordDto: ChangePasswordDto,
+    @Request() req,
+  ): Promise<ApiResponse<any>> {
+    return this.userService.changePassword(changePasswordDto, req);
   }
 
   @Patch('users/:id')

@@ -7,6 +7,7 @@ import { CurrencyController } from 'src/controllers/currency.controller';
 import { FilesController } from 'src/controllers/files.controller';
 import { LanguageController } from 'src/controllers/language.controller';
 import { LogController } from 'src/controllers/log.controller';
+import { MemberController } from 'src/controllers/member.controller';
 import { PermissionsController } from 'src/controllers/permission.controller';
 import { ProductController } from 'src/controllers/product.controller';
 import { RoleController } from 'src/controllers/role.controller';
@@ -28,4 +29,5 @@ export const ImportControllers = [
   CatalogController,
   AdminPageController,
   TagController,
+  MemberController,
 ];

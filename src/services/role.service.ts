@@ -19,6 +19,9 @@ export class RoleService {
   async findAll(name: SearchRoleDto) {
     return this.roleRepo.findAllRoleWithCount(name);
   }
+  getAll() {
+    return this.roleRepo.getAllRole();
+  }
   findOne(id: number) {
     return this.roleRepo.getRoleById(id);
   }

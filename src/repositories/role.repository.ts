@@ -3,7 +3,7 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { CreateRoleDto } from 'src/dto/create-role.dto';
 import { UpdateRoleDto } from 'src/dto/update-role.dto';
 import { Role } from 'src/entities/role.entity';
-import { Repository, In } from 'typeorm';
+import { Repository, In, Not } from 'typeorm';
 import { AdminPageRepository } from './admin-page.repository';
 import { PermissionRepository } from './permission.repository';
 import { ApiResponse } from 'src/utils/response.util';
@@ -188,6 +188,25 @@ export class RoleRepository extends Repository<Role> {
       role,
       200,
       this.langService.getTranslation('GET_DATA_SUCCESS', `Role`),
+    );
+  }
+
+  async getAllRole() {
+    const roles = await this.roleRepository.find({
+      select: {
+        id: true,
+        name: true,
+      },
+      where: {
+        name: Not(
+          In([process.env.MEMBER_ROLE_NAME, process.env.VENDOR_ROLE_NAME]),
+        ),
+      },
+    });
+    return ApiResponse.paginate(
+      { list: roles, count: roles.length },
+      200,
+      this.langService.getTranslation('GET_DATA_SUCCESS', 'Roles'),
     );
   }
 
