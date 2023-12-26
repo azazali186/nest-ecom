@@ -19,11 +19,11 @@ import { LangService } from 'src/services/lang.service';
 import { UserStatus } from 'src/enum/user-status.enum';
 import { splitDateRange } from '../utils/helper.utils';
 import { ChangePasswordDto } from 'src/dto/change-password.dto';
-import { CreateMemberDto } from 'src/dto/member/create-member.dto';
-import { SearchMemberDto } from 'src/dto/member/search-member.dto';
-import { UpdateMemberDto } from 'src/dto/member/update-member.dto';
+import { CreateVendorDto } from 'src/dto/vendor/create-vendor.dto';
+import { SearchVendorDto } from 'src/dto/vendor/search-vendor.dto';
+import { UpdateVendorDto } from 'src/dto/vendor/update-vendor.dto';
 
-export class MemberRepository extends Repository<User> {
+export class VendorRepository extends Repository<User> {
   constructor(
     @InjectRepository(User)
     private userRepository: Repository<User>,
@@ -68,7 +68,7 @@ export class MemberRepository extends Repository<User> {
     return token;
   }
 
-  async getMembers(filterDto: SearchMemberDto) {
+  async getVendors(filterDto: SearchVendorDto) {
     const { status, search, createdDate } = filterDto;
     const limit =
       filterDto.limit && !isNaN(filterDto.limit) && filterDto.limit > 0
@@ -99,7 +99,7 @@ export class MemberRepository extends Repository<User> {
       });
     }
 
-    query.andWhere('roles.name  = "' + process.env.MEMBER_ROLE_NAME + '" ');
+    query.andWhere('roles.name  = "' + process.env.VENDOR_ROLE_NAME + '" ');
 
     query
       .leftJoinAndSelect('user.roles', 'roles')
@@ -129,7 +129,7 @@ export class MemberRepository extends Repository<User> {
     return ApiResponse.paginate(
       { list: users, count: count },
       200,
-      this.langService.getTranslation('GET_DATA_SUCCESS', 'Member'),
+      this.langService.getTranslation('GET_DATA_SUCCESS', 'Vendor'),
     );
   }
 
@@ -159,7 +159,7 @@ export class MemberRepository extends Repository<User> {
     });
   }
 
-  async updateUser(userId: any, updateDto: UpdateMemberDto, user) {
+  async updateUser(userId: any, updateDto: UpdateVendorDto, user) {
     const userToUpdate = await this.userRepository.findOne({
       where: { id: userId },
     });
@@ -214,11 +214,11 @@ export class MemberRepository extends Repository<User> {
     return ApiResponse.success(
       null,
       200,
-      this.langService.getTranslation('UPDATED_SUCCESSFULLY', 'Member'),
+      this.langService.getTranslation('UPDATED_SUCCESSFULLY', 'Vendor'),
     );
   }
 
-  async createMember(createDto: CreateMemberDto, userId: number) {
+  async createVendor(createDto: CreateVendorDto, userId: number) {
     const { name, password, username, mobileNumber } = createDto;
 
     const oldUserByEmail = await this.userRepository.findOne({
@@ -234,7 +234,7 @@ export class MemberRepository extends Repository<User> {
     }
 
     const role = await this.roleRepository.findOne({
-      where: { name: `${process.env.MEMBER_ROLE_NAME}` },
+      where: { name: `${process.env.VENDOR_ROLE_NAME}` },
     });
 
     const createdByUser = await this.userRepository.findOne({
@@ -260,7 +260,7 @@ export class MemberRepository extends Repository<User> {
     return ApiResponse.success(
       null,
       201,
-      this.langService.getTranslation('CREATED_SUCCESSFULLY', 'Member'),
+      this.langService.getTranslation('CREATED_SUCCESSFULLY', 'Vendor'),
     );
   }
 
@@ -316,7 +316,7 @@ export class MemberRepository extends Repository<User> {
       200,
       this.langService.getTranslation(
         'UPDATED_SUCCESSFULLY',
-        'Member Password',
+        'Vendor Password',
       ),
     );
   }
@@ -336,12 +336,12 @@ export class MemberRepository extends Repository<User> {
           message: `User with ID ${id} not found`,
         });
       }
-      return ApiResponse.create(null, 200, 'Member Deleted');
+      return ApiResponse.create(null, 200, 'Vendor Deleted');
     } catch (error) {
       console.log(error);
       throw new BadRequestException({
         statusCode: 400,
-        message: `Can Not Delete this member`,
+        message: `Can Not Delete this vendor`,
       });
     }
   }

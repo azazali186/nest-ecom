@@ -13,6 +13,7 @@ import { ProductController } from 'src/controllers/product.controller';
 import { RoleController } from 'src/controllers/role.controller';
 import { TagController } from 'src/controllers/tags.controller';
 import { UserController } from 'src/controllers/user.controller';
+import { VendorController } from 'src/controllers/vendor.controller';
 
 export const ImportControllers = [
   AuthController,
@@ -30,4 +31,5 @@ export const ImportControllers = [
   AdminPageController,
   TagController,
   MemberController,
+  VendorController,
 ];

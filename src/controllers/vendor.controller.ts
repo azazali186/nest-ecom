@@ -11,59 +11,59 @@ import {
 } from '@nestjs/common';
 import { ApiBearerAuth, ApiQuery, ApiTags } from '@nestjs/swagger';
 import { ChangePasswordDto } from 'src/dto/change-password.dto';
-import { CreateMemberDto } from 'src/dto/member/create-member.dto';
-import { SearchMemberDto } from 'src/dto/member/search-member.dto';
-import { UpdateMemberDto } from 'src/dto/member/update-member.dto';
+import { CreateVendorDto } from 'src/dto/vendor/create-vendor.dto';
+import { SearchVendorDto } from 'src/dto/vendor/search-vendor.dto';
+import { UpdateVendorDto } from 'src/dto/vendor/update-vendor.dto';
 import { UserStatus } from 'src/enum/user-status.enum';
 import { UserStatusValidationPipes } from 'src/pipes/user-status-validation.pipe';
-import { MemberService } from 'src/services/member.service';
+import { VendorService } from 'src/services/vendor.service';
 import { ApiResponse } from 'src/utils/response.util';
 
-@ApiTags(`Member Management`)
+@ApiTags(`Vendor Management`)
 @ApiBearerAuth()
-@Controller(`${process.env.MEMBER_ROLE_NAME}`)
-export class MemberController {
-  constructor(private readonly memberService: MemberService) {}
+@Controller(`${process.env.VENDOR_ROLE_NAME}`)
+export class VendorController {
+  constructor(private readonly vendorService: VendorService) {}
 
   @Delete(':id')
   remove(@Param('id') id: number) {
-    return this.memberService.remove(id);
+    return this.vendorService.remove(id);
   }
 
   @ApiQuery({ name: 'status', enum: UserStatus })
-  @Get(``)
-  findAllMembers(
-    @Query(UserStatusValidationPipes) filterDto: SearchMemberDto,
+  @Get('')
+  findAllVendors(
+    @Query(UserStatusValidationPipes) filterDto: SearchVendorDto,
   ): Promise<ApiResponse<any>> {
-    return this.memberService.findAll(filterDto);
+    return this.vendorService.findAll(filterDto);
   }
 
   @Get(':id')
   findOne(@Param('id') id: number) {
-    return this.memberService.findOne(id);
+    return this.vendorService.findOne(id);
   }
 
   @Post('')
-  createMember(
-    @Body() createDto: CreateMemberDto,
+  createVendor(
+    @Body() createDto: CreateVendorDto,
     @Request() req,
   ): Promise<ApiResponse<any>> {
-    return this.memberService.create(createDto, req.user.id);
+    return this.vendorService.create(createDto, req.user.id);
   }
 
   @Patch('change-password')
   changePassword(
     @Body() changePasswordDto: ChangePasswordDto,
   ): Promise<ApiResponse<any>> {
-    return this.memberService.changePassword(changePasswordDto);
+    return this.vendorService.changePassword(changePasswordDto);
   }
 
   @Patch(':id')
-  updateMember(
+  updateVendor(
     @Param('id') id: number,
-    @Body() updateDto: UpdateMemberDto,
+    @Body() updateDto: UpdateVendorDto,
     @Request() req,
   ): Promise<ApiResponse<any>> {
-    return this.memberService.updateUser(id, updateDto, req.user);
+    return this.vendorService.updateUser(id, updateDto, req.user);
   }
 }

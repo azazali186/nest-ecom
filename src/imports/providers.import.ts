@@ -24,6 +24,7 @@ import { TagRepository } from 'src/repositories/tag.repository';
 import { TranslationsRepository } from 'src/repositories/translation.repository';
 import { UserRepository } from 'src/repositories/user.repository';
 import { VariationRepository } from 'src/repositories/varaition.repository';
+import { VendorRepository } from 'src/repositories/vendor.repository';
 import { AdminPageService } from 'src/services/admin-page.service';
 import { AuthService } from 'src/services/auth.service';
 import { CatalogService } from 'src/services/catalog.service';
@@ -43,6 +44,7 @@ import { RedisService } from 'src/services/redis.service';
 import { RoleService } from 'src/services/role.service';
 import { TagService } from 'src/services/tag.setvice';
 import { UserService } from 'src/services/user.service';
+import { VendorService } from 'src/services/vendor.service';
 import { WsCustomService } from 'src/services/ws.service';
 import { WsGateway } from 'src/ws/ws.gateway';
 
@@ -105,4 +107,6 @@ export const ImportProviders = [
   TagRepository,
   MemberService,
   MemberRepository,
+  VendorService,
+  VendorRepository,
 ];

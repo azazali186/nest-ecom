@@ -19,7 +19,7 @@ import { UserStatusValidationPipes } from 'src/pipes/user-status-validation.pipe
 import { UserService } from 'src/services/user.service';
 import { ApiResponse } from 'src/utils/response.util';
 
-@ApiTags('User / Member and Vendor Management')
+@ApiTags('User Management')
 @ApiBearerAuth()
 @Controller('')
 export class UserController {
