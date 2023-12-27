@@ -22,9 +22,11 @@ import { CreateStockDto } from 'src/dto/stock/create-stock.dto';
 import { PriceRepository } from './price.repository';
 import { PriceDto } from 'src/dto/stock/price.dto';
 import { ProductFeatureRepository } from './product-features.repository';
-import { CreateFeaturesDto } from 'src/dto/product/create-features.dto';
 import { getEntityById } from 'src/utils/helper.utils';
 import { UpdateFeaturesDto } from 'src/dto/product/update-features.dto';
+import { CreateSeo } from 'src/dto/create-seo.dto';
+import { SeoRepository } from './seo.repository';
+import { LanguageRepository } from './language.repository';
 export class ProductRepository extends Repository<Product> {
   constructor(
     @InjectRepository(Product)
@@ -56,6 +58,12 @@ export class ProductRepository extends Repository<Product> {
 
     @Inject(forwardRef(() => ProductFeatureRepository))
     private pfRepo: ProductFeatureRepository,
+
+    @Inject(forwardRef(() => SeoRepository))
+    private seoRepo: SeoRepository,
+
+    @Inject(forwardRef(() => LanguageRepository))
+    private langRepo: LanguageRepository,
 
     private langService: LangService,
     private elService: ElasticService,
@@ -263,6 +271,7 @@ export class ProductRepository extends Repository<Product> {
         'features.translations',
         'created_by',
         'updated_by',
+        'seo',
       ],
     });
 
@@ -347,8 +356,6 @@ export class ProductRepository extends Repository<Product> {
               return existingStock;
             }
           }
-
-          // If stock doesn't have an ID, create a new stock
           return this.stRepo.createStock(stockDto, user);
         }),
       );
@@ -420,6 +427,9 @@ export class ProductRepository extends Repository<Product> {
       'images',
       'features',
       'featuresTranslations',
+      'seo',
+      'seoTranslations',
+      'seoTranslationsLanguage',
     ];
 
     query.leftJoinAndSelect('product.stocks', 'stock');
@@ -433,6 +443,12 @@ export class ProductRepository extends Repository<Product> {
     query.leftJoinAndSelect('product.translations', 'translations');
     query.leftJoinAndSelect('translations.language', 'language');
     query.leftJoinAndSelect('product.images', 'images');
+    query.leftJoinAndSelect('product.seo', 'seo');
+    query.leftJoinAndSelect('seo.translations', 'seoTranslations');
+    query.leftJoinAndSelect(
+      'seoTranslations.language',
+      'seoTranslationsLanguage',
+    );
 
     query.leftJoin('product.categories', 'category');
     query.leftJoin('product.features', 'features');
@@ -561,17 +577,46 @@ export class ProductRepository extends Repository<Product> {
     );
   }
 
-  async createSeo(id: number, req: CreateFeaturesDto[], user: any) {
+  async createSeo(id: number, req: CreateSeo, user: any) {
     const product = await getEntityById(this.prRepo, id);
-    if (req && req?.length > 0) {
-      const featuresData = await Promise.all(
-        req?.map(async (imageDto) => {
-          const image = await this.pfRepo.createFeatures(imageDto, product);
-          return image;
-        }),
-      );
-      product.features = featuresData;
+    const seoEntity = await this.seoRepo.findOne({
+      where: { products: { id: id } },
+      relations: {
+        translations: {
+          language: true,
+        },
+      },
+    });
+
+    const { translations } = req;
+
+    if (seoEntity) {
+      seoEntity.translations.forEach((seoTr) => {
+        const matchingTranslation = translations.find(
+          (tr) => tr.language_code === seoTr.language.code,
+        );
+        if (matchingTranslation) {
+          seoTr.meta_keywords =
+            matchingTranslation.meta_keywords || seoTr.meta_keywords;
+          seoTr.meta_title = matchingTranslation.meta_title || seoTr.meta_title;
+          seoTr.meta_descriptions =
+            matchingTranslation.meta_descriptions || seoTr.meta_descriptions;
+        }
+      });
+
+      await this.seoRepo.save(seoEntity);
+      product.seo = seoEntity;
+    } else {
+      if (req && translations.length > 0) {
+        const seo = await this.seoRepo.createUpdateSeo(
+          translations,
+          product,
+          'product',
+        );
+        product.seo = seo;
+      }
     }
+
     product.updated_by = user;
 
     await product.save();
@@ -579,7 +624,7 @@ export class ProductRepository extends Repository<Product> {
     return ApiResponse.success(
       product,
       200,
-      this.langService.getTranslation('UPDATED_SUCCESSFULLY', 'Product'),
+      this.langService.getTranslation('UPDATED_SUCCESSFULLY', 'Product SEO'),
     );
   }
 

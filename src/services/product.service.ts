@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
+import { CreateSeo } from 'src/dto/create-seo.dto';
 import { BulkProductUploadDto } from 'src/dto/product/bulk-product-upload.dto';
-import { CreateFeaturesDto } from 'src/dto/product/create-features.dto';
 import { CreateProductDto } from 'src/dto/product/create-product.dto';
 import { SearchProductDto } from 'src/dto/product/search-product.dto';
 import { UpdateFeaturesDto } from 'src/dto/product/update-features.dto';
@@ -34,7 +34,7 @@ export class ProductService {
   async bulk(req: BulkProductUploadDto, user: any) {
     return await this.prodRepo.bulkCreate(req, user);
   }
-  createSeo(id: number, req: CreateFeaturesDto[], user: any) {
+  createSeo(id: number, req: CreateSeo, user: any) {
     return this.prodRepo.createSeo(id, req, user);
   }
   updateSeo(id: number, req: UpdateFeaturesDto[], user: any) {

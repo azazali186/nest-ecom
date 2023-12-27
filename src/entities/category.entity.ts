@@ -12,6 +12,7 @@ import {
 import { Product } from './product.entity';
 import { Translations } from './translation.entity';
 import { Images } from './images.entity';
+import { Seo } from './seo.entity';
 
 @Entity('categories')
 @Tree('closure-table', {
@@ -28,6 +29,11 @@ export class Category extends BaseEntity {
     nullable: true,
   })
   products: Product[] | null;
+
+  @OneToMany(() => Seo, (pf) => pf.category, {
+    nullable: true,
+  })
+  seo: Seo[] | null;
 
   @OneToMany(() => Translations, (tr) => tr.categories, {
     nullable: true,

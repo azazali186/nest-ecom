@@ -13,6 +13,7 @@ import { ProductFeature } from 'src/entities/product-features.entity';
 import { ProductInteraction } from 'src/entities/product-interaction.entity';
 import { Product } from 'src/entities/product.entity';
 import { Role } from 'src/entities/role.entity';
+import { Seo } from 'src/entities/seo.entity';
 import { Session } from 'src/entities/session.entity';
 import { Stock } from 'src/entities/stock.entity';
 import { Tag } from 'src/entities/tag.entity';
@@ -43,4 +44,5 @@ export const ImportEntities = [
   Variation,
   Cart,
   Tag,
+  Seo,
 ];
