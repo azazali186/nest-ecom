@@ -8,6 +8,7 @@ import {
   ManyToMany,
   ManyToOne,
   OneToMany,
+  OneToOne,
   PrimaryGeneratedColumn,
 } from 'typeorm';
 import { User } from './user.entity';
@@ -74,10 +75,10 @@ export class Product extends BaseEntity {
   })
   features: ProductFeature[] | null;
 
-  @OneToMany(() => Seo, (pf) => pf.products, {
+  @OneToOne(() => Seo, (pf) => pf.products, {
     nullable: true,
   })
-  seo: Seo[] | null;
+  seo: Seo | null;
 
   @OneToMany(() => Stock, (st) => st.products)
   stocks: Stock[];

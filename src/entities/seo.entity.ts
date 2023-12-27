@@ -7,6 +7,7 @@ import {
   OneToMany,
   Column,
   ManyToOne,
+  OneToOne,
 } from 'typeorm';
 import { Product } from './product.entity';
 import { Translations } from './translation.entity';
@@ -17,7 +18,7 @@ export class Seo extends BaseEntity {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @ManyToOne(() => Product, (pd) => pd.seo, { nullable: true })
+  @OneToOne(() => Product, (pd) => pd.seo, { nullable: true })
   @JoinColumn({ name: 'product_id' })
   products: Product;
 

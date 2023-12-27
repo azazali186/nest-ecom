@@ -27,6 +27,8 @@ import { UpdateFeaturesDto } from 'src/dto/product/update-features.dto';
 import { CreateSeo } from 'src/dto/create-seo.dto';
 import { SeoRepository } from './seo.repository';
 import { LanguageRepository } from './language.repository';
+import { Translations } from 'src/entities/translation.entity';
+import * as CircularJSON from 'circular-json';
 export class ProductRepository extends Repository<Product> {
   constructor(
     @InjectRepository(Product)
@@ -272,6 +274,9 @@ export class ProductRepository extends Repository<Product> {
         'created_by',
         'updated_by',
         'seo',
+        'seo',
+        'seo.translations',
+        'seo.translations.language',
       ],
     });
 
@@ -591,20 +596,41 @@ export class ProductRepository extends Repository<Product> {
     const { translations } = req;
 
     if (seoEntity) {
-      seoEntity.translations.forEach((seoTr) => {
-        const matchingTranslation = translations.find(
-          (tr) => tr.language_code === seoTr.language.code,
-        );
-        if (matchingTranslation) {
-          seoTr.meta_keywords =
-            matchingTranslation.meta_keywords || seoTr.meta_keywords;
-          seoTr.meta_title = matchingTranslation.meta_title || seoTr.meta_title;
-          seoTr.meta_descriptions =
-            matchingTranslation.meta_descriptions || seoTr.meta_descriptions;
-        }
-      });
+      const updatedTrans = [];
 
-      await this.seoRepo.save(seoEntity);
+      // Use for...of loop to iterate through translations array
+      for (const tr of translations) {
+        const eTrans = await this.trRepo.findOne({
+          where: {
+            seo: {
+              id: seoEntity.id,
+            },
+            language: {
+              code: tr.language_code,
+            },
+          },
+        });
+
+        if (eTrans) {
+          eTrans.meta_keywords = tr.meta_keywords || eTrans.meta_keywords;
+          eTrans.meta_title = tr.meta_title || eTrans.meta_title;
+          eTrans.meta_descriptions =
+            tr.meta_descriptions || eTrans.meta_descriptions;
+          await eTrans.save();
+          updatedTrans.push(eTrans);
+        } else {
+          const tra = new Translations();
+          tra.meta_keywords = tr.meta_keywords;
+          tra.meta_title = tr.meta_title;
+          tra.meta_descriptions = tr.meta_descriptions;
+          tra.seo = seoEntity;
+          await tra.save();
+          updatedTrans.push(tra);
+        }
+      }
+
+      seoEntity.translations = updatedTrans;
+      await seoEntity.save();
       product.seo = seoEntity;
     } else {
       if (req && translations.length > 0) {
@@ -621,8 +647,12 @@ export class ProductRepository extends Repository<Product> {
 
     await product.save();
 
-    return ApiResponse.success(
+    const jsonResponse = CircularJSON.stringify({
       product,
+    });
+
+    return ApiResponse.success(
+      JSON.parse(jsonResponse),
       200,
       this.langService.getTranslation('UPDATED_SUCCESSFULLY', 'Product SEO'),
     );
