@@ -188,12 +188,17 @@ export class CategoryRepository extends Repository<Category> {
   async findCategories(req: SearchCategoryDto, user: any) {
     const lang = user?.lang || 'en';
 
+    let langWhere: any = true;
+    if (user === null || user?.roles?.name == process.env.MEMBER_ROLE_NAME) {
+      langWhere = {
+        code: lang,
+      };
+    }
+
     const { name, category_id, limit, offset } = req;
     const where: any = {
       translations: {
-        language: {
-          code: lang,
-        },
+        language: langWhere,
       },
     };
     if (name) {
