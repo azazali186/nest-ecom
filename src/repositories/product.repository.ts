@@ -275,10 +275,6 @@ export class ProductRepository extends Repository<Product> {
         'features.translations',
         'created_by',
         'updated_by',
-        'seo',
-        'seo',
-        'seo.translations',
-        'seo.translations.language',
       ],
     });
 
@@ -434,9 +430,6 @@ export class ProductRepository extends Repository<Product> {
       'images',
       'features',
       'featuresTranslations',
-      'seo',
-      'seoTranslations',
-      'seoTranslationsLanguage',
     ];
 
     query.leftJoinAndSelect('product.stocks', 'stock');
@@ -450,12 +443,6 @@ export class ProductRepository extends Repository<Product> {
     query.leftJoinAndSelect('product.translations', 'translations');
     query.leftJoinAndSelect('translations.language', 'language');
     query.leftJoinAndSelect('product.images', 'images');
-    query.leftJoinAndSelect('product.seo', 'seo');
-    query.leftJoinAndSelect('seo.translations', 'seoTranslations');
-    query.leftJoinAndSelect(
-      'seoTranslations.language',
-      'seoTranslationsLanguage',
-    );
 
     query.leftJoin('product.categories', 'category');
     query.leftJoin('product.features', 'features');
