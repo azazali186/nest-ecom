@@ -25,7 +25,6 @@ import { ProductFeatureRepository } from './product-features.repository';
 import { getEntityById } from 'src/utils/helper.utils';
 import { UpdateFeaturesDto } from 'src/dto/product/update-features.dto';
 import { CreateSeo } from 'src/dto/create-seo.dto';
-import { SeoRepository } from './seo.repository';
 import { LanguageRepository } from './language.repository';
 import { Translations } from 'src/entities/translation.entity';
 import * as CircularJSON from 'circular-json';
@@ -60,9 +59,6 @@ export class ProductRepository extends Repository<Product> {
 
     @Inject(forwardRef(() => ProductFeatureRepository))
     private pfRepo: ProductFeatureRepository,
-
-    @Inject(forwardRef(() => SeoRepository))
-    private seoRepo: SeoRepository,
 
     @Inject(forwardRef(() => LanguageRepository))
     private langRepo: LanguageRepository,
@@ -233,24 +229,30 @@ export class ProductRepository extends Repository<Product> {
   async getProductId(id: number, user: any): Promise<ApiResponse<Product>> {
     const lang = user?.lang || 'en';
     const currency = user?.currency || 'USD';
+
+    let langWhere: any = true;
+    let curWhere: any = true;
+    if (user === null || user?.roles?.name == process.env.MEMBER_ROLE_NAME) {
+      langWhere = {
+        code: lang,
+      };
+      curWhere = {
+        code: currency,
+      };
+    }
+
     const product = await this.prodRepo.findOne({
       where: {
         id,
         translations: {
-          language: {
-            code: lang,
-          },
+          language: langWhere,
         },
         stocks: {
           translations: {
-            language: {
-              code: lang,
-            },
+            language: langWhere,
           },
           price: {
-            currency: {
-              code: currency,
-            },
+            currency: curWhere,
           },
         },
       },
@@ -467,8 +469,13 @@ export class ProductRepository extends Repository<Product> {
       });
     }
 
-    query.andWhere(" currency.code = '" + currency + "'");
-    query.andWhere(" language.code = '" + lang + "'");
+    if (
+      req.user === null ||
+      req?.user?.roles?.name == process.env.MEMBER_ROLE_NAME
+    ) {
+      query.andWhere(" currency.code = '" + currency + "'");
+      query.andWhere(" language.code = '" + lang + "'");
+    }
 
     if (req.search) {
       query.andWhere(
@@ -584,26 +591,14 @@ export class ProductRepository extends Repository<Product> {
 
   async createSeo(id: number, req: CreateSeo, user: any) {
     const product = await getEntityById(this.prRepo, id);
-    const seoEntity = await this.seoRepo.findOne({
-      where: { products: { id: id } },
-      relations: {
-        translations: {
-          language: true,
-        },
-      },
-    });
-
     const { translations } = req;
-
-    if (seoEntity) {
+    if (product) {
       const updatedTrans = [];
-
-      // Use for...of loop to iterate through translations array
       for (const tr of translations) {
         const eTrans = await this.trRepo.findOne({
           where: {
-            seo: {
-              id: seoEntity.id,
+            products: {
+              id: product.id,
             },
             language: {
               code: tr.language_code,
@@ -623,24 +618,17 @@ export class ProductRepository extends Repository<Product> {
           tra.meta_keywords = tr.meta_keywords;
           tra.meta_title = tr.meta_title;
           tra.meta_descriptions = tr.meta_descriptions;
-          tra.seo = seoEntity;
+          tra.language = await this.langRepo.findOne({
+            where: { code: tr.language_code },
+          });
+          tra.products = product;
           await tra.save();
           updatedTrans.push(tra);
         }
       }
 
-      seoEntity.translations = updatedTrans;
-      await seoEntity.save();
-      product.seo = seoEntity;
-    } else {
-      if (req && translations.length > 0) {
-        const seo = await this.seoRepo.createUpdateSeo(
-          translations,
-          product,
-          'product',
-        );
-        product.seo = seo;
-      }
+      product.translations = updatedTrans;
+      await product.save();
     }
 
     product.updated_by = user;

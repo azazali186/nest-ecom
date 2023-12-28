@@ -12,7 +12,6 @@ import { Variation } from 'src/entities/variations.entity';
 import { getEntityByCode, getEntityById } from 'src/utils/helper.utils';
 import { CatalogRepository } from './catalog.repository';
 import { ProductFeatureRepository } from './product-features.repository';
-import { SeoRepository } from './seo.repository';
 
 export class TranslationsRepository extends Repository<Translations> {
   constructor(
@@ -36,9 +35,6 @@ export class TranslationsRepository extends Repository<Translations> {
 
     @Inject(forwardRef(() => ProductFeatureRepository))
     private pfRepo: ProductFeatureRepository,
-
-    @Inject(forwardRef(() => SeoRepository))
-    private seoRepo: SeoRepository,
   ) {
     super(transRepo.target, transRepo.manager, transRepo.queryRunner);
   }
@@ -106,10 +102,6 @@ export class TranslationsRepository extends Repository<Translations> {
       case 'feature':
         translation.product_feature = await getEntityById(this.pfRepo, id);
         break;
-      case 'seo':
-        translation.product_feature = await getEntityById(this.seoRepo, id);
-        break;
-
       default:
         throw new Error(`Unsupported type: ${type}`);
     }

@@ -12,7 +12,6 @@ import { Product } from './product.entity';
 import { Stock } from './stock.entity';
 import { Catalog } from './catalog.entity';
 import { ProductFeature } from './product-features.entity';
-import { Seo } from './seo.entity';
 
 @Entity()
 export class Translations extends BaseEntity {
@@ -65,10 +64,4 @@ export class Translations extends BaseEntity {
   })
   @JoinColumn({ name: 'product_feature_id' })
   product_feature: ProductFeature;
-
-  @ManyToOne(() => Seo, (seo) => seo.translations, {
-    nullable: true,
-  })
-  @JoinColumn({ name: 'seo_id' })
-  seo: Seo;
 }

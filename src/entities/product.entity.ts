@@ -8,7 +8,6 @@ import {
   ManyToMany,
   ManyToOne,
   OneToMany,
-  OneToOne,
   PrimaryGeneratedColumn,
 } from 'typeorm';
 import { User } from './user.entity';
@@ -22,7 +21,6 @@ import { Price } from './price.entity';
 import { ProductFeature } from './product-features.entity';
 import { Exclude, Transform } from 'class-transformer';
 import { getCustomUserResponse } from 'src/utils/helper.utils';
-import { Seo } from './seo.entity';
 
 @Entity('products')
 export class Product extends BaseEntity {
@@ -74,11 +72,6 @@ export class Product extends BaseEntity {
     nullable: true,
   })
   features: ProductFeature[] | null;
-
-  @OneToOne(() => Seo, (pf) => pf.products, {
-    nullable: true,
-  })
-  seo: Seo | null;
 
   @OneToMany(() => Stock, (st) => st.products)
   stocks: Stock[];
