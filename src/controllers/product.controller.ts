@@ -41,6 +41,16 @@ export class ProductController {
     return this.prodService.findAll(req, r.user);
   }
 
+  @Get('sku/:sku')
+  findSku(@Param('sku') sku: string) {
+    return this.prodService.findSku(sku);
+  }
+
+  @Get('slug/:slug')
+  findSlug(@Param('slug') slug: string) {
+    return this.prodService.findSlug(slug);
+  }
+
   @Get('public/landing-page')
   getPopularProductsOfCurrentMonth(@Request() r) {
     return this.recomService.getLandingPageData(r.user);

@@ -27,7 +27,14 @@ export class CheckPermissionMiddleware implements NestMiddleware {
   ) {}
 
   async use(req: any, res: Response, next: NextFunction) {
-    const routeWithoutId = req.baseUrl.replace(/\/[a-f0-9-]+$/, '/:id');
+    let routeWithoutId = req.baseUrl.replace(/\/[a-f0-9-]+$/, '/:id');
+    if (routeWithoutId.includes('/api/v1/products/sku')) {
+      routeWithoutId = '/api/v1/products/sku/:sku';
+    }
+    if (routeWithoutId.includes('/api/v1/products/slug')) {
+      routeWithoutId = '/api/v1/products/slug/:slug';
+    }
+    // console.log('req', req);
     const currentPermission = getPermissionNameFromRoute(
       routeWithoutId,
       req.method,
