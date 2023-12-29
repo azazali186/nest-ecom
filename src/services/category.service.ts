@@ -12,6 +12,7 @@ import { CategoryRepository } from 'src/repositories/category.repository';
 
 @Injectable()
 export class CategoryService {
+  
   updateSeo(id: number, req: UpdateFeaturesDto[], user: any) {
     throw new Error('Method not implemented.');
   }
@@ -41,5 +42,8 @@ export class CategoryService {
 
   bulk(req: BulkCreateCategoryDto) {
     return this.curRepo.bulkCreate(req);
+  }
+  findAllCat() {
+    return this.curRepo.findAllCat();
   }
 }

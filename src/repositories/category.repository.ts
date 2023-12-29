@@ -253,4 +253,25 @@ export class CategoryRepository extends Repository<Category> {
     });
     return ApiResponse.success(data, 200, 'Success', error);
   }
+
+  async findAllCat() { // Update category properties
+    const [list, count] = await this.catRepo.findAndCount({
+      select: {
+        id: true,
+        translations: {
+          id: true,
+          name: true,
+        },
+      },
+      relations: {
+        translations: {
+          language: true,
+        },
+      },
+      order: {
+        id: 'DESC',
+      },
+    });
+    return ApiResponse.paginate({ list, count });
+  }
 }

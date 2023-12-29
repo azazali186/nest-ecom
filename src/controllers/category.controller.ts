@@ -44,6 +44,12 @@ export class CategoryController {
   findAll(@Query() req: SearchCategoryDto, @Request() r) {
     return this.catService.findAll(req, r.user);
   }
+
+  @Get('all')
+  find() {
+    return this.catService.findAllCat();
+  }
+
   @Get(':id')
   findOne(@Param('id') id: number) {
     return this.catService.findOne(id);
