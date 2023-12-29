@@ -23,7 +23,8 @@ export class LoggerMiddleware implements NestMiddleware {
     private elService: ElasticService,
   ) {}
 
-  private readonly indexName = process.env.LOGS_INDEX_ELK || 'nest-ecom-elk-logs';
+  private readonly indexName =
+    process.env.LOGS_INDEX_ELK || 'nest-ecom-elk-logs';
 
   private logger = morgan((tokens, req: any, res: any) => {
     if (tokens.method(req, res) !== 'OPTIONS') {
@@ -49,7 +50,11 @@ export class LoggerMiddleware implements NestMiddleware {
       log.requested_by = req?.user?.username || 'guest';
       log.mobile_number = req?.user?.mobile_number || 'guest';
       this.logRepository.save(log);
-      const elk = this.elService.createIndex(this.indexName, log);
+      try {
+        const elk = this.elService.createIndex(this.indexName, log);
+      } catch (error) {
+        console.log('error while creating log elk');
+      }
       return JSON.stringify(log);
     }
     return ''; // Return an empty string if the request is an OPTIONS request

@@ -18,10 +18,17 @@ export class ElasticService {
       data: body,
     };
 
-    return this.client.index({
-      index,
-      body: indexSettings,
-    });
+    try {
+      const data = this.client.index({
+        index,
+        body: indexSettings,
+      });
+      return data;
+    } catch (error) {
+      console.log('Error while createindex');
+    }
+
+    return true;
   }
 
   async registerIndex(index: string): Promise<any> {
