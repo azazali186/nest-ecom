@@ -9,6 +9,7 @@ import {
 import { UpdateTranslationDto } from '../translation/update-translation.dto';
 import { UpdatePriceDto } from './update-price.dto';
 import { UpdateImagesDto } from '../images/update-image.dto';
+import { Product } from 'src/entities/product.entity';
 
 export class UpdateStockDto {
   @ApiPropertyOptional({ type: Number })
@@ -40,6 +41,10 @@ export class UpdateStockDto {
   @IsArray()
   @IsNotEmpty()
   prices?: UpdatePriceDto[];
+
+  @ApiPropertyOptional({ type: Product })
+  @IsOptional()
+  product: Product;
 
   @ApiHideProperty()
   user: any;

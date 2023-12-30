@@ -18,19 +18,19 @@ export class Translations extends BaseEntity {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @Column({ nullable: true })
+  @Column({ type: 'text', nullable: true })
   name: string;
 
-  @Column({ nullable: true })
+  @Column({ type: 'text', nullable: true })
   description: string;
 
-  @Column({ nullable: true })
+  @Column({ type: 'text', nullable: true })
   meta_title: string;
 
-  @Column({ nullable: true })
+  @Column({ type: 'text', nullable: true })
   meta_keywords: string;
 
-  @Column({ nullable: true })
+  @Column({ type: 'text', nullable: true })
   meta_descriptions: string;
 
   @ManyToOne(() => Language, (lang) => lang.id)

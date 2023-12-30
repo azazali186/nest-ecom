@@ -33,11 +33,12 @@ export class StockRepository extends Repository<Stock> {
     user: any,
     variation: Variation[] = null,
   ) {
-    const { sku, translations, prices, quantity } = stockDto;
+    const { sku, translations, prices, quantity, product } = stockDto;
     const stock = new Stock();
     stock.sku = sku;
     stock.quantity = quantity;
     stock.created_by = user;
+    stock.products = product;
 
     await this.stRepo.save(stock);
 
@@ -198,5 +199,37 @@ export class StockRepository extends Repository<Stock> {
       console.error(`Error updating stock: ${error.message}`);
       throw error; // Rethrow the error
     }
+  }
+
+  async deletStock(id: number): Promise<any> {
+    const product = await this.stRepo.findOne({
+      where: { id },
+      relations: ['translations', 'images', 'price'],
+    });
+
+    if (product.price && product.price.length > 0) {
+      await Promise.all(
+        product.price.map((stock) => this.prRepo.delete(stock.id)),
+      );
+    }
+
+    // Delete associated translations
+    if (product.translations && product.translations.length > 0) {
+      await Promise.all(
+        product.translations.map((translation) =>
+          this.trRepo.delete(translation.id),
+        ),
+      );
+    }
+
+    // Delete associated images
+    if (product.images && product.images.length > 0) {
+      await Promise.all(
+        product.images.map((image) => this.imgRepo.delete(image.id)),
+      );
+    }
+
+    // Delete the product itself
+    await this.stRepo.delete(id);
   }
 }

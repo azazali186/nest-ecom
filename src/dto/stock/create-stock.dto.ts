@@ -8,6 +8,7 @@ import {
 } from 'class-validator';
 import { PriceDto } from './price.dto';
 import { CreateTranslationDto } from '../translation/create-translation.dto';
+import { Product } from 'src/entities/product.entity';
 
 export class CreateStockDto {
   @ApiProperty()
@@ -28,6 +29,10 @@ export class CreateStockDto {
   @IsArray()
   @IsNotEmpty()
   prices?: PriceDto[];
+
+  @ApiProperty({ type: Product })
+  @IsOptional()
+  product: Product;
 
   @ApiHideProperty()
   user: any;
