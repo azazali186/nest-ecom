@@ -71,121 +71,142 @@ export class ProductRepository extends Repository<Product> {
   private readonly indexName = process.env.PRODUCT_INDEX_ELK;
 
   async createProduct(createProductDto: CreateProductDto, user: any) {
-    const {
-      sku,
-      categoryIds,
-      translations,
-      images,
-      variations,
-      prices,
-      quantity,
-      features,
-    } = createProductDto;
+    return this.prodRepo.manager.transaction(
+      async (transactionalEntityManager) => {
+        try {
+          const {
+            sku,
+            slug,
+            categoryIds,
+            translations,
+            variations,
+            prices,
+            quantity,
+            features,
+            combinations,
+            images,
+          } = createProductDto;
 
-    const product = new Product();
-    product.sku = sku;
-    product.quantity = quantity;
-    product.created_by = user;
+          const product = new Product();
+          product.sku = sku;
+          product.slug = slug;
+          product.quantity = quantity;
+          product.created_by = user;
 
-    if (categoryIds.length > 0) {
-      const categories = await this.catRepo.find({
-        where: { id: In(categoryIds) },
-      });
+          if (categoryIds.length > 0) {
+            const categories = await transactionalEntityManager
+              .getCustomRepository(CategoryRepository)
+              .find({
+                where: { id: In(categoryIds) },
+              });
+            product.categories = categories;
+          }
 
-      product.categories = categories;
-    }
+          await transactionalEntityManager
+            .getCustomRepository(ProductRepository)
+            .save(product);
 
-    await this.prodRepo.save(product);
+          console.log(createProductDto);
 
-    console.log(createProductDto);
-    const pricesData = await Promise.all(
-      prices?.map(async (priceDto: PriceDto) => {
-        const data = await this.prRepo.createProductPrice(priceDto, product);
-        return data;
-      }),
-    );
-    product.price = pricesData;
-
-    let variationData = [];
-    // Create and associate variations
-    if (variations && variations?.length > 0) {
-      const varData = await Promise.all(
-        variations.map(async (varDto) => {
-          const variation = await this.varRepo.createVar(varDto);
-          return variation;
-        }),
-      );
-      variationData = varData.flat();
-      product.variations = variationData;
-    }
-
-    const combinations = this.generateCombinations(variations);
-
-    // Create and associate stocks
-    if (combinations && combinations?.length > 0) {
-      let qty = 0;
-      const stocksData = await Promise.all(
-        combinations?.map(async (vd) => {
-          const stQty = vd.quantity || quantity;
-          const stockDto = new CreateStockDto();
-          const skuCombi = vd
-            .map((item: any) => Object.entries(item)[0].join('-'))
-            .join('-');
-          stockDto.sku = `${sku}~${skuCombi}`;
-          stockDto.prices = prices;
-          stockDto.translations = translations;
-          stockDto.quantity = stQty;
-          qty = qty + stQty;
-          const stock = await this.stRepo.createStock(stockDto, user, vd);
-          return stock;
-        }),
-      );
-      product.quantity = qty;
-      product.stocks = stocksData;
-    }
-
-    // Create and associate translations
-    const translationsData = await Promise.all(
-      translations?.map(async (translationDto) => {
-        const translation = await this.trRepo.createTranslation(
-          translationDto,
-          'product',
-          product.id,
-        );
-        return translation;
-      }),
-    );
-    product.translations = translationsData;
-    console.log('save product data ');
-    if (images && images?.length > 0) {
-      const imagesData = await Promise.all(
-        images?.map(async (imageDto) => {
-          const image = await this.imgRepo.createImage(
-            imageDto,
-            'product',
-            product.id,
+          const pricesData = await Promise.all(
+            prices?.map(async (priceDto: PriceDto) => {
+              const data = await transactionalEntityManager
+                .getCustomRepository(PriceRepository)
+                .createProductPrice(priceDto, product);
+              return data;
+            }),
           );
-          return image;
-        }),
-      );
-      product.images = imagesData;
-    }
-    if (features && features?.length > 0) {
-      const featuresData = await Promise.all(
-        features?.map(async (createPFDto) => {
-          const fData = await this.pfRepo.createFeatures(createPFDto, product);
-          return fData;
-        }),
-      );
-      product.features = featuresData;
-    }
+          product.price = pricesData;
 
-    await this.prodRepo.save(product);
+          let variationData = [];
+          // Create and associate variations
+          if (variations) {
+            const varData = await Promise.all(
+              variations.map(async (varDto) => {
+                const variation = await transactionalEntityManager
+                  .getCustomRepository(VariationRepository)
+                  .createVar(varDto);
+                return variation;
+              }),
+            );
+            variationData = varData.flat();
+            product.variations = variationData;
+          }
 
-    return ApiResponse.success(
-      product,
-      201,
-      this.langService.getTranslation('CREATED_SUCCESSFULLY', 'Product'),
+          // const combinations = this.generateCombinations(variations);
+
+          // Create and associate stocks
+          if (combinations && combinations?.length > 0) {
+            let qty = 0;
+            const stocksData = await Promise.all(
+              combinations?.map(async (vd) => {
+                const stQty = vd.quantity;
+                const stockDto = new CreateStockDto();
+                const skuCombi = vd.name;
+                stockDto.sku = `${sku}~${skuCombi}`;
+                stockDto.prices = vd.prices || prices;
+                stockDto.translations = translations;
+                stockDto.quantity = stQty;
+                qty = qty + stQty;
+                const stock = await transactionalEntityManager
+                  .getCustomRepository(StockRepository)
+                  .createStock(stockDto, user);
+                return stock;
+              }),
+            );
+            product.quantity = qty;
+            product.stocks = stocksData;
+          }
+
+          // Create and associate translations
+          const translationsData = await Promise.all(
+            translations?.map(async (translationDto) => {
+              const translation = await transactionalEntityManager
+                .getCustomRepository(TranslationsRepository)
+                .createTranslation(translationDto, 'product', product.id);
+              return translation;
+            }),
+          );
+          product.translations = translationsData;
+          console.log('save product data ');
+
+          if (images && images?.length > 0) {
+            const imagesData = await Promise.all(
+              images?.map(async (imageDto) => {
+                const image = await transactionalEntityManager
+                  .getCustomRepository(ImagesRepository)
+                  .createImage(imageDto, 'product', product.id);
+                return image;
+              }),
+            );
+            product.images = imagesData;
+          }
+
+          if (features && features?.length > 0) {
+            const featuresData = await Promise.all(
+              features?.map(async (createPFDto) => {
+                const fData = await transactionalEntityManager
+                  .getCustomRepository(ProductFeatureRepository)
+                  .createFeatures(createPFDto, product);
+                return fData;
+              }),
+            );
+            product.features = featuresData;
+          }
+
+          await transactionalEntityManager.save(product);
+
+          return ApiResponse.success(
+            product,
+            201,
+            this.langService.getTranslation('CREATED_SUCCESSFULLY', 'Product'),
+          );
+        } catch (error) {
+          // Handle errors and optionally rollback the transaction
+          console.error('Error creating product:', error);
+          throw error; // This will automatically rollback the transaction
+        }
+      },
     );
   }
 
@@ -525,7 +546,7 @@ export class ProductRepository extends Repository<Product> {
   async deleteProduct(id: number) {
     const product = await this.prodRepo.findOne({
       where: { id },
-      relations: ['stocks', 'translations', 'images', 'features'],
+      relations: ['stocks', 'translations', 'images', 'features', 'price'],
     });
 
     if (!product) {
@@ -541,6 +562,12 @@ export class ProductRepository extends Repository<Product> {
     if (product.stocks && product.stocks.length > 0) {
       await Promise.all(
         product.stocks.map((stock) => this.stRepo.delete(stock.id)),
+      );
+    }
+
+    if (product.price && product.price.length > 0) {
+      await Promise.all(
+        product.price.map((stock) => this.prRepo.delete(stock.id)),
       );
     }
 

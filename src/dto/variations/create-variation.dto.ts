@@ -15,8 +15,5 @@ export class CreateVariationDto {
   values: string[];
 
   @ApiHideProperty()
-  qty: number[];
-
-  @ApiHideProperty()
   user: any;
 }

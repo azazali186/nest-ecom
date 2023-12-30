@@ -22,7 +22,6 @@ export class ProductFeatureRepository extends Repository<ProductFeature> {
     try {
       const pf = new ProductFeature();
       pf.products = product;
-      pf.type = createDto.name;
       await this.pfRepo.save(pf);
       // Create and associate translations
       const translationsData = await Promise.all(

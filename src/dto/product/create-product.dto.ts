@@ -10,20 +10,15 @@ import { CreateTranslationDto } from '../translation/create-translation.dto';
 import { CreateVariationDto } from '../variations/create-variation.dto';
 import { PriceDto } from '../stock/price.dto';
 import { CreateFeaturesDto } from './create-features.dto';
+import { CombinationDto } from './combination-dto';
 export class CreateProductDto {
   @ApiProperty()
   @IsString()
   sku: string;
 
-  @ApiProperty({ type: [Number] })
-  @IsArray()
-  @IsNumber({}, { each: true })
-  categoryIds: number[];
-
-  @ApiProperty({ type: [CreateVariationDto] })
-  @IsArray()
-  @IsOptional()
-  variations?: CreateVariationDto[];
+  @ApiProperty()
+  @IsString()
+  slug: string;
 
   @ApiProperty({ type: Number })
   @IsNumber()
@@ -44,6 +39,25 @@ export class CreateProductDto {
   })
   translations: CreateTranslationDto[];
 
+  @ApiProperty({ type: [CreateFeaturesDto], required: false })
+  @IsOptional()
+  features?: CreateFeaturesDto[];
+
+  @ApiProperty({ type: [CreateVariationDto] })
+  @IsArray()
+  @IsOptional()
+  variations?: CreateVariationDto[];
+
+  @ApiProperty({ type: [CombinationDto] })
+  @IsArray()
+  @IsOptional()
+  combinations?: CombinationDto[];
+
+  @ApiProperty({ type: [Number] })
+  @IsArray()
+  @IsNumber({}, { each: true })
+  categoryIds: number[];
+
   @ApiProperty({ type: [String], required: false })
   @IsArray({
     message: 'IMAGES_IS_ARRAY',
@@ -51,10 +65,6 @@ export class CreateProductDto {
   @IsOptional()
   @IsString({ each: true })
   images?: string[];
-
-  @ApiProperty({ type: [CreateFeaturesDto], required: false })
-  @IsOptional()
-  features?: CreateFeaturesDto[];
 
   @ApiHideProperty()
   user: any;

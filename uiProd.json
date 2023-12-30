@@ -1,0 +1,147 @@
+{
+    "sku": "ELK0009",
+    "slug": "samsung-990-pro-series-1-tb-pci-gen-4-3",
+    "quantity": 30,
+    "prices": [
+        {
+            "price": "108",
+            "currency_id": 1
+        },
+        {
+            "price": "8999",
+            "currency_id": 2
+        },
+        {
+            "price": "442500",
+            "currency_id": 3
+        }
+    ],
+    "translations": [
+        {
+            "name": "Samsung 990 PRO Series - 1TB PCIe Gen4. X4 NVMe 2.0c - M.2 Internal SSD (MZ-V9P1T0B/AM)",
+            "description": "Reach max performance with PCIe® 4.0. Experience longer-lasting, opponent-blasting speed. The in-house controller's smart heat control delivers supreme power efficiency while maintaining ferocious performance that always keeps you at the top of your game.****** Designed for tech enthusiasts, hardcore gamers and heavy-workload professionals who want blazing fast speed. Sequential read/write speeds up to 7,450/6,900 MB/s. Experience the performance and reliability that you can only get from the world's number one brand**** for flash memory since 2003.\\\\n\\\\n*Sequential and random write performance was measured with Intelligent Turbo Write technology being activated. Intelligent Turbo Write operates only within a specific data transfer size. Performance may vary depending on SSD’s firmware, system hardware & configuration and other factors. For detailed information, please contact your local service center. Test system configuration: AMD Ryzen 7 5800X 8-Core Processor CPU@3.80GHz, DDR4 3600MHz 16GBx2 (PC4-25600 Overclock), OS - Windows 10 Pro 64bit, Chipset - ASRock-X570 Taichi. **980 PRO Sequential Read/Write - 1,129/877 MB/Watt, 990 PRO Sequential Read/Write - 1380/1319 MB/Watt based on internal test result of 1TB capacity model. ***PCI-SIG®D8 standard spec: 8.8mm. ****DirectStorage technology from Microsoft loads games faster than before by leveraging the multiple GB/sec speed of modern NVMe SSDs. Results are based on a comparison with Samsung 980 PRO. *****Source: 2003~2021 OMDIA data - NAND suppliers' revenue market share. ******PCIe 4.0’s best theoretical sequential read is 8000 MB/s - 990 PRO reaches 7,450 MB/s as of Q3, 2022.",
+            "language_code": "en",
+            "features": [
+                {
+                    "value": "ADOBE MEMBERSHIP: Get a two-month membership of Adobe Creative Cloud Photography plan on us when you purchase and register an eligible 1TB or 2TB Samsung SSD*.Specific uses: Personal, gaming, Business"
+                },
+                {
+                    "value": "HUGE SPEED BOOST: Get random read/write speeds that are 40%/55% faster than 980 PRO; Experience up to 1400K/1550K IOPS, while sequential read/write speeds up to 7,450/6,900 MB/s reach near the max performance of PCIe 4.0*"
+                }
+            ]
+        },
+        {
+            "name": "三星 990 PRO 系列 - 1TB PCIe Gen4。 X4 NVMe 2.0c - M.2 内部 SSD (MZ-V9P1T0B/AM)",
+            "description": "通过 PCIe® 4.0 达到最高性能。 体验更持久、远超对手的速度。 内部控制器的智能热控制可提供最高的电源效率，同时保持强劲的性能，让您始终在游戏中处于领先地位。****** 专为想要极快速度的技术爱好者、铁杆游戏玩家和重负荷专业人士而设计 。 顺序读/写速度高达 7,450/6,900 MB/s。 体验只有自 2003 年以来世界第一闪存品牌****才能获得的性能和可靠性。\\\\n\\\\n*顺序和随机写入性能是在激活智能涡轮写入技术的情况下测量的。 智能 Turbo Write 仅在特定数据传输大小内运行。 性能可能会因 SSD 的固件、系统硬件和配置以及其他因素而异。 如需了解详细信息，请联系您当地的服务中心。 测试系统配置：AMD Ryzen 7 5800X 8 核处理器 CPU@3.80GHz、DDR4 3600MHz 16GBx2 (PC4-25600 超频)、操作系统 - Windows 10 Pro 64bit、芯片组 - ASRock-X570 Taichi。 **980 PRO 顺序读/写 - 1,129/877 MB/瓦，990 PRO 顺序读/写 - 1380/1319 MB/瓦，基于 1TB 容量型号的内部测试结果。 ***PCI-SIG®D8 标准规格：8.8mm。 ****Microsoft 的 DirectStorage 技术利用现代 NVMe SSD 的每秒数 GB 的速度，比以前更快地加载游戏。 结果基于与三星 980 PRO 的比较。 *****来源：2003~2021年OMDIA数据——NAND供应商收入市场份额。 ******PCIe 4.0 的最佳理论顺序读取速度为 8000 MB/s - 截至 2022 年第三季度，990 PRO 达到 7,450 MB/s。",
+            "language_code": "zh",
+            "features": [
+                {
+                    "value": "ADOBE 会员资格：购买并注册符合条件的 1TB 或 2TB 三星 SSD* 即可获得为期两个月的 Adobe Creative Cloud 摄影计划会员资格。具体用途：个人、游戏、商业"
+                },
+                {
+                    "value": "巨大的速度提升：随机读/写速度比 980 PRO 快 40%/55%； 体验高达 1400K/1550K IOPS，顺序读写速度高达 7,450/6,900 MB/s，接近 PCIe 4.0* 的最高性能"
+                }
+            ]
+        },
+        {
+            "name": "Samsung 990 PRO Series - 1TB PCIe Gen4។ X4 NVMe 2.0c - M.2 SSD ខាងក្នុង (MZ-V9P1T0B/AM)",
+            "description": "ឈានដល់ការអនុវត្តអតិបរមាជាមួយ PCIe® 4.0 ។ បទពិសោធន៍ការវាយលុករបស់គូប្រជែង ប្រើប្រាស់បានយូរជាងមុន ការគ្រប់គ្រងកំដៅដ៏ឆ្លាតវៃរបស់ឧបករណ៍បញ្ជាក្នុងផ្ទះផ្តល់នូវប្រសិទ្ធភាពថាមពលខ្ពស់បំផុត ខណៈពេលដែលរក្សាបាននូវប្រតិបត្តិការដ៏កាចសាហាវ ដែលតែងតែរក្សាអ្នកនៅកំពូលនៃហ្គេមរបស់អ្នក។****** រចនាឡើងសម្រាប់អ្នកចូលចិត្តបច្ចេកវិទ្យា អ្នកលេងហ្គេមរឹងរូស និងអ្នកជំនាញដែលធ្វើការងារធ្ងន់ៗដែលចង់បានល្បឿនលឿន។ . ល្បឿនអាន/សរសេរជាបន្តបន្ទាប់រហូតដល់ 7,450/6,900 MB/s។ ទទួលបានបទពិសោធន៍ពីដំណើរការ និងភាពជឿជាក់ដែលអ្នកអាចទទួលបានពីម៉ាកយីហោលេខមួយរបស់ពិភពលោក**** សម្រាប់ flash memory តាំងពីឆ្នាំ 2003។\\\\n\\\\n* ដំណើរការសរសេរតាមលំដាប់លំដោយ និងចៃដន្យត្រូវបានវាស់ដោយបច្ចេកវិទ្យា Intelligent Turbo Write កំពុងត្រូវបានធ្វើឱ្យសកម្ម។ Intelligent Turbo Write ដំណើរការតែក្នុងទំហំផ្ទេរទិន្នន័យជាក់លាក់ប៉ុណ្ណោះ។ ដំណើរការអាចប្រែប្រួលអាស្រ័យលើកម្មវិធីបង្កប់របស់ SSD ផ្នែករឹងប្រព័ន្ធ និងការកំណត់រចនាសម្ព័ន្ធ និងកត្តាផ្សេងទៀត។ សម្រាប់ព័ត៌មានលម្អិត សូមទាក់ទងមជ្ឈមណ្ឌលសេវាកម្មក្នុងតំបន់របស់អ្នក។ សាកល្បងការកំណត់រចនាសម្ព័ន្ធ៖ AMD Ryzen 7 5800X 8-Core Processor CPU@3.80GHz, DDR4 3600MHz 16GBx2 (PC4-25600 Overclock), OS - Windows 10 Pro 64bit, Chipset - ASRock-X570 Taichi ។ ** 980 PRO Sequential Read/Write - 1,129/877 MB/Watt, 990 PRO Sequential Read/Write - 1380/1319 MB/Watt ផ្អែកលើលទ្ធផលតេស្តខាងក្នុងនៃម៉ូដែលទំហំ 1TB ។ *** ស្ដង់ដារ PCI-SIG®D8: 8.8mm ។ **** បច្ចេកវិទ្យា DirectStorage ពី Microsoft ផ្ទុកហ្គេមបានលឿនជាងមុន ដោយប្រើប្រាស់ល្បឿនច្រើន GB/sec នៃ NVMe SSDs ទំនើប។ លទ្ធផលគឺផ្អែកលើការប្រៀបធៀបជាមួយ Samsung 980 PRO ។ ***** ប្រភព៖ ទិន្នន័យ OMDIA ឆ្នាំ ២០០៣ ដល់ ២០២១ - ចំណែកទីផ្សារចំណូលរបស់អ្នកផ្គត់ផ្គង់ NAND ។ ****** ការអានតាមទ្រឹស្តីដ៏ល្អបំផុតរបស់ PCIe 4.0 គឺ 8000 MB/s - 990 PRO ឈានដល់ 7,450 MB/s គិតត្រឹមត្រីមាសទី 3 ឆ្នាំ 2022។",
+            "language_code": "km",
+            "features": [
+                {
+                    "value": "ADOBE MEMBERSHIP៖ ទទួលបានសមាជិកភាពរយៈពេលពីរខែនៃគម្រោង Adobe Creative Cloud Photography ដោយឥតគិតថ្លៃ នៅពេលអ្នកទិញ និងចុះឈ្មោះ Samsung SSD 1TB ឬ 2TB ដែលមានសិទ្ធិ*។ ការប្រើប្រាស់ជាក់លាក់៖ ផ្ទាល់ខ្លួន ការលេងហ្គេម អាជីវកម្ម"
+                },
+                {
+                    "value": "ការបង្កើនល្បឿនដ៏ធំ៖ ទទួលបានល្បឿនអាន/សរសេរចៃដន្យដែលមាន 40%/55% លឿនជាង 980 PRO; ទទួលបានបទពិសោធន៍រហូតដល់ 1400K/1550K IOPS ខណៈពេលដែលល្បឿនអាន/សរសេរតាមលំដាប់លំដោយរហូតដល់ 7,450/6,900 MB/s ឈានដល់ជិតដំណើរការអតិបរមានៃ PCIe 4.0*"
+                }
+            ]
+        },
+        {
+            "name": "सैमसंग 990 PRO सीरीज - 1TB PCIe Gen4। X4 NVMe 2.0c - M.2 आंतरिक SSD (MZ-V9P1T0B/AM)",
+            "description": "PCIe® 4.0 के साथ अधिकतम प्रदर्शन तक पहुंचें। लंबे समय तक चलने वाली, प्रतिद्वंद्वी को नष्ट करने वाली गति का अनुभव करें। इन-हाउस कंट्रोलर का स्मार्ट हीट कंट्रोल जबरदस्त प्रदर्शन को बनाए रखते हुए सर्वोच्च शक्ति दक्षता प्रदान करता है जो आपको हमेशा अपने गेम में शीर्ष पर रखता है। ****** तकनीकी उत्साही, हार्डकोर गेमर्स और भारी कार्यभार वाले पेशेवरों के लिए डिज़ाइन किया गया है जो तेज गति चाहते हैं . अनुक्रमिक पढ़ने/लिखने की गति 7,450/6,900 एमबी/सेकेंड तक। उस प्रदर्शन और विश्वसनीयता का अनुभव करें जो आप 2003 से फ्लैश मेमोरी के लिए दुनिया के नंबर एक ब्रांड**** से ही प्राप्त कर सकते हैं।\\\\n\\\\n*अनुक्रमिक और यादृच्छिक लेखन प्रदर्शन को इंटेलिजेंट टर्बो राइट तकनीक के सक्रिय होने से मापा गया। इंटेलिजेंट टर्बो राइट केवल एक विशिष्ट डेटा ट्रांसफर आकार के भीतर ही संचालित होता है। SSD के फ़र्मवेयर, सिस्टम हार्डवेयर और कॉन्फ़िगरेशन और अन्य कारकों के आधार पर प्रदर्शन भिन्न हो सकता है। विस्तृत जानकारी के लिए कृपया अपने स्थानीय सेवा केंद्र से संपर्क करें। परीक्षण सिस्टम कॉन्फ़िगरेशन: AMD Ryzen 7 5800X 8-कोर प्रोसेसर CPU@3.80GHz, DDR4 3600MHz 16GBx2 (PC4-25600 ओवरक्लॉक), OS - Windows 10 Pro 64bit, चिपसेट - ASRock-X570 Taichi। **980 प्रो अनुक्रमिक पढ़ने/लिखने - 1,129/877 एमबी/वाट, 990 प्रो अनुक्रमिक पढ़ने/लिखने - 1380/1319 एमबी/वाट 1 टीबी क्षमता मॉडल के आंतरिक परीक्षण परिणाम के आधार पर। ***PCI-SIG®D8 मानक विशिष्टता: 8.8 मिमी। ****माइक्रोसॉफ्ट की डायरेक्टस्टोरेज तकनीक आधुनिक एनवीएमई एसएसडी की एकाधिक जीबी/सेकंड गति का लाभ उठाकर गेम को पहले की तुलना में तेजी से लोड करती है। परिणाम सैमसंग 980 प्रो के साथ तुलना पर आधारित हैं। *****स्रोत: 2003~2021 OMDIA डेटा - NAND आपूर्तिकर्ताओं का राजस्व बाजार हिस्सा। ******PCIe 4.0 की सर्वोत्तम सैद्धांतिक अनुक्रमिक रीडिंग 8000 MB/s है - 990 PRO, 2022 की तीसरी तिमाही तक 7,450 MB/s तक पहुंच गया है।",
+            "language_code": "hn",
+            "features": [
+                {
+                    "value": "एडोब सदस्यता: जब आप योग्य 1टीबी या 2टीबी सैमसंग एसएसडी* खरीदते हैं और पंजीकृत करते हैं तो हमसे एडोब क्रिएटिव क्लाउड फोटोग्राफी योजना की दो महीने की सदस्यता प्राप्त करें। विशिष्ट उपयोग: व्यक्तिगत, गेमिंग, व्यवसाय"
+                },
+                {
+                    "value": "जबरदस्त गति को बढ़ावा: यादृच्छिक पढ़ने/लिखने की गति प्राप्त करें जो 980 प्रो से 40%/55% तेज है; 1400K/1550K IOPS तक का अनुभव, जबकि 7,450/6,900 MB/s तक की अनुक्रमिक पढ़ने/लिखने की गति PCIe 4.0* के अधिकतम प्रदर्शन के करीब पहुंचती है।"
+                }
+            ]
+        }
+    ],
+    "features": [
+        {
+            "id": 1,
+            "translations": [
+                {
+                    "language_code": "en",
+                    "name": "ADOBE MEMBERSHIP: Get a two-month membership of Adobe Creative Cloud Photography plan on us when you purchase and register an eligible 1TB or 2TB Samsung SSD*.Specific uses: Personal, gaming, Business"
+                },
+                {
+                    "language_code": "zh",
+                    "name": "ADOBE 会员资格：购买并注册符合条件的 1TB 或 2TB 三星 SSD* 即可获得为期两个月的 Adobe Creative Cloud 摄影计划会员资格。具体用途：个人、游戏、商业"
+                },
+                {
+                    "language_code": "km",
+                    "name": "ADOBE MEMBERSHIP៖ ទទួលបានសមាជិកភាពរយៈពេលពីរខែនៃគម្រោង Adobe Creative Cloud Photography ដោយឥតគិតថ្លៃ នៅពេលអ្នកទិញ និងចុះឈ្មោះ Samsung SSD 1TB ឬ 2TB ដែលមានសិទ្ធិ*។ ការប្រើប្រាស់ជាក់លាក់៖ ផ្ទាល់ខ្លួន ការលេងហ្គេម អាជីវកម្ម"
+                },
+                {
+                    "language_code": "hn",
+                    "name": "एडोब सदस्यता: जब आप योग्य 1टीबी या 2टीबी सैमसंग एसएसडी* खरीदते हैं और पंजीकृत करते हैं तो हमसे एडोब क्रिएटिव क्लाउड फोटोग्राफी योजना की दो महीने की सदस्यता प्राप्त करें। विशिष्ट उपयोग: व्यक्तिगत, गेमिंग, व्यवसाय"
+                }
+            ],
+            "name": "features 1"
+        },
+        {
+            "id": 2,
+            "translations": [
+                {
+                    "language_code": "en",
+                    "name": "HUGE SPEED BOOST: Get random read/write speeds that are 40%/55% faster than 980 PRO; Experience up to 1400K/1550K IOPS, while sequential read/write speeds up to 7,450/6,900 MB/s reach near the max performance of PCIe 4.0*"
+                },
+                {
+                    "language_code": "zh",
+                    "name": "巨大的速度提升：随机读/写速度比 980 PRO 快 40%/55%； 体验高达 1400K/1550K IOPS，顺序读写速度高达 7,450/6,900 MB/s，接近 PCIe 4.0* 的最高性能"
+                },
+                {
+                    "language_code": "km",
+                    "name": "ការបង្កើនល្បឿនដ៏ធំ៖ ទទួលបានល្បឿនអាន/សរសេរចៃដន្យដែលមាន 40%/55% លឿនជាង 980 PRO; ទទួលបានបទពិសោធន៍រហូតដល់ 1400K/1550K IOPS ខណៈពេលដែលល្បឿនអាន/សរសេរតាមលំដាប់លំដោយរហូតដល់ 7,450/6,900 MB/s ឈានដល់ជិតដំណើរការអតិបរមានៃ PCIe 4.0*"
+                },
+                {
+                    "language_code": "hn",
+                    "name": "जबरदस्त गति को बढ़ावा: यादृच्छिक पढ़ने/लिखने की गति प्राप्त करें जो 980 प्रो से 40%/55% तेज है; 1400K/1550K IOPS तक का अनुभव, जबकि 7,450/6,900 MB/s तक की अनुक्रमिक पढ़ने/लिखने की गति PCIe 4.0* के अधिकतम प्रदर्शन के करीब पहुंचती है।"
+                }
+            ],
+            "name": "features 2"
+        }
+    ],
+    "variations": [
+        {
+            "name": "SSD",
+            "values": [
+                "1TB",
+                "2TB",
+                "4TB"
+            ]
+        }
+    ],
+    "combinations": [
+        {
+            "name": "1TB",
+            "quantity": 10
+        },
+        {
+            "name": "2TB",
+            "quantity": 10
+        },
+        {
+            "name": "4TB",
+            "quantity": 10
+        }
+    ],
+    "categoryIds": [
+        5,
+        1
+    ]
+}

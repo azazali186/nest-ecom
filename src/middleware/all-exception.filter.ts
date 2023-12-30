@@ -38,8 +38,6 @@ export class QueryFailedErrorFilter implements ExceptionFilter {
       }
     }
 
-    httpAdapter
-      .status(null, 409)
-      .reply(ctx.getResponse(), responseBody, HttpStatus.CONFLICT);
+    httpAdapter.reply(ctx.getResponse(), responseBody, HttpStatus.CONFLICT);
   }
 }
