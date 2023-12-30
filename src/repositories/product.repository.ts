@@ -84,6 +84,8 @@ export class ProductRepository extends Repository<Product> {
       images,
     } = createProductDto;
 
+    user = await this.userRepo.findOne({ where: { id: user.id } });
+
     const product = new Product();
     product.sku = sku;
     product.slug = slug;
@@ -127,6 +129,7 @@ export class ProductRepository extends Repository<Product> {
     // Create and associate stocks
     if (combinations && combinations?.length > 0) {
       let qty = 0;
+      const pd = await this.findOne({ where: { id: product.id } });
       const stocksData = await Promise.all(
         combinations?.map(async (vd) => {
           const stQty = vd.quantity;
@@ -136,13 +139,17 @@ export class ProductRepository extends Repository<Product> {
           stockDto.prices = vd.prices || prices;
           stockDto.translations = translations;
           stockDto.quantity = stQty;
-          stockDto.product = product;
+          stockDto.product = pd;
           qty = qty + stQty;
+          console.log('create stock sku started ', stockDto.sku);
           const stock = await this.stRepo.createStock(stockDto, user);
+          console.log('create stock sku finished ', stockDto.sku);
           return stock;
         }),
       );
+      console.log('product save qty');
       product.quantity = qty;
+      console.log('product save std');
       product.stocks = stocksData;
     }
     console.log('product save 4');
