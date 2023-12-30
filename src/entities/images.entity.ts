@@ -18,20 +18,31 @@ export class Images extends BaseEntity {
   @Column()
   url: string;
 
-  @ManyToOne(() => Category, (cat) => cat.images, { nullable: true })
+  @ManyToOne(() => Category, (cat) => cat.images, {
+    nullable: true,
+    cascade: true,
+  })
   @JoinColumn({ name: 'category_id' })
   categories: Category;
 
-  @ManyToOne(() => Product, (prod) => prod.images, { nullable: true })
+  @ManyToOne(() => Product, (prod) => prod.images, {
+    nullable: true,
+    cascade: true,
+  })
   @JoinColumn({ name: 'product_id' })
   products: any;
 
-  @ManyToOne(() => Stock, (prod) => prod.images, { nullable: true })
+  @ManyToOne(() => Stock, (prod) => prod.images, {
+    nullable: true,
+    cascade: true,
+  })
   @JoinColumn({ name: 'stock_id' })
   stocks: any;
 
-  @ManyToOne(() => Catalog, (cat) => cat.images, { nullable: true })
+  @ManyToOne(() => Catalog, (cat) => cat.images, {
+    nullable: true,
+    cascade: true,
+  })
   @JoinColumn({ name: 'catalog_id' })
   catalogs: Catalog;
-
 }

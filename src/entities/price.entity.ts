@@ -23,11 +23,11 @@ export class Price extends BaseEntity {
   @JoinColumn({ name: 'currency_id' })
   currency: Currency;
 
-  @ManyToOne(() => Stock, (st) => st.price, { nullable: true })
+  @ManyToOne(() => Stock, (st) => st.price, { nullable: true, cascade: true })
   @JoinColumn({ name: 'stock_id' })
   stock: Stock;
 
-  @ManyToOne(() => Product, (pd) => pd.price, { nullable: true })
+  @ManyToOne(() => Product, (pd) => pd.price, { nullable: true, cascade: true })
   @JoinColumn({ name: 'product_id' })
   product: Product;
 

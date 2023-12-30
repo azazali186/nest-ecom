@@ -39,12 +39,14 @@ export class Translations extends BaseEntity {
 
   @ManyToOne(() => Category, (category) => category.translations, {
     nullable: true,
+    cascade: true,
   })
   @JoinColumn({ name: 'category_id' })
   categories: Category;
 
   @ManyToOne(() => Product, (product) => product.translations, {
     nullable: true,
+    cascade: true,
   })
   @JoinColumn({ name: 'product_id' })
   products: Product;
@@ -55,12 +57,14 @@ export class Translations extends BaseEntity {
 
   @ManyToOne(() => Catalog, (category) => category.translations, {
     nullable: true,
+    cascade: true,
   })
   @JoinColumn({ name: 'catalog_id' })
   catalogs: Catalog;
 
   @ManyToOne(() => ProductFeature, (pf) => pf.translations, {
     nullable: true,
+    cascade: true,
   })
   @JoinColumn({ name: 'product_feature_id' })
   product_feature: ProductFeature;

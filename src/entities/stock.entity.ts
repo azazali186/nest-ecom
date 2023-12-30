@@ -50,18 +50,18 @@ export class Stock extends BaseEntity {
   @Column({ default: 1 })
   quantity: number;
 
-  @ManyToOne(() => Product)
+  @ManyToOne(() => Product, { cascade: true })
   @JoinColumn({ name: 'product_id' })
   products: Product;
 
   @Column({ type: 'timestamp', default: () => 'CURRENT_TIMESTAMP' })
   created_at: Date;
 
-  @ManyToOne(() => User, { nullable: true })
+  @ManyToOne(() => User, { nullable: true, cascade: false })
   @JoinColumn({ name: 'created_by_id' })
   created_by: User | null;
 
-  @ManyToOne(() => User, { nullable: true })
+  @ManyToOne(() => User, { nullable: true, cascade: false })
   @JoinColumn({ name: 'updated_by_id' })
   updated_by: User | null;
 
