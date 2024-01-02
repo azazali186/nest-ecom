@@ -171,7 +171,8 @@ export class MemberRepository extends Repository<User> {
       });
     }
 
-    const { password, name, username, mobileNumber, status } = updateDto;
+    const { password, name, username, mobileNumber, status, telegram_id } =
+      updateDto;
 
     // If a new password is provided, hash it
     if (password) {
@@ -207,6 +208,10 @@ export class MemberRepository extends Repository<User> {
       userToUpdate.mobile_number = mobileNumber;
     }
 
+    if (telegram_id) {
+      userToUpdate.telegram_id = telegram_id;
+    }
+
     userToUpdate.updated_by = await this.userRepository.findOne({
       where: { id: user.id },
       select: {
@@ -226,7 +231,7 @@ export class MemberRepository extends Repository<User> {
   }
 
   async createMember(createDto: CreateMemberDto, userId: number) {
-    const { name, password, username, mobileNumber } = createDto;
+    const { name, password, username, mobileNumber, telegram_id } = createDto;
 
     const oldUserByEmail = await this.userRepository.findOne({
       where: {
@@ -265,6 +270,7 @@ export class MemberRepository extends Repository<User> {
       mobile_number: mobileNumber,
       roles: role,
       created_by: createdByUser,
+      telegram_id: telegram_id,
     });
 
     await this.userRepository.save(user);

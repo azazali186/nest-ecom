@@ -1,4 +1,8 @@
-import { ApiHideProperty, ApiProperty } from '@nestjs/swagger';
+import {
+  ApiHideProperty,
+  ApiProperty,
+  ApiPropertyOptional,
+} from '@nestjs/swagger';
 import {
   IsNotEmpty,
   IsString,
@@ -16,6 +20,12 @@ export class CreateMemberDto {
     message: 'NAME_IS REQUIRED',
   })
   name: string;
+
+  @ApiPropertyOptional()
+  @IsString({
+    message: 'INVALID_TELEGRAM_ID',
+  })
+  telegram_id: string;
 
   @ApiProperty()
   @IsString({

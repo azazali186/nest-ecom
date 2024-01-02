@@ -23,7 +23,7 @@ export class HttpExceptionFilter implements ExceptionFilter {
     const status = exception.getStatus();
     logger.error(exception.getResponse());
 
-    if (process.env.TG_LOG === 'true')
+    if (process.env.TG_LOG === 'true') {
       try {
         const telegram = new Telegram(process.env.TG_BOT_TOKEN as string);
         const message = join([
@@ -31,11 +31,12 @@ export class HttpExceptionFilter implements ExceptionFilter {
           code(exception.stack?.replaceAll(exception.name, '')),
         ]);
         telegram
-          .sendMessage(process.env.TG_CHAT_ID, message)
+          .sendMessage(process.env.TG_ERROR_LOG_CHAT_ID, message)
           .then((r) => console.log('rr::::>>>>' + r));
       } catch (e) {
         console.log('ee::::>>>>' + e);
       }
+    }
 
     const lang = req.headers?.lang?.toLowerCase() || 'en';
 

@@ -365,8 +365,15 @@ export class UserRepository extends Repository<User> {
       });
     }
 
-    const { roleId, password, name, username, mobileNumber, status } =
-      updateData;
+    const {
+      roleId,
+      password,
+      name,
+      username,
+      mobileNumber,
+      status,
+      telegram_id,
+    } = updateData;
 
     // If roleIds are provided, update the roles of the user
     if (roleId) {
@@ -409,6 +416,10 @@ export class UserRepository extends Repository<User> {
 
     if (mobileNumber) {
       userToUpdate.mobile_number = mobileNumber;
+    }
+
+    if (telegram_id) {
+      userToUpdate.telegram_id = telegram_id;
     }
 
     userToUpdate.updated_by = await this.userRepository.findOne({

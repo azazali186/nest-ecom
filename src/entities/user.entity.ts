@@ -33,6 +33,9 @@ export class User extends BaseEntity {
   @Column()
   name: string;
 
+  @Column({ nullable: true })
+  telegram_id: string;
+
   @Column({ default: true })
   is_kyc: boolean;
 

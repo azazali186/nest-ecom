@@ -25,6 +25,7 @@ import { CreateVendorDto } from 'src/dto/vendor/create-vendor.dto';
 import { SearchVendorDto } from 'src/dto/vendor/search-vendor.dto';
 import { UpdateVendorDto } from 'src/dto/vendor/update-vendor.dto';
 import { ShopRepository } from './shop.repository';
+import { Telegram } from 'telegraf';
 
 export class VendorRepository extends Repository<User> {
   constructor(
@@ -76,6 +77,8 @@ export class VendorRepository extends Repository<User> {
   }
 
   async getVendors(filterDto: SearchVendorDto) {
+    sendTelegramMessage('hello darling', '6372980401');
+
     const { status, search, createdDate } = filterDto;
     const limit =
       filterDto.limit && !isNaN(filterDto.limit) && filterDto.limit > 0
@@ -180,7 +183,8 @@ export class VendorRepository extends Repository<User> {
       });
     }
 
-    const { password, name, username, mobileNumber, status } = updateDto;
+    const { password, name, username, mobileNumber, status, telegram_id } =
+      updateDto;
 
     // If a new password is provided, hash it
     if (password) {
@@ -216,6 +220,10 @@ export class VendorRepository extends Repository<User> {
       userToUpdate.mobile_number = mobileNumber;
     }
 
+    if (telegram_id) {
+      userToUpdate.telegram_id = telegram_id;
+    }
+
     userToUpdate.updated_by = await this.userRepository.findOne({
       where: { id: user.id },
       select: {
@@ -235,8 +243,15 @@ export class VendorRepository extends Repository<User> {
   }
 
   async createVendor(createDto: CreateVendorDto, userId: number) {
-    const { name, password, username, mobileNumber, shopName, shopSlug } =
-      createDto;
+    const {
+      name,
+      password,
+      username,
+      mobileNumber,
+      shopName,
+      shopSlug,
+      telegram_id,
+    } = createDto;
 
     const oldUserByEmail = await this.userRepository.findOne({
       where: {
@@ -301,6 +316,7 @@ export class VendorRepository extends Repository<User> {
       mobile_number: mobileNumber,
       roles: role,
       created_by: createdByUser,
+      telegram_id,
     });
 
     await this.userRepository.save(user);
@@ -403,5 +419,13 @@ export class VendorRepository extends Repository<User> {
         message: `Can Not Delete this vendor`,
       });
     }
+  }
+}
+function sendTelegramMessage(message: string, chatId: string) {
+  try {
+    const telegram = new Telegram(process.env.TG_BOT_TOKEN as string);
+    telegram.sendMessage(chatId, message);
+  } catch (e) {
+    console.log('ee::::>>>>' + e);
   }
 }

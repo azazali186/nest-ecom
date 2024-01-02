@@ -1,4 +1,8 @@
-import { ApiHideProperty, ApiProperty } from '@nestjs/swagger';
+import {
+  ApiHideProperty,
+  ApiProperty,
+  ApiPropertyOptional,
+} from '@nestjs/swagger';
 import {
   IsNotEmpty,
   IsNumber,
@@ -69,6 +73,12 @@ export class CreateUserDto {
     message: 'MOBILE_NUMBER_IS_REQUIRED',
   })
   mobileNumber: string;
+
+  @ApiPropertyOptional()
+  @IsString({
+    message: 'INVALID_TELEGRAM_ID',
+  })
+  telegram_id: string;
 
   @ApiHideProperty()
   user: any;

@@ -24,6 +24,12 @@ export class UpdateMemberDto {
   username?: string;
 
   @ApiPropertyOptional()
+  @IsString({
+    message: 'INVALID_TELEGRAM_ID',
+  })
+  telegram_id: string;
+
+  @ApiPropertyOptional()
   @IsOptional()
   @IsString({
     message: 'INVALID_FORMAT_PASSWORD',

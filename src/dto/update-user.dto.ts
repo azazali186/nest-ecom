@@ -69,6 +69,12 @@ export class UpdateUserDto {
   })
   status: UserStatus;
 
+  @ApiPropertyOptional()
+  @IsString({
+    message: 'INVALID_TELEGRAM_ID',
+  })
+  telegram_id: string;
+
   @ApiHideProperty()
   user: any;
 }
