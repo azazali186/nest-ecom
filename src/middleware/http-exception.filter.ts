@@ -9,6 +9,8 @@ import { Response } from 'express';
 import logger from 'src/utils/logger';
 import { ApiResponse } from 'src/utils/response.util';
 import { LangService } from 'src/services/lang.service';
+import { Telegram } from 'telegraf';
+import { bold, code, join, underline } from 'telegraf/format';
 
 @Catch(HttpException)
 @Injectable()
@@ -20,6 +22,21 @@ export class HttpExceptionFilter implements ExceptionFilter {
     const req = ctx.getRequest<any>();
     const status = exception.getStatus();
     logger.error(exception.getResponse());
+
+    if (process.env.TG_LOG === 'true')
+      try {
+        const telegram = new Telegram(process.env.TG_BOT_TOKEN as string);
+        const message = join([
+          bold(underline(exception.name)),
+          code(exception.stack?.replaceAll(exception.name, '')),
+        ]);
+        telegram
+          .sendMessage(process.env.TG_CHAT_ID, message)
+          .then((r) => console.log('rr::::>>>>' + r));
+      } catch (e) {
+        console.log('ee::::>>>>' + e);
+      }
+
     const lang = req.headers?.lang?.toLowerCase() || 'en';
 
     let errorResponse: any; // Define a variable to store the error response
