@@ -58,6 +58,11 @@ export class VendorController {
     return this.vendorService.changePassword(changePasswordDto);
   }
 
+  @Get('slug/:slug')
+  findSlug(@Param('slug') slug: string) {
+    return this.vendorService.findSlug(slug);
+  }
+
   @Patch(':id')
   updateVendor(
     @Param('id') id: number,

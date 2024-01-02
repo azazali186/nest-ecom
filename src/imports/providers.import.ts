@@ -19,6 +19,7 @@ import { ProductInterationRepository } from 'src/repositories/product-interactio
 import { ProductRepository } from 'src/repositories/product.repository';
 import { RoleRepository } from 'src/repositories/role.repository';
 import { SessionRepository } from 'src/repositories/session.repository';
+import { ShopRepository } from 'src/repositories/shop.repository';
 import { StockRepository } from 'src/repositories/stock.repository';
 import { TagRepository } from 'src/repositories/tag.repository';
 import { TranslationsRepository } from 'src/repositories/translation.repository';
@@ -109,4 +110,5 @@ export const ImportProviders = [
   MemberRepository,
   VendorService,
   VendorRepository,
+  ShopRepository,
 ];

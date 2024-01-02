@@ -41,7 +41,7 @@ export class ProductFeatureRepository extends Repository<ProductFeature> {
 
       return pf;
     } catch (error) {
-      console.log('Error while creation features');
+      console.log('Error while creation features', error);
     }
   }
 

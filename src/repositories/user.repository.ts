@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import { In, IsNull, Like, Repository } from 'typeorm';
+import { In, IsNull, Like, Not, Repository } from 'typeorm';
 import { AES, enc } from 'crypto-js';
 import { InjectRepository } from '@nestjs/typeorm';
 import {
@@ -426,7 +426,14 @@ export class UserRepository extends Repository<User> {
     const { name, password, username, roleId, mobileNumber } = createUserDto;
 
     const oldUserByEmail = await this.userRepository.findOne({
-      where: { username: username },
+      where: {
+        username: username,
+        roles: {
+          name: Not(
+            In([process.env.MEMBER_ROLE_NAME, process.env.VENDOR_ROLE_NAME]),
+          ),
+        },
+      },
     });
 
     if (oldUserByEmail) {

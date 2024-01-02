@@ -8,7 +8,6 @@ import { UpdateFeaturesDto } from 'src/dto/product/update-features.dto';
 import { UpdateProductDto } from 'src/dto/product/update-product.dto';
 import { ProductRepository } from 'src/repositories/product.repository';
 import { ApiResponse } from 'src/utils/response.util';
-import { Like } from 'typeorm';
 
 @Injectable()
 export class ProductService {
@@ -43,25 +42,25 @@ export class ProductService {
     return this.prodRepo.updateSeo(id, req, user);
   }
 
-  findSlug(slug: string) {
-    const data = this.prodRepo.find({
+  async findSlug(slug: string) {
+    const data = await this.prodRepo.find({
       select: {
         slug: true,
       },
       where: {
-        slug: Like('%' + slug + '%'),
+        slug: slug,
       },
     });
 
     return ApiResponse.success(data, 200);
   }
-  findSku(sku: string) {
-    const data = this.prodRepo.find({
+  async findSku(sku: string) {
+    const data = await this.prodRepo.find({
       select: {
         sku: true,
       },
       where: {
-        sku: Like('%' + sku + '%'),
+        sku: sku,
       },
     });
 

@@ -9,6 +9,7 @@ import { UpdateVendorDto } from 'src/dto/vendor/update-vendor.dto';
 import { SearchUserDto } from 'src/dto/search-user.dto';
 import { UpdateUserDto } from 'src/dto/update-user.dto';
 import { VendorRepository } from 'src/repositories/vendor.repository';
+import { ApiResponse } from 'src/utils/response.util';
 
 @Injectable()
 export class VendorService {
@@ -64,5 +65,23 @@ export class VendorService {
 
   changePassword(dtoReq: ChangePasswordDto) {
     return this.vendorRepository.changePassword(dtoReq);
+  }
+
+  async findSlug(slug: string) {
+    const data = await this.vendorRepository.find({
+      select: {
+        id: true,
+      },
+      relations: {
+        shop: true,
+      },
+      where: {
+        shop: {
+          slug: slug,
+        },
+      },
+    });
+
+    return ApiResponse.success(data, 200);
   }
 }

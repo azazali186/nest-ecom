@@ -101,8 +101,6 @@ export class ProductRepository extends Repository<Product> {
 
     await this.prodRepo.save(product);
 
-    console.log('product save 1');
-
     const pricesData = await Promise.all(
       prices?.map(async (priceDto: PriceDto) => {
         const data = await this.prRepo.createProductPrice(priceDto, product);
@@ -110,7 +108,6 @@ export class ProductRepository extends Repository<Product> {
       }),
     );
     product.price = pricesData;
-    console.log('product save 2');
 
     let variationData = [];
     // Create and associate variations
@@ -124,7 +121,6 @@ export class ProductRepository extends Repository<Product> {
       variationData = varData.flat();
       product.variations = variationData;
     }
-    console.log('product save 3');
 
     // Create and associate stocks
     if (combinations && combinations?.length > 0) {
@@ -141,18 +137,13 @@ export class ProductRepository extends Repository<Product> {
           stockDto.quantity = stQty;
           stockDto.product = pd;
           qty = qty + stQty;
-          console.log('create stock sku started ', stockDto.sku);
           const stock = await this.stRepo.createStock(stockDto, user);
-          console.log('create stock sku finished ', stockDto.sku);
           return stock;
         }),
       );
-      console.log('product save qty');
       product.quantity = qty;
-      console.log('product save std');
       product.stocks = stocksData;
     }
-    console.log('product save 4');
 
     // Create and associate translations
     const translationsData = await Promise.all(
@@ -166,7 +157,6 @@ export class ProductRepository extends Repository<Product> {
       }),
     );
     product.translations = translationsData;
-    console.log('product save 5');
 
     if (images && images?.length > 0) {
       const imagesData = await Promise.all(
@@ -181,7 +171,6 @@ export class ProductRepository extends Repository<Product> {
       );
       product.images = imagesData;
     }
-    console.log('product save 6');
 
     if (features && features?.length > 0) {
       const featuresData = await Promise.all(
@@ -194,7 +183,6 @@ export class ProductRepository extends Repository<Product> {
     }
 
     this.prodRepo.save(product);
-    console.log('product save 7');
 
     const jsonResponse = CircularJSON.stringify({
       product,

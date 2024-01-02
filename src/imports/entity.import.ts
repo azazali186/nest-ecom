@@ -14,6 +14,7 @@ import { ProductInteraction } from 'src/entities/product-interaction.entity';
 import { Product } from 'src/entities/product.entity';
 import { Role } from 'src/entities/role.entity';
 import { Session } from 'src/entities/session.entity';
+import { Shop } from 'src/entities/shop.entity';
 import { Stock } from 'src/entities/stock.entity';
 import { Tag } from 'src/entities/tag.entity';
 import { Translations } from 'src/entities/translation.entity';
@@ -43,4 +44,5 @@ export const ImportEntities = [
   Variation,
   Cart,
   Tag,
+  Shop,
 ];

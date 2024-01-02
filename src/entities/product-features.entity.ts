@@ -16,7 +16,7 @@ export class ProductFeature extends BaseEntity {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @Column({ name: 'type' })
+  @Column({ name: 'type', default: 'product' })
   type: string;
 
   @ManyToOne(() => Product, (pd) => pd.features, { nullable: true })

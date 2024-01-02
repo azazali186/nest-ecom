@@ -13,6 +13,7 @@ import { Role } from './role.entity';
 import { Session } from './session.entity';
 import { UserStatus } from '../enum/user-status.enum';
 import { Exclude, Expose } from 'class-transformer';
+import { Shop } from './shop.entity';
 
 @Entity('users')
 export class User extends BaseEntity {
@@ -73,6 +74,10 @@ export class User extends BaseEntity {
   @JoinColumn({ name: 'roles_id' })
   // @Transform(({ value }) => value.name)
   roles: Role;
+
+  @OneToOne(() => Shop, (shop) => shop.vendor, { nullable: true })
+  // @Transform(({ value }) => value.name)
+  shop: Shop | null;
 
   @OneToMany(() => Session, (session) => session.user)
   sessions: Session[];

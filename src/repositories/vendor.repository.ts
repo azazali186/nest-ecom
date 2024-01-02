@@ -5,8 +5,10 @@ import { InjectRepository } from '@nestjs/typeorm';
 import {
   BadRequestException,
   ConflictException,
+  Inject,
   NotFoundException,
   UnauthorizedException,
+  forwardRef,
 } from '@nestjs/common';
 import { User } from 'src/entities/user.entity';
 import { JwtService } from '@nestjs/jwt';
@@ -22,6 +24,7 @@ import { ChangePasswordDto } from 'src/dto/change-password.dto';
 import { CreateVendorDto } from 'src/dto/vendor/create-vendor.dto';
 import { SearchVendorDto } from 'src/dto/vendor/search-vendor.dto';
 import { UpdateVendorDto } from 'src/dto/vendor/update-vendor.dto';
+import { ShopRepository } from './shop.repository';
 
 export class VendorRepository extends Repository<User> {
   constructor(
@@ -35,6 +38,10 @@ export class VendorRepository extends Repository<User> {
     public sessionRepository: SessionRepository,
     @InjectRepository(AdminPageRepository)
     public apRepo: AdminPageRepository,
+
+    @Inject(forwardRef(() => ShopRepository))
+    private shopRepo: ShopRepository,
+
     private jwtService: JwtService,
     private langService: LangService,
   ) {
@@ -103,6 +110,7 @@ export class VendorRepository extends Repository<User> {
 
     query
       .leftJoinAndSelect('user.roles', 'roles')
+      .leftJoinAndSelect('user.shop', 'shop')
       .leftJoinAndSelect('user.updated_by', 'updated_by')
       .leftJoinAndSelect('user.created_by', 'created_by')
       .select([
@@ -118,6 +126,7 @@ export class VendorRepository extends Repository<User> {
         'updated_by.username',
         'user.mobile_number',
         'roles.name',
+        'shop',
       ])
       .skip(filterDto.offset)
       .take(filterDto.limit)
@@ -219,10 +228,16 @@ export class VendorRepository extends Repository<User> {
   }
 
   async createVendor(createDto: CreateVendorDto, userId: number) {
-    const { name, password, username, mobileNumber } = createDto;
+    const { name, password, username, mobileNumber, shopName, shopSlug } =
+      createDto;
 
     const oldUserByEmail = await this.userRepository.findOne({
-      where: { username: username },
+      where: {
+        username: username,
+        roles: {
+          name: process.env.VENDOR_ROLE_NAME,
+        },
+      },
     });
 
     if (oldUserByEmail) {
@@ -230,6 +245,32 @@ export class VendorRepository extends Repository<User> {
         statusCode: 409,
         message: `USER_EXIST`,
         param: username,
+      });
+    }
+
+    const oldShopName = await this.shopRepo.findOne({
+      where: { name: shopName },
+    });
+
+    console.log(oldShopName);
+
+    if (oldShopName) {
+      throw new ConflictException({
+        statusCode: 409,
+        message: `SHOP_NAME_EXIST`,
+        param: shopName,
+      });
+    }
+
+    const oldShopSlug = await this.shopRepo.findOne({
+      where: { slug: shopSlug },
+    });
+
+    if (oldShopSlug) {
+      throw new ConflictException({
+        statusCode: 409,
+        message: `SHOP_SLUG_EXIST`,
+        param: shopSlug,
       });
     }
 
@@ -256,6 +297,17 @@ export class VendorRepository extends Repository<User> {
     });
 
     await this.userRepository.save(user);
+
+    const shop = this.shopRepo.create({
+      name: shopName,
+      slug: shopSlug,
+      vendor: user,
+    });
+
+    await this.shopRepo.save(shop);
+
+    user.shop = shop;
+    await user.save();
 
     return ApiResponse.success(
       null,

@@ -222,7 +222,12 @@ export class MemberRepository extends Repository<User> {
     const { name, password, username, mobileNumber } = createDto;
 
     const oldUserByEmail = await this.userRepository.findOne({
-      where: { username: username },
+      where: {
+        username: username,
+        roles: {
+          name: process.env.MEMBER_ROLE_NAME,
+        },
+      },
     });
 
     if (oldUserByEmail) {

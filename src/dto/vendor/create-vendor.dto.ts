@@ -24,9 +24,6 @@ export class CreateVendorDto {
   @MaxLength(20, {
     message: 'MAX_LENGTH_USERNAME_ERROR',
   })
-  @Matches(/^[A-Za-z0-9]+$/, {
-    message: 'INVALID_FORMAT_USERNAME',
-  })
   @IsNotEmpty({
     message: 'USERNAME_IS REQUIRED',
   })
@@ -61,6 +58,24 @@ export class CreateVendorDto {
     message: 'MOBILE_NUMBER_IS_REQUIRED',
   })
   mobileNumber: string;
+
+  @ApiProperty()
+  @IsString({
+    message: 'SHOP_NAME_IS_REQUIRED',
+  })
+  @IsNotEmpty({
+    message: 'SHOP_NAME_IS_REQUIRED',
+  })
+  shopName: string;
+
+  @ApiProperty()
+  @IsString({
+    message: 'SHOP_SLUG_IS_REQUIRED',
+  })
+  @IsNotEmpty({
+    message: 'SHOP_SLUG_IS_REQUIRED',
+  })
+  shopSlug: string;
 
   @ApiHideProperty()
   user: any;
