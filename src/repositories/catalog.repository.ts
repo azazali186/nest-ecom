@@ -9,6 +9,7 @@ import { ProductRepository } from './product.repository';
 import { TranslationsRepository } from './translation.repository';
 import { ImagesRepository } from './image.repository';
 import { ApiResponse } from 'src/utils/response.util';
+import { UserRepository } from './user.repository';
 
 export class CatalogRepository extends Repository<Catalog> {
   constructor(
@@ -23,6 +24,9 @@ export class CatalogRepository extends Repository<Catalog> {
 
     @Inject(forwardRef(() => ImagesRepository))
     private imgRepo: ImagesRepository,
+
+    @Inject(forwardRef(() => UserRepository))
+    private userRepo: UserRepository,
   ) {
     super(cpRepo.target, cpRepo.manager, cpRepo.queryRunner);
   }
@@ -32,7 +36,14 @@ export class CatalogRepository extends Repository<Catalog> {
 
     const cat = new Catalog();
 
-    cat.created_by = user;
+    cat.created_by = await this.userRepo.findOne({
+      where: { id: user.id },
+      select: {
+        id: true,
+        username: true,
+        name: true,
+      },
+    });
     cat.code = code;
 
     cat.products = await this.prodRepo.find({
@@ -128,7 +139,14 @@ export class CatalogRepository extends Repository<Catalog> {
 
     const cat = await Catalog.findOne({ where: { id: id } });
 
-    cat.created_by = user;
+    cat.created_by = await this.userRepo.findOne({
+      where: { id: user.id },
+      select: {
+        id: true,
+        username: true,
+        name: true,
+      },
+    });
 
     if (code) {
       cat.code = code;

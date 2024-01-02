@@ -1,4 +1,4 @@
-import { NotFoundException } from '@nestjs/common';
+import { Inject, NotFoundException, forwardRef } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { CreateRoleDto } from 'src/dto/create-role.dto';
 import { UpdateRoleDto } from 'src/dto/update-role.dto';
@@ -10,15 +10,22 @@ import { ApiResponse } from 'src/utils/response.util';
 import { SearchRoleDto } from 'src/dto/search-role.dto';
 import { LangService } from 'src/services/lang.service';
 import { splitDateRange } from '../utils/helper.utils';
+import { UserRepository } from './user.repository';
 
 export class RoleRepository extends Repository<Role> {
   constructor(
     @InjectRepository(Role)
     private roleRepository: Repository<Role>,
+
     @InjectRepository(AdminPageRepository)
     public apRepo: AdminPageRepository,
+
     @InjectRepository(PermissionRepository)
     public peramRepo: PermissionRepository,
+
+    @Inject(forwardRef(() => UserRepository))
+    private userRepo: UserRepository,
+
     private langService: LangService,
   ) {
     super(
@@ -46,7 +53,14 @@ export class RoleRepository extends Repository<Role> {
     const role = new Role();
     role.name = name;
     role.description = description;
-    role.created_by = user;
+    role.created_by = await this.userRepo.findOne({
+      where: { id: user.id },
+      select: {
+        id: true,
+        username: true,
+        name: true,
+      },
+    });
 
     const rolePermissions = new Set<number>();
 

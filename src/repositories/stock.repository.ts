@@ -10,6 +10,7 @@ import { PriceRepository } from './price.repository';
 import { PriceDto } from 'src/dto/stock/price.dto';
 import { UpdatePriceDto } from 'src/dto/stock/update-price.dto';
 import { Variation } from 'src/entities/variations.entity';
+import { UserRepository } from './user.repository';
 
 export class StockRepository extends Repository<Stock> {
   constructor(
@@ -24,6 +25,9 @@ export class StockRepository extends Repository<Stock> {
 
     @Inject(forwardRef(() => PriceRepository))
     private prRepo: PriceRepository,
+
+    @Inject(forwardRef(() => UserRepository))
+    private userRepo: UserRepository,
   ) {
     super(stRepo.target, stRepo.manager, stRepo.queryRunner);
   }
@@ -37,7 +41,14 @@ export class StockRepository extends Repository<Stock> {
     const stock = new Stock();
     stock.sku = sku;
     stock.quantity = quantity;
-    stock.created_by = user;
+    stock.created_by = await this.userRepo.findOne({
+      where: { id: user.id },
+      select: {
+        id: true,
+        username: true,
+        name: true,
+      },
+    });
     stock.products = product;
 
     console.log('stock sku ', sku);
@@ -111,7 +122,14 @@ export class StockRepository extends Repository<Stock> {
       if (quantity) {
         stock.quantity = quantity;
       }
-      stock.updated_by = user;
+      stock.updated_by = await this.userRepo.findOne({
+        where: { id: user.id },
+        select: {
+          id: true,
+          username: true,
+          name: true,
+        },
+      });
 
       // Save the updated stock entry
       await this.stRepo.save(stock);

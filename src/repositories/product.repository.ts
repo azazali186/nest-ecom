@@ -90,7 +90,14 @@ export class ProductRepository extends Repository<Product> {
     product.sku = sku;
     product.slug = slug;
     product.quantity = quantity;
-    product.created_by = user;
+    product.created_by = await this.userRepo.findOne({
+      where: { id: user.id },
+      select: {
+        id: true,
+        username: true,
+        name: true,
+      },
+    });
 
     if (categoryIds.length > 0) {
       const categories = await this.catRepo.find({
@@ -607,7 +614,14 @@ export class ProductRepository extends Repository<Product> {
       await product.save();
     }
 
-    product.updated_by = user;
+    product.updated_by = await this.userRepo.findOne({
+      where: { id: user.id },
+      select: {
+        id: true,
+        username: true,
+        name: true,
+      },
+    });
 
     await product.save();
 
@@ -633,7 +647,14 @@ export class ProductRepository extends Repository<Product> {
       );
       product.features = featuresData;
     }
-    product.updated_by = user;
+    product.updated_by = await this.userRepo.findOne({
+      where: { id: user.id },
+      select: {
+        id: true,
+        username: true,
+        name: true,
+      },
+    });
 
     await product.save();
 

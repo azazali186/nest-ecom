@@ -411,7 +411,14 @@ export class UserRepository extends Repository<User> {
       userToUpdate.mobile_number = mobileNumber;
     }
 
-    userToUpdate.updated_by = user;
+    userToUpdate.updated_by = await this.userRepository.findOne({
+      where: { id: user.id },
+      select: {
+        id: true,
+        username: true,
+        name: true,
+      },
+    });
 
     await this.userRepository.save(userToUpdate);
 
