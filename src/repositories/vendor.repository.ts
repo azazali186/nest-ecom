@@ -19,7 +19,7 @@ import { AdminPageRepository } from './admin-page.repository';
 import { ApiResponse } from 'src/utils/response.util';
 import { LangService } from 'src/services/lang.service';
 import { UserStatus } from 'src/enum/user-status.enum';
-import { splitDateRange } from '../utils/helper.utils';
+import { sendTelegramMessage, splitDateRange } from '../utils/helper.utils';
 import { ChangePasswordDto } from 'src/dto/change-password.dto';
 import { CreateVendorDto } from 'src/dto/vendor/create-vendor.dto';
 import { SearchVendorDto } from 'src/dto/vendor/search-vendor.dto';
@@ -77,8 +77,6 @@ export class VendorRepository extends Repository<User> {
   }
 
   async getVendors(filterDto: SearchVendorDto) {
-    sendTelegramMessage('hello darling', '6372980401');
-
     const { status, search, createdDate } = filterDto;
     const limit =
       filterDto.limit && !isNaN(filterDto.limit) && filterDto.limit > 0
@@ -419,13 +417,5 @@ export class VendorRepository extends Repository<User> {
         message: `Can Not Delete this vendor`,
       });
     }
-  }
-}
-function sendTelegramMessage(message: string, chatId: string) {
-  try {
-    const telegram = new Telegram(process.env.TG_BOT_TOKEN as string);
-    telegram.sendMessage(chatId, message);
-  } catch (e) {
-    console.log('ee::::>>>>' + e);
   }
 }

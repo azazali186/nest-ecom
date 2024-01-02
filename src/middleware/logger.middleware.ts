@@ -9,6 +9,7 @@ import { getClientIpUtil } from 'src/utils/get-client-ip.util';
 import {
   EXCLUDED_ROUTES,
   getPermissionNameFromRoute,
+  sendTelegramMessage,
 } from 'src/utils/helper.utils';
 import * as morgan from 'morgan';
 import { ElasticService } from 'src/services/elastic.service';
@@ -55,6 +56,15 @@ export class LoggerMiddleware implements NestMiddleware {
       } catch (error) {
         console.log('error while creating log elk');
       }
+      const message = `API NAME: ${action}\nAPI REQUEST PARAMS: ${JSON.stringify(
+        reqBody,
+        null,
+        2,
+      )}\nREQUEST TIME: ${new Date()}`;
+      sendTelegramMessage(
+        message,
+        process.env.TG_API_CALL_LOG_GROUP || '-4057247984',
+      );
       return JSON.stringify(log);
     }
     return ''; // Return an empty string if the request is an OPTIONS request

@@ -3,6 +3,7 @@ import { format } from 'date-fns';
 import { BadRequestException } from '@nestjs/common';
 import { MediaTypeEnum } from 'src/enum/media-type.enum';
 import { User } from 'src/entities/user.entity';
+import { Telegram } from 'telegraf';
 
 export function getPermissionNameFromRoute(
   path: string,
@@ -210,4 +211,13 @@ export const getCustomUserResponse = (user: User): Record<string, any> => {
     roles_id: user.roles_id,
     status: user.status,
   };
+};
+
+export const sendTelegramMessage = (message: string, chatId: string) => {
+  try {
+    const telegram = new Telegram(process.env.TG_BOT_TOKEN as string);
+    telegram.sendMessage(chatId, message);
+  } catch (e) {
+    console.log('ee::::>>>>' + e);
+  }
 };
