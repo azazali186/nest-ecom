@@ -61,10 +61,10 @@ export class LoggerMiddleware implements NestMiddleware {
         null,
         2,
       )}\nREQUEST TIME: ${new Date()}`;
-      sendTelegramMessage(
+      /* sendTelegramMessage(
         message,
         process.env.TG_API_CALL_LOG_GROUP || '-4057247984',
-      );
+      ); */
       return JSON.stringify(log);
     }
     return ''; // Return an empty string if the request is an OPTIONS request
