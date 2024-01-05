@@ -35,7 +35,7 @@ export class CatalogController {
   findOne(@Param('id') id: number) {
     return this.cpService.findOne(id);
   }
-  @Patch()
+  @Patch(':id')
   update(
     @Param('id') id: number,
     @Body(ValidationPipe) req: UpdateCatalogDto,
@@ -83,5 +83,4 @@ export class CatalogController {
   ) {
     return this.cpService.updateSeo(id, req, r.user);
   }
-
 }

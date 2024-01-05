@@ -1,13 +1,13 @@
-import { IsArray, IsString } from 'class-validator';
+import { IsArray } from 'class-validator';
 import { ApiHideProperty, ApiPropertyOptional } from '@nestjs/swagger';
 import { UpdateTranslationDto } from '../translation/update-translation.dto';
 import { ImagesDto } from '../images/image.dto';
 export class UpdateCategoryDto {
   @ApiPropertyOptional()
-  @IsString({
-    message: 'NAME_IS_STRING',
-  })
   name: string;
+
+  @ApiPropertyOptional()
+  slug: string;
 
   @ApiPropertyOptional()
   @IsArray({
@@ -16,9 +16,6 @@ export class UpdateCategoryDto {
   translations: UpdateTranslationDto[];
 
   @ApiPropertyOptional()
-  @IsArray({
-    message: 'IMAGES_IS_ARRAY',
-  })
   images: ImagesDto[];
 
   @ApiHideProperty()

@@ -46,32 +46,45 @@ export class CategoryRepository extends Repository<Category> {
 
       if (category) {
         // Update category properties
+        if(updateData.name)
         category.name = updateData.name;
+
+        if(updateData.slug)
+        category.slug = updateData.slug;
 
         // Update translations if provided
         if (updateData.translations) {
           category.translations = [];
           for (const tr of updateData.translations) {
-            const language = await this.langRepo.findOne({
-              where: { code: tr.language_code },
-            });
+            if (tr.id) {
+              const trData = await this.trRepo.findOne({
+                where: { id: tr.id },
+              });
+              trData.name = tr.name;
+              await trData.save();
+              category.translations.push(trData);
+            } else {
+              const language = await this.langRepo.findOne({
+                where: { code: tr.language_code },
+              });
 
-            if (!language) {
-              errors.push(`Language id ${tr.language_code} does not exist.`);
-              continue;
+              if (!language) {
+                errors.push(`Language id ${tr.language_code} does not exist.`);
+                continue;
+              }
+
+              const translation = new Translations();
+              translation.name = tr.name;
+
+              if (tr.description) {
+                translation.description = tr.description;
+              }
+
+              translation.language = language;
+
+              await this.trRepo.save(translation);
+              category.translations.push(translation);
             }
-
-            const translation = new Translations();
-            translation.name = tr.name;
-
-            if (tr.description) {
-              translation.description = tr.description;
-            }
-
-            translation.language = language;
-
-            await this.trRepo.save(translation);
-            category.translations.push(translation);
           }
         }
 
@@ -108,9 +121,10 @@ export class CategoryRepository extends Repository<Category> {
   }
   async createCategory(req: CreateCategoryDto) {
     try {
-      const { name, translations, images } = req;
+      const { name, translations, images, slug } = req;
       const cat = new Category();
       cat.name = name;
+      cat.slug = slug;
       await this.catRepo.save(cat);
 
       const errors = [];
@@ -211,6 +225,8 @@ export class CategoryRepository extends Repository<Category> {
     const [list, count] = await this.catRepo.findAndCount({
       select: {
         id: true,
+        name: true,
+        slug: true,
         translations: {
           id: true,
           name: true,
@@ -254,7 +270,8 @@ export class CategoryRepository extends Repository<Category> {
     return ApiResponse.success(data, 200, 'Success', error);
   }
 
-  async findAllCat() { // Update category properties
+  async findAllCat() {
+    // Update category properties
     const [list, count] = await this.catRepo.findAndCount({
       select: {
         id: true,

@@ -24,6 +24,9 @@ export class Category extends BaseEntity {
   @Column()
   name: string;
 
+  @Column({ unique: true, nullable: true, default: null })
+  slug: string;
+
   @ManyToMany(() => Product, (product) => product.categories, {
     nullable: true,
   })

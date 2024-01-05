@@ -16,6 +16,15 @@ export class CreateCategoryDto {
   })
   name: string;
 
+  @ApiProperty()
+  @IsString({
+    message: 'SLUG_IS_STRING',
+  })
+  @IsNotEmpty({
+    message: 'SLUG_IS_REQUIRED',
+  })
+  slug: string;
+
   @ApiProperty({ type: [CreateTranslationDto] })
   @IsNotEmpty({
     message: 'TRANSLATIONS_IS_REQUIRED',

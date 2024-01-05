@@ -35,7 +35,7 @@ export class AdminPageController {
   findOne(@Param('id') id: number) {
     return this.cpService.findOne(id);
   }
-  @Patch()
+  @Patch(':id')
   update(
     @Param('id') id: number,
     @Body(ValidationPipe) req: UpdateAdminPageDto,

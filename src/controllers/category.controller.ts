@@ -54,7 +54,7 @@ export class CategoryController {
   findOne(@Param('id') id: number) {
     return this.catService.findOne(id);
   }
-  @Patch()
+  @Patch(':id')
   update(
     @Param('id') id: number,
     @Body(ValidationPipe) req: UpdateCategoryDto,
