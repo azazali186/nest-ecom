@@ -10,7 +10,12 @@ import { TranslationsRepository } from './translation.repository';
 import { CategoryRepository } from './category.repository';
 import { ApiResponse } from 'src/utils/response.util';
 import { LangService } from 'src/services/lang.service';
-import { Inject, NotFoundException, forwardRef } from '@nestjs/common';
+import {
+  Inject,
+  NotFoundException,
+  UnauthorizedException,
+  forwardRef,
+} from '@nestjs/common';
 import { BulkProductUploadDto } from 'src/dto/product/bulk-product-upload.dto';
 import { ElasticService } from 'src/services/elastic.service';
 import { ProductInterationRepository } from './product-interaction.repository';
@@ -221,55 +226,60 @@ export class ProductRepository extends Repository<Product> {
   async getProductId(id: number, user: any): Promise<ApiResponse<Product>> {
     const lang = user?.lang || 'en';
     const currency = user?.currency || 'USD';
+    const query = this.createQueryBuilder('product');
 
-    let langWhere: any = true;
-    let curWhere: any = true;
+    const select = [
+      'product',
+      'stock',
+      'created_by.username',
+      'updated_by.username',
+      'stockVariation',
+      'currency',
+      'price',
+      'variations',
+      'translations',
+      'language',
+      'images',
+      'features',
+      'featuresTranslations',
+      'featuresLanguage',
+      'category',
+    ];
+    query.leftJoinAndSelect('product.stocks', 'stock');
+    query.leftJoinAndSelect('stock.price', 'price');
+    query.leftJoinAndSelect('product.created_by', 'created_by');
+    query.leftJoinAndSelect('product.updated_by', 'updated_by');
+    query.leftJoinAndSelect('stock.variations', 'stockVariation');
+    query.leftJoinAndSelect('price.currency', 'currency');
+    query.leftJoinAndSelect('product.variations', 'variations');
+
+    query.leftJoinAndSelect('product.translations', 'translations');
+    query.leftJoinAndSelect('translations.language', 'language');
+    query.leftJoinAndSelect('product.images', 'images');
+
+    query.leftJoinAndSelect('product.categories', 'category');
+    query.leftJoin('product.features', 'features');
+    query.leftJoin('features.translations', 'featuresTranslations');
+    query.leftJoin('featuresTranslations.language', 'featuresLanguage');
+    query.andWhere(' product.id = ' + id + ' ');
     if (user === null || user?.roles?.name == process.env.MEMBER_ROLE_NAME) {
-      langWhere = {
-        code: lang,
-      };
-      curWhere = {
-        code: currency,
-      };
+      query.andWhere(" currency.code = '" + currency + "'");
+      query.andWhere(" language.code = '" + lang + "'");
     }
 
-    const product = await this.prodRepo.findOne({
-      where: {
-        id,
-        translations: {
-          language: langWhere,
-        },
-        stocks: {
-          translations: {
-            language: langWhere,
-          },
-          price: {
-            currency: curWhere,
-          },
-        },
-      },
-      relations: [
-        'categories',
-        'stocks',
-        'stocks.translations',
-        'stocks.translations.language',
-        'stocks.images',
-        'stocks.variations',
-        'stocks.price',
-        'stocks.price.currency',
-        'translations',
-        'translations.language',
-        'images',
-        'variations',
-        'price',
-        'price.currency',
-        'features',
-        'features.translations',
-        'features.translations.language',
-        'created_by',
-        'updated_by',
-      ],
-    });
+    if (user?.roles?.name == process.env.VENDOR_ROLE_NAME) {
+      query.andWhere(' created_by.id = ' + user?.id + ' ');
+    }
+
+    const product = await query.select(select).getOne();
+
+    if (!product && user?.roles?.name == process.env.VENDOR_ROLE_NAME) {
+      throw new UnauthorizedException({
+        statusCode: 403,
+        message: `UNAUTHORIZED`,
+        param: `Product`,
+      });
+    }
 
     if (!product) {
       throw new NotFoundException({
@@ -278,8 +288,6 @@ export class ProductRepository extends Repository<Product> {
         param: `Product`,
       });
     }
-
-    console.log('product.createdByTransformed  ', product.createdBy);
 
     if (!user) {
       user = await this.userRepo.findOne({
@@ -318,7 +326,7 @@ export class ProductRepository extends Repository<Product> {
       throw new NotFoundException({
         statusCode: 404,
         message: `NOT_FOUND`,
-        param: `Product`,
+        param: 'Product',
       });
     }
 

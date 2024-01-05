@@ -40,5 +40,6 @@
   "USER_NOT_FOUND": "未找到用户ID {data}",
   "IP_ADDRESS_NOT_FOUND": "IP地址 {data} 未找到",
   "ALREADY_EXIST": "{data} 已存在！",
-  "INVALID_ID": "{data} invalid id!"
+  "INVALID_ID": "{data} invalid id!",
+  "UNAUTHORIZED": "您没有访问此路由的权限 {data}"
 }

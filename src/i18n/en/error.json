@@ -42,5 +42,6 @@
   "ALREADY_EXIST": "{data} already exist!",
   "INVALID_ID": "{data} invalid id!",
   "NOT_FOUND": "{data} Not found",
-  "WRONG_USERNAME_PASSWORD": "Wrong username and password combination"
+  "WRONG_USERNAME_PASSWORD": "Wrong username and password combination",
+  "UNAUTHORIZED": "You do not have permission to access this {data}"
 }

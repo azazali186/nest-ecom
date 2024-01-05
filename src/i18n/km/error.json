@@ -40,5 +40,6 @@
   "USER_NOT_FOUND": "លេខសម្គាល់អ្នកប្រើប្រាស់ {data} មិនត្រឹមត្រូវ",
   "IP_ADDRESS_NOT_FOUND": "ip: {data} មិនត្រឹមត្រូវ",
   "ALREADY_EXIST": "{data} មានរួចហើយ!",
-  "INVALID_ID": "{data} invalid id!"
+  "INVALID_ID": "{data} invalid id!",
+  "UNAUTHORIZED": "អ្នកគ្មានសិទ្ធផ្លាស់ប្តូរទៅទំព័រនេះ {data}"
 }

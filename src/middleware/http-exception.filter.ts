@@ -15,7 +15,7 @@ import { bold, code, join, underline } from 'telegraf/format';
 @Catch(HttpException)
 @Injectable()
 export class HttpExceptionFilter implements ExceptionFilter {
-  constructor(private readonly i18n: LangService) {}
+  constructor(private readonly i18n: LangService ) {}
   async catch(exception: HttpException, host: ArgumentsHost) {
     const ctx = host.switchToHttp();
     const response = ctx.getResponse<Response>();
@@ -32,14 +32,12 @@ export class HttpExceptionFilter implements ExceptionFilter {
         ]);
         telegram
           .sendMessage(process.env.TG_ERROR_LOG_CHAT_ID, message)
-          .then((r) => console.log('rr::::>>>>' + r));
+          .then((r) => console.log('message send'));
       } catch (e) {
-        console.log('ee::::>>>>' + e);
+        console.log('ee::::>>>>', e);
       }
     }
-
-    const lang = req.headers?.lang?.toLowerCase() || 'en';
-
+    
     let errorResponse: any; // Define a variable to store the error response
 
     if (typeof exception.getResponse() === 'object') {
@@ -47,18 +45,17 @@ export class HttpExceptionFilter implements ExceptionFilter {
     } else {
       errorResponse = { error: exception.getResponse() as string };
     }
+
     const data = new Set(errorResponse.message.toString().split(','));
     const translatedMessage = [];
     data.forEach((d) => {
-      const msg = this.i18n.getErrorTranslation(`${d}`, {
-        lang,
-        args: { data: errorResponse.param },
-      });
+      const msg = this.i18n.getErrorTranslation(`${d}`, errorResponse.param);
       if (msg.includes('error.')) {
         translatedMessage.push(d);
       } else {
         translatedMessage.push(msg);
       }
+      console.log('msg ', msg);
     });
     const res = await ApiResponse.error(status, translatedMessage);
     response.status(status).json(res);
