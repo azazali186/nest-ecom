@@ -319,6 +319,7 @@ export class ProductRepository extends Repository<Product> {
       where: {
         id,
       },
+      relations: ['created_by'],
     });
 
     if (!product) {
@@ -327,6 +328,17 @@ export class ProductRepository extends Repository<Product> {
         statusCode: 404,
         message: `NOT_FOUND`,
         param: 'Product',
+      });
+    }
+
+    if (
+      user?.roles?.name == process.env.VENDOR_ROLE_NAME &&
+      product.created_by.id !== user?.id
+    ) {
+      throw new UnauthorizedException({
+        statusCode: 403,
+        message: `UNAUTHORIZED`,
+        param: `Product`,
       });
     }
 
@@ -419,28 +431,16 @@ export class ProductRepository extends Repository<Product> {
 
     const select = [
       'product',
-      'stock',
       'created_by.username',
       'updated_by.username',
-      'stockVariation',
-      'currency',
-      'price',
       'variations',
       'translations',
       'language',
       'images',
-      'features',
-      'featuresTranslations',
-      'featuresLanguage',
-      'category',
     ];
 
-    query.leftJoinAndSelect('product.stocks', 'stock');
-    query.leftJoinAndSelect('stock.price', 'price');
     query.leftJoinAndSelect('product.created_by', 'created_by');
     query.leftJoinAndSelect('product.updated_by', 'updated_by');
-    query.leftJoinAndSelect('stock.variations', 'stockVariation');
-    query.leftJoinAndSelect('price.currency', 'currency');
     query.leftJoinAndSelect('product.variations', 'variations');
 
     query.leftJoinAndSelect('product.translations', 'translations');
@@ -448,9 +448,10 @@ export class ProductRepository extends Repository<Product> {
     query.leftJoinAndSelect('product.images', 'images');
 
     query.leftJoinAndSelect('product.categories', 'category');
-    query.leftJoin('product.features', 'features');
-    query.leftJoin('features.translations', 'featuresTranslations');
-    query.leftJoin('featuresTranslations.language', 'featuresLanguage');
+
+    if (user?.roles?.name == process.env.VENDOR_ROLE_NAME) {
+      query.andWhere(' created_by.id = ' + user?.id + ' ');
+    }
 
     if (req.createdDate) {
       const [startDate, endDate] = req.createdDate.split(',');

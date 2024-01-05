@@ -1,10 +1,9 @@
 // i18n.config.ts
-import { I18nOptions } from 'nestjs-i18n';
+import { HeaderResolver, I18nOptions } from 'nestjs-i18n';
 import * as path from 'path';
-import { AcceptLanguageResolver, QueryResolver } from 'nestjs-i18n';
 
 export const i18nConfig: I18nOptions = {
-  fallbackLanguage: 'en',
+  fallbackLanguage: 'zh',
   fallbacks: {
     en: 'en',
     zh: 'zh',
@@ -14,8 +13,5 @@ export const i18nConfig: I18nOptions = {
     path: path.join(__dirname, '../i18n/'),
     watch: true,
   },
-  resolvers: [
-    { use: QueryResolver, options: ['lang'] },
-    AcceptLanguageResolver,
-  ],
+  resolvers: [{ use: HeaderResolver, options: ['lang'] }],
 };

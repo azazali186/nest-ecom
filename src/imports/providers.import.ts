@@ -50,7 +50,6 @@ import { WsCustomService } from 'src/services/ws.service';
 import { WsGateway } from 'src/ws/ws.gateway';
 
 export const ImportProviders = [
-  LangService,
   {
     provide: APP_FILTER, // Use APP_FILTER token to register global filters
     useClass: HttpExceptionFilter,
@@ -59,6 +58,7 @@ export const ImportProviders = [
     provide: APP_FILTER,
     useClass: QueryFailedErrorFilter,
   },
+  LangService,
   JwtService,
   UserService,
   UserRepository,
