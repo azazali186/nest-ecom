@@ -103,7 +103,9 @@ export class ProductRepository extends Repository<Product> {
       const categories = await this.catRepo.find({
         where: { id: In(categoryIds) },
       });
-      product.categories = categories;
+      if (categories) {
+        product.categories = categories;
+      }
     }
 
     await this.prodRepo.save(product);
@@ -263,6 +265,7 @@ export class ProductRepository extends Repository<Product> {
         'price.currency',
         'features',
         'features.translations',
+        'features.translations.language',
         'created_by',
         'updated_by',
       ],
@@ -420,6 +423,8 @@ export class ProductRepository extends Repository<Product> {
       'images',
       'features',
       'featuresTranslations',
+      'featuresLanguage',
+      'category',
     ];
 
     query.leftJoinAndSelect('product.stocks', 'stock');
@@ -434,9 +439,10 @@ export class ProductRepository extends Repository<Product> {
     query.leftJoinAndSelect('translations.language', 'language');
     query.leftJoinAndSelect('product.images', 'images');
 
-    query.leftJoin('product.categories', 'category');
+    query.leftJoinAndSelect('product.categories', 'category');
     query.leftJoin('product.features', 'features');
     query.leftJoin('features.translations', 'featuresTranslations');
+    query.leftJoin('featuresTranslations.language', 'featuresLanguage');
 
     if (req.createdDate) {
       const [startDate, endDate] = req.createdDate.split(',');
