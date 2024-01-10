@@ -52,29 +52,30 @@ export class SearchService {
     });
     where = {};
     if (search) {
-      where = {
-        translations: { name: Like('%' + search + '%') },
-        sku: Like('%' + search + '%'),
-        slug: Like('%' + search + '%'),
-      };
-      where.stocks = {
-        translations: {
-          name: Like('%' + search + '%'),
-        },
-        sku: Like('%' + search + '%'),
-        slug: Like('%' + search + '%'),
+      where = (qb) => {
+        qb.where({
+          $or: [
+            { 'translations.name': Like('%' + search + '%') },
+            { sku: Like('%' + search + '%') },
+            { slug: Like('%' + search + '%') },
+            {
+              $or: [
+                { 'stocks.translations.name': Like('%' + search + '%') },
+                { 'stocks.sku': Like('%' + search + '%') },
+              ],
+            },
+          ],
+        });
       };
       relations = ['translations', 'stocks', 'stocks.translations'];
       select = {
         id: true,
-        name: true,
         translations: {
           id: true,
           name: true,
         },
         stocks: {
           id: true,
-          name: true,
           translations: {
             id: true,
             name: true,
