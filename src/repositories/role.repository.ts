@@ -262,11 +262,33 @@ export class RoleRepository extends Repository<Role> {
       });
     }
 
-    const roles = await query
+    let roles = await query
       .limit(limit)
       .offset(offset)
       .cache(true)
       .getRawMany();
+
+    const rolePromises = roles.map(async (r) => {
+      const role = await this.roleRepository.findOne({
+        where: { id: r.id },
+        relations: { permissions: true },
+        select: {
+          id: true,
+          permissions: {
+            id: true,
+            name: true,
+            status: true,
+          },
+        },
+      });
+      r.permissions = role.permissions;
+      console.log(r);
+      return r;
+    });
+
+    // Wait for all promises to resolve using Promise.all
+    roles = await Promise.all(rolePromises);
+
     const count = await query.getCount();
 
     return ApiResponse.paginate(
