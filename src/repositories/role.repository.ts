@@ -282,7 +282,6 @@ export class RoleRepository extends Repository<Role> {
         },
       });
       r.permissions = role.permissions;
-      console.log(r);
       return r;
     });
 
