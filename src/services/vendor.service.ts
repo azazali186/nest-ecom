@@ -43,7 +43,14 @@ export class VendorService {
   async findOne(id: number) {
     const user = await this.vendorRepository.findOne({
       where: { id: id },
-      relations: ['roles'],
+      relations: [
+        'roles',
+        'shop',
+        'shop.logo',
+        'shop.banner',
+        'created_by',
+        'updated_by',
+      ],
     });
     if (!user) {
       return new NotFoundException({

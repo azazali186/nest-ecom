@@ -31,6 +31,17 @@ export class FilesController {
     return await this.filesService.uploadFile(r.files, r.user);
   }
 
+  @Post('withId')
+  @ApiConsumes('multipart/form-data')
+  @ApiBody({ type: UploadFileDto })
+  @UseInterceptors(FilesInterceptor('files', 10, multerConfig))
+  async uploadFileWithId(
+    @UploadedFile() files: Express.Multer.File[],
+    @Request() r,
+  ) {
+    return await this.filesService.uploadFileWithId(r.files, r.user);
+  }
+
   @Get()
   async getAllFiles() {
     return await this.filesService.getAllFiles();

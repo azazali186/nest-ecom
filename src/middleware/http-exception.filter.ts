@@ -10,12 +10,12 @@ import logger from 'src/utils/logger';
 import { ApiResponse } from 'src/utils/response.util';
 import { LangService } from 'src/services/lang.service';
 import { Telegram } from 'telegraf';
-import { bold, code, join, underline } from 'telegraf/format';
+import { bold, join, underline } from 'telegraf/format';
 
 @Catch(HttpException)
 @Injectable()
 export class HttpExceptionFilter implements ExceptionFilter {
-  constructor(private readonly i18n: LangService ) {}
+  constructor(private readonly i18n: LangService) {}
   async catch(exception: HttpException, host: ArgumentsHost) {
     const ctx = host.switchToHttp();
     const response = ctx.getResponse<Response>();
@@ -28,16 +28,17 @@ export class HttpExceptionFilter implements ExceptionFilter {
         const telegram = new Telegram(process.env.TG_BOT_TOKEN as string);
         const message = join([
           bold(underline(exception.name)),
-          code(exception.stack?.replaceAll(exception.name, '')),
+          bold(`\nclient ip is ${req.socket.remoteAddress}`),
+          bold(`\napi is ${req.baseUrl + req.path}`),
         ]);
         telegram
           .sendMessage(process.env.TG_ERROR_LOG_CHAT_ID, message)
-          .then((r) => console.log('message send'));
+          .then(() => console.log('message send'));
       } catch (e) {
         console.log('ee::::>>>>', e);
       }
     }
-    
+
     let errorResponse: any; // Define a variable to store the error response
 
     if (typeof exception.getResponse() === 'object') {

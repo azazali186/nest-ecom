@@ -112,6 +112,8 @@ export class VendorRepository extends Repository<User> {
     query
       .leftJoinAndSelect('user.roles', 'roles')
       .leftJoinAndSelect('user.shop', 'shop')
+      .leftJoinAndSelect('shop.logo', 'logo')
+      .leftJoinAndSelect('shop.banner', 'banner')
       .leftJoinAndSelect('user.updated_by', 'updated_by')
       .leftJoinAndSelect('user.created_by', 'created_by')
       .select([
@@ -128,6 +130,8 @@ export class VendorRepository extends Repository<User> {
         'user.mobile_number',
         'roles.name',
         'shop',
+        'logo',
+        'banner',
       ])
       .skip(filterDto.offset)
       .take(filterDto.limit)
@@ -172,6 +176,7 @@ export class VendorRepository extends Repository<User> {
   async updateUser(userId: any, updateDto: UpdateVendorDto, user) {
     const userToUpdate = await this.userRepository.findOne({
       where: { id: userId },
+      relations: ['shop'],
     });
 
     if (!userToUpdate) {
@@ -181,8 +186,22 @@ export class VendorRepository extends Repository<User> {
       });
     }
 
-    const { password, name, username, mobileNumber, status, telegram_id } =
-      updateDto;
+    const shopToUpdate = await this.shopRepo.findOne({
+      where: { id: userToUpdate.shop.id },
+    });
+
+    const {
+      password,
+      name,
+      username,
+      mobileNumber,
+      status,
+      telegram_id,
+      shopName,
+      shopSlug,
+      bannerId,
+      logoId,
+    } = updateDto;
 
     // If a new password is provided, hash it
     if (password) {
@@ -194,6 +213,20 @@ export class VendorRepository extends Repository<User> {
 
     if (name) {
       userToUpdate.name = name;
+    }
+
+    if (shopName) {
+      shopToUpdate.name = shopName;
+    }
+
+    if (shopSlug) {
+      shopToUpdate.slug = shopSlug;
+    }
+    if (logoId) {
+      shopToUpdate.logo_id = logoId;
+    }
+    if (bannerId) {
+      shopToUpdate.banner_id = bannerId;
     }
 
     if (status) {
@@ -230,6 +263,10 @@ export class VendorRepository extends Repository<User> {
         name: true,
       },
     });
+
+    await shopToUpdate.save();
+
+    userToUpdate.shop = shopToUpdate;
 
     await this.userRepository.save(userToUpdate);
 

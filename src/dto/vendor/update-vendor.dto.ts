@@ -7,6 +7,7 @@ import {
   Matches,
   IsIn,
 } from 'class-validator';
+import { Shop } from 'src/entities/shop.entity';
 import { UserStatus } from 'src/enum/user-status.enum';
 
 export class UpdateVendorDto {
@@ -64,10 +65,33 @@ export class UpdateVendorDto {
   status: UserStatus;
 
   @ApiPropertyOptional()
+  @IsOptional()
   @IsString({
     message: 'INVALID_TELEGRAM_ID',
   })
   telegram_id: string;
+
+  @ApiPropertyOptional()
+  @IsOptional()
+  @IsString({
+    message: 'SHOP_NAME_IS_REQUIRED',
+  })
+  shopName: string;
+
+  @ApiPropertyOptional()
+  @IsOptional()
+  @IsString({
+    message: 'SHOP_SLUG_IS_REQUIRED',
+  })
+  shopSlug: string;
+
+  @ApiPropertyOptional()
+  @IsOptional()
+  logoId: number;
+
+  @ApiPropertyOptional()
+  @IsOptional()
+  bannerId: number;
 
   @ApiHideProperty()
   user: any;

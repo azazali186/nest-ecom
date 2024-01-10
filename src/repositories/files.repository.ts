@@ -51,6 +51,30 @@ export class FilesRepository extends Repository<Files> {
     return `${serverBaseUrl}/${filename}`;
   }
 
+  async uploadFileWithId(files: Express.Multer.File[], user: any) {
+    user.roles.permissions = [];
+    const uploadedFiles: any[] = [];
+
+    for (const file of files) {
+      const newFile = new Files();
+      newFile.url = file.path;
+      newFile.full_url = this.getFileUrl(file.path);
+      newFile.file_name = file.filename;
+      newFile.media_type = getMediaTypeFromMimetype(file.mimetype);
+      newFile.extention = extname(file.originalname);
+      newFile.size = file.size.toString();
+      newFile.original_file_name = file.originalname;
+
+      await this.fRepo.save(newFile);
+      uploadedFiles.push({
+        id: newFile.id,
+        url: this.getFileUrl(newFile.url),
+      });
+    }
+    const data = uploadedFiles;
+    return ApiResponse.success(data, 200);
+  }
+
   async removeMultiple(ids: number[]) {
     const filesToDelete = await this.fRepo.find({
       where: { id: In(ids) },

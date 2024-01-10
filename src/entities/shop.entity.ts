@@ -8,6 +8,7 @@
 } from 'typeorm';
 import { User } from './user.entity';
 import { Images } from './images.entity';
+import { Files } from './files.entity';
 
 @Entity('shop')
 export class Shop extends BaseEntity {
@@ -23,16 +24,16 @@ export class Shop extends BaseEntity {
   @Column({ nullable: true })
   logo_id: number;
 
-  @OneToOne(() => Images, { nullable: true })
+  @OneToOne(() => Files, { nullable: true })
   @JoinColumn({ name: 'logo_id' })
-  logo: Images | null;
+  logo: Files | null;
 
   @Column({ nullable: true })
   banner_id: number;
 
-  @OneToOne(() => Images, { nullable: true })
+  @OneToOne(() => Files, { nullable: true })
   @JoinColumn({ name: 'banner_id' })
-  banner: Images | null;
+  banner: Files | null;
 
   @Column()
   vendor_id: number;

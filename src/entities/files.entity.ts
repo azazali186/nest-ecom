@@ -17,6 +17,9 @@ export class Files extends BaseEntity {
   @Column()
   url: string;
 
+  @Column({ nullable: true })
+  full_url: string;
+
   @Column()
   file_name: string;
 

@@ -15,6 +15,10 @@ export class FilesService {
     return this.filesRepository.uploadFile(files, user);
   }
 
+  async uploadFileWithId(files: Express.Multer.File[], user: any) {
+    return this.filesRepository.uploadFileWithId(files, user);
+  }
+
   async getAllFiles(): Promise<Files[]> {
     return await this.filesRepository.find();
   }
