@@ -22,28 +22,28 @@ import { AdminPageService } from 'src/services/admin-page.service';
 @ApiBearerAuth()
 @Controller('admin-pages')
 export class AdminPageController {
-  constructor(private readonly cpService: AdminPageService) {}
+  constructor(private readonly apService: AdminPageService) {}
   @Post()
   create(@Body(ValidationPipe) req: CreateAdminPageDto, @Request() r) {
-    return this.cpService.create(req, r.user);
+    return this.apService.create(req, r.user);
   }
   @Get()
   findAll(@Query() req: SearchAdminPageDto) {
-    return this.cpService.findAll(req);
+    return this.apService.findAll(req);
   }
   @Get(':id')
   findOne(@Param('id') id: number) {
-    return this.cpService.findOne(id);
+    return this.apService.findOne(id);
   }
   @Patch(':id')
   update(
     @Param('id') id: number,
     @Body(ValidationPipe) req: UpdateAdminPageDto,
   ) {
-    return this.cpService.update(id, req);
+    return this.apService.update(id, req);
   }
   @Delete(':id')
   remove(@Param('id') id: number) {
-    return this.cpService.remove(id);
+    return this.apService.remove(id);
   }
 }
