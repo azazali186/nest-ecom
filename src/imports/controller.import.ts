@@ -11,6 +11,7 @@ import { MemberController } from 'src/controllers/member.controller';
 import { PermissionsController } from 'src/controllers/permission.controller';
 import { ProductController } from 'src/controllers/product.controller';
 import { RoleController } from 'src/controllers/role.controller';
+import { SearchController } from 'src/controllers/search.controller';
 import { TagController } from 'src/controllers/tags.controller';
 import { UserController } from 'src/controllers/user.controller';
 import { VendorController } from 'src/controllers/vendor.controller';
@@ -32,4 +33,5 @@ export const ImportControllers = [
   TagController,
   MemberController,
   VendorController,
+  SearchController,
 ];

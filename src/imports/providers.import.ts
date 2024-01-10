@@ -43,6 +43,7 @@ import { ProductService } from 'src/services/product.service';
 import { RecomService } from 'src/services/recom.service';
 import { RedisService } from 'src/services/redis.service';
 import { RoleService } from 'src/services/role.service';
+import { SearchService } from 'src/services/search.service';
 import { TagService } from 'src/services/tag.setvice';
 import { UserService } from 'src/services/user.service';
 import { VendorService } from 'src/services/vendor.service';
@@ -111,4 +112,5 @@ export const ImportProviders = [
   VendorService,
   VendorRepository,
   ShopRepository,
+  SearchService,
 ];

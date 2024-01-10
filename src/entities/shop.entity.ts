@@ -7,7 +7,6 @@
   OneToOne,
 } from 'typeorm';
 import { User } from './user.entity';
-import { Images } from './images.entity';
 import { Files } from './files.entity';
 
 @Entity('shop')
