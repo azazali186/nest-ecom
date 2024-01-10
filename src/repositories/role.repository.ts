@@ -216,6 +216,7 @@ export class RoleRepository extends Repository<Role> {
           In([process.env.MEMBER_ROLE_NAME, process.env.VENDOR_ROLE_NAME]),
         ),
       },
+      relations: ['permissions'],
     });
     return ApiResponse.paginate(
       { list: roles, count: roles.length },
