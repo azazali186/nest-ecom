@@ -18,6 +18,6 @@ const sendTelegramMessage = (msg) => {
   }
 };
 
-const commitMessageArg = "updated role and permission management and configuration";
+const commitMessageArg = process.argv[2];
 
 sendTelegramMessage(commitMessageArg);
