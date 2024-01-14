@@ -65,11 +65,7 @@ export class RoleRepository extends Repository<Role> {
     const rolePermissions = new Set<number>();
 
     permissions.forEach((p) => {
-      p.children.forEach((cp) => {
-        cp.permissions.forEach((permission) => {
-          rolePermissions.add(permission);
-        });
-      });
+      rolePermissions.add(p);
     });
 
     const perm = await this.peramRepo.find({
@@ -120,11 +116,7 @@ export class RoleRepository extends Repository<Role> {
       const rolePermissions = new Set<number>();
 
       permissions.forEach((p) => {
-        p.children.forEach((cp) => {
-          cp.permissions.forEach((permission) => {
-            rolePermissions.add(permission); // Assuming 'permission' has an 'id' property
-          });
-        });
+        rolePermissions.add(p); // Assuming 'permission' has an 'id' property
       });
 
       const perm = await this.peramRepo.find({

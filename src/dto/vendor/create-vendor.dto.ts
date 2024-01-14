@@ -5,6 +5,7 @@ import {
 } from '@nestjs/swagger';
 import {
   IsNotEmpty,
+  IsOptional,
   IsString,
   Matches,
   MaxLength,
@@ -82,6 +83,7 @@ export class CreateVendorDto {
   shopSlug: string;
 
   @ApiPropertyOptional()
+  @IsOptional()
   @IsString({
     message: 'INVALID_TELEGRAM_ID',
   })

@@ -58,7 +58,12 @@ export class PermissionRepository extends Repository<Permission> {
   }
 
   async findAll(filterDto: SearchPermissionDto) {
-    const permissions = await this.permissionRepo.find();
+    const permissions = await this.permissionRepo.find({
+      select: {
+        id: true,
+        name: true,
+      },
+    });
     return ApiResponse.success(permissions, 200);
   }
 }

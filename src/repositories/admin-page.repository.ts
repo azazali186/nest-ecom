@@ -7,6 +7,7 @@ import { AdminPage } from 'src/entities/admin-page.entity';
 import { Repository } from 'typeorm';
 import { PermissionRepository } from './permission.repository';
 import { Inject, forwardRef } from '@nestjs/common';
+import { ApiResponse } from 'src/utils/response.util';
 
 export class AdminPageRepository extends Repository<AdminPage> {
   constructor(
@@ -20,10 +21,26 @@ export class AdminPageRepository extends Repository<AdminPage> {
   }
 
   findAdminPages(name: SearchAdminPageDto) {
-    throw new Error('Method not implemented.');
+    const adminPages = this.find({
+      select: {
+        id: true,
+        name: true,
+        route_name: true,
+      },
+    });
+    return ApiResponse.success(adminPages, 200, 'fetched Successfully');
   }
   getAdminPageId(id: number) {
-    throw new Error('Method not implemented.');
+    const adminPages = this.findOne({
+      where: {
+        id: id,
+      },
+      relations: {
+        children: true,
+        parent: true,
+      },
+    });
+    return ApiResponse.success(adminPages, 200, 'fetched Successfully');
   }
   updateAdminPage(id: any, req: UpdateAdminPageDto) {
     throw new Error('Method not implemented.');
