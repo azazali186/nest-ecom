@@ -72,20 +72,23 @@ Nest is an MIT-licensed open source project. It can grow thanks to the sponsors 
 
 Nest is [MIT licensed](LICENSE).
 
-Password for the elastic user (reset with `bin/elasticsearch-reset-password -u elastic`):
-2023-12-10 15:38:44   Wg=8BIsqIXnkE+z*1T5O
-2023-12-10 15:38:44 
-2023-12-10 15:38:44 ℹ️  HTTP CA certificate SHA-256 fingerprint:
-2023-12-10 15:38:44   ab74c529450899b133576b73f3ebea8e792871bcbbf253d1e5719f4e1e191bb4
-2023-12-10 15:38:44 
-2023-12-10 15:38:44 ℹ️  Configure Kibana to use this cluster:
-2023-12-10 15:38:44 • Run Kibana and click the configuration link in the terminal when Kibana starts.
-2023-12-10 15:38:44 • Copy the following enrollment token and paste it into Kibana in your browser (valid for the next 30 minutes):
-2023-12-10 15:38:44   eyJ2ZXIiOiI4LjExLjIiLCJhZHIiOlsiMTcyLjE5LjAuMjo5MjAwIl0sImZnciI6ImFiNzRjNTI5NDUwODk5YjEzMzU3NmI3M2YzZWJlYThlNzkyODcxYmNiYmYyNTNkMWU1NzE5ZjRlMWUxOTFiYjQiLCJrZXkiOiJjSlRnVW93QlR4bDRYVUk4OXJ5cDpiOGJGTUc4N1FPZWx0WElvbEJyNjV3In0=
-2023-12-10 15:38:44 
-2023-12-10 15:38:44 ℹ️ Configure other nodes to join this cluster:
-2023-12-10 15:38:44 • Copy the following enrollment token and start new Elasticsearch nodes with `bin/elasticsearch --enrollment-token <token>` (valid for the next 30 minutes):
-2023-12-10 15:38:44   eyJ2ZXIiOiI4LjExLjIiLCJhZHIiOlsiMTcyLjE5LjAuMjo5MjAwIl0sImZnciI6ImFiNzRjNTI5NDUwODk5YjEzMzU3NmI3M2YzZWJlYThlNzkyODcxYmNiYmYyNTNkMWU1NzE5ZjRlMWUxOTFiYjQiLCJrZXkiOiJicFRnVW93QlR4bDRYVUk4OXJ5ZzpQOWM3LVdpTVIyLXRpelM0QThqVTNnIn0=
-2023-12-10 15:38:44 
-2023-12-10 15:38:44   If you're running in Docker, copy the enrollment token and run:
-2023-12-10 15:38:44   `docker run -e "ENROLLMENT_TOKEN=<token>" docker.elastic.co/elasticsearch/elasticsearch:8.11.2`
+✅ Elasticsearch security features have been automatically configured!
+2024-01-14 10:15:22 ✅ Authentication is enabled and cluster connections are encrypted.
+2024-01-14 10:15:22 
+2024-01-14 10:15:22 ℹ️  Password for the elastic user (reset with `bin/elasticsearch-reset-password -u elastic`):
+2024-01-14 10:15:22   TTddLihlgBhdA7OPqjdN
+2024-01-14 10:15:22 
+2024-01-14 10:15:22 ℹ️  HTTP CA certificate SHA-256 fingerprint:
+2024-01-14 10:15:22   e7aa8bd185f2b168cbb73e001c80725650609633e6912cfa660ce02612dff045
+2024-01-14 10:15:22 
+2024-01-14 10:15:22 ℹ️  Configure Kibana to use this cluster:
+2024-01-14 10:15:22 • Run Kibana and click the configuration link in the terminal when Kibana starts.
+2024-01-14 10:15:22 • Copy the following enrollment token and paste it into Kibana in your browser (valid for the next 30 minutes):
+2024-01-14 10:15:22   eyJ2ZXIiOiI4LjExLjIiLCJhZHIiOlsiMTcyLjE5LjAuMjo5MjAwIl0sImZnciI6ImU3YWE4YmQxODVmMmIxNjhjYmI3M2UwMDFjODA3MjU2NTA2MDk2MzNlNjkxMmNmYTY2MGNlMDI2MTJkZmYwNDUiLCJrZXkiOiJubGozQlkwQnpSb0g5TDRTZV8yMDpWNTllQkFQdVJIeVprZ1QtdzNMVjRBIn0=
+2024-01-14 10:15:22 
+2024-01-14 10:15:22 ℹ️ Configure other nodes to join this cluster:
+2024-01-14 10:15:22 • Copy the following enrollment token and start new Elasticsearch nodes with `bin/elasticsearch --enrollment-token <token>` (valid for the next 30 minutes):
+2024-01-14 10:15:22   eyJ2ZXIiOiI4LjExLjIiLCJhZHIiOlsiMTcyLjE5LjAuMjo5MjAwIl0sImZnciI6ImU3YWE4YmQxODVmMmIxNjhjYmI3M2UwMDFjODA3MjU2NTA2MDk2MzNlNjkxMmNmYTY2MGNlMDI2MTJkZmYwNDUiLCJrZXkiOiJvRmozQlkwQnpSb0g5TDRTZV8yNzpXSDVCOGpRdFRIbXVkalFocFBtU2dnIn0=
+2024-01-14 10:15:22 
+2024-01-14 10:15:22   If you're running in Docker, copy the enrollment token and run:
+2024-01-14 10:15:22   `docker run -e "ENROLLMENT_TOKEN=<token>" docker.elastic.co/elasticsearch/elasticsearch:8.11.2`
