@@ -233,6 +233,7 @@ export class ProductRepository extends Repository<Product> {
       'stock',
       'created_by.username',
       'shop',
+      'shopLogo',
       'updated_by.username',
       'stockVariation',
       'stockTranslations',
@@ -254,6 +255,7 @@ export class ProductRepository extends Repository<Product> {
     query.leftJoinAndSelect('stockTranslations.language', 'stockLanguage');
     query.leftJoinAndSelect('product.created_by', 'created_by');
     query.leftJoinAndSelect('created_by.shop', 'shop');
+    query.leftJoinAndSelect('shop.logo', 'shopLogo');
     query.leftJoinAndSelect('product.updated_by', 'updated_by');
     query.leftJoinAndSelect('stock.variations', 'stockVariation');
     query.leftJoinAndSelect('price.currency', 'currency');
@@ -335,6 +337,7 @@ export class ProductRepository extends Repository<Product> {
       'product',
       'stock',
       'created_by.username',
+      'created_by.mobile_number',
       'updated_by.username',
       'stockVariation',
       'currency',
