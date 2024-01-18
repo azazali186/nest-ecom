@@ -30,7 +30,7 @@ export class ThrottlingExceptionFilter implements ExceptionFilter {
       bold(`\ntry to hack ${req.baseUrl + req.path}`),
     ]);
     telegram
-      .sendMessage(process.env.TG_ERROR_LOG_CHAT_ID, message)
+      .sendMessage(process.env.TG_HACK_PROTECTION_LOG_CHAT_ID, message)
       .then(() => console.log('message send'));
     this.retryAfterDelay(response);
   }
