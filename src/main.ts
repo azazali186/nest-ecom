@@ -1,6 +1,6 @@
 import * as dotenv from 'dotenv';
-// dotenv.config({ path: `.env.${process.env.NODE_ENV}` });
-dotenv.config({ path: `.env` });
+dotenv.config({ path: `.env.${process.env.NODE_ENV}` });
+// dotenv.config({ path: `.env` });
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
 import { ExpressAdapter } from '@nestjs/platform-express';

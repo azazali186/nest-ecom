@@ -13,6 +13,7 @@ import { ProductFeature } from 'src/entities/product-features.entity';
 import { ProductInteraction } from 'src/entities/product-interaction.entity';
 import { Product } from 'src/entities/product.entity';
 import { Role } from 'src/entities/role.entity';
+import { Search } from 'src/entities/search.entity';
 import { Session } from 'src/entities/session.entity';
 import { Shop } from 'src/entities/shop.entity';
 import { Stock } from 'src/entities/stock.entity';
@@ -45,4 +46,5 @@ export const ImportEntities = [
   Cart,
   Tag,
   Shop,
+  Search,
 ];

@@ -6,6 +6,7 @@ import { ShopRepository } from 'src/repositories/shop.repository';
 import { ApiResponse } from 'src/utils/response.util';
 import { Like } from 'typeorm';
 import { ElasticService } from './elastic.service';
+import { Search } from 'src/entities/search.entity';
 
 @Injectable()
 export class SearchService {
@@ -49,10 +50,11 @@ export class SearchService {
       where: where,
       relations: relations,
       select: select,
+      take: 10,
     });
     where = {};
     if (search) {
-      where = (qb) => {
+      where = (qb: any) => {
         qb.where({
           $or: [
             { 'translations.name': Like('%' + search + '%') },
@@ -87,12 +89,17 @@ export class SearchService {
       where: where,
       relations: relations,
       select: select,
+      take: 10,
     });
 
     if (search) {
-      where = {
-        name: Like('%' + search + '%'),
-        slug: Like('%' + search + '%'),
+      where = (qb: any) => {
+        qb.where({
+          $or: [
+            { name: Like('%' + search + '%') },
+            { slug: Like('%' + search + '%') },
+          ],
+        });
       };
       select = {
         id: true,
@@ -104,6 +111,7 @@ export class SearchService {
     const shops = await this.shopRepo.find({
       where: where,
       select: select,
+      take: 10,
     });
 
     const data = {
@@ -124,6 +132,16 @@ export class SearchService {
     const searchData = {
       search: search,
     };
+
+    let sd = await Search.findOne({ where: { search: search } });
+    if (!sd) {
+      sd = new Search();
+      sd.search = search;
+      await sd.save();
+    } else {
+      sd.times = sd.times + 1;
+      await sd.save();
+    }
 
     await this.elService.createIndex(this.indexName, searchData);
 
