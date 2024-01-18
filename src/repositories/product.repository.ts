@@ -223,6 +223,109 @@ export class ProductRepository extends Repository<Product> {
     return ApiResponse.success(data, 200, 'Success', error);
   }
 
+  async findDetails(slug: string, user: any): Promise<ApiResponse<Product>> {
+    const lang = user?.lang || 'en';
+    const currency = user?.currency || 'USD';
+    const query = this.createQueryBuilder('product');
+
+    const select = [
+      'product',
+      'stock',
+      'created_by.username',
+      'shop',
+      'updated_by.username',
+      'stockVariation',
+      'stockTranslations',
+      'stockLanguage',
+      'currency',
+      'price',
+      'variations',
+      'translations',
+      'language',
+      'images',
+      'features',
+      'featuresTranslations',
+      'featuresLanguage',
+      'category',
+    ];
+    query.leftJoinAndSelect('product.stocks', 'stock');
+    query.leftJoinAndSelect('stock.price', 'price');
+    query.leftJoinAndSelect('stock.translations', 'stockTranslations');
+    query.leftJoinAndSelect('stockTranslations.language', 'stockLanguage');
+    query.leftJoinAndSelect('product.created_by', 'created_by');
+    query.leftJoinAndSelect('created_by.shop', 'shop');
+    query.leftJoinAndSelect('product.updated_by', 'updated_by');
+    query.leftJoinAndSelect('stock.variations', 'stockVariation');
+    query.leftJoinAndSelect('price.currency', 'currency');
+    query.leftJoinAndSelect('product.variations', 'variations');
+
+    query.leftJoinAndSelect('product.translations', 'translations');
+    query.leftJoinAndSelect('translations.language', 'language');
+    query.leftJoinAndSelect('product.images', 'images');
+
+    query.leftJoinAndSelect('product.categories', 'category');
+    query.leftJoin('product.features', 'features');
+    query.leftJoin('features.translations', 'featuresTranslations');
+    query.leftJoin('featuresTranslations.language', 'featuresLanguage');
+    query.andWhere(' product.slug = "' + slug + '" ');
+    if (user && user?.roles?.name == process.env.MEMBER_ROLE_NAME) {
+      query.andWhere(" currency.code = '" + currency + "'");
+      query.andWhere(" language.code = '" + lang + "'");
+      query.andWhere(" stockLanguage.code = '" + lang + "'");
+      query.andWhere(" featuresLanguage.code = '" + lang + "'");
+    }
+
+    if (!user) {
+      query.andWhere(" currency.code = '" + currency + "'");
+      query.andWhere(" language.code = '" + lang + "'");
+      query.andWhere(" stockLanguage.code = '" + lang + "'");
+      query.andWhere(" featuresLanguage.code = '" + lang + "'");
+    }
+
+    if (user?.roles?.name == process.env.VENDOR_ROLE_NAME) {
+      query.andWhere(' created_by.id = ' + user?.id + ' ');
+    }
+
+    const product = await query.select(select).getOne();
+
+    if (!product && user?.roles?.name == process.env.VENDOR_ROLE_NAME) {
+      throw new UnauthorizedException({
+        statusCode: 403,
+        message: `UNAUTHORIZED`,
+        param: `Product`,
+      });
+    }
+
+    if (!product) {
+      throw new NotFoundException({
+        statusCode: 404,
+        message: `NOT_FOUND`,
+        param: `Product`,
+      });
+    }
+
+    if (!user) {
+      user = await this.userRepo.findOne({
+        where: { username: process.env.GUEST_USERNAME || 'guest' },
+      });
+    }
+
+    const type =
+      process.env.NODE_ENV === 'local' || process.env.NODE_ENV === 'dev'
+        ? getRandomProductInteractionType()
+        : ProductInteractionTypeEnum.views;
+
+    await this.intRepo.createInteraction({
+      product,
+      user,
+      type: type,
+    });
+
+    await this.elService.createIndex(this.indexName, product);
+
+    return ApiResponse.success(product, 200);
+  }
+
   async getProductId(id: number, user: any): Promise<ApiResponse<Product>> {
     const lang = user?.lang || 'en';
     const currency = user?.currency || 'USD';
@@ -262,7 +365,7 @@ export class ProductRepository extends Repository<Product> {
     query.leftJoin('features.translations', 'featuresTranslations');
     query.leftJoin('featuresTranslations.language', 'featuresLanguage');
     query.andWhere(' product.id = ' + id + ' ');
-    if (user === null || user?.roles?.name == process.env.MEMBER_ROLE_NAME) {
+    if (!user || user?.roles?.name == process.env.MEMBER_ROLE_NAME) {
       query.andWhere(" currency.code = '" + currency + "'");
       query.andWhere(" language.code = '" + lang + "'");
     }

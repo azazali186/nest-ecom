@@ -62,6 +62,7 @@ export function getPermissionNameFromRoute(
 export const routeMappings = {
   '/api/v1/products/sku': '/api/v1/products/sku/:sku',
   '/api/v1/products/slug': '/api/v1/products/slug/:slug',
+  '/api/v1/products/details': '/api/v1/products/details/:slug',
   '/api/v1/search/product': '/api/v1/search/product/:product',
   '/api/v1/search/category': '/api/v1/search/category/:category',
   '/api/v1/search/shop': '/api/v1/search/shop/:shop',
@@ -84,6 +85,7 @@ export const EXCLUDED_ROUTES = [
   'VIEW_ALL_SEARCH_PRODUCT_:PRODUCT',
   'VIEW_ALL_SEARCH_CATEGORY_:CATEGORY',
   'VIEW_ALL_SEARCH_SHOP_:SHOP',
+  'VIEW_ALL_PRODUCTS_DETAILS_:SLUG',
 ];
 
 export const CHECK_LOGIN_ROUTES = [

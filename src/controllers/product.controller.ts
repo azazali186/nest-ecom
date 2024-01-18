@@ -41,6 +41,11 @@ export class ProductController {
     return this.prodService.findAll(req, r.user);
   }
 
+  @Get('details/:slug')
+  findDetails(@Param('slug') slug: string, @Request() r) {
+    return this.prodService.findDetails(slug, r.user);
+  }
+
   @Get('sku/:sku')
   findSku(@Param('sku') sku: string) {
     return this.prodService.findSku(sku);

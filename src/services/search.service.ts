@@ -153,9 +153,35 @@ export class SearchService {
     return ApiResponse.success(cats, 200);
   }
   async searchProducts(search: string) {
+    const select = [
+      'product',
+      'created_by.username',
+      'updated_by.username',
+      'variations',
+      'translations',
+      'language',
+      'images',
+      'stocks',
+      'price',
+      'currency',
+      'stocksTranslations',
+      'stocksLanguage',
+    ];
     const query = this.prodRepo.createQueryBuilder('product');
+    query.leftJoinAndSelect('product.created_by', 'created_by');
+    query.leftJoinAndSelect('product.updated_by', 'updated_by');
+    query.leftJoinAndSelect('product.variations', 'variations');
+
     query.leftJoinAndSelect('product.translations', 'translations');
     query.leftJoinAndSelect('translations.language', 'language');
+    query.leftJoinAndSelect('product.images', 'images');
+    query.leftJoinAndSelect('product.stocks', 'stocks');
+    query.leftJoinAndSelect('stocks.price', 'price');
+    query.leftJoinAndSelect('price.currency', 'currency');
+    query.leftJoinAndSelect('stocks.translations', 'stocksTranslations');
+    query.leftJoinAndSelect('stocksTranslations.language', 'stocksLanguage');
+
+    query.leftJoinAndSelect('product.categories', 'category');
     if (search) {
       query.andWhere(
         '(product.sku LIKE :title OR translations.name LIKE :title )',
@@ -163,9 +189,7 @@ export class SearchService {
       );
     }
 
-    const products = await query
-      .select(['product.id', 'translations.id', 'translations.name'])
-      .getMany();
+    const products = await query.select(select).getMany();
 
     return ApiResponse.success(products, 200);
   }

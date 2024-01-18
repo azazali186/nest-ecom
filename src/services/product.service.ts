@@ -25,6 +25,10 @@ export class ProductService {
   findOne(id: number, user: any) {
     return this.prodRepo.getProductId(id, user);
   }
+
+  findDetails(sku: string, user: any) {
+    return this.prodRepo.findDetails(sku, user);
+  }
   update(id: any, req: UpdateProductDto, user: any) {
     return this.prodRepo.updateProduct(id, req, user);
   }

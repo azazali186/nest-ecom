@@ -30,6 +30,8 @@ export class CheckPermissionMiddleware implements NestMiddleware {
   async use(req: any, res: Response, next: NextFunction) {
     let routeWithoutId = req.baseUrl.replace(/\/[a-f0-9-]+$/, '/:id');
 
+    console.log('routeWithoutId', routeWithoutId);
+
     Object.entries(routeMappings).forEach(([pattern, replacement]) => {
       if (routeWithoutId.includes(pattern)) {
         routeWithoutId = replacement;
