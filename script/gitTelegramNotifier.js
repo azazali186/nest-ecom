@@ -4,7 +4,7 @@ const { Telegram } = require('telegraf');
 
 const sendTelegramMessage = (msg) => {
   try {
-    const names = ['Ali Azaz', 'Saif'];
+    const names = ['Saif'];
     const randomIndex = Math.floor(Math.random() * names.length);
     const randomName = names[randomIndex];
 

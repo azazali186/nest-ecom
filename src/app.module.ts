@@ -16,6 +16,8 @@ import { MulterModule } from '@nestjs/platform-express';
 import { ServeStaticModule } from '@nestjs/serve-static';
 import { join } from 'path';
 import { multerConfig } from './config/multer.config';
+import { BlockIpMiddleware } from './middleware/block-ip.middleware';
+import { ThrottlingExceptionFilter } from './middleware/throttle-exception.filter';
 
 @Module({
   imports: [
@@ -57,12 +59,12 @@ import { multerConfig } from './config/multer.config';
 })
 export class AppModule implements NestModule {
   configure(consumer: MiddlewareConsumer) {
-    consumer
-      .apply(
-        expressUserAgent.express(),
-        CheckPermissionMiddleware,
-        LoggerMiddleware,
-      )
-      .forRoutes('*'); // This applies the middleware to all routes.
+    consumer.apply(
+      ThrottlingExceptionFilter,
+      expressUserAgent.express(),
+      CheckPermissionMiddleware,
+      LoggerMiddleware,
+      BlockIpMiddleware,
+    );
   }
 }

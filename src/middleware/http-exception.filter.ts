@@ -36,7 +36,6 @@ export class HttpExceptionFilter implements ExceptionFilter {
           .then(() => console.log('message send'));
       } catch (e) {
         console.log('ee::::>>>>', e);
-        
       }
     }
 
