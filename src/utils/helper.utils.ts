@@ -59,6 +59,14 @@ export function getPermissionNameFromRoute(
   return path;
 }
 
+export const routeMappings = {
+  '/api/v1/products/sku': '/api/v1/products/sku/:sku',
+  '/api/v1/products/slug': '/api/v1/products/slug/:slug',
+  '/api/v1/search/product': '/api/v1/search/product/:product',
+  '/api/v1/search/category': '/api/v1/search/category/:category',
+  '/api/v1/search/shop': '/api/v1/search/shop/:shop',
+};
+
 export const EXCLUDED_ROUTES = [
   'LOGIN',
   'SWAGGER',
@@ -73,6 +81,9 @@ export const EXCLUDED_ROUTES = [
   'VIEW_ALL_PRODUCTS_SKU_:SKU',
   'VIEW_ALL_PRODUCTS_SLUG_:SLUG',
   'VIEW_ALL_SEARCH',
+  'VIEW_ALL_SEARCH_PRODUCT_:PRODUCT',
+  'VIEW_ALL_SEARCH_CATEGORY_:CATEGORY',
+  'VIEW_ALL_SEARCH_SHOP_:SHOP',
 ];
 
 export const CHECK_LOGIN_ROUTES = [

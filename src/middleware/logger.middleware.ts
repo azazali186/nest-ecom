@@ -9,6 +9,7 @@ import { getClientIpUtil } from 'src/utils/get-client-ip.util';
 import {
   EXCLUDED_ROUTES,
   getPermissionNameFromRoute,
+  routeMappings,
   sendTelegramMessage,
 } from 'src/utils/helper.utils';
 import * as morgan from 'morgan';
@@ -72,10 +73,15 @@ export class LoggerMiddleware implements NestMiddleware {
 
   use(req: any, res: Response, next: NextFunction) {
     this.logger(req, res, async (err) => {
-      const url = req.baseUrl.replace(/\/[a-f0-9-]+$/, '/:id');
-      const action = getPermissionNameFromRoute(url, req.method)
-        .toUpperCase()
-        .replaceAll('-', '_');
+      let routeWithoutId = req.baseUrl.replace(/\/[a-f0-9-]+$/, '/:id');
+
+      Object.entries(routeMappings).forEach(([pattern, replacement]) => {
+        if (routeWithoutId.includes(pattern)) {
+          routeWithoutId = replacement;
+        }
+      });
+      // console.log('req', req);
+      const action = getPermissionNameFromRoute(routeWithoutId, req.method);
 
       if (!EXCLUDED_ROUTES.includes(action)) {
         const adminPages = await this.apRepo

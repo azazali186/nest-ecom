@@ -36,7 +36,7 @@ export class SearchService {
       };
     }
 
-    let relations = ['translations'];
+    const relations = ['translations'];
     let select: any = {
       id: true,
       name: true,
@@ -53,53 +53,24 @@ export class SearchService {
       take: 10,
     });
     where = {};
+    const query = this.prodRepo.createQueryBuilder('product');
+    query.leftJoinAndSelect('product.translations', 'translations');
+    query.leftJoinAndSelect('translations.language', 'language');
     if (search) {
-      where = (qb: any) => {
-        qb.where({
-          $or: [
-            { 'translations.name': Like('%' + search + '%') },
-            { sku: Like('%' + search + '%') },
-            { slug: Like('%' + search + '%') },
-            {
-              $or: [
-                { 'stocks.translations.name': Like('%' + search + '%') },
-                { 'stocks.sku': Like('%' + search + '%') },
-              ],
-            },
-          ],
-        });
-      };
-      relations = ['translations', 'stocks', 'stocks.translations'];
-      select = {
-        id: true,
-        translations: {
-          id: true,
-          name: true,
-        },
-        stocks: {
-          id: true,
-          translations: {
-            id: true,
-            name: true,
-          },
-        },
-      };
+      query.andWhere(
+        '(product.sku LIKE :title OR translations.name LIKE :title )',
+        { title: `%${search}%` },
+      );
     }
-    const products = await this.prodRepo.find({
-      where: where,
-      relations: relations,
-      select: select,
-      take: 10,
-    });
+
+    const products = await query
+      .select(['product.id', 'translations.id', 'translations.name'])
+      .take(10)
+      .getMany();
 
     if (search) {
-      where = (qb: any) => {
-        qb.where({
-          $or: [
-            { name: Like('%' + search + '%') },
-            { slug: Like('%' + search + '%') },
-          ],
-        });
+      where = {
+        name: Like('%' + search + '%'),
       };
       select = {
         id: true,
@@ -146,5 +117,56 @@ export class SearchService {
     await this.elService.createIndex(this.indexName, searchData);
 
     return ApiResponse.success(data, 200);
+  }
+
+  async searchShop(shop: string) {
+    console.log('Search data is ', shop);
+    const shops = await this.shopRepo.find({
+      where: {
+        name: Like('%' + shop + '%'),
+      },
+      select: {
+        id: true,
+        name: true,
+        slug: true,
+      },
+    });
+
+    return ApiResponse.success(shops, 200);
+  }
+
+  async searchCategory(search: string) {
+    const where: any = {};
+
+    if (search) {
+      where.translations = {
+        name: Like('%' + search + '%'),
+      };
+    }
+
+    const relations = ['translations', 'translations.language'];
+
+    const cats = await this.catRepo.find({
+      where: where,
+      relations: relations,
+    });
+    return ApiResponse.success(cats, 200);
+  }
+  async searchProducts(search: string) {
+    const query = this.prodRepo.createQueryBuilder('product');
+    query.leftJoinAndSelect('product.translations', 'translations');
+    query.leftJoinAndSelect('translations.language', 'language');
+    if (search) {
+      query.andWhere(
+        '(product.sku LIKE :title OR translations.name LIKE :title )',
+        { title: `%${search}%` },
+      );
+    }
+
+    const products = await query
+      .select(['product.id', 'translations.id', 'translations.name'])
+      .getMany();
+
+    return ApiResponse.success(products, 200);
   }
 }

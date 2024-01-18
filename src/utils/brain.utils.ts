@@ -1,4 +1,4 @@
-import { ProductInteractionTypeEnum } from "src/enum/product-interation-type.enum";
+import { ProductInteractionTypeEnum } from 'src/enum/product-interation-type.enum';
 
 export const WEIGHTS = {
   views: 1,
@@ -10,12 +10,15 @@ export const WEIGHTS = {
   review: 5,
 };
 
-export const getIntractionValue = async (intraction:ProductInteractionTypeEnum) => {
+export const getIntractionValue = async (
+  intraction: ProductInteractionTypeEnum,
+) => {
   return WEIGHTS[intraction] || 0;
 };
 
-export const getRandomProductInteractionType = (): ProductInteractionTypeEnum => {
-  const values = Object.values(ProductInteractionTypeEnum);
-  const randomIndex = Math.floor(Math.random() * values.length);
-  return values[randomIndex] as ProductInteractionTypeEnum;
-}
+export const getRandomProductInteractionType =
+  (): ProductInteractionTypeEnum => {
+    const values = Object.values(ProductInteractionTypeEnum);
+    const randomIndex = Math.floor(Math.random() * values.length);
+    return values[randomIndex] as ProductInteractionTypeEnum;
+  };

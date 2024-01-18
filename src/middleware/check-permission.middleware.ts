@@ -14,6 +14,7 @@ import {
   CHECK_LOGIN_ROUTES,
   EXCLUDED_ROUTES,
   getPermissionNameFromRoute,
+  routeMappings,
 } from 'src/utils/helper.utils';
 import { UserStatus } from 'src/enum/user-status.enum';
 
@@ -28,12 +29,12 @@ export class CheckPermissionMiddleware implements NestMiddleware {
 
   async use(req: any, res: Response, next: NextFunction) {
     let routeWithoutId = req.baseUrl.replace(/\/[a-f0-9-]+$/, '/:id');
-    if (routeWithoutId.includes('/api/v1/products/sku')) {
-      routeWithoutId = '/api/v1/products/sku/:sku';
-    }
-    if (routeWithoutId.includes('/api/v1/products/slug')) {
-      routeWithoutId = '/api/v1/products/slug/:slug';
-    }
+
+    Object.entries(routeMappings).forEach(([pattern, replacement]) => {
+      if (routeWithoutId.includes(pattern)) {
+        routeWithoutId = replacement;
+      }
+    });
     // console.log('req', req);
     const currentPermission = getPermissionNameFromRoute(
       routeWithoutId,
@@ -41,6 +42,8 @@ export class CheckPermissionMiddleware implements NestMiddleware {
     )
       .toUpperCase()
       .replaceAll('-', '_');
+
+    console.log('currentPermission ', currentPermission.toUpperCase());
 
     if (EXCLUDED_ROUTES.includes(currentPermission.toUpperCase())) {
       next();
