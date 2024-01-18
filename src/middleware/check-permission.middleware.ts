@@ -30,14 +30,14 @@ export class CheckPermissionMiddleware implements NestMiddleware {
   async use(req: any, res: Response, next: NextFunction) {
     let routeWithoutId = req.baseUrl.replace(/\/[a-f0-9-]+$/, '/:id');
 
-    console.log('routeWithoutId', routeWithoutId);
+    // console.log('routeWithoutId', routeWithoutId);
 
     Object.entries(routeMappings).forEach(([pattern, replacement]) => {
       if (routeWithoutId.includes(pattern)) {
         routeWithoutId = replacement;
       }
     });
-    // console.log('req', req);
+    // // console.log('req', req);
     const currentPermission = getPermissionNameFromRoute(
       routeWithoutId,
       req.method,
@@ -45,7 +45,7 @@ export class CheckPermissionMiddleware implements NestMiddleware {
       .toUpperCase()
       .replaceAll('-', '_');
 
-    console.log('currentPermission ', currentPermission.toUpperCase());
+    // console.log('currentPermission ', currentPermission.toUpperCase());
 
     if (EXCLUDED_ROUTES.includes(currentPermission.toUpperCase())) {
       next();
@@ -78,7 +78,7 @@ export class CheckPermissionMiddleware implements NestMiddleware {
           });
         }
         const user = await this.usersService.findById(decoded.sub);
-        // console.log('user  ', decoded);
+        // // console.log('user  ', decoded);
         const { password, ...others } = user;
         req.user = others;
         req.user.token = token;

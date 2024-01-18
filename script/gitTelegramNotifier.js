@@ -14,7 +14,7 @@ const sendTelegramMessage = (msg) => {
     );
     telegram.sendMessage('-4038243150', msg);
   } catch (e) {
-    console.log('ee::::>>>>' + e);
+    // console.log('ee::::>>>>' + e);
   }
 };
 

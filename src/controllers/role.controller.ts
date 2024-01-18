@@ -24,7 +24,7 @@ export class RoleController {
     
   @Patch(':id')
   update(@Param('id') id: number, @Body() req: UpdateRoleDto) {
-    console.log('lang controller called');
+    // console.log('lang controller called');
     return this.roleService.update(id, req);
   }
 

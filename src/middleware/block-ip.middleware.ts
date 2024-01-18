@@ -19,7 +19,7 @@ export class BlockIpMiddleware implements NestMiddleware {
 
   private async blockIp(ip: string) {
     this.blockedIps.add(ip);
-    console.log(`Blocking IP: ${ip}`);
+    // console.log(`Blocking IP: ${ip}`);
     let blackList = await BlackListIp.findOne({ where: { ip: ip } });
     if (!blackList) {
       blackList = new BlackListIp();
@@ -40,6 +40,6 @@ export class BlockIpMiddleware implements NestMiddleware {
       await BlackListIp.delete(blackList.id);
     }
     this.blockedIps.delete(ip);
-    console.log(`Unblocking IP: ${ip}`);
+    // console.log(`Unblocking IP: ${ip}`);
   }
 }

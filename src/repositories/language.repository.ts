@@ -64,8 +64,8 @@ export class LanguageRepository extends Repository<Language> {
         id: id,
       },
     });
-    console.log('Req', req);
-    console.log('id', id);
+    // console.log('Req', req);
+    // console.log('id', id);
     if (!curUpdate) {
       throw new NotFoundException({
         statusCode: 404,
@@ -81,7 +81,7 @@ export class LanguageRepository extends Repository<Language> {
     if (code) {
       curUpdate.code = code;
     }
-    console.log('Req', req);
+    // console.log('Req', req);
     return ApiResponse.create(this.langRepo.save(curUpdate));
   }
 }

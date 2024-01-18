@@ -51,11 +51,11 @@ export class StockRepository extends Repository<Stock> {
     });
     stock.products = product;
 
-    console.log('stock sku ', sku);
+    // console.log('stock sku ', sku);
 
     await this.stRepo.save(stock);
 
-    console.log('stock save 1 ');
+    // console.log('stock save 1 ');
 
     const translationsData = await Promise.all(
       translations.map(async (translationDto: any) => {
@@ -70,7 +70,7 @@ export class StockRepository extends Repository<Stock> {
     );
     stock.translations = translationsData;
     stock.variations = variation;
-    console.log('stock save 2 ');
+    // console.log('stock save 2 ');
 
     // Create and associate images
     /* const imagesData = await Promise.all(
@@ -93,7 +93,7 @@ export class StockRepository extends Repository<Stock> {
       }),
     );
     stock.price = pricesData;
-    console.log('stock save 3 ');
+    // console.log('stock save 3 ');
     await this.stRepo.save(stock);
 
     return stock;

@@ -27,7 +27,7 @@ export class UserController {
 
   @Delete('users/:id')
   remove(@Param('id') id: number) {
-    console.log('remove user called', id);
+    // console.log('remove user called', id);
     return this.userService.remove(id);
   }
 

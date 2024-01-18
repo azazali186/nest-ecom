@@ -19,7 +19,7 @@ export class RedisService {
   }
 
   init() {
-    console.log('redis connected');
+    // console.log('redis connected');
     this.redisClient.connect();
   }
 
@@ -49,7 +49,7 @@ export class RedisService {
 
     const existingData = await this.get(key);
 
-    // console.log(key);
+    // // console.log(key);
 
     if (data.status) {
       existingData.status = data.status;
@@ -135,11 +135,11 @@ export class RedisService {
   async disConnectNonWorkingClients(connectedClients: any[]) {
     const keys = await this.keys('*');
     const lst = [];
-    // console.log(connectedClients);
+    // // console.log(connectedClients);
     connectedClients.forEach((c) => {
       lst.push(c.id);
     });
-    // console.log(lst);
+    // // console.log(lst);
     for (const key of keys) {
       const clientInfo = await this.get(key);
 

@@ -58,7 +58,7 @@ class DataSource {
         cache: cache,
       });
 
-      console.log('Database connection established');
+      // console.log('Database connection established');
     }
   }
 
@@ -75,7 +75,7 @@ class DataSource {
   public static async closeConnection(): Promise<void> {
     if (this.connection) {
       await this.connection.close();
-      console.log('Database connection closed');
+      // console.log('Database connection closed');
     }
   }
 }

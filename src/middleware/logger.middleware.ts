@@ -55,7 +55,7 @@ export class LoggerMiddleware implements NestMiddleware {
       try {
         const elk = this.elService.createIndex(this.indexName, log);
       } catch (error) {
-        console.log('error while creating log elk');
+        // console.log('error while creating log elk');
       }
       const message = `API NAME: ${action}\nAPI REQUEST PARAMS: ${JSON.stringify(
         reqBody,
@@ -80,7 +80,7 @@ export class LoggerMiddleware implements NestMiddleware {
           routeWithoutId = replacement;
         }
       });
-      // console.log('req', req);
+      // // console.log('req', req);
       const action = getPermissionNameFromRoute(routeWithoutId, req.method);
 
       if (!EXCLUDED_ROUTES.includes(action)) {

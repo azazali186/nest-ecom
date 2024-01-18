@@ -223,7 +223,7 @@ export class RoleRepository extends Repository<Role> {
     const offset =
       req.offset && !isNaN(req.offset) && req.offset >= 0 ? req.offset : 0;
 
-    console.log(req);
+    // console.log(req);
 
     const query = this.roleRepository
       .createQueryBuilder('role')

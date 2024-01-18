@@ -25,7 +25,7 @@ export class ElasticService {
       });
       return data;
     } catch (error) {
-      console.log('Error while createindex');
+      // console.log('Error while createindex');
     }
 
     return true;
@@ -58,7 +58,7 @@ export class ElasticService {
 
       return updatedData;
     } else {
-      console.log(`No product found with ID '${id}'.`);
+      // console.log(`No product found with ID '${id}'.`);
       return { error: `No product found with ID '${id}'.` };
     }
   }

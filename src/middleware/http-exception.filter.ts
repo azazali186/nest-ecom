@@ -35,7 +35,7 @@ export class HttpExceptionFilter implements ExceptionFilter {
           .sendMessage(process.env.TG_ERROR_LOG_CHAT_ID, message)
           .then(() => console.log('message send'));
       } catch (e) {
-        console.log('ee::::>>>>', e);
+        // console.log('ee::::>>>>', e);
       }
     }
 
@@ -56,7 +56,7 @@ export class HttpExceptionFilter implements ExceptionFilter {
       } else {
         translatedMessage.push(msg);
       }
-      console.log('msg ', msg);
+      // console.log('msg ', msg);
     });
     const res = await ApiResponse.error(status, translatedMessage);
     response.status(status).json(res);

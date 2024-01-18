@@ -7,7 +7,7 @@ export class LangService {
 
   getTranslation(message: any, param: any = null) {
     let language = (I18nContext?.current()?.lang || 'zh') as string;
-    console.log('language is ', language);
+    // console.log('language is ', language);
     if (language.includes('-')) {
       language = language.split('-')[0];
     }

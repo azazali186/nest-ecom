@@ -47,7 +47,7 @@ async function bootstrap() {
     'http://localhost:3003',
   ];
   const corsOptions = {
-    origin: function (origin, callback) {
+    origin: function (origin: any, callback: any) {
       if (whitelist.indexOf(origin) !== -1) {
         callback(null, true);
       } else {
@@ -104,7 +104,7 @@ async function bootstrap() {
 bootstrap();
 
 function extractAndSaveRoutes(server: express.Express) {
-  // console.log('server._router.stack   :   ', server._router.stack);
+  // // console.log('server._router.stack   :   ', server._router.stack);
   const routes = server._router.stack
     .filter((layer: { route: any }) => layer.route)
     .map((layer: { route: { methods: object; path: any; stack: any } }) => ({

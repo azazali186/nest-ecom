@@ -23,7 +23,7 @@ export class LanguageController {
 
   @Patch(':id')
   update(@Param('id') id: number, @Body() req: UpdateLanguageDto) {
-    console.log('lang controller called');
+    // console.log('lang controller called');
     return this.langService.update(id, req);
   }
 

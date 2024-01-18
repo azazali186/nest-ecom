@@ -309,7 +309,7 @@ export class VendorRepository extends Repository<User> {
       where: { name: shopName },
     });
 
-    console.log(oldShopName);
+    // console.log(oldShopName);
 
     if (oldShopName) {
       throw new ConflictException({
@@ -439,7 +439,7 @@ export class VendorRepository extends Repository<User> {
         },
       });
       const result = await this.userRepository.softDelete(id);
-      console.log(result);
+      // console.log(result);
       if (result.affected === 0) {
         throw new NotFoundException({
           statusCode: 404,
@@ -448,7 +448,7 @@ export class VendorRepository extends Repository<User> {
       }
       return ApiResponse.create(null, 200, 'Vendor Deleted');
     } catch (error) {
-      console.log(error);
+      // console.log(error);
       throw new BadRequestException({
         statusCode: 400,
         message: `Can Not Delete this vendor`,

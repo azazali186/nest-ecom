@@ -347,7 +347,7 @@ export class MemberRepository extends Repository<User> {
         },
       });
       const result = await this.userRepository.softDelete(id);
-      console.log(result);
+      // console.log(result);
       if (result.affected === 0) {
         throw new NotFoundException({
           statusCode: 404,
@@ -356,7 +356,7 @@ export class MemberRepository extends Repository<User> {
       }
       return ApiResponse.create(null, 200, 'Member Deleted');
     } catch (error) {
-      console.log(error);
+      // console.log(error);
       throw new BadRequestException({
         statusCode: 400,
         message: `Can Not Delete this member`,

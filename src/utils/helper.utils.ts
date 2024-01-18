@@ -232,6 +232,6 @@ export const sendTelegramMessage = (message: string, chatId: string) => {
     const telegram = new Telegram(process.env.TG_BOT_TOKEN as string);
     telegram.sendMessage(chatId, message);
   } catch (e) {
-    console.log('ee::::>>>>' + e);
+    // console.log('ee::::>>>>' + e);
   }
 };

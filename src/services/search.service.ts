@@ -120,7 +120,7 @@ export class SearchService {
   }
 
   async searchShop(shop: string) {
-    console.log('Search data is ', shop);
+    // console.log('Search data is ', shop);
     const shops = await this.shopRepo.find({
       where: {
         name: Like('%' + shop + '%'),
