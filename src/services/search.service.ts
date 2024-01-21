@@ -152,6 +152,7 @@ export class SearchService {
     });
     return ApiResponse.success(cats, 200);
   }
+  
   async searchProducts(search: string) {
     const select = [
       'product',
@@ -164,20 +165,24 @@ export class SearchService {
       'stocks',
       'price',
       'currency',
+      'stockPrice',
       'stocksTranslations',
       'stocksLanguage',
+      'stockCurrency',
     ];
     const query = this.prodRepo.createQueryBuilder('product');
     query.leftJoinAndSelect('product.created_by', 'created_by');
     query.leftJoinAndSelect('product.updated_by', 'updated_by');
     query.leftJoinAndSelect('product.variations', 'variations');
+    query.leftJoinAndSelect('product.price', 'price');
+    query.leftJoinAndSelect('price.currency', 'currency');
 
     query.leftJoinAndSelect('product.translations', 'translations');
     query.leftJoinAndSelect('translations.language', 'language');
     query.leftJoinAndSelect('product.images', 'images');
     query.leftJoinAndSelect('product.stocks', 'stocks');
-    query.leftJoinAndSelect('stocks.price', 'price');
-    query.leftJoinAndSelect('price.currency', 'currency');
+    query.leftJoinAndSelect('stocks.price', 'stockPrice');
+    query.leftJoinAndSelect('stockPrice.currency', 'stockCurrency');
     query.leftJoinAndSelect('stocks.translations', 'stocksTranslations');
     query.leftJoinAndSelect('stocksTranslations.language', 'stocksLanguage');
 

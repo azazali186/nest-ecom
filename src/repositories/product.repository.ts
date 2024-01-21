@@ -89,7 +89,7 @@ export class ProductRepository extends Repository<Product> {
       images,
     } = createProductDto;
 
-    user = await this.userRepo.findOne({ where: { id: user.id } });
+    user = await this.userRepo.findOne({ where: { id: user?.id } });
 
     const product = new Product();
     product.sku = sku;
@@ -250,7 +250,8 @@ export class ProductRepository extends Repository<Product> {
       'category',
     ];
     query.leftJoinAndSelect('product.stocks', 'stock');
-    query.leftJoinAndSelect('stock.price', 'price');
+    query.leftJoinAndSelect('product.price', 'price');
+    query.leftJoinAndSelect('stock.price', 'sprice');
     query.leftJoinAndSelect('stock.translations', 'stockTranslations');
     query.leftJoinAndSelect('stockTranslations.language', 'stockLanguage');
     query.leftJoinAndSelect('product.created_by', 'created_by');
@@ -259,6 +260,7 @@ export class ProductRepository extends Repository<Product> {
     query.leftJoinAndSelect('product.updated_by', 'updated_by');
     query.leftJoinAndSelect('stock.variations', 'stockVariation');
     query.leftJoinAndSelect('price.currency', 'currency');
+    query.leftJoinAndSelect('sprice.currency', 'scurrency');
     query.leftJoinAndSelect('product.variations', 'variations');
 
     query.leftJoinAndSelect('product.translations', 'translations');
@@ -266,37 +268,22 @@ export class ProductRepository extends Repository<Product> {
     query.leftJoinAndSelect('product.images', 'images');
 
     query.leftJoinAndSelect('product.categories', 'category');
-    query.leftJoin('product.features', 'features');
-    query.leftJoin('features.translations', 'featuresTranslations');
-    query.leftJoin('featuresTranslations.language', 'featuresLanguage');
+    query.leftJoinAndSelect('product.features', 'features');
+    query.leftJoinAndSelect('features.translations', 'featuresTranslations');
+    query.leftJoinAndSelect(
+      'featuresTranslations.language',
+      'featuresLanguage',
+    );
     query.andWhere(' product.slug = "' + slug + '" ');
-    if (user && user?.roles?.name == process.env.MEMBER_ROLE_NAME) {
-      query.andWhere(" currency.code = '" + currency + "'");
-      query.andWhere(" language.code = '" + lang + "'");
-      query.andWhere(" stockLanguage.code = '" + lang + "'");
-      query.andWhere(" featuresLanguage.code = '" + lang + "'");
-    }
 
-    if (!user) {
-      query.andWhere(" currency.code = '" + currency + "'");
-      query.andWhere(" language.code = '" + lang + "'");
-      query.andWhere(" stockLanguage.code = '" + lang + "'");
-      query.andWhere(" featuresLanguage.code = '" + lang + "'");
-    }
+    query.andWhere(" currency.code = '" + currency + "'");
+    query.andWhere(" language.code = '" + lang + "'");
+    // query.andWhere(" stockLanguage.code = '" + lang + "'");
+    query.andWhere(" featuresLanguage.code = '" + lang + "'");
 
-    if (user?.roles?.name == process.env.VENDOR_ROLE_NAME) {
-      query.andWhere(' created_by.id = ' + user?.id + ' ');
-    }
+    console.log('product query', query.getQuery());
 
     const product = await query.select(select).getOne();
-
-    if (!product && user?.roles?.name == process.env.VENDOR_ROLE_NAME) {
-      throw new UnauthorizedException({
-        statusCode: 403,
-        message: `UNAUTHORIZED`,
-        param: `Product`,
-      });
-    }
 
     if (!product) {
       throw new NotFoundException({

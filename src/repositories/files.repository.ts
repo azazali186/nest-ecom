@@ -21,7 +21,7 @@ export class FilesRepository extends Repository<Files> {
   }
 
   async uploadFile(files: Express.Multer.File[], user: any) {
-    user.roles.permissions = [];
+    // user.roles.permissions = [];
     const uploadedFiles: string[] = [];
 
     for (const file of files) {
@@ -52,7 +52,7 @@ export class FilesRepository extends Repository<Files> {
   }
 
   async uploadFileWithId(files: Express.Multer.File[], user: any) {
-    user.roles.permissions = [];
+    // user.roles.permissions = [];
     const uploadedFiles: any[] = [];
 
     for (const file of files) {

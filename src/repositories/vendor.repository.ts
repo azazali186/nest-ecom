@@ -256,7 +256,7 @@ export class VendorRepository extends Repository<User> {
     }
 
     userToUpdate.updated_by = await this.userRepository.findOne({
-      where: { id: user.id },
+      where: { id: user?.id },
       select: {
         id: true,
         username: true,

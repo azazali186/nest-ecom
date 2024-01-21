@@ -49,6 +49,6 @@ export class AuthService {
   }
 
   getUserInfo(user: any) {
-    return this.findOne(user.id);
+    return this.findOne(user?.id);
   }
 }

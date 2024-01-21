@@ -189,12 +189,19 @@ export class UserRepository extends Repository<User> {
 
     const token = await this.findSessionTokenByUserId(user.id);
 
-    return ApiResponse.success({
-      token: token.string_token,
-      user: user,
-      role: role,
-      permissions: permissions,
-    });
+    if (token) {
+      return ApiResponse.success({
+        token: token.string_token,
+        user: user,
+        role: role,
+        permissions: permissions,
+      });
+    } else {
+      throw new UnauthorizedException({
+        statusCode: 401,
+        message: 'INVALID_TOKEN'
+      });
+    }
   }
 
   async register(
