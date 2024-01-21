@@ -24,6 +24,7 @@ import { IoAdapter } from '@nestjs/platform-socket.io';
 import { User } from './entities/user.entity';
 import { AES } from 'crypto-js';
 import { createLanguageData, createCurrencyData } from './utils/master.util';
+import { ThrottlingExceptionFilter } from './middleware/throttle-exception.filter';
 
 let permissionRepo: Repository<Permission>;
 let roleRepo: Repository<Role>;
@@ -40,6 +41,7 @@ async function bootstrap() {
 
   app.useWebSocketAdapter(new IoAdapter(app));
   // app.useGlobalFilters(new HttpExceptionFilter());
+  // app.use(new ThrottlingExceptionFilter());
   const whitelist = [
     'http://localhost:3001',
     'http://localhost:3000',

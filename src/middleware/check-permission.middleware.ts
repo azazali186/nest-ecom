@@ -45,7 +45,7 @@ export class CheckPermissionMiddleware implements NestMiddleware {
       .toUpperCase()
       .replaceAll('-', '_');
 
-    // console.log('currentPermission ', currentPermission.toUpperCase());
+    console.log('currentPermission ', currentPermission.toUpperCase());
 
     if (EXCLUDED_ROUTES.includes(currentPermission.toUpperCase())) {
       next();

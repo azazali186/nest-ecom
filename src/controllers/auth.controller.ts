@@ -47,6 +47,7 @@ export class AuthController {
 
   @Get('user')
   getUserInfo(@Request() r) {
+    console.log("user is ", r.user);
     return this.authService.getUserInfo(r.user);
   }
 }

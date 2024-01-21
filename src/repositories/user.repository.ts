@@ -189,6 +189,8 @@ export class UserRepository extends Repository<User> {
 
     const token = await this.findSessionTokenByUserId(user.id);
 
+    console.log('User id is ', user);
+
     if (token) {
       return ApiResponse.success({
         token: token.string_token,
@@ -199,7 +201,7 @@ export class UserRepository extends Repository<User> {
     } else {
       throw new UnauthorizedException({
         statusCode: 401,
-        message: 'INVALID_TOKEN'
+        message: 'INVALID_TOKEN',
       });
     }
   }

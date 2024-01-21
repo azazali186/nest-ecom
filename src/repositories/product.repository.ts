@@ -281,8 +281,6 @@ export class ProductRepository extends Repository<Product> {
     // query.andWhere(" stockLanguage.code = '" + lang + "'");
     query.andWhere(" featuresLanguage.code = '" + lang + "'");
 
-    console.log('product query', query.getQuery());
-
     const product = await query.select(select).getOne();
 
     if (!product) {

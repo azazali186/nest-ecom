@@ -52,7 +52,7 @@ export function getPermissionNameFromRoute(
     path.includes('confirm')
   ) {
     path = name
-      .replaceAll('/api/v1/auth-service/', '')
+      .replaceAll('/api/v1/', '')
       .replaceAll('/', '-')
       .replace('-:id', '');
   }
@@ -94,6 +94,7 @@ export const CHECK_LOGIN_ROUTES = [
   'VIEW_ALL_COMMON_GET_FILTERS',
   'VIEW_ALL_PERMISSIONS',
   'VIEW_ALL_AUTH_INFO',
+  'VIEW_ALL_AUTH_USER'
 ];
 
 export function getMethodName(path: string, method: string): string {

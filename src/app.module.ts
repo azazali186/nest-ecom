@@ -66,5 +66,14 @@ export class AppModule implements NestModule {
       LoggerMiddleware,
       BlockIpMiddleware,
     );
+
+    consumer
+      .apply(
+        expressUserAgent.express(),
+        CheckPermissionMiddleware,
+        LoggerMiddleware,
+        BlockIpMiddleware,
+      )
+      .forRoutes('*');
   }
 }
