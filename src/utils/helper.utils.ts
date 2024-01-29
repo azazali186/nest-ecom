@@ -66,6 +66,7 @@ export const routeMappings = {
   '/api/v1/search/product': '/api/v1/search/product/:product',
   '/api/v1/search/category': '/api/v1/search/category/:category',
   '/api/v1/search/shop': '/api/v1/search/shop/:shop',
+  '/api/v1/vendor/shop/details': '/api/v1/vendor/shop/details/:slug',
 };
 
 export const EXCLUDED_ROUTES = [
@@ -86,6 +87,7 @@ export const EXCLUDED_ROUTES = [
   'VIEW_ALL_SEARCH_CATEGORY_:CATEGORY',
   'VIEW_ALL_SEARCH_SHOP_:SHOP',
   'VIEW_ALL_PRODUCTS_DETAILS_:SLUG',
+  'VIEW_ALL_VENDOR_SHOP_DETAILS_:SLUG',
 ];
 
 export const CHECK_LOGIN_ROUTES = [
@@ -94,7 +96,7 @@ export const CHECK_LOGIN_ROUTES = [
   'VIEW_ALL_COMMON_GET_FILTERS',
   'VIEW_ALL_PERMISSIONS',
   'VIEW_ALL_AUTH_INFO',
-  'VIEW_ALL_AUTH_USER'
+  'VIEW_ALL_AUTH_USER',
 ];
 
 export function getMethodName(path: string, method: string): string {

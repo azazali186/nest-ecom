@@ -455,4 +455,42 @@ export class VendorRepository extends Repository<User> {
       });
     }
   }
+
+  async findShop(slug: string) {
+    const shopData = await this.shopRepo.findOne({
+      where: { slug: slug },
+      select: {
+        id: true,
+        slug: true,
+        name: true,
+        logo_id: true,
+        banner_id: true,
+        vendor_id: true,
+        vendor: {
+          id: true,
+          name: true,
+          username: true,
+          mobile_number: true,
+          status: true,
+        },
+        logo: {
+          id: true,
+          url: true,
+          full_url: true,
+        },
+        banner: {
+          id: true,
+          url: true,
+          full_url: true,
+        },
+      },
+      relations: {
+        logo: true,
+        banner: true,
+        vendor: true,
+      },
+    });
+
+    return ApiResponse.success(shopData);
+  }
 }
