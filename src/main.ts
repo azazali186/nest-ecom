@@ -49,13 +49,19 @@ async function bootstrap() {
     'http://154.41.253.133:4500',
     'http://154.41.253.133:3000',
     'http://154.41.253.133',
+    'https://go-kh.com',
+    'http://go-kh.com',
+    'https://api.go-kh.com',
+    'http://api.go-kh.com',
+    'http://admin.go-kh.com',
+    'https://admin.go-kh.com',
   ];
   const corsOptions = {
     origin: function (origin: any, callback: any) {
       if (whitelist.indexOf(origin) !== -1) {
         callback(null, true);
       } else {
-        callback(null, true);
+        callback(null, false);
       }
     },
     methods: ['*'],
