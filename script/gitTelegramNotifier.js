@@ -12,7 +12,7 @@ const sendTelegramMessage = (msg) => {
     const telegram = new Telegram(
       '6880685900:AAGbuYNIdve9LEnBSAqez4s3wBajJ-vTxBQ',
     );
-    telegram.sendMessage('-4038243150', msg);
+    // telegram.sendMessage('-4038243150', msg);
   } catch (e) {
     // console.log('ee::::>>>>' + e);
   }

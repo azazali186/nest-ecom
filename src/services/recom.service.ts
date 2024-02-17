@@ -11,7 +11,7 @@ import { ApiResponse } from 'src/utils/response.util';
 
 @Injectable()
 export class RecomService {
-  async getLandingPageData(user: any) {
+  async getLandingPageDataShop(user: any, slug: string) {
     const popularProducts = await this.getProductsOfCurrentMonth(
       ProductInteractionTypeEnum.like,
     );
@@ -25,6 +25,30 @@ export class RecomService {
       ProductInteractionTypeEnum.add_to_wishlist,
     );
     const recomProduct = await this.getRecommendationsForUser(user.id);
+
+    const data = {
+      popular: popularProducts,
+      visited: mostViewedProducts,
+      orders: mostOrderedProducts,
+      recom: recomProduct,
+      wish: mostWishListed,
+    };
+    return ApiResponse.success(data, 200);
+  }
+  async getLandingPageData(user: any) {
+    const popularProducts = await this.getProductsOfCurrentMonth(
+      ProductInteractionTypeEnum.like,
+    );
+    const mostViewedProducts = await this.getProductsOfCurrentMonth(
+      ProductInteractionTypeEnum.views,
+    );
+    const mostOrderedProducts = await this.getProductsOfCurrentMonth(
+      ProductInteractionTypeEnum.purchased,
+    );
+    const mostWishListed = await this.getProductsOfCurrentMonth(
+      ProductInteractionTypeEnum.add_to_wishlist,
+    );
+    const recomProduct = await this.getRecommendationsForUser(user?.id);
 
     const data = {
       popular: popularProducts,
