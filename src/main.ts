@@ -47,6 +47,8 @@ async function bootstrap() {
     'http://localhost:3002',
     'http://localhost:3003',
     'http://154.41.253.133:4500',
+    'http://154.41.253.133:3000',
+    'http://154.41.253.133',
   ];
   const corsOptions = {
     origin: function (origin: any, callback: any) {
