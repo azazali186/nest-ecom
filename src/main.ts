@@ -24,7 +24,6 @@ import { IoAdapter } from '@nestjs/platform-socket.io';
 import { User } from './entities/user.entity';
 import { AES } from 'crypto-js';
 import { createLanguageData, createCurrencyData } from './utils/master.util';
-import { ThrottlingExceptionFilter } from './middleware/throttle-exception.filter';
 
 let permissionRepo: Repository<Permission>;
 let roleRepo: Repository<Role>;
@@ -47,6 +46,7 @@ async function bootstrap() {
     'http://localhost:3000',
     'http://localhost:3002',
     'http://localhost:3003',
+    'http://154.41.253.133:4500',
   ];
   const corsOptions = {
     origin: function (origin: any, callback: any) {
@@ -66,8 +66,8 @@ async function bootstrap() {
 
   const config = new DocumentBuilder()
     .addBearerAuth()
-    .setTitle('Next Ecom Management API')
-    .setDescription('Next Ecom Management API')
+    .setTitle('Product Search Engine API')
+    .setDescription('Product Search Engine API')
     .setVersion('1.0')
     .addServer(process.env.SWAGGER_SERVER)
     .addServer(process.env.SWAGGER_DEV_SERVER)
