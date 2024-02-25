@@ -13,6 +13,7 @@ import { ApiResponse } from 'src/utils/response.util';
 
 @Injectable()
 export class VendorService {
+
   constructor(
     @InjectRepository(VendorRepository)
     public vendorRepository: VendorRepository,
@@ -90,5 +91,9 @@ export class VendorService {
     });
 
     return ApiResponse.success(data, 200);
+  }
+
+  findShop(slug: string) {
+    return this.vendorRepository.findShop(slug);
   }
 }

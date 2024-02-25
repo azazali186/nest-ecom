@@ -61,6 +61,11 @@ export class ProductController {
     return this.recomService.getLandingPageData(r.user);
   }
 
+  @Get('public/landing-page/shop/:slug')
+  getPopularProductsOfShop(@Param('slug') slug: string, @Request() r) {
+    return this.recomService.getLandingPageDataShop(r.user, slug);
+  }
+
   @Get('public')
   public(@Query() req: SearchProductDto, @Request() r) {
     // console.log(req.user);

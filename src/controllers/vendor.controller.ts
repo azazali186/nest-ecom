@@ -63,6 +63,11 @@ export class VendorController {
     return this.vendorService.findSlug(slug);
   }
 
+  @Get('shop/details/:slug')
+  findShop(@Param('slug') slug: string) {
+    return this.vendorService.findShop(slug);
+  }
+
   @Patch(':id')
   updateVendor(
     @Param('id') id: number,

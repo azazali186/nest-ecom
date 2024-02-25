@@ -1,6 +1,6 @@
 import * as dotenv from 'dotenv';
-// dotenv.config({ path: `.env.${process.env.NODE_ENV}` });
-dotenv.config({ path: `.env` });
+dotenv.config({ path: `.env.${process.env.NODE_ENV}` });
+// dotenv.config({ path: `.env` });
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
 import { ExpressAdapter } from '@nestjs/platform-express';
@@ -24,7 +24,6 @@ import { IoAdapter } from '@nestjs/platform-socket.io';
 import { User } from './entities/user.entity';
 import { AES } from 'crypto-js';
 import { createLanguageData, createCurrencyData } from './utils/master.util';
-import { ThrottlingExceptionFilter } from './middleware/throttle-exception.filter';
 
 let permissionRepo: Repository<Permission>;
 let roleRepo: Repository<Role>;
@@ -47,6 +46,15 @@ async function bootstrap() {
     'http://localhost:3000',
     'http://localhost:3002',
     'http://localhost:3003',
+    'http://154.41.253.133:4500',
+    'http://154.41.253.133:3000',
+    'http://154.41.253.133',
+    'https://go-kh.com',
+    'http://go-kh.com',
+    'https://api.go-kh.com',
+    'http://api.go-kh.com',
+    'http://admin.go-kh.com',
+    'https://admin.go-kh.com',
   ];
   const corsOptions = {
     origin: function (origin: any, callback: any) {
@@ -66,8 +74,8 @@ async function bootstrap() {
 
   const config = new DocumentBuilder()
     .addBearerAuth()
-    .setTitle('Next Ecom Management API')
-    .setDescription('Next Ecom Management API')
+    .setTitle('Product Search Engine API')
+    .setDescription('Product Search Engine API')
     .setVersion('1.0')
     .addServer(process.env.SWAGGER_SERVER)
     .addServer(process.env.SWAGGER_DEV_SERVER)
