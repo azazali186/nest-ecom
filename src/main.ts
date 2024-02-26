@@ -61,7 +61,7 @@ async function bootstrap() {
       if (whitelist.indexOf(origin) !== -1) {
         callback(null, true);
       } else {
-        callback(null, false);
+        callback(null, true);
       }
     },
     methods: ['*'],
