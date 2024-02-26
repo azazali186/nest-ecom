@@ -323,15 +323,15 @@ export class UserRepository extends Repository<User> {
   }
 
   async createSession(tokenDetails: any, user: User) {
-    const expiryDate = new Date(Date.now() + 3600 * (1000 * 240)); // 10 Days
+    const expiryDate = new Date(Date.now() + 10 * 24 * 60 * 60 * 1000); // 10 Days
 
-    if (process.env.SINGLE_USER_LOGIN) {
+    /* if (process.env.SINGLE_USER_LOGIN) {
       await this.sessionRepository
         .createQueryBuilder('sessions')
         .delete()
         .where('userId = :userId', { userId: user.id })
         .execute();
-    }
+    } */
 
     const session = this.sessionRepository.create({
       token: tokenDetails.token,
