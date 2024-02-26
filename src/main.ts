@@ -237,6 +237,6 @@ async function associatePermissionWithAdminRole() {
   }
 }
 function createMasterData() {
-  createLanguageData();
-  createCurrencyData();
+  // createLanguageData();
+  // createCurrencyData();
 }
