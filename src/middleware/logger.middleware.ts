@@ -53,7 +53,7 @@ export class LoggerMiddleware implements NestMiddleware {
       log.mobile_number = req?.user?.mobile_number || 'guest';
       this.logRepository.save(log);
       try {
-        // const elk = this.elService.createIndex(this.indexName, log);
+        const elk = this.elService.createIndex(this.indexName, log);
       } catch (error) {
         // console.log('error while creating log elk');
       }
