@@ -5,7 +5,11 @@ import {
   IsOptional,
   IsString,
 } from 'class-validator';
-import { ApiHideProperty, ApiProperty } from '@nestjs/swagger';
+import {
+  ApiHideProperty,
+  ApiProperty,
+  ApiPropertyOptional,
+} from '@nestjs/swagger';
 import { CreateTranslationDto } from '../translation/create-translation.dto';
 import { CreateVariationDto } from '../variations/create-variation.dto';
 import { PriceDto } from '../stock/price.dto';
@@ -39,16 +43,16 @@ export class CreateProductDto {
   })
   translations: CreateTranslationDto[];
 
-  @ApiProperty({ type: [CreateFeaturesDto], required: false })
+  @ApiPropertyOptional({ type: [CreateFeaturesDto], required: false })
   @IsOptional()
   features?: CreateFeaturesDto[];
 
-  @ApiProperty({ type: [CreateVariationDto] })
+  @ApiPropertyOptional({ type: [CreateVariationDto] })
   @IsArray()
   @IsOptional()
   variations?: CreateVariationDto[];
 
-  @ApiProperty({ type: [CombinationDto] })
+  @ApiPropertyOptional({ type: [CombinationDto] })
   @IsArray()
   @IsOptional()
   combinations?: CombinationDto[];
@@ -58,7 +62,7 @@ export class CreateProductDto {
   @IsNumber({}, { each: true })
   categoryIds: number[];
 
-  @ApiProperty({ type: [String], required: false })
+  @ApiPropertyOptional({ type: [String], required: false })
   @IsArray({
     message: 'IMAGES_IS_ARRAY',
   })

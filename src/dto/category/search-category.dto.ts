@@ -4,6 +4,7 @@ import { SearchBaseDto } from '../search-base-dto';
 
 export class SearchCategoryDto extends SearchBaseDto {
   @ApiPropertyOptional()
+  
   @IsOptional()
   name: string;
 

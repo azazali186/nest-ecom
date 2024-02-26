@@ -1,4 +1,4 @@
-import { IsArray, IsNotEmpty, IsString } from 'class-validator';
+import { IsArray, IsNotEmpty, IsOptional, IsString } from 'class-validator';
 import {
   ApiHideProperty,
   ApiProperty,
@@ -35,6 +35,7 @@ export class CreateCategoryDto {
   translations: CreateTranslationDto[];
 
   @ApiPropertyOptional({ type: [ImagesDto] })
+  @IsOptional()
   @IsArray({
     message: 'IMAGES_IS_ARRAY',
   })

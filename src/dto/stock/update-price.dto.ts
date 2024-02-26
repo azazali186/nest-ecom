@@ -1,8 +1,4 @@
-import {
-  ApiHideProperty,
-  ApiProperty,
-  ApiPropertyOptional,
-} from '@nestjs/swagger';
+import { ApiHideProperty, ApiPropertyOptional } from '@nestjs/swagger';
 import { IsString, IsNumber, IsNotEmpty, IsOptional } from 'class-validator';
 
 export class UpdatePriceDto {
@@ -17,7 +13,7 @@ export class UpdatePriceDto {
   @IsNotEmpty()
   price: string;
 
-  @ApiProperty({ type: 'number', required: false })
+  @ApiPropertyOptional({ type: 'number', required: false })
   @IsNotEmpty()
   @IsNumber()
   @IsOptional()

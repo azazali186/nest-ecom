@@ -11,6 +11,7 @@ import { UserStatus } from 'src/enum/user-status.enum';
 
 export class UpdateMemberDto {
   @ApiPropertyOptional()
+  @IsOptional()
   @IsString({
     message: 'INVALID_FORMAT_USERNAME',
   })
@@ -24,6 +25,7 @@ export class UpdateMemberDto {
   username?: string;
 
   @ApiPropertyOptional()
+  @IsOptional()
   @IsString({
     message: 'INVALID_TELEGRAM_ID',
   })
@@ -43,6 +45,7 @@ export class UpdateMemberDto {
   password?: string;
 
   @ApiPropertyOptional()
+  @IsOptional()
   @IsString({
     message: 'INVALID_NAME',
   })
@@ -50,6 +53,7 @@ export class UpdateMemberDto {
   name?: string;
 
   @ApiPropertyOptional()
+  @IsOptional()
   @IsString({
     message: 'MOBILE_NUMBER_IS_REQUIRED',
   })
