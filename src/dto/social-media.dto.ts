@@ -1,28 +1,32 @@
 import { ApiPropertyOptional } from '@nestjs/swagger';
-import { IsString } from 'class-validator';
+import { IsOptional, IsString } from 'class-validator';
 
 export class SocialMediaDto {
   @ApiPropertyOptional()
+  @IsOptional()
   @IsString({
-    message: 'SLUG_IS_STRING',
+    message: 'FB_IS_STRING',
   })
   fb: string;
 
   @ApiPropertyOptional()
+  @IsOptional()
   @IsString({
-    message: 'SLUG_IS_STRING',
+    message: 'TG_IS_STRING',
   })
   tg: string;
 
   @ApiPropertyOptional()
+  @IsOptional()
   @IsString({
-    message: 'SLUG_IS_STRING',
+    message: 'WA_IS_STRING',
   })
   wa: string;
 
   @ApiPropertyOptional()
+  @IsOptional()
   @IsString({
-    message: 'SLUG_IS_STRING',
+    message: 'EMAIL_IS_STRING',
   })
   email: string;
 }
