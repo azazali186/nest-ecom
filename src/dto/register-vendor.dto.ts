@@ -25,9 +25,6 @@ export class RegisterVendorDto extends CreateShopDto {
   @MaxLength(20, {
     message: 'MAX_LENGTH_USERNAME_ERROR',
   })
-  @Matches(/^[A-Za-z0-9]+$/, {
-    message: 'INVALID_FORMAT_USERNAME',
-  })
   username: string;
 
   @ApiProperty()
@@ -36,9 +33,6 @@ export class RegisterVendorDto extends CreateShopDto {
   })
   @MinLength(6, {
     message: 'MIN_LENGTH_PASSWORD_ERROR',
-  })
-  @Matches(/^(?=.*?[A-Za-z])(?=.*?[0-9]).*$/, {
-    message: 'INVALID_FORMAT_PASSWORD',
   })
   password: string;
 
@@ -49,7 +43,7 @@ export class RegisterVendorDto extends CreateShopDto {
   @Matches(/^[0-9]+$/, {
     message: 'INVALID_MOBILE_NUMBER',
   })
-  @MaxLength(12, {
+  @MaxLength(20, {
     message: 'MAX_LENGHT_MOBILE_NUMBER_ERROR',
   })
   @IsNotEmpty({
