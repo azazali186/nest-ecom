@@ -40,9 +40,6 @@ export class RegisterVendorDto extends CreateShopDto {
   @IsString({
     message: 'MOBILE_NUMBER_IS_REQUIRED',
   })
-  @Matches(/^[0-9]+$/, {
-    message: 'INVALID_MOBILE_NUMBER',
-  })
   @MaxLength(20, {
     message: 'MAX_LENGHT_MOBILE_NUMBER_ERROR',
   })
