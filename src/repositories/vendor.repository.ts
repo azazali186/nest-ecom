@@ -201,6 +201,9 @@ export class VendorRepository extends Repository<User> {
       shopSlug,
       bannerId,
       logoId,
+      wa,
+      fb,
+      tg,
     } = updateDto;
 
     // If a new password is provided, hash it
@@ -231,6 +234,18 @@ export class VendorRepository extends Repository<User> {
 
     if (status) {
       userToUpdate.status = status;
+    }
+
+    if (wa) {
+      shopToUpdate.wa = wa;
+    }
+
+    if (fb) {
+      shopToUpdate.fb = fb;
+    }
+
+    if (tg) {
+      shopToUpdate.tg = tg;
     }
 
     if (username) {

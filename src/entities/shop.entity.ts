@@ -21,6 +21,15 @@ export class Shop extends BaseEntity {
   slug: string;
 
   @Column({ nullable: true })
+  wa: string;
+
+  @Column({ nullable: true })
+  fb: string;
+
+  @Column({ nullable: true })
+  tg: string;
+
+  @Column({ nullable: true })
   logo_id: number;
 
   @OneToOne(() => Files, { nullable: true })
